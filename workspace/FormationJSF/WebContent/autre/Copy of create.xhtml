@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Ajouter une session</title>
+</h:head>
+<h:body>
+	<h1>Ajouter une session</h1>
+	<hr />
+	<h:form>
+		<table border="0">
+
+			<tr>
+				<td>Nom Session : <h:inputText
+						value="#{sessionController.session.nom}" /></td>
+			</tr>
+
+			<tr>
+				<td>Formation : <h:selectOneMenu value="#{sessionController.formation.id}">
+						<f:selectItems value="#{formationController.selectFormation}"></f:selectItems>
+					</h:selectOneMenu></td>
+			</tr>
+
+			<tr>
+				<td>Formateur : <h:selectOneMenu value="#{sessionController.formateur.id}">
+						<f:selectItems value="#{formateurController.selectFormateur}"></f:selectItems>
+					</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>Date début<h:inputText
+						value="#{sessionController.session.dateDebutStage}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td>date fin<h:inputText
+						value="#{sessionController.session.dateFinStage}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td><h:commandButton
+						action="#{sessionController.doCreateSession}" value="Ajouter" /></td>
+				<td><input type="reset" Name="annuler" value="Annuler" /></td>
+			</tr>
+		</table>
+	</h:form>
+	<hr />
+	<i>Treeptik--treeptik</i>
+</h:body>
+</html>

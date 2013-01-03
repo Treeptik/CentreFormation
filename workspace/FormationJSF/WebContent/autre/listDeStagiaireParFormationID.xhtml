@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="../template/template.xhtml">
+
+	<ui:define name="titre">Evaluation Treeptik</ui:define>
+
+	<ui:define name="info">Liste des stagiaires</ui:define>
+
+	<ui:define name="body">
+
+		<div StyleClass="row">
+			<div StyleClass="span10">
+				<legende>Liste des stagiaires:</legende>
+				<div StyleClass="row">
+					<div StyleClass="span4">
+
+						<h:form styleClass="well">
+							<div Class="table" border="0">
+
+								<tr>
+									<td><h:selectOneMenu
+											value="#{evaluationController.stagiaire.id}">
+											<f:selectItems value="#{stagiaireController.selectNom}"></f:selectItems>
+										</h:selectOneMenu></td>
+								</tr>
+								<tr>
+									<td><h:commandButton
+											action="#{stagiaireController.doNewStagiaire}" value="retour"
+											styleClass="btn btn-primary" /></td>
+								</tr>
+							</div>
+							<h:messages />
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+

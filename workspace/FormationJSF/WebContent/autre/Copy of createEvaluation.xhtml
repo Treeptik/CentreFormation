@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Fiche d'evaluation</title>
+</h:head>
+<h:body>
+	<h3>
+		<br>Merci de repondre à toutes les questions.</br>
+	</h3>
+                  
+	<table border="2" color="blue">
+		<tr>
+			<td>Signification de chaque choix:</td>
+			<td>1 :  Non, pas du tout ---- 2 : Non, pas vraiment---- 3 : Oui, en partie
+				---- 4  : Oui </td>
+				<td><a> <img src="C:\Users\hassen\Desktop\imageEtProjetHTML\TreeptikLogo.jpg" width="20" height="20" /></a></td>
+		</tr>
+
+	</table>
+	<hr>
+	<h:form>
+	 
+		<table border="0">
+
+
+			<tr>
+				<td><h4 color="aqua">
+						<u>L'environnement:</u>
+					</h4></td>
+			</tr>
+			<tr>
+				<td>L'accueil<h:selectOneRadio
+						value="#{evaluationController.evaluation.acceuil}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><l>les salles de formation:</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.salle}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><l>le matériel mis à disposition:</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.materiel}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+			</tr>
+
+			<tr>
+
+				<td><h4 color="bleu">
+						<u>Les objectifs:</u>
+					</h4></td>
+			</tr>
+			<tr>
+				<td><l>Ëtes-vous globalement satisfait de la formation?</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.satisfait}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><l>Votre objectif a t'il été atteint?</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.objectif}">
+						<f:selectItem itemValue="0" itemLabel="oui" />
+						<f:selectItem itemValue="20" itemLabel="non" />
+					</h:selectOneRadio></td>
+			</tr>
+			<tr>
+				<td><h4 color="aqua">
+						<u>Le contenu de la formation:</u>
+					</h4></td>
+			</tr>
+			<tr>
+				<td><l>Programme adapté à votre niveau ?</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.programme}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><l>Contenu adapté à vos objectifs ?</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.contenu}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><l>Durée suffisante ?</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.duree}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+			</tr>
+			<tr>
+
+
+				<td><br>Quels sont, selon vous, les aménagements à
+						apporter au programme ?</br></td>
+				<td></td>
+				<td><br>Rythme du cours:</br> <h:selectOneMenu
+						value="#{evaluationController.evaluation.rythme}">
+						<f:selectItem itemValue="" itemLabel="" />
+						<f:selectItem itemValue="8" itemLabel="Trop lent" />
+						<f:selectItem itemValue="20" itemLabel="Satisfaisant" />
+						<f:selectItem itemValue="8" itemLabel=" Trop rapide" />
+					</h:selectOneMenu></td>
+			</tr>
+			<tr>
+
+				<td><br>1-Sujets à approfondir ou à ajouter :</br> <h:inputTextarea
+						value="#{evaluationController.evaluation.sujetApprofondir}"
+						cols="30" rows="5" /></td>
+
+
+
+				<td><br>2-Sujets à supprimer ou à moins détailler :</br> <h:inputTextarea
+						value="#{evaluationController.evaluation.sujetSupprimer}"
+						cols="30" rows="5" /></td>
+				<td></td>
+			</tr>
+
+
+
+			<tr>
+				<td><h4 color="aqua">
+						<u>Animation de stage:</u>
+					</h4></td>
+			</tr>
+			<tr>
+				<td><label>Compétences techniques:</label> <h:selectOneRadio
+						value="#{evaluationController.evaluation.technique}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><l>Compétences pédagogiques:</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.pedagogie}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><l>Capacité d’écoute ?</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.capacite}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+
+			</tr>
+			<tr>
+
+				<td><l>Disponibilité:</l> <h:selectOneRadio
+						value="#{evaluationController.evaluation.disponibilite}">
+						<f:selectItem itemValue="5" itemLabel="1" />
+						<f:selectItem itemValue="8" itemLabel="2" />
+						<f:selectItem itemValue="12" itemLabel="3" />
+						<f:selectItem itemValue="18" itemLabel="4" />
+					</h:selectOneRadio></td>
+
+				<td><br>Quelle note attribuez-vous au formateur ?</br> <h:selectOneMenu
+						value="#{evaluationController.evaluation.evaluationGlobale}">
+						<f:selectItem itemValue= "" itemLabel=" " />
+						<f:selectItem itemValue="20" itemLabel="20/20" />
+						<f:selectItem itemValue="17" itemLabel="17/20" />
+						<f:selectItem itemValue="13" itemLabel=" 13/20" />
+						<f:selectItem itemValue="09" itemLabel=" 09/20" />
+						<f:selectItem itemValue="05" itemLabel=" 05/20" />
+						<f:selectItem itemValue="00" itemLabel=" 00/20" />
+					</h:selectOneMenu></td>
+
+
+
+			</tr>
+			<tr>
+				<td><br>Etes-vous intéressé (e) par d’autres stages de
+						formation?</br> <h:selectOneRadio
+						value="#{evaluationController.evaluation.autreStage}">
+						<f:selectItem itemValue="oui" itemLabel="oui" />
+						<f:selectItem itemValue="non" itemLabel="non" />
+					</h:selectOneRadio></td>
+			</tr>
+			<tr>
+				<td><br> <h:outputLabel
+							value="Merci de préciser lesquels : " /></br></td>
+
+				<td><h:inputTextarea
+						value="#{evaluationController.evaluation.projet}" cols="30"
+						rows="5" /></td>
+			</tr>
+
+
+
+			<tr>
+				<td><br> <h:outputLabel value="Autres Commentaires : " /></br></td>
+
+				<td><h:inputTextarea
+						value="#{evaluationController.evaluation.commentaire}" cols="30"
+						rows="5" /></td>
+			</tr>
+			<tr>
+				<td><h:commandButton
+						action="#{evaluationController.doCreateUneEvaluation}"
+						value="Envoyer" /></td>
+				<td><input type="reset" Name="annuler" value="Annuler" /></td>
+			</tr>
+
+		</table>
+		<h:messages/>
+	</h:form>
+	<i>Treeptik--treeptik</i>
+	</hr>
+</h:body>
+</html>

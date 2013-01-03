@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title><ui:insert name="titre" /></title>
+
+	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="../bootstrap/js/bootstrap.js" rel="stylesheet" />
+
+	<style>
+[class*="span12"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:         5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	margin: 5px 10;
+	border-radius: 20px 20px 20px 20px;
+}
+
+[Styleclass*="span7"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:         5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	border-radius: 20px 20px 20px 20px;
+	padding-left: 35px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+article {
+	background-color: #EFF0FF;
+	margin-bottom: 0px border-radius:         5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin: 5px 10;
+	border-radius: 20px 20px 20px 20px;
+}
+
+[class*="span8"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:         5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	margin: 7px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+
+
+body {
+	margin-bottom: 0px;
+	background-color: white;
+	padding-top: 60px;
+	padding-left: 80px;
+	padding-right: 100px;
+}
+
+formulaire {
+	margin-bottom: 0px;
+	background-color: #EFF0FF;
+	padding: 10px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+img {
+	border: 1px solid #181818;
+}
+</style>
+</h:head>
+<h:body>
+	<div class="row">
+		<div class="span12">
+			<div class="container">
+				<div class="page-header">
+			
+					<a><img src="/FormationJSF/Image/Treeptik.Eval.jpg" width="1200" height="100"
+						class="img-rounded" /></a>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="span3">
+
+
+
+					<table class="table table-hover">
+						<tbody>
+
+							<tr>
+								<img
+									src="/FormationJSF/Image/image1.jpg"
+									width="220" height="100" class="img-rounded" alt="Photographie" />
+							</tr>
+							<span class="badge badge-inverse">
+								<h3>formations Java</h3>
+							</span>
+
+							<tr>
+								<td bgcolor="#495CFF"></td>
+								<td bgcolor="white"><b>Intitulé</b></td>
+								<td bgcolor="#495CFF"><b>Durée</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>DJEE </b></td>
+								<td bgcolor="#FDD131"><b>Développement d'application
+										JEE6 avec JSF / EJB / JPA </b></td>
+								<td bgcolor="#495CFF"><b>5 jours </b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>DSPR </b></td>
+								<td bgcolor="white"><b>Développement d'application
+										Spring MVC / Spring / JPA </b></td>
+								<td bgcolor="#495CFF"><b>5 jours </b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b> DJPA </b></td>
+								<td bgcolor="#FDD131"><b>Gestion de la persistence avec
+										JPA </b></td>
+								<td bgcolor="#495CFF"><b>3 jours </b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>DSTR </b></td>
+
+								<td bgcolor="white"><b>Développement d'application Web
+										avec Struts 2 </b></td>
+								<td bgcolor="#495CFF"><b>3 jours </b></td>
+							</tr>
+
+
+							<tr>
+								<td bgcolor="#495CFF"><b>DSMV </b></td>
+								<td bgcolor="#FDD131"><b>Développement d'application
+										Web avec Spring MVC </b></td>
+								<td bgcolor="#495CFF"><b>3 jours </b></td>
+							</tr>
+
+							<tr>
+								<td bgcolor="#495CFF"><b>DAJPA</b></td>
+								<td bgcolor="white"><b>Développement JPA avancé</b></td>
+								<td bgcolor="#495CFF"><b>3 jours</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b> AJBO </b></td>
+								<td bgcolor="#FDD131"><b>Administration de serveur
+										d'application JBoss </b></td>
+								<td bgcolor="#495CFF"><b>4 jours </b></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+
+					<table class=" table table-hover">
+						<tbody>
+							<tr>
+								<img
+									src="/FormationJSF/Image/image2.jpg"
+									class="img-rounded" width="220" height="150" alt="Photographie" />
+							</tr>
+							<!-- <tr><legend>Liste des formations .Net</legend></tr> -->
+							<span class="badge badge-inverse"><h3>formations .Net</h3></span>
+							<tr>
+								<td bgcolor="#495CFF"></td>
+								<td bgcolor="white"><b>Intitulé</b></td>
+								<td bgcolor="#495CFF"><b>Durée</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>NDNE</b></td>
+								<td bgcolor="#FDD131"><b>Développement d'application en
+										C#</b></td>
+								<td bgcolor="#495CFF"><b>5 jours</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>NDMV </b></td>
+								<td bgcolor="white"><b>Développement d'application Web
+										MVC en .NET </b></td>
+								<td bgcolor="#495CFF"><b>5 jours </b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>NDEN </b></td>
+								<td bgcolor="#FDD131"><b>Entity framework et ADO.NET </b></td>
+								<td bgcolor="#495CFF"><b>3 jours </b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>NDSH </b></td>
+
+								<td bgcolor="white"><b>Développement SharePoint Server
+								</b></td>
+								<td bgcolor="#495CFF"><b>5 jours </b></td>
+							</tr>
+
+
+							<tr>
+								<td bgcolor="#495CFF"><b>NASH </b></td>
+								<td bgcolor="#FDD131"><b>Administration SharePoint </b></td>
+								<td bgcolor="#495CFF"><b>5 jours </b></td>
+							</tr>
+
+						</tbody>
+					</table>
+					<table class=" table table-hover">
+						<tbody>
+							<tr>
+								<img
+									src="/FormationJSF/Image/image3.jpg"
+									class="img-rounded" width="220" height="150" alt="Photographie" />
+							</tr>
+					
+							<span class="badge badge-inverse"><h3>formations PHP</h3></span>
+							<tr>
+								<td bgcolor="#495CFF"></td>
+								<td bgcolor="white"><b>Intitulé</b></td>
+								<td bgcolor="#495CFF"><b>Durée</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>PDEV</b></td>
+								<td bgcolor="#FDD131"><b>Développement de sites
+										dynamiques avec PHP</b></td>
+								<td bgcolor="#495CFF"><b>4 jours</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>POBJ </b></td>
+								<td bgcolor="white"><b>Développement objet avec PHP 5 </b></td>
+								<td bgcolor="#495CFF"><b>5 jours </b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>PZEN</b></td>
+								<td bgcolor="#FDD131"><b>Développement d'application
+										avec Zend Framework</b></td>
+								<td bgcolor="#495CFF"><b>3 jours</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>PZEN</b></td>
+								<td bgcolor="white"><b>Développement d'application avec
+										Symfony</b></td>
+								<td bgcolor="#495CFF"><b>3 jours </b></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class=" table table-hover">
+						<tbody>
+							<tr>
+								<img
+									src="/FormationJSF/Image/image1.jpg"
+									class="img-rounded" width="220" height="150" alt="Photographie" />
+							</tr>
+						
+							<span class="badge badge-inverse"><h3>formations
+									Mobile</h3></span>
+							<tr>
+								<td bgcolor="#495CFF"></td>
+								<td bgcolor="white"><b>Intitulé</b></td>
+								<td bgcolor="#495CFF"><b>Durée</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>MAND</b></td>
+								<td bgcolor="#FDD131"><b>Développement d'application
+										android</b></td>
+								<td bgcolor="#495CFF"><b>4 jours</b></td>
+							</tr>
+							<tr>
+								<td bgcolor="#495CFF"><b>MIOS </b></td>
+								<td bgcolor="white"><b>Développement d'application IOS
+								</b></td>
+								<td bgcolor="#495CFF"><b>5 jours </b></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+                  <div class="span1"></div>
+				<div class="span8">
+
+					<nav>
+					<ul class="nav nav-pills">
+						<li class="active"><a
+							href="/FormationJSF/Evaluation/selectSession.jsf">Evaluer
+								la formation</a></li>
+						<li><a
+							href="">Envoyer
+								un message</a></li>
+
+
+					</ul>
+					</nav>
+
+					<div class="row">
+
+						
+							<article> <ui:insert name="body" /></article>
+						
+					</div>
+
+				</div>
+
+
+
+			</div>
+
+			<div class="row">
+				<div class="span3">
+
+					<table class="table table-hover">
+						<span class="badge badge-inverse">
+							<h3>Autres formations</h3>
+						</span>
+						<tr>
+							<td bgcolor="yellow"><b>CSS3</b></td>
+							<td bgcolor="white"></td>
+							<td bgcolor="#495CFF"><b>JQuery</b></td>
+						</tr>
+						<tr>
+							<td bgcolor="#495CFF"><b>HTML5</b></td>
+							<td bgcolor="white"></td>
+							<td bgcolor="yellow"><b>JavaScript</b></td>
+						</tr>
+					</table>
+
+				</div>
+				<div class="span1"></div>
+				<div class="span8" bgcolor="#FDD131">
+
+					<table class="table table-hover" border="0" bgcolor="#FDD131">
+						<tr>
+							<td><BASEFONT>
+									<p>
+										<Font color="Blue">
+											<center>
+												<B><h5>Des formations guidées par la pratique</h5>
+													Toutes nos formations sont dispensées sous forme de
+													workshop avec 90% d'ateliers pratiques. Chez nous les
+													stagiaires sont très impliqués pour être rapidement
+													opérationnels. Nous proposons un panel de formations
+													modulables adaptées à tous les besoins. </B>
+											</center>
+										</Font>
+									</p> </BASEFONT></td>
+						</tr>
+
+					</table>
+
+
+				</div>
+			</div>
+
+
+
+			<div class="row">
+
+				<div class="span12">
+					<u><li><i><a href="http://www.treeptik.fr/#!/">Treeptik.fr</a></i></li>
+						<li><i><a href="http://www.treeptik.fr/#!/page_privacy">Treeptik
+									© 2012 • information légale •</a></i></li></u>
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
+
+

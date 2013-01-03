@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../template3/template4.xhtml">
+
+	<ui:define name="titre">Evaluation Treeptik</ui:define>
+
+
+	<!--  <ui:define name="info">Saisie d'un nouveau stagiaire</ui:define>-->
+
+	<ui:define name="body">
+
+		<div Styleclass="span7">
+
+			<h:form class="well">
+				<div class="control-group">
+					<div class="controls">
+						<div class="table">
+
+
+							<table class="table table-hover" border="0" bgcolor="#FDD131">
+								<tr>
+									<td><BASEFONT>
+											<p>
+												<Font color="Blue">
+													<center>
+														<B>Merci de repondre à toutes les questions. Ce
+															questionnaire a pour objectif de toujours améliorer la
+															qualité de nos prestations, merci de votre collaboration.
+														</B>
+													</center>
+												</Font>
+											</p> </BASEFONT></td>
+								</tr>
+								<tr>
+									<td><table class="table table-hover" Align="center">
+
+											<tr>
+												<td bgcolor="white"><b></b></td>
+												<td>
+													<td bgcolor="white"><b>Signification des choix: </b></td>
+												</td>
+												<td bgcolor="white"><b></b></td>
+												<td bgcolor="white"><b></b></td>
+											</tr>
+											<tr>
+												<td bgcolor="red"><b>I: Insatisfait</b></td>
+												<td bgcolor="orange"><b>M: Moyen</b></td>
+												<td bgcolor="#FDD131"><center>
+														<b>S: Satisfait</b>
+													</center></td>
+												<td bgcolor="#ADFF2F"><b>TS: Trés satisfait</b></td>
+											</tr>
+										</table></td>
+								</tr>
+							</table>
+
+							<tr>
+								<h4>Comment avez-vous trouvé...</h4>
+								<h5 Align="left">
+									<i>1 - L'accueil ?</i>
+								</h5>
+
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.acceuil}"
+										required="true"
+										requiredMessage="la question 1 est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="TS" />
+										<f:selectItem itemValue="8" itemLabel="S" />
+										<f:selectItem itemValue="12" itemLabel="M" />
+										<f:selectItem itemValue="18" itemLabel="I" />
+									</h:selectOneRadio></td>
+							</tr>
+							<tr>
+								<h5 Align="left">
+									<i> 2 - La salle de formation ?</i>
+								</h5>
+
+
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.salle}"
+										required="true"
+										requiredMessage="la question 2 est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="TS" />
+										<f:selectItem itemValue="8" itemLabel="S" />
+										<f:selectItem itemValue="12" itemLabel="M" />
+										<f:selectItem itemValue="18" itemLabel="I" />
+									</h:selectOneRadio></td>
+
+
+							</tr>
+
+							<tr>
+
+
+								<h5 Align="left">
+									<i>3 - Le matériel mis à disposition ?</i>
+								</h5>
+
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.materiel}"
+										required="true"
+										requiredMessage="la question 3  est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="TS" />
+										<f:selectItem itemValue="8" itemLabel="S" />
+										<f:selectItem itemValue="12" itemLabel="M" />
+										<f:selectItem itemValue="18" itemLabel="I" />
+									</h:selectOneRadio></td>
+
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>4 - La qualité de la formation ?</i>
+								</h5>
+
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.satisfait}"
+										required="true"
+										requiredMessage="la question 4  est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="TS" />
+										<f:selectItem itemValue="8" itemLabel="S" />
+										<f:selectItem itemValue="12" itemLabel="M" />
+										<f:selectItem itemValue="18" itemLabel="I" />
+									</h:selectOneRadio></td>
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>5 - Le rythme du cours ?</i>
+								</h5>
+
+								<td><h:selectOneMenu
+										value="#{evaluationController.evaluation.rythme}"
+										required="true"
+										requiredMessage="la question 5 est obligatoire">
+
+										<f:selectItem itemValue="8" itemLabel="Trop lent" />
+										<f:selectItem itemValue="20" itemLabel="Satisfaisant" />
+										<f:selectItem itemValue="8" itemLabel=" Trop rapide" />
+									</h:selectOneMenu></td>
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>6 - Les compétences techniques des formateurs ?</i>
+								</h5>
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.technique}"
+										required="true"
+										requiredMessage="la question 6  est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="TS" />
+										<f:selectItem itemValue="8" itemLabel="S" />
+										<f:selectItem itemValue="12" itemLabel="M" />
+										<f:selectItem itemValue="18" itemLabel="I" />
+									</h:selectOneRadio></td>
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>7 - Les compétences pédagogiques des formateurs ?</i>
+								</h5>
+
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.pedagogie}"
+										required="true"
+										requiredMessage="la question 12  est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="TS" />
+										<f:selectItem itemValue="8" itemLabel="S" />
+										<f:selectItem itemValue="12" itemLabel="M" />
+										<f:selectItem itemValue="18" itemLabel="I" />
+									</h:selectOneRadio></td>
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>8 - La capacité d’écoute des formateurs ?</i>
+
+								</h5>
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.capacite}"
+										required="true"
+										requiredMessage="la question 8 est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="TS" />
+										<f:selectItem itemValue="8" itemLabel="S" />
+										<f:selectItem itemValue="12" itemLabel="M" />
+										<f:selectItem itemValue="18" itemLabel="I" />
+									</h:selectOneRadio></td>
+							</tr>
+
+							<table class="table table-hover" Align="center">
+
+								<tr>
+									<td bgcolor="white"><b>Choix </b></td>
+
+									<td bgcolor="white"><b>NPDT</b></td>
+
+									<td bgcolor="white"><b>NPV</b></td>
+									<td bgcolor="white"><b>OEP</b></td>
+									<td bgcolor="white"><b>O</b></td>
+
+								</tr>
+								<tr>
+									<td bgcolor="white"><b>Signification</b></td>
+									<td bgcolor="red"><b> Non, pas de tout</b></td>
+									<td bgcolor="orange"><b>Non, pas vraiment </b></td>
+									<td bgcolor="#FDD131"><center>
+											<b>Oui, en partie </b>
+										</center></td>
+									<td bgcolor="#ADFF2F"><b> Oui</b></td>
+								</tr>
+							</table>
+							<tr>
+								<h5 Align="left">
+									<i>9 - Etaient ils assez disponibles ?</i>
+								</h5>
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.disponibilite}"
+										required="true"
+										requiredMessage="la question 9  est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="O" />
+										<f:selectItem itemValue="8" itemLabel="OEP" />
+										<f:selectItem itemValue="12" itemLabel="NPV" />
+										<f:selectItem itemValue="18" itemLabel="NPDT" />
+									</h:selectOneRadio></td>
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>10 - Le programme était il adapté à votre niveau ?</i>
+								</h5>
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.programme}"
+										required="true"
+										requiredMessage="la question 10 est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="O" />
+										<f:selectItem itemValue="8" itemLabel="OEP" />
+										<f:selectItem itemValue="12" itemLabel="NPV" />
+										<f:selectItem itemValue="18" itemLabel="NPDT" />
+									</h:selectOneRadio></td>
+							</tr>
+
+
+
+
+
+							<tr>
+								<h5 Align="left">
+									<i>11 - Le contenu des modules a t'il répondu à vos
+										objectifs ?</i>
+								</h5>
+
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.contenu}"
+										required="true"
+										requiredMessage="la question 11 est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="O" />
+										<f:selectItem itemValue="8" itemLabel="OEP" />
+										<f:selectItem itemValue="12" itemLabel="NPV" />
+										<f:selectItem itemValue="18" itemLabel="NPDT" />
+									</h:selectOneRadio></td>
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>12 - La durée de la formation a t'elle été suffisante ?</i>
+								</h5>
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.duree}"
+										required="true"
+										requiredMessage="la question 12  est obligatoire">
+										<f:selectItem itemValue="5" itemLabel="O" />
+										<f:selectItem itemValue="8" itemLabel="OEP" />
+										<f:selectItem itemValue="12" itemLabel="NPV" />
+										<f:selectItem itemValue="18" itemLabel="NPDT" />
+									</h:selectOneRadio></td>
+							</tr>
+
+
+							<tr>
+								<h5 Align="left">
+									<i>13 - Votre objectif a t'il été atteint ?</i>
+								</h5>
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.objectif}"
+										required="true"
+										requiredMessage="la question 13  est obligatoire">
+										<f:selectItem itemValue="0" itemLabel="Oui" />
+										<f:selectItem itemValue="20" itemLabel="non" />
+									</h:selectOneRadio></td>
+							</tr>
+							<tr>
+								<h5 Align="left">
+									<i>14 - Quels sont, selon vous, les aménagements à apporter
+										au programme ?</i>
+								</h5>
+
+								<h5 Align="left">
+									<i>*Sujets à supprimer ou à modifier: </i>
+								</h5>
+
+								<td><h:inputTextarea
+										value="#{evaluationController.evaluation.sujetApprofondir}"
+										cols="30" rows="2" /></td>
+							</tr>
+							<tr>
+								<h5 Align="left">
+									<i>**Sujets à approfondir ou à ajouter : </i>
+								</h5>
+
+
+
+
+								<td><h:inputTextarea
+										value="#{evaluationController.evaluation.sujetSupprimer}"
+										cols="30" rows="2" required="true"
+										requiredMessage="le champ materiel est obligatoire" /></td>
+
+							</tr>
+
+
+							<tr>
+								<h5 Align="left">
+									<i>15 - Quelle note attribuez-vous au formateur ?</i>
+								</h5>
+
+								<td><h:selectOneMenu
+										value="#{evaluationController.evaluation.evaluationGlobale}"
+										required="true"
+										requiredMessage="la question 15  est obligatoire">
+										<f:selectItem itemValue="" itemLabel=" " />
+										<f:selectItem itemValue="20" itemLabel="20/20" />
+										<f:selectItem itemValue="17" itemLabel="17/20" />
+										<f:selectItem itemValue="13" itemLabel=" 13/20" />
+										<f:selectItem itemValue="09" itemLabel=" 09/20" />
+										<f:selectItem itemValue="05" itemLabel=" 05/20" />
+										<f:selectItem itemValue="00" itemLabel=" 00/20" />
+									</h:selectOneMenu></td>
+							</tr>
+
+
+							<tr>
+								<h5 Align="left">
+									<i>16 - Etes-vous intéressé (e) par d’autres stages de
+										formation ?</i>
+								</h5>
+
+
+								<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.autreStage}"
+										required="true"
+										requiredMessage="la question 16  est obligatoire">
+										<f:selectItem itemValue="oui" itemLabel="oui" />
+										<f:selectItem itemValue="non" itemLabel="non" />
+									</h:selectOneRadio></td>
+							</tr>
+
+							<tr>
+								<h5 Align="left">
+									<i>Si oui, merci de préciser lesquels :</i>
+								</h5>
+
+								<td><h:inputTextarea
+										value="#{evaluationController.evaluation.projet}" cols="30"
+										rows="2" /></td>
+							</tr>
+
+						</div>
+						<h:commandButton
+							action="#{evaluationController.doCreateUneEvaluation}"
+							value="Valider" StyleClass="btn btn-primary" />
+						<h:commandButton StyleClass="btn btn-primary" type="reset"
+							value="Annuler" />
+						<h:commandButton
+							onclick="window.location.href='/FormationJSF/Evaluation/acceuil.jsf'; return false;"
+							value="Retour" StyleClass="btn btn-primary" />
+
+					</div>
+				</div>
+
+				<h:messages />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+</ui:composition>
+
+</html>

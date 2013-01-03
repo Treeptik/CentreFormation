@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>List des Formations</title>
+</h:head>
+<h:body>
+	<h3>
+		List des Formations
+	</h3>
+	<hr />
+	<h:form>
+		<table border="0">	
+		<tr><td>Choisissez votre formation:</td></tr>				
+			<tr>
+				<td><h:selectOneMenu
+						value="#{formationController.formation.id}">
+						<f:selectItem itemLabel="List des formatios treeptik" />
+						<f:selectItem itemValue="formation.id" itemLabel="Java/J2EE" />
+						<f:selectItem itemValue="formation.id" itemLabel="HTML/CSS" />
+					</h:selectOneMenu> </td>
+			</tr>
+		</table>
+
+		<tr>
+		
+			<td><h:commandButton
+					action="#{formationController.doListOfStagiaire}" value="Valider" />
+			</td>
+			<td><input type="reset" Name="annuler" value="Annuler" /></td>
+		</tr>
+	</h:form>
+</h:body>
+</html>
+

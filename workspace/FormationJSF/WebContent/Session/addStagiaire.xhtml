@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<ui:composition template="../template/template.xhtml">
+
+	<ui:define name="titre">Evaluation Treeptik</ui:define>
+
+	<ui:define name="info">Ajout d'une session</ui:define>
+
+	<ui:define name="body">
+
+		<div class="span5">
+
+			<h3>Evaluer une formation Treeptik:</h3>
+			<hr />
+			<h:form styleClass="well">
+
+				<div class="control-group">
+					<div class="controls">
+						<div class="table">
+							<h4>Ajouter un stagiaire à une session:</h4>
+							<br></br>
+			<tr>
+			<td><h5 Align="Left">Session :</h5></td>
+				<td> <h:selectOneMenu value="#{sessionController.session.id}" required="true" requiredMessage="choisissez une session">
+						<f:selectItems value="#{sessionController.selectSession}"></f:selectItems>
+					</h:selectOneMenu></td>
+			</tr>
+
+			<tr>
+			<td><h5 Align="Left">Stagiaire :</h5></td>
+				<td> <h:selectOneMenu value="#{sessionController.stagiaire.id}" required="true" requiredMessage="choisissez un stagiaire">
+						<f:selectItems value="#{stagiaireController.selectNom}"></f:selectItems>
+					</h:selectOneMenu></td>
+			</tr>
+			</div>
+			
+			<tr>
+						<td><h:commandButton
+						action="#{sessionController.doAddStagiaire}" value="Ajouter" /></td>
+				<td><h:commandButton StyleClass="btn btn-primary" type="reset"
+								value="Annuler" /></td>
+							<td><h:commandButton OnClik="" value="Retour"
+								StyleClass="btn btn-primary" />	</td>
+							
+			</tr>
+				</div>
+				</div>
+
+				<h:messages />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+</ui:composition>
+
+</html>

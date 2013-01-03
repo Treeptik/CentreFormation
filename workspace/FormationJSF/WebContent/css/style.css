@@ -1,0 +1,112 @@
+/* G�n�ral ------------------------------------------------------------------------------------- */
+
+body, p, legend, label, input {
+    font: normal 12pt verdana, helvetica, sans-serif;
+}
+
+/* Forms --------------------------------------------------------------------------------------- */
+fieldset {
+    padding: 10px;
+    border: 1px green solid;
+    margin: 10px;
+}
+
+legend {
+    font-weight: bold;
+    color: green;
+    font : 30pt;
+}
+
+form label {
+    float: right;
+    width: 200px;
+    margin: 3px 0px 0px 0px;
+}
+
+form input {
+    margin: 3px 3px 0px 0px;
+    border: 1px #999 solid;
+}
+
+form input.sansLabel {
+    margin-left: 200px;
+}
+
+/* Styles et couleurs -------------------------------------------------------------------------- */
+.aligndroite{
+    text-align:right; 
+}
+
+.requis {
+    color: #c00;
+}
+
+.erreur {
+    color: #900;
+}
+
+.succes {
+    color: #090;
+}
+
+.info {
+    font-style: italic;
+    color: #E8A22B;
+}
+form .erreur {
+    color: #900;
+}
+
+h1 {
+    color: #0A0AFF;
+    text-decoration: underline;
+  }
+
+a {
+    color: #000000;
+}
+
+/* Blocs constituants -------------------------------------------------------------------------- */
+div#menu{
+	border: 1px solid #0568CD;
+	padding: 10px;
+	margin: 10px;
+}
+div#corps{
+	margin: 10px;
+}
+img {
+
+margin: 0 auto;
+}
+
+/* Tableaux -------------------------------------------------------------------------------------*/
+table{
+	border-collapse: collapse;
+}
+thead{
+	color: #0568CD;
+}
+
+tr.pair{
+	background-color: #efefef;
+}
+tr.impair{
+	background-color: #fff;	
+}
+th{
+	color: green;
+	border: 1px solid #0568CD;
+	padding: 5px;
+}
+th.action{
+	border: 1px solid #900;
+	color: #900;
+}
+td{
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+td.action{
+	text-align: center;
+}
