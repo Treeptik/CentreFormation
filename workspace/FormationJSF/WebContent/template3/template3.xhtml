@@ -5,107 +5,25 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title><ui:insert name="titre" /></title>
-
 	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" />
 	<link href="../bootstrap/js/bootstrap.js" rel="stylesheet" />
-
-	<link href="../bootstrap/js/bootstrap.min.js/jquery.js"
-		rel="stylesheet" />
+	<link href="../bootstrap/js/bootstrap.min.js/jquery.js"	rel="stylesheet" />
 	<link href="../bootstrap/js/bootstrap.min.js" rel="stylesheet" />
-
-	<style>
-[class*="span12"] {
-	background-color: #EFF0FF;
-	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
-	line-height: 80px;
-	text-align: center;
-	margin: 5px 10;
-	border-radius: 20px 20px 20px 20px;
-}
-
-[Styleclass*="span7"] {
-	background-color: orange;
-	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
-	line-height: 80px;
-	text-align: center;
-	border-radius: 20px 20px 20px 20px;
-	padding-left: 35px;
-	padding-right: 0px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-}
-
-article {
-	background-color: #EFF0FF;
-	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
-	line-height: 80px;
-	text-align: center;
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	margin: 5px 10;
-	border-radius: 20px 20px 20px 20px;
-}
-
-[class*="span8"] {
-	background-color: orange;
-	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
-	line-height: 80px;
-	text-align: center;
-	margin: 7px;
-	border-radius: 20px 20px 20px 20px;
-}
-
-[class*="span4"] {
-	background-color: orange;
-	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
-	line-height: 80px;
-	text-align: center;
-	margin: 5px 10;
-	border-radius: 20px 20px 20px 20px;
-}
-
-body {
-	margin-bottom: 200px;
-	background-color: white;
-	padding-top: 0px;
-	padding-left: 80px;
-	padding-right: 100px;
-}
-
-formulaire {
-	margin-bottom: 0px;
-	background-color: #EFF0FF;
-	padding: 10px;
-	border-radius: 20px 20px 20px 20px;
-}
-
-img {
-	border: 1px solid #181818;
-}
-</style>
+	<link type="text/css" rel="stylesheet" href="../css/styleRV.css" />
 </h:head>
 <h:body>
-	<div class="row">
+	<div class="row-fluid">
 		<div class="span12">
 			<div class="container">
 				<div class="page-header">
 					<a><img src="/FormationJSF/Image/Treeptik.Eval.jpg"
 						width="1200" height="100" class="img-rounded" /></a>
 				</div>
-
 			</div>
-
 			<div class="row">
-
 				<div class="span3">
-
-
-
 					<table class="table table-hover">
 						<tbody>
-
 							<tr>
 								<img
 									src="/FormationJSF/Image/image1.jpg"
@@ -300,24 +218,7 @@ img {
 
 				<div class="span8">
 
-					<!-- 					<nav> -->
-					<!-- 					<ul class="nav nav-pills"> -->
-					<!-- 						<li class="active"><a -->
-					<!-- 							href="http://localhost:8080/FormationJSF/Stagiaire/creerUnStagiaire.jsf">Stagiaire</a> -->
-					<!-- 						</li> -->
-					<!-- 						<li><a -->
-					<!-- 							href="http://localhost:8080/FormationJSF/Formateur/createFormateur.jsf">Formateur</a></li> -->
-					<!-- 						<li><a -->
-					<!-- 							href="http://localhost:8080/FormationJSF/Formation/createFormation.jsf">Formation</a></li> -->
-					<!-- 						<li><a -->
-					<!-- 							href="http://localhost:8080/FormationJSF/Session/create.jsf">Session</a></li> -->
-
-					<!-- 					</ul> -->
-					<!-- 					</nav> -->
-
-
-
-
+					
 
 					<div class="tabbable">
 
@@ -395,7 +296,7 @@ img {
 						</ul>
 					</div>
 
-					<div class="row">
+					<div class="row" style="margin-left:0px">
 
 						<article> <ui:insert name="body" /></article>
 
@@ -435,7 +336,7 @@ img {
 									<p>
 										<Font color="Blue">
 											<center>
-												<B><h5>Des formations guidées par la pratique</h5>
+												<B>Des formations guidées par la pratique
 													Toutes nos formations sont dispensées sous forme de
 													workshop avec 90% d'ateliers pratiques. Chez nous les
 													stagiaires sont très impliqués pour être rapidement

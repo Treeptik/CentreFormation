@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+
+[class*="span12"] {
+	background-color: #EFF0FF;
+	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	margin: 5px 10;
+	border-radius: 20px 20px 20px 20px;
+}
+
+[class*="span8"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	margin: 7px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+[class*="span7"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	border-radius: 20px 20px 20px 20px;
+	padding-left: 35px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+[class*="span4"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	margin: 5px 10;
+	border-radius: 20px 20px 20px 20px;
+}
+
+.well {
+	background-color: #FFD400;
+	
+}
+
+form {
+	background-color: orange;
+	
+}
+
+article {
+	background-color: #EFF0FF;
+	margin-bottom: 0px border-radius:                      5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin: 5px 10;
+	border-radius: 20px 20px 20px 20px;
+}
+
+body {
+	margin-bottom: 50px;
+	background-color: white;
+	padding-top: 0px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+formulaire {
+	margin-bottom: 0px;
+	background-color: #EFF0FF;
+	padding: 10px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+img {
+	border: 1px solid #181818;
+}

@@ -18,7 +18,7 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.archive.autodetection" value="class, hbm" />
 			<!-- create / create-drop / update / validate -->
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
