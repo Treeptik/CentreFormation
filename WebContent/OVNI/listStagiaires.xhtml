@@ -1,0 +1,70 @@
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="span9 offset1">
+			<table class="table table-bordered table-striped table-condensed">
+				<caption>
+					<legende>List des tous les stagiares</legende>
+				</caption>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>prenom</th>
+						<th>D.Naissance</th>
+						<th>Adresse</th>
+						<th>Ville</th>
+						<th>CP</th>
+						<th>Tel</th>
+						<th>e-mail</th>
+						<th>Sexe</th>
+						<th>Diplome</th>
+						<th>Domaine</th>
+					</tr>
+				</thead>
+				<div StyleClass="tbody">
+					<h:dataTable value="#{stagiaireController.listStagiaires}" var="st">
+						<tr class="success">
+							<h:outputText value="#{st.nom}" />
+						</tr>
+						<tr StyleClass="error">
+							<h:outputText value="#{st.prenom}" />
+						</tr>
+						<tr class="info">
+							<h:outputText value="#{st.dateNaissance}" />
+						</tr>
+						<tr class="success">
+							<h:outputText value="#{st.adresse}" />
+
+						</tr>
+						<tr class="error">
+
+							<h:outputText value="Ville" />
+						</tr>
+						<tr class="info">
+							<h:outputText value="#{st.codePostal}" />
+						</tr>
+
+						<tr class="success">
+							<h:outputText value="#{st.tel}" />
+						</tr>
+						<tr StyleClass="error">
+							<h:outputText value="#{st.mail}" />
+						</tr>
+						<tr class="info">
+							<h:outputText value="#{st.sexe}" />
+						</tr>
+						<tr class="success">
+							<h:outputText value="#{st.diplome}" />
+
+						</tr>
+						<tr class="error">
+							<h:outputText value="#{st.domaine}" />
+						</tr>
+
+						</tbody>
+					</h:dataTable>
+				</div>
+			</table>
+		</div>
+	</div>
+</div>
