@@ -4,3 +4,8 @@ tmp/**
 .settings/
 build/
 .project
+*.class
+
+*.jar
+*.war
+*.ear

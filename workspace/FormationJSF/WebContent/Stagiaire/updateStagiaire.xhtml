@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../template3/template3.xhtml">
+
+	<ui:define name="titre">Evaluation Treeptik</ui:define>
+	
+
+	<!--  <ui:define name="info">Saisie d'un nouveau stagiaire</ui:define>-->
+
+	<ui:define name="body">
+
+		<div class="span7" >
+
+			<h:form styleClass="well" id="formulaire" >
+
+				<div class="control-group">
+					<div class="controls">
+						<div class="table">
+							<h4>Modifier un stagiaire</h4>
+							<tr>
+								<h5 Align="Left">ID :</h5>
+								<td><h:inputText
+										value="#{stagiaireController.stagiaire.id}" disabled = "true" >
+									</h:inputText></td>
+
+							</tr>
+							<tr>
+								<h5 Align="Left">Nom :</h5>
+								<td><h:inputText
+										value="#{stagiaireController.stagiaire.nom}" required="true"
+										validatorMessage=" nom invalide">
+										<f:validateLength minimum="2" maximum="20" />
+									</h:inputText></td>
+
+							</tr>
+							<tr>
+								<h5 Align="Left">Prénom :</h5>
+								<h:inputText value="#{stagiaireController.stagiaire.prenom}"
+									required="true" validatorMessage=" prenom invalide">
+									<f:validateLength minimum="2" maximum="20" />
+								</h:inputText>
+							</tr>
+							<tr>
+								<h5 Align="Left">Date de naissance :</h5>
+								<h:inputText label="Date"
+									value="#{stagiaireController.stagiaire.dateNaissance}"
+									required="true"
+									validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:inputText>
+							</tr>
+							<tr>
+								<h5 Align="Left">Rue, bd... :</h5>
+								<h:inputText value="#{stagiaireController.stagiaire.adresse}"
+									required="true" validatorMessage="adresse invalide">
+									<f:validateLength minimum="2" maximum="20" />
+								</h:inputText>
+							</tr>
+
+							<tr>
+								<h5 Align="Left">Code postal :</h5>
+								<h:inputText value="#{stagiaireController.stagiaire.codePostal}"
+									required="true" validatorMessage="code postal invalide">
+									<f:validateLength minimum="5" maximum="5" />
+								</h:inputText>
+							</tr>
+
+							<tr>
+								<h5 Align="Left">Ville :</h5>
+								<h:inputText value="#{stagiaireController.stagiaire.ville}"
+									required="true" validatorMessage="ville invalide">
+									<f:validateLength minimum="2" maximum="20" />
+								</h:inputText>
+							</tr>
+
+							<tr>
+								<h5 Align="Left">Numero de téléphone :</h5>
+								<h:inputText value="#{stagiaireController.stagiaire.tel}"
+									required="true" validatorMessage="telephone invalide">
+									<f:validateRegex pattern="(^[0-9]{10}$)" />
+
+								</h:inputText>
+							</tr>
+							<tr>
+								<h5 Align="Left">E-mail :</h5>
+								<h:inputText id="Email"
+									value="#{stagiaireController.stagiaire.mail}" required="true"
+									validatorMessage="Invalid email format">
+									<f:validateRegex
+										pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+
+								</h:inputText>
+							</tr>
+
+
+							<h5 Align="Left">Diplôme:</h5>
+							<h:selectOneMenu value="#{stagiaireController.stagiaire.diplome}"
+								required="true" requiredMessage="choisissez un diplome">
+								<f:selectItem itemLabel="diplome" />
+								<f:selectItem itemValue="docteur" itemLabel="docteur" />
+								<f:selectItem itemValue="Ingenieur" itemLabel="Ingenieur" />
+								<f:selectItem itemValue="Master" itemLabel="Master" />
+							</h:selectOneMenu>
+
+							<h5 Align="Left">Domaine:</h5>
+							<h:selectOneMenu value="#{stagiaireController.stagiaire.domaine}"
+								required="true" requiredMessage="choisissez un domaine">
+								<f:selectItem itemLabel="domaine" />
+								<f:selectItem itemValue="Informatique" itemLabel="Informatique" />
+								<f:selectItem itemValue="Mathematique" itemLabel="Mathématiques" />
+								<f:selectItem itemValue="Physique" itemLabel="Physique" />
+								<f:selectItem itemValue="Biologie" itemLabel="Biologie" />
+								<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
+								<f:selectItem itemValue="Mecanique" itemLabel="Mécanique" />
+								<f:selectItem itemValue="Electrique" itemLabel="Electrique" />
+								<f:selectItem itemValue="Electronique" itemLabel="Electronique" />
+								<f:selectItem itemValue="Management" itemLabel="Management" />
+								<f:selectItem itemValue="Finance" itemLabel="Finances" />
+								<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
+								<f:selectItem itemValue="Autre" itemLabel="Autres" />
+							</h:selectOneMenu>
+
+							<tr>
+								<h5 Align="Left">Sexe:</h5>
+								<td><h:selectOneRadio
+										value="#{stagiaireController.stagiaire.sexe}" required="true"
+										requiredMessage="le champ sexe est obligatoire">
+										<f:selectItem itemValue="Femme" itemLabel="Femme" />
+										<f:selectItem itemValue="Homme" itemLabel="Homme" />
+									</h:selectOneRadio></td>
+							</tr>
+                                  </div>
+                                  
+                                                                    
+                                   		<div class="table">
+							<tr>
+								<td><h:commandButton
+										action="#{stagiaireController.doUpdate()}"
+										value="Valider" styleClass="btn btn-primary" /></td>
+								<td><h:button type="reset" class="btn btn-primary"
+										value="Annuler"></h:button></td>
+								<td><h:button class="btn btn-primary"
+										onclick="window.location.href='/FormationJSF/Annexes/acceuilGestion.jsf'; return false;"
+										value="Retour"></h:button></td>
+							</tr>
+						</div>
+					</div>
+				</div>
+
+				<h:messages />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

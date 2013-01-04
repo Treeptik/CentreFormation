@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Evaluation Treeptik</title>
+</h:head>
+<h:body>
+	<h3>Evaluer une formation Treeptik:</h3>
+	<hr />
+	<h:form>
+		<table border="0">
+			<tr>
+				<td><h:inputText value="#{stagiaireController.stagiaire.nom}" /></td>
+				<td><h:outputLabel value="Votre nom " /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText
+						value="#{stagiaireController.stagiaire.prenom}" /></td>
+				<td><h:outputLabel value="Votre prenom " /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText label="Date"
+						value="#{stagiaireController.stagiaire.dateNaissance}"
+						required="true">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:inputText></td>
+				<td><h:outputLabel value="Votre date de naissance  " /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText
+						value="#{stagiaireController.stagiaire.adresse}" /></td>
+				<td><h:outputLabel value="Votre adresse(rue, bd...)  " /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText value="#{stagiaireController.stagiaire.ville}" /></td>
+				<td><h:outputLabel value="Votre ville  " /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText
+						value="#{stagiaireController.stagiaire.codePostal}" /></td>
+				<td><h:outputLabel value="Votre code postal  " /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText value="#{stagiaireController.stagiaire.mail}" /></td>
+				<td><h:outputLabel value="Votre E-mail  " /></td>
+			</tr>
+
+
+
+		</table>
+		<table>
+			<tr>
+				<td><l>Vous êtes?</l> <h:selectOneRadio
+						value="#{stagiaireController.stagiaire.sexe}">
+						<f:selectItem itemValue="Femme" itemLabel="Femme" />
+						<f:selectItem itemValue="Homme" itemLabel="Homme" />
+					</h:selectOneRadio></td>
+			</tr>
+			<tr>
+				<td><h:selectOneMenu
+						value="#{stagiaireController.stagiaire.diplome}">
+						<f:selectItem itemLabel="diplome" />
+						<f:selectItem itemValue="docteur" itemLabel="docteur" />
+						<f:selectItem itemValue="Ingenieur" itemLabel="Ingenieur" />
+						<f:selectItem itemValue="Master" itemLabel="Master" />
+					</h:selectOneMenu> <h:selectOneMenu value="#{stagiaireController.stagiaire.domaine}">
+						<f:selectItem itemLabel="domaine" />
+						<f:selectItem itemValue="Informatique" itemLabel="Informatique" />
+						<f:selectItem itemValue="Mathématique" itemLabel="Mathématique" />
+						<f:selectItem itemValue="Physique" itemLabel="Physique" />
+						<f:selectItem itemValue="Biologie" itemLabel="Biologie" />
+						<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
+						<f:selectItem itemValue="Mecanique" itemLabel="Mecanique" />
+						<f:selectItem itemValue="Electrique" itemLabel="Electrique" />
+						<f:selectItem itemValue="Electronique" itemLabel="Electronique" />
+						<f:selectItem itemValue="Management" itemLabel="Management" />
+						<f:selectItem itemValue="Finance" itemLabel="Finance" />
+						<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
+						<f:selectItem itemValue="Autre" itemLabel="Autre" />
+					</h:selectOneMenu></td>
+			</tr>
+
+	
+				<tr>
+					<td><h:inputText label="Date"
+							value="#{stagiaireController.stagiaire.dateDebutStage}"
+							required="true">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText></td>
+					<td><h:outputLabel value="Date debut de stage " /></td>
+				</tr>
+				<tr>
+
+					<td><h:inputText label="Date"
+							value="#{stagiaireController.stagiaire.dateFinStage}"
+							required="true">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText></td>
+					<td><h:outputLabel value="Date fin de stage " /></td>
+
+				</tr>
+				<tr>
+					<td><h:selectOneMenu
+							value="#{stagiaireController.formation.id}">
+							<f:selectItems value="#{stagiaireController.selectFormation}" ></f:selectItems>
+						</h:selectOneMenu></td>
+				</tr>
+			<tr>
+				<td><h:commandButton
+						action="#{stagiaireController.dofindStagiairesInFormation}"
+						value="Valider" /></td>
+				<td><input type="reset" Name="annuler" value="Annuler" /></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>
+
