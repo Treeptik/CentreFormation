@@ -14,11 +14,19 @@ public class AdministrateurTreeptikEJB {
 	@EJB
 	private AdministrateurTreeptikDAO administrateurTreeptikDAO;
 	
-	public AdministrateurTreeptik createAdministrateurTreeptik(AdministrateurTreeptik administrateurTreeptik){
-		return administrateurTreeptikDAO.createAdministrateurTreeptik(administrateurTreeptik);
+	public void create(AdministrateurTreeptik administrateurTreeptik){
+		administrateurTreeptikDAO.create(administrateurTreeptik);
 	}
 	
-	public List<AdministrateurTreeptik> findAllAdministrateurTreeptik(){
-		return administrateurTreeptikDAO.findAllAdministrateurs();
+	public List<AdministrateurTreeptik> findAll(){
+		return administrateurTreeptikDAO.findAll();
+	}
+	
+	public void delete(AdministrateurTreeptik administrateurTreeptik){
+		administrateurTreeptikDAO.delete(administrateurTreeptik);
+	}
+	
+	public void update(AdministrateurTreeptik administrateurTreeptik) {
+		administrateurTreeptikDAO.update(administrateurTreeptik);
 	}
 }

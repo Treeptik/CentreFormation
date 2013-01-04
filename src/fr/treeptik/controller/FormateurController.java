@@ -13,88 +13,92 @@ import javax.faces.model.SelectItem;
 import fr.treeptik.model.Formateur;
 import fr.treeptik.service.FormateurEJB;
 
-
 @ManagedBean
 @RequestScoped
 public class FormateurController {
-	
+
 	@EJB
 	private FormateurEJB formateurEJB;
-//	@EJB
-//	private FormationEJB formationEJB;
-//	
-//	private Formation formation = new Formation();
+	// @EJB
+	// private FormationEJB formationEJB;
+	//
+	// private Formation formation = new Formation();
 	private Formateur formateur = new Formateur();
 	private List<Formateur> listFormateurs = new ArrayList<Formateur>();
 	private List<SelectItem> selectFormateur;
-	
+
 	@SuppressWarnings("rawtypes")
 	private DataModel formateurs;
-	
+
 	public String doSelectUpdate() {
 		formateur = (Formateur) formateurs.getRowData();
 		return "updateFormateur";
 	}
-	
+
 	public String doUpdate() {
 		formateurEJB.update(formateur);
 		getFormateurs();
 		return "message9";
 	}
-	
+
 	public String doDelete() {
 		Formateur formateur = (Formateur) formateurs.getRowData();
 		formateurEJB.delete(formateur);
 		getFormateurs();
 		return "listFormateurs";
 	}
-	
-	
-	public String doCreateUnFormateur(){
-		formateur = formateurEJB.createUnFormateur(formateur);
-//		formation.setFormateurs(getListFormateurs().add(formateur));
-//	    formationEJB.createUneFormation(formation);
-//        listFormateurs = formateurEJB.findAllFormateurs();
-	    return"message2";		
+
+	public String doCreate() {
+		formateurEJB.create(formateur);
+		// formation.setFormateurs(getListFormateurs().add(formateur));
+		// formationEJB.createUneFormation(formation);
+		// listFormateurs = formateurEJB.findAllFormateurs();
+		return "message2";
 	}
-	
-	public String doFindAllFormateurs(){
-		listFormateurs = formateurEJB.findAllFormateurs();
+
+	public String doFindAll() {
+		listFormateurs = formateurEJB.findAll();
 		getFormateurs();
-		return"listFormateurs";
+		return "listFormateurs";
 	}
-	
-	public String doNewFormateur() {
+
+	public String doNew() {
 		return "createFormateur";
 	}
-	
+
 	public FormateurEJB getFormateurEJB() {
 		return formateurEJB;
 	}
+
 	public void setFormateurEJB(FormateurEJB formateurEJB) {
 		this.formateurEJB = formateurEJB;
 	}
+
 	public Formateur getFormateur() {
 		return formateur;
 	}
+
 	public void setFormateur(Formateur formateur) {
 		this.formateur = formateur;
 	}
+
 	public List<Formateur> getListFormateurs() {
 		return listFormateurs;
 	}
+
 	public void setListFormateurs(List<Formateur> listFormateurs) {
 		this.listFormateurs = listFormateurs;
 	}
 
 	public List<SelectItem> getSelectFormateur() {
-		
-		listFormateurs = formateurEJB.findAllFormateurs();
+
+		listFormateurs = formateurEJB.findAll();
 		selectFormateur = new ArrayList<SelectItem>();
-		for(Formateur formateur : listFormateurs){
-			selectFormateur.add(new SelectItem(formateur.getId(), formateur.getNom() + " " + formateur.getPrenom()));
+		for (Formateur formateur : listFormateurs) {
+			selectFormateur.add(new SelectItem(formateur.getId(), formateur
+					.getNom() + " " + formateur.getPrenom()));
 		}
-		
+
 		return selectFormateur;
 	}
 
@@ -104,12 +108,12 @@ public class FormateurController {
 
 	@SuppressWarnings("rawtypes")
 	public DataModel getFormateurs() {
-		
+
 		if (formateurs == null) {
 			formateurs = new ListDataModel();
-			formateurs.setWrappedData(formateurEJB.findAllFormateurs());
+			formateurs.setWrappedData(formateurEJB.findAll());
 		}
-	
+
 		return formateurs;
 	}
 

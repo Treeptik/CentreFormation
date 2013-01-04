@@ -20,42 +20,41 @@ public class FormationController {
 	private FormationEJB formationEJB;
 	private Formation formation = new Formation();
 	private List<Formation> listFormations = new ArrayList<Formation>();
-
 	private List<SelectItem> selectFormation;
- 	
-	public String doCreateUneFormation() {
-		formation = formationEJB.createUneFormation(formation);
-	    listFormations = formationEJB.findAllFormations();
+
+	public String doCreate() {
+		formationEJB.create(formation);
+		listFormations = formationEJB.findAll();
 		return "message3";
 	}
-	
-	public String doFindAllformations(){
-		listFormations = formationEJB.findAllFormations();
-		return"listFormations";
+
+	public String doFindAll() {
+		listFormations = formationEJB.findAll();
+		return "listFormations";
 	}
 
 	@SuppressWarnings("rawtypes")
 	private DataModel formations;
-	
+
 	public String doSelectUpdate() {
 		formation = (Formation) formations.getRowData();
 		return "updateFormation";
 	}
-	
+
 	public String doUpdate() {
 		formationEJB.update(formation);
 		getFormations();
 		return "message10";
 	}
-	
+
 	public String doDelete() {
 		Formation formation = (Formation) formations.getRowData();
 		formationEJB.delete(formation);
 		getFormations();
 		return "listFormations";
 	}
-	
-	public String doNewFormation() {
+
+	public String doNew() {
 		return "createFormation";
 	}
 
@@ -75,7 +74,6 @@ public class FormationController {
 		this.formation = Formation;
 	}
 
-
 	public List<Formation> getListFormations() {
 		return listFormations;
 	}
@@ -85,13 +83,14 @@ public class FormationController {
 	}
 
 	public List<SelectItem> getSelectFormation() {
-		
-		List<Formation> formations = formationEJB.findAllFormations();
+
+		List<Formation> formations = formationEJB.findAll();
 		selectFormation = new ArrayList<SelectItem>();
 		for (Formation formation : formations) {
-			selectFormation.add(new SelectItem(formation.getId(), formation.getNom()));
+			selectFormation.add(new SelectItem(formation.getId(), formation
+					.getNom()));
 		}
-		
+
 		return selectFormation;
 	}
 
@@ -101,10 +100,10 @@ public class FormationController {
 
 	@SuppressWarnings("rawtypes")
 	public DataModel getFormations() {
-		
+
 		if (formations == null) {
 			formations = new ListDataModel();
-			formations.setWrappedData(formationEJB.findAllFormations());
+			formations.setWrappedData(formationEJB.findAll());
 		}
 		return formations;
 	}

@@ -14,28 +14,28 @@ public class StagiaireEJB {
 	@EJB
 	private StagiaireDAO stagiaireDAO;
 
-	public Stagiaire createUnStagiaire(Stagiaire stagiaire) {
-		return stagiaireDAO.createUnStagiaire(stagiaire);
+	public void create(Stagiaire stagiaire) {
+		stagiaireDAO.create(stagiaire);
 	}
 
-	public List<Stagiaire> findAllStagiaires() {
-		return stagiaireDAO.findAllStagiaires();
+	public List<Stagiaire> findAll() {
+		return stagiaireDAO.findAll();
 	}
 
-	public void removeStagiaire(long id) {
-		stagiaireDAO.removeStagiaire(id);
-	}
-
-	public Stagiaire findStagiaireById(Long id) {
-		return stagiaireDAO.findById(id);
-	}
-	public List<Stagiaire> findStagiairesInSession(Long session_id) {
-		return stagiaireDAO.findStagiairesInSession(session_id);
-	}
-	public void update(Stagiaire stagiaire) {
-		stagiaireDAO.update(stagiaire);
-	}
 	public void delete(Stagiaire stagiaire) {
 		stagiaireDAO.delete(stagiaire);
 	}
+
+	public void update(Stagiaire stagiaire) {
+		stagiaireDAO.update(stagiaire);
+	}
+
+	public Stagiaire findById(long id) {
+		return stagiaireDAO.findById(id);
+	}
+
+	public List<Stagiaire> findStagiairesInSession(long session_id) {
+		return stagiaireDAO.findStagiairesInSession(session_id);
+	}
+
 }

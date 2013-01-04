@@ -13,20 +13,19 @@ public class FormateurEJB {
 	@EJB
 	private FormateurDAO formateurDAO;
 	
-	public Formateur createUnFormateur(Formateur formateur){
-		return formateurDAO.createUnFormateur(formateur);
+	public void create(Formateur formateur){
+		formateurDAO.create(formateur);
 	}
 	
-	public List<Formateur> findAllFormateurs(){
-		return formateurDAO.findAllFormateurs();
-		
+	public List<Formateur> findAll(){
+		return formateurDAO.findAll();
+	}
+	
+	public void delete(Formateur formateur){
+		formateurDAO.delete(formateur);
 	}
 	
 	public void update(Formateur formateur) {
 		formateurDAO.update(formateur);
 	}
-	public void delete(Formateur formateur) {
-		formateurDAO.delete(formateur);
-	}
 }
-

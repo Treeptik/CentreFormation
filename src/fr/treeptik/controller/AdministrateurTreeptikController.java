@@ -31,24 +31,22 @@ public class AdministrateurTreeptikController {
 	private Formateur formateur = new Formateur();
 	private List<AdministrateurTreeptik> listAdministrateurTreeptik = new ArrayList<AdministrateurTreeptik>();
 
-	public String doCreateUnAdministrateurTreeptik(){
-		administrateurTreeptik = administrateurTreeptikEJB.createAdministrateurTreeptik(administrateurTreeptik);
+	public String doCreate(){
+		administrateurTreeptikEJB.create(administrateurTreeptik);
 //		stagiaire.setadministrateurTreeptik(administrateurTreeptik);
 //		stagiaireEJB.createUnStagiaire(stagiaire);
 //		formateur.setAdministrateurTreeptik(administrateurTreeptik);
 //		formateurEJB.createUnFormateur(formateur);
-		listAdministrateurTreeptik = administrateurTreeptikEJB.findAllAdministrateurTreeptik();
+		listAdministrateurTreeptik = administrateurTreeptikEJB.findAll();
 		return"listAdministrateur";
 	}
 	
-	public String doFindAllAdministrateurTreeptik(){
-		listAdministrateurTreeptik = administrateurTreeptikEJB.findAllAdministrateurTreeptik();
+	public String doFindAll(){
+		listAdministrateurTreeptik = administrateurTreeptikEJB.findAll();
 		return"listAdministrateur";
 	}
 	
-	
-	
-	public String doNewAdministrateurTreeptik(){
+	public String doNew(){
 		return"createAdministrateurTreeptik";
 	}
 	

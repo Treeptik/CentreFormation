@@ -25,24 +25,24 @@ public class EvaluationController {
 	@EJB
 	private SessionEJB sessionEJB;
 
-	private Evaluation evaluation = new Evaluation();;
-	private List<Evaluation> listEvaluation = new ArrayList<Evaluation>();
-
+	private Evaluation evaluation = new Evaluation();
+	
+	private List<Evaluation> listEvaluations = new ArrayList<Evaluation>();
 	private List<SelectItem> selectSession = new ArrayList<SelectItem>();
 
-	private Stagiaire stagiaire = new Stagiaire();;
+	private Stagiaire stagiaire = new Stagiaire();
 	private Session session = new Session();
 
 	private String idStagiaire;
 
-	public String doCreateUneEvaluation() {
+	public String doCreate() {
 		System.out.println("Controller stagiaire : " + stagiaire);
 		evaluation.setStagiaire(stagiaire);
-		evaluation = evaluationEJB.createUneEvaluation(evaluation);
+		evaluationEJB.create(evaluation);
 		return "message7";
 	}
 
-	public String doNewEvaluation() {
+	public String doNew() {
 		return "createEvaluation";
 	}
 
@@ -63,11 +63,11 @@ public class EvaluationController {
 	}
 
 	public List<Evaluation> getListEvaluation() {
-		return listEvaluation;
+		return listEvaluations;
 	}
 
-	public void setListEvaluation(List<Evaluation> listEvaluation) {
-		this.listEvaluation = listEvaluation;
+	public void setListEvaluation(List<Evaluation> listEvaluations) {
+		this.listEvaluations = listEvaluations;
 	}
 
 	public Stagiaire getStagiaire() {
@@ -95,7 +95,7 @@ public class EvaluationController {
 	}
 
 	public List<SelectItem> getSelectSession() {
-		List<Session> allSessions = sessionEJB.findAllSession();
+		List<Session> allSessions = sessionEJB.findAll();
 		for (Session session : allSessions) {
 			selectSession
 					.add(new SelectItem(session.getId(), session.getNom()));

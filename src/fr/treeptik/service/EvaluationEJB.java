@@ -1,5 +1,7 @@
 package fr.treeptik.service;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -15,19 +17,19 @@ public class EvaluationEJB {
 	@EJB
     private StagiaireDAO stagiaireDAO = new StagiaireDAO();
 	
-	public Evaluation createUneEvaluation(Evaluation evaluation){
-		
-//		Stagiaire stagiaire = new Stagiaire();
-//		evaluation.setStagiaire( stagiaireDAO.findById(stagiaire.getId()));
-//		evaluation.getStagiaire().setId(stagiaire.getId());
-//		return evaluationDAO.createUneEvaluation(evaluation);
-		
-		System.out.println("Evaluation : " + evaluation);
-		System.out.println("Stagiaire : " + evaluation.getStagiaire());
-		
-		System.out.println("ID :" +evaluation.getStagiaire().getId());
-		
-		evaluation.setStagiaire(stagiaireDAO.findById(evaluation.getStagiaire().getId()));
-		return evaluationDAO.createUneEvaluation(evaluation);
-	}	
+	public void create(Evaluation evaluation){
+		evaluationDAO.create(evaluation);
+	}
+	
+	public List<Evaluation> findAll(){
+		return evaluationDAO.findAll();
+	}
+	
+	public void delete(Evaluation evaluation){
+		evaluationDAO.delete(evaluation);
+	}
+	
+	public void update(Evaluation evaluation) {
+		evaluationDAO.update(evaluation);
+	}
 }

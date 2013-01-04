@@ -19,68 +19,62 @@ public class SessionController {
 
 	@EJB
 	private SessionEJB sessionEJB;
-	
+
 	private Session session = new Session();
-	private List<Session> ListSessions;
 	private Formation formation = new Formation();
 	private Formateur formateur = new Formateur();
 	private Stagiaire stagiaire = new Stagiaire();
-	
-//	private List<SelectItem> selectSession;
-	
-	public String doCreateSession(){
-		
+
+	private List<Session> ListSessions;
+
+	@SuppressWarnings("rawtypes")
+	private DataModel sessions;
+
+	// private List<SelectItem> selectSession;
+
+	public String doCreateSession() {
+
 		ArrayList<Formation> formations = new ArrayList<Formation>();
 		formations.add(formation);
 		session.setFormations(formations);
-		
+
 		ArrayList<Formateur> formateurs = new ArrayList<Formateur>();
 		formateurs.add(formateur);
 		session.setFormateurs(formateurs);
-		
-		sessionEJB.createSession(getSession());
+
+		sessionEJB.create(getSession());
 		return "message6";
-		
+
 	}
-	
-	public String doAddStagiaire(){
-		
-		
+
+	public String doAddStagiaire() {
 		sessionEJB.addStagiaire(session.getId(), stagiaire.getId());
-		
 		return "message5";
-		
+
 	}
-	
-	public String doListSession(){
-		
-		ListSessions = sessionEJB.findAllSession();
-		
+
+	public String doFindAll() {
+		ListSessions = sessionEJB.findAll();
 		return "listSessions";
 	}
-	
-	
-	@SuppressWarnings("rawtypes")
-	private DataModel sessions;
-	
+
 	public String doSelectUpdate() {
 		session = (Session) sessions.getRowData();
 		return "updateSession";
 	}
-	
+
 	public String doUpdate() {
 		sessionEJB.update(session);
 		getSessions();
 		return "message11";
 	}
-	
+
 	public String doDelete() {
 		Session session = (Session) sessions.getRowData();
 		sessionEJB.delete(session);
 		getSessions();
 		return "listFormateurs";
 	}
-	
 
 	public Formation getFormation() {
 		return formation;
@@ -106,19 +100,19 @@ public class SessionController {
 		this.formateur = formateur;
 	}
 
-//	public List<SelectItem> getSelectSession() {		
-//		ListSessions = sessionEJB.findAllSession();
-//		selectSession = new ArrayList<SelectItem>();
-//		for (Session session : ListSessions){
-//			selectSession.add(new SelectItem(session.getId(), session.getNom()));
-//		}
-//		
-//		return selectSession;
-//	}
-//
-//	public void setSelectSession(List<SelectItem> selectSession) {
-//		this.selectSession = selectSession;
-//	}
+	// public List<SelectItem> getSelectSession() {
+	// ListSessions = sessionEJB.findAllSession();
+	// selectSession = new ArrayList<SelectItem>();
+	// for (Session session : ListSessions){
+	// selectSession.add(new SelectItem(session.getId(), session.getNom()));
+	// }
+	//
+	// return selectSession;
+	// }
+	//
+	// public void setSelectSession(List<SelectItem> selectSession) {
+	// this.selectSession = selectSession;
+	// }
 
 	public Stagiaire getStagiaire() {
 		return stagiaire;
@@ -140,10 +134,8 @@ public class SessionController {
 	public DataModel getSessions() {
 		if (sessions == null) {
 			sessions = new ListDataModel();
-			sessions.setWrappedData(sessionEJB.findAllSession());
+			sessions.setWrappedData(sessionEJB.findAll());
 		}
-	
-		
 		return sessions;
 	}
 
@@ -151,5 +143,5 @@ public class SessionController {
 	public void setSessions(DataModel sessions) {
 		this.sessions = sessions;
 	}
-	
+
 }

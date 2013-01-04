@@ -14,18 +14,19 @@ public class FormationEJB {
 	@EJB
 	private FormationDAO formationDAO;
 	
-	public Formation createUneFormation(Formation formation){
-		return formationDAO.createUneFormation(formation);
+	public void create(Formation formation){
+		formationDAO.create(formation);
 	}
 	
-	public List<Formation> findAllFormations(){
-		return formationDAO.findALLFormations();
+	public List<Formation> findAll(){
+		return formationDAO.findAll();
+	}
+	
+	public void delete(Formation formation){
+		formationDAO.delete(formation);
 	}
 	
 	public void update(Formation formation) {
 		formationDAO.update(formation);
-	}
-	public void delete(Formation formation) {
-		formationDAO.delete(formation);
 	}
 }
