@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 public abstract class GenericDAO<T> {
 
-	@PersistenceContext(unitName = "LocationJSF")
+	@PersistenceContext(unitName = "formation")
 	protected EntityManager em;
 
 	private Class<T> entityClass;
