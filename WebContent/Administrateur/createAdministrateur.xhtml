@@ -3,26 +3,37 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-<h:head>
-	<title>Ajouter un Administrateur</title>
-</h:head>
-<h:body>
-	<h1>Ajouter un Administrateur</h1>
-	<hr />
-	<h:form>
-		<table border="0">
-			<tr>
-				<td><h:outputLabel value="Nom : " /></td>
-				<td><h:inputText value="#{administrateurTreeptikController.administrateurTreeptik.nom}" /></td>
-			</tr>
-			
-			<tr>
-				<td> <h:commandButton action="#{administrateurTreeptikController.doCreateUnAdministrateurTreeptik}" value="Ajouter" /> </td>
-				<td> <input type="reset" Name="annuler" value="Annuler" /> </td >          
-			</tr>
-		</table>
-	</h:form>
-	<hr />
-	<i>Treeptik--treeptik</i>
-</h:body>
+
+<ui:composition template="../template3/template3.xhtml">
+	<ui:define name="titre">Créer un Administrateur</ui:define>
+	<ui:define name="body">
+		<h:form styleClass="well">
+			<fieldset>
+            	<legend>Créer un Administrateur</legend>
+					<p>
+						<h:outputText value="Nom : " />
+						<h:inputText 
+						value="#{administrateurTreeptikController.administrateurTreeptik.nom}" required="true"
+									validatorMessage=" nom invalide ">
+							<f:validateLength minimum="2" maximum="30" />
+						</h:inputText>
+						<h:messages />		
+					</p>
+					<div class="table">
+						<tr>
+							<td> 
+								<h:commandButton 
+								action="#{administrateurTreeptikController.doCreate()}" 
+								value="Créer" styleClass="btn btn-primary"/> </td>
+							<td><h:button type="reset" class="btn btn-primary"
+								value="Annuler"></h:button></td>
+							<td><h:button class="btn btn-primary"
+								onclick="window.location.href='/FormationJSF/Annexes/acceuilGestion.xhtml'; return false;"
+								value="Retour"></h:button></td>
+						</tr>
+					</div>
+				</fieldset>
+			</h:form>
+	</ui:define>
+</ui:composition>
 </html>

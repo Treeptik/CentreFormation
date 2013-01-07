@@ -43,7 +43,7 @@ public class EvaluationController {
 	}
 
 	public String doNew() {
-		return "createEvaluation";
+		return "doEvaluation";
 	}
 
 	public EvaluationEJB getEvaluationEJB() {

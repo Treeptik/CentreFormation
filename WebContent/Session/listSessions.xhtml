@@ -3,45 +3,58 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<link type="text/css" rel="stylesheet" href="../css/style.css" />
-	<title>Liste des sessions</title>
-</h:head>
-<h:body>
-	<h1>Liste de toutes les sessions</h1>
-	<hr />
-	<h:dataTable value="#{sessionController.sessions}" var="sess">
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Nom" />
-			</f:facet>
-			<h:outputText value="#{sess.nom}" />
-		</h:column>
-
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Début" />
-			</f:facet>
-			<h:outputText value="#{sess.dateDebutStage}">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
-			</h:outputText>
-		</h:column>
-
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Fin" />
-			</f:facet>
-			<h:outputText value="#{sess.dateFinStage}">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
-			</h:outputText>
-		</h:column>
-
-	</h:dataTable>
-
-	<h2>
+	
+<ui:composition template="../template3/template3.xhtml">
+	<ui:define name="titre">Liste des Sessions</ui:define>
+	<ui:define name="body">
+		<h2>Liste des sessions</h2>
+		<h:form>
+			<h:dataTable class="table table-bordered table-striped" 
+				value="#{sessionController.sessions}" var="sess">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{sess.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nom" />
+					</f:facet>
+					<h:outputText value="#{sess.nom}" />
+				</h:column>
+		
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Début" />
+					</f:facet>
+					<h:outputText value="#{sess.dateDebutStage}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+					</h:outputText>
+				</h:column>
+		
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fin" />
+					</f:facet>
+					<h:outputText value="#{sess.dateFinStage}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+					</h:outputText>
+				</h:column>
+		
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opérations" />
+					</f:facet>
+					<h:commandLink action="#{sessionController.doSelectUpdate()}"
+						value="Modifier" />
+					<h:outputText value=" / "/>
+					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
+						action="#{sessionController.doDelete()}" value="Supprimer" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
 		<a href="../Annexes/acceuilGestion.jsf">retour</a>
-	</h2>
-	<hr />
-	<i>Treeptik--treeptik</i>
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>

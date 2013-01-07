@@ -3,23 +3,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
 <ui:composition template="../template3/template3.xhtml">
-	<ui:define name="titre">Mettre à Jour une Session</ui:define>
+	<ui:define name="titre">Créer une session</ui:define>
 	<ui:define name="body">
 		<h:form styleClass="well">
 			<fieldset>
-                    <legend>Mettre à Jour une Session</legend>
+                    <legend>Créer une session</legend>
 				<div class="control-group">
 					<div class="controls">
-						<p>
-							<h:outputText value="ID : "/>
-							<h:inputText
-								value="#{sessionController.session.id}"  required="true"
-								validatorMessage="L'ID est un nombre positif">
-						    	<f:validateLongRange minimum="1" maximum="10000000000"/>
-							</h:inputText>
-						</p>
 						<p>
 							<h:outputText value="Nom : "/>
 							<h:inputText
@@ -58,15 +49,15 @@
 						</p>
 					</div>
 				</div>
-						<div class="table">
+			 	<div class="table">
 							<tr>
 								<td><h:commandButton
-										action="#{sessionController.doUpdate()}"
+										action="#{sessionController.doCreate()}"
 										value="Valider" styleClass="btn btn-primary" /></td>
 								<td><h:button type="reset" class="btn btn-primary"
 										value="Annuler"></h:button></td>
 								<td><h:button class="btn btn-primary"
-										onclick="window.location.href='/FormationJSF/Annexes/acceuilGestion.jsf'; return false;"
+										onclick="window.location.href='/FormationJSF/Annexes/acceuilGestion.xhtml'; return false;"
 										value="Retour"></h:button></td>
 							</tr>
 				</div>

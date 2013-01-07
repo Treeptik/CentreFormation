@@ -38,13 +38,15 @@ public class FormateurController {
 	public String doUpdate() {
 		formateurEJB.update(formateur);
 		getFormateurs();
-		return "message9";
+		return "messageFormateurUpdate";
 	}
 
+	@SuppressWarnings("rawtypes")
 	public String doDelete() {
 		Formateur formateur = (Formateur) formateurs.getRowData();
 		formateurEJB.delete(formateur);
-		getFormateurs();
+		formateurs = new ListDataModel();
+		formateurs.setWrappedData(formateurEJB.findAll());
 		return "listFormateurs";
 	}
 
@@ -53,7 +55,7 @@ public class FormateurController {
 		// formation.setFormateurs(getListFormateurs().add(formateur));
 		// formationEJB.createUneFormation(formation);
 		// listFormateurs = formateurEJB.findAllFormateurs();
-		return "message2";
+		return "messageFormateurCree";
 	}
 
 	public String doFindAll() {
@@ -108,12 +110,10 @@ public class FormateurController {
 
 	@SuppressWarnings("rawtypes")
 	public DataModel getFormateurs() {
-
 		if (formateurs == null) {
 			formateurs = new ListDataModel();
 			formateurs.setWrappedData(formateurEJB.findAll());
 		}
-
 		return formateurs;
 	}
 

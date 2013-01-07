@@ -6,22 +6,13 @@
 
 <ui:composition template="../template3/template3.xhtml">
 
-	<ui:define name="titre">Mettre à Jour un stagiaire</ui:define>
+	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
 		<h:form styleClass="well">
 			<fieldset>
-            	<legend>Mettre à Jour un stagiaire</legend>
+            	<legend>Créer un stagiaire</legend>
 				<div class="control-group">
 					<div class="controls">
-						<p>
-							<h:outputText value="ID : " />
-							<h:inputText 
-								value="#{stagiaireController.stagiaire.id}" required="true"
-								validatorMessage="L'ID est un nombre positif">
-					    	<f:validateLongRange minimum="1" maximum="10000000000"/>
-						</h:inputText>
-							<h:messages />		
-						</p>
 						<p>
 							<h:outputText value="Nom : "/>
 							<h:inputText value="#{stagiaireController.stagiaire.nom}" required="true"
@@ -124,7 +115,7 @@
                 <div class="table">
 					<tr>
 						<td><h:commandButton
-								action="#{stagiaireController.doUpdate()}"
+								action="#{stagiaireController.doAddStagiaire}"
 								value="Valider" styleClass="btn btn-primary" /></td>
 						<td><h:button type="reset" class="btn btn-primary"
 								value="Annuler"></h:button></td>

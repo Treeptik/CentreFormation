@@ -32,7 +32,7 @@ public class SessionController {
 
 	// private List<SelectItem> selectSession;
 
-	public String doCreateSession() {
+	public String doCreate() {
 
 		ArrayList<Formation> formations = new ArrayList<Formation>();
 		formations.add(formation);
@@ -41,9 +41,8 @@ public class SessionController {
 		ArrayList<Formateur> formateurs = new ArrayList<Formateur>();
 		formateurs.add(formateur);
 		session.setFormateurs(formateurs);
-
-		sessionEJB.create(getSession());
-		return "message6";
+		sessionEJB.create(session);
+		return "messageSessionCree";
 
 	}
 
@@ -66,14 +65,16 @@ public class SessionController {
 	public String doUpdate() {
 		sessionEJB.update(session);
 		getSessions();
-		return "message11";
+		return "messageSessionUpdate";
 	}
 
+	@SuppressWarnings("rawtypes")
 	public String doDelete() {
 		Session session = (Session) sessions.getRowData();
 		sessionEJB.delete(session);
-		getSessions();
-		return "listFormateurs";
+		sessions = new ListDataModel();
+		sessions.setWrappedData(sessionEJB.findAll());
+		return "listSessions";
 	}
 
 	public Formation getFormation() {

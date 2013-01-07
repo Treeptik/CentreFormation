@@ -25,7 +25,7 @@ public class FormationController {
 	public String doCreate() {
 		formationEJB.create(formation);
 		listFormations = formationEJB.findAll();
-		return "message3";
+		return "messageFormationCreee";
 	}
 
 	public String doFindAll() {
@@ -44,13 +44,15 @@ public class FormationController {
 	public String doUpdate() {
 		formationEJB.update(formation);
 		getFormations();
-		return "message10";
+		return "messageFormationUpdate";
 	}
 
+	@SuppressWarnings("rawtypes")
 	public String doDelete() {
 		Formation formation = (Formation) formations.getRowData();
 		formationEJB.delete(formation);
-		getFormations();
+		formations = new ListDataModel();
+		formations.setWrappedData(formationEJB.findAll());
 		return "listFormations";
 	}
 
@@ -90,7 +92,6 @@ public class FormationController {
 			selectFormation.add(new SelectItem(formation.getId(), formation
 					.getNom()));
 		}
-
 		return selectFormation;
 	}
 

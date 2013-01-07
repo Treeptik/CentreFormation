@@ -5,24 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="../template3/template5.xhtml">
-
-	<ui:define name="titre">Evaluation Treeptik</ui:define>
-
-
-
+	<ui:define name="titre">Formation créée</ui:define>
 	<ui:define name="body">
-	
-	<div styleClass="span7">
-	
-
-<h:form styleClass="well">
-	<legend>Opération réussie, les données ont été modifiées</legend>
-	<u><a href="/FormationJSF/Annexes/acceuilGestion.jsf"> Retour</a></u>
-	</h:form>
-
-			</div>
+			<h:form styleClass="well">
+				<legend>La Formation a été créée avec succès</legend>
+					<a href="../Annexes/acceuilGestion.jsf"> Retour au menu</a>
+					<h:outputText value=" / "/>
+					<a href="http://localhost:8080/FormationJSF/Formation/listFormations.jsf">
+					 Retour à la liste</a>
+			</h:form>
 	</ui:define>
-
 </ui:composition>
-
 </html>

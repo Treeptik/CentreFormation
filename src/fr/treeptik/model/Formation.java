@@ -1,12 +1,14 @@
 package fr.treeptik.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -21,6 +23,10 @@ public class Formation implements Serializable {
 	private long id;
 	@Column(length = 50)
 	private String nom;
+	
+	@ManyToMany(mappedBy = "formations")
+	private List<Session> sessions;
+
 
 	public Formation(String nom) {
 		super();
@@ -49,6 +55,14 @@ public class Formation implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
 	}
 
 }

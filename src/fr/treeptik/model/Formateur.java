@@ -2,6 +2,7 @@ package fr.treeptik.model;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -9,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -31,6 +33,9 @@ public class Formateur implements Serializable{
 	private String prenom;
 //	@Column
 //	private String specialite;
+
+	@ManyToMany(mappedBy = "formateurs")
+	private List<Session> sessions;
 
 	@ManyToOne()
 	private AdministrateurTreeptik administrateurTreeptik;

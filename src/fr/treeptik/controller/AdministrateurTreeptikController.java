@@ -6,6 +6,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 import fr.treeptik.model.AdministrateurTreeptik;
 import fr.treeptik.model.Formateur;
@@ -17,39 +19,66 @@ import fr.treeptik.service.StagiaireEJB;
 @ManagedBean
 @RequestScoped
 public class AdministrateurTreeptikController {
-	
 
 	@EJB
 	private AdministrateurTreeptikEJB administrateurTreeptikEJB;
 	@EJB
 	private StagiaireEJB stagiaireEJB;
 	@EJB
-	private FormateurEJB formateurEJB ;
-	
+	private FormateurEJB formateurEJB;
+
 	private AdministrateurTreeptik administrateurTreeptik = new AdministrateurTreeptik();
 	private Stagiaire stagiaire = new Stagiaire();
 	private Formateur formateur = new Formateur();
 	private List<AdministrateurTreeptik> listAdministrateurTreeptik = new ArrayList<AdministrateurTreeptik>();
 
-	public String doCreate(){
+	@SuppressWarnings("rawtypes")
+	private DataModel administrateurTreeptiks;
+
+	public String doSelectUpdate() {
+		administrateurTreeptik = (AdministrateurTreeptik) administrateurTreeptiks
+				.getRowData();
+		return "updateAdministrateur";
+	}
+
+	public String doUpdate() {
+		administrateurTreeptikEJB.update(administrateurTreeptik);
+		getAdministrateurTreeptiks();
+		return "messageAdministrateurUpdate";
+	}
+
+	public String doCreate() {
 		administrateurTreeptikEJB.create(administrateurTreeptik);
-//		stagiaire.setadministrateurTreeptik(administrateurTreeptik);
-//		stagiaireEJB.createUnStagiaire(stagiaire);
-//		formateur.setAdministrateurTreeptik(administrateurTreeptik);
-//		formateurEJB.createUnFormateur(formateur);
+		// stagiaire.setadministrateurTreeptik(administrateurTreeptik);
+		// stagiaireEJB.createUnStagiaire(stagiaire);
+		// formateur.setAdministrateurTreeptik(administrateurTreeptik);
+		// formateurEJB.createUnFormateur(formateur);
 		listAdministrateurTreeptik = administrateurTreeptikEJB.findAll();
-		return"listAdministrateur";
+		return "messageAdministrateurCree";
 	}
-	
-	public String doFindAll(){
-		listAdministrateurTreeptik = administrateurTreeptikEJB.findAll();
-		return"listAdministrateur";
+
+	@SuppressWarnings("rawtypes")
+	public String doDelete() {
+		AdministrateurTreeptik administrateurTreeptik = (AdministrateurTreeptik) administrateurTreeptiks
+				.getRowData();
+		administrateurTreeptikEJB.delete(administrateurTreeptik);
+		administrateurTreeptiks = new ListDataModel();
+		administrateurTreeptiks.setWrappedData(administrateurTreeptikEJB
+				.findAll());
+		return "listAdministrateurs";
 	}
-	
-	public String doNew(){
-		return"createAdministrateurTreeptik";
+
+	@SuppressWarnings("rawtypes")
+	public String doFindAll() {
+		administrateurTreeptiks = new ListDataModel();
+		administrateurTreeptiks.setWrappedData(administrateurTreeptikEJB
+				.findAll());
+		return "listAdministrateur";
 	}
-	
+
+	public String doNew() {
+		return "createAdministrateur";
+	}
 
 	public AdministrateurTreeptikEJB getAdministrateurTreeptikEJB() {
 		return administrateurTreeptikEJB;
@@ -108,5 +137,19 @@ public class AdministrateurTreeptikController {
 	public void setListAdministrateurTreeptik(
 			List<AdministrateurTreeptik> listAdministrateurTreeptik) {
 		this.listAdministrateurTreeptik = listAdministrateurTreeptik;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public DataModel getAdministrateurTreeptiks() {
+		if (administrateurTreeptiks == null) {
+			administrateurTreeptiks = new ListDataModel();
+			administrateurTreeptiks.setWrappedData(administrateurTreeptikEJB.findAll());
+		}
+		return administrateurTreeptiks;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setAdministrateurTreeptiks(DataModel administrateurTreeptiks) {
+		this.administrateurTreeptiks = administrateurTreeptiks;
 	}
 }

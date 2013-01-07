@@ -3,72 +3,44 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+	
 <ui:composition template="../template3/template3.xhtml">
-
-	<ui:define name="titre">Evaluation Treeptik</ui:define>
-
+	<ui:define name="titre">Mettre à Jour un Formateur</ui:define>
 	<ui:define name="body">
-
-		<div class="span7">
-
-			<h:form styleClass="well" id="formulaire">
-
-				<div class="control-group">
-					<div class="controls">
-						<div class="table">
-							<h4>Modifier un formateur</h4>
-
-							<tr>
-								<h5 Align="Left">ID :</h5>
-								<td><h:inputText
-										value="#{formateurController.formateur.id}" disabled = "true" >
-									</h:inputText></td>
-
-							</tr>
-							<tr>
-								<h5 Align="Left">Nom :</h5>
-								<td><h:inputText
-										value="#{formateurController.formateur.nom}" required="true"
-										validatorMessage=" nom invalide">
-										<f:validateLength minimum="2" maximum="20" />
-									</h:inputText></td>
-
-							</tr>
-
-							<tr>
-								<h5 Align="Left">Prénom :</h5>
-								<h:inputText value="#{formateurController.formateur.prenom}"
-									required="true" validatorMessage=" prenom invalide">
-									<f:validateLength minimum="2" maximum="20" />
-								</h:inputText>
-							</tr>
-
-
-						</div>
-
-						<div class="table">
-							<tr>
-								<td><h:commandButton
-										action="#{formateurController.doUpdate()}" value="Valider"
-										styleClass="btn btn-primary" /></td>
-								<td><h:button type="reset" class="btn btn-primary"
-										value="Annuler"></h:button></td>
-								<td><h:button class="btn btn-primary"
-										onclick="window.location.href='/FormationJSF/Annexes/acceuilGestion.jsf'; return false;"
-										value="Retour"></h:button></td>
-							</tr>
-						</div>
+			<h:form styleClass="well">
+				<fieldset>
+                	<legend>Mettre à Jour un Formateur</legend>
+					<p>
+					<h:outputText value="ID : " />
+					<h:inputText 
+					value="#{formateurController.formateur.id}" required="true"
+						validatorMessage="L'ID est un nombre positif">
+					    	<f:validateLongRange minimum="1" maximum="10000000000"/>
+					</h:inputText>
+					<h:messages />		
+					</p>
+					<p>
+					<h:outputText value="Prénom : "/>
+					<h:inputText value="#{formateurController.formateur.prenom}"
+								required="true" validatorMessage=" nom invalide ">
+								<f:validateLength minimum="2" maximum="20" />
+							</h:inputText>
+					</p>
+					<div class="table">
+						<tr>
+							<td><h:commandButton
+									action="#{formateurController.doUpdate()}"
+									value="Valider" styleClass="btn btn-primary" /></td>
+							<td><h:button type="reset" class="btn btn-primary"
+									value="Annuler"></h:button></td>
+							<td><h:button class="btn btn-primary"
+									onclick="window.location.href='/FormationJSF/Annexes/acceuilGestion.xhtml'; return false;"
+									value="Retour"></h:button></td>
+						</tr>
 					</div>
-				</div>
-
-				<h:messages />
-
+					<h:messages />
+				</fieldset>
 			</h:form>
-		</div>
 	</ui:define>
-
 </ui:composition>
-
 </html>
-

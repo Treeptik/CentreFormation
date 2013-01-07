@@ -96,6 +96,11 @@ a {
 	color: #3E4493;
 }
 
+.badge {
+	min-width: 100%;	
+}
+
+
 form {
 	background-color: orange;
 }

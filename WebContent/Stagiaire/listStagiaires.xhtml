@@ -3,112 +3,106 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<link type="text/css" rel="stylesheet" href="../css/style.css" />
-	<title>List des tous les stagiares</title>
-</h:head>
-<h:body>
-	<h2>Liste de tous les stagiaires</h2>
 
-	<h:form>
-		<h:dataTable value="#{stagiaireController.stagiaires}" var="st">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="ID" />
-				</f:facet>
-				<h:outputText value="#{st.id}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Nom" />
-				</f:facet>
-				<h:outputText value="#{st.nom}" />
-			</h:column>
+<ui:composition template="../template3/template3.xhtml">
+	<ui:define name="titre">List des tous les stagiares</ui:define>
+	<ui:define name="body">
+		<h2>Liste de tous les stagiaires</h2>
 
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Prenom" />
-				</f:facet>
-				<h:outputText value="#{st.prenom}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="DN" />
-				</f:facet>
-				<h:outputText value="#{st.dateNaissance}" />
-			</h:column>
-
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Adresse" />
-				</f:facet>
-				<h:outputText value="#{st.adresse}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Ville" />
-				</f:facet>
-				<h:outputText value="#{st.ville}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="CP" />
-				</f:facet>
-				<h:outputText value="#{st.codePostal}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Tel" />
-				</f:facet>
-				<h:outputText value="#{st.tel}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="E-mail" />
-				</f:facet>
-				<h:outputText value="#{st.mail}" />
-			</h:column>
-
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="sexe" />
-				</f:facet>
-				<h:outputText value="#{st.sexe}" />
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Diplome" />
-				</f:facet>
-				<h:outputText value="#{st.diplome}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Domaine" />
-				</f:facet>
-				<h:outputText value="#{st.domaine}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Opérations" />
-				</f:facet>
-				<h:commandLink action="#{stagiaireController.doSelectUpdate()}"
-					value="Modifier" />
-				<h:commandLink action="#" value="_-*-_" />
-				<h:commandLink action="#{stagiaireController.doDelete()}"
-					value="Supprimer" />
-			</h:column>
-		</h:dataTable>
-	</h:form>
-
-	<h2>
+		<h:form>
+			<h:dataTable class="table table-bordered table-striped" 
+				value="#{stagiaireController.stagiaires}" var="st">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{st.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nom" />
+					</f:facet>
+					<h:outputText value="#{st.nom}" />
+				</h:column>
+	
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Prenom" />
+					</f:facet>
+					<h:outputText value="#{st.prenom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="DN" />
+					</f:facet>
+					<h:outputText value="#{st.dateNaissance}" />
+				</h:column>
+	
+	
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Adresse" />
+					</f:facet>
+					<h:outputText value="#{st.adresse}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ville" />
+					</f:facet>
+					<h:outputText value="#{st.ville}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CP" />
+					</f:facet>
+					<h:outputText value="#{st.codePostal}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tel" />
+					</f:facet>
+					<h:outputText value="#{st.tel}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="E-mail" />
+					</f:facet>
+					<h:outputText value="#{st.mail}" />
+				</h:column>
+	
+	
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="sexe" />
+					</f:facet>
+					<h:outputText value="#{st.sexe}" />
+				</h:column>
+	
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Diplome" />
+					</f:facet>
+					<h:outputText value="#{st.diplome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Domaine" />
+					</f:facet>
+					<h:outputText value="#{st.domaine}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opérations" />
+					</f:facet>
+					<h:commandLink action="#{stagiaireController.doSelectUpdate()}"
+						value="Modifier" />
+					<h:outputText value=" / "/>
+					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
+						action="#{stagiaireController.doDelete()}" value="Supprimer" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
 		<a href="../Annexes/acceuilGestion.jsf">retour</a>
-	</h2>
-
-	<hr />
-	<i>Treeptik-treeptik</i>
-
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
