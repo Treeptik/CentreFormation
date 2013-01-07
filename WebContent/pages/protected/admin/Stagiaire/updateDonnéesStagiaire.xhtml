@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>List des tous les stagiares</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css" />
+</h:head>
+<h:body>
+	<h2>Liste de tous les stagiaires</h2>
+
+	<h:form>
+		<h:dataTable value="#{stagiaireController.stagiaire}" var="sta">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{sta.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				<h:outputText value="#{sta.nom}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Prenom" />
+				</f:facet>
+				<h:outputText value="#{sta.prenom}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="DN" />
+				</f:facet>
+				<h:outputText value="#{sta.dateNaissance}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Adresse" />
+				</f:facet>
+				<h:outputText value="#{sta.adresse}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ville" />
+				</f:facet>
+				<h:outputText value="#{sta.ville}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="CP" />
+				</f:facet>
+				<h:outputText value="#{sta.codePostal}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Tel" />
+				</f:facet>
+				<h:outputText value="#{sta.tel}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="E-mail" />
+				</f:facet>
+				<h:outputText value="#{sta.mail}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="sexe" />
+				</f:facet>
+				<h:outputText value="#{sta.sexe}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Diplome" />
+				</f:facet>
+				<h:outputText value="#{sta.diplome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Domaine" />
+				</f:facet>
+				<h:outputText value="#{sta.domaine}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Opération" />
+				</f:facet>
+				<h:commandLink action="#{stagiaireController.doUpdate()}"
+					value="Modifier" />
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
+	<h2>
+		<a href="../Annexes/acceuilGestion.jsf">retour</a>
+	</h2>
+
+	<hr />
+	<i>Treeptik-treeptik</i>
+
+</h:body>
+</html>
