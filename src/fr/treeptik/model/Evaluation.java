@@ -41,6 +41,9 @@ public class Evaluation implements Serializable {
 	
 	@ManyToOne()
 	private Stagiaire stagiaire;
+	
+	@ManyToOne()
+	private Session session;
 
 	public Evaluation() {
 		super();
@@ -244,6 +247,14 @@ public class Evaluation implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
 	}
 
 }

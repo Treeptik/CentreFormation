@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+
+#logo {
+	border-style: none
+}
+
+#texteinformatif {
+	text-align: center;
+	color: #E6C711;
+	font-style: normal;
+	font-weight: bolder;
+	border-style: solid;
+	border-color: #D9D8D9;
+	border-width: 2px;
+	font-size: large;
+	line-height: 13px;
+	background-color: #3E4493;
+	padding-bottom: 13px;
+}
+
+#footer {
+	line-height: 13px;
+	min-height: 0px;
+}
+
+.page-header {
+	border-style: none;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-bottom: 3px
+}
+
+.nav-tabs {
+	border-style: none;
+}
+
+.nav {
+	margin-bottom: 1px;
+	margin-left: 20px;
+}
+
+[class*="dropdown-toggle"],.dropdown-menu,.dropdown-menu li>a,B.caret {
+	background-color: #3E4493;
+	color: #E6C711;
+}
+
+.container-fluid {
+	background-color: #E6C711;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+[class*="span12"] {
+	background-color: #E6C711;
+	line-height: 80px;
+	text-align: center;
+	margin: 5px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+[class="span8"] {
+	background-color: #3E4493;
+	margin-bottom: x;
+	line-height: 80px;
+	text-align: center;
+	margin: 7px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+[class*="span7"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:                       5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	border-radius: 20px 20px 20px 20px;
+	padding-left: 35px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+[class*="span4"] {
+	background-color: orange;
+	margin-bottom: 0px border-radius:                       5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	margin: 5px 10;
+	border-radius: 20px 20px 20px 20px;
+}
+
+.well {
+	background-color: #FFD400;
+}
+
+a {
+	color: #3E4493;
+}
+
+.badge {
+	min-width: 100%;	
+}
+
+
+form {
+	background-color: orange;
+}
+
+article {
+	background-color: #EFF0FF;
+	margin-bottom: 0px border-radius:                       5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin: 5px 10;
+	border-radius: 20px 20px 20px 20px;
+}
+
+body {
+	margin-bottom: 5px;
+	background-color: white;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+formulaire {
+	margin-bottom: 0px;
+	background-color: #EFF0FF;
+	padding: 10px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+img {
+	border: 1px solid #181818;
+}

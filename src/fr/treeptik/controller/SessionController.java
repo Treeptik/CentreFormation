@@ -24,16 +24,13 @@ public class SessionController {
 	private Formation formation = new Formation();
 	private Formateur formateur = new Formateur();
 	private Stagiaire stagiaire = new Stagiaire();
-
 	private List<Session> ListSessions;
-
 	@SuppressWarnings("rawtypes")
 	private DataModel sessions;
 
 	// private List<SelectItem> selectSession;
 
 	public String doCreate() {
-
 		ArrayList<Formation> formations = new ArrayList<Formation>();
 		formations.add(formation);
 		session.setFormations(formations);
@@ -41,31 +38,9 @@ public class SessionController {
 		ArrayList<Formateur> formateurs = new ArrayList<Formateur>();
 		formateurs.add(formateur);
 		session.setFormateurs(formateurs);
-		sessionEJB.create(session);
-		return "messageSessionCree";
 
-	}
-
-	public String doAddStagiaire() {
-		sessionEJB.addStagiaire(session.getId(), stagiaire.getId());
-		return "message5";
-
-	}
-
-	public String doFindAll() {
-		ListSessions = sessionEJB.findAll();
-		return "listSessions";
-	}
-
-	public String doSelectUpdate() {
-		session = (Session) sessions.getRowData();
-		return "updateSession";
-	}
-
-	public String doUpdate() {
-		sessionEJB.update(session);
-		getSessions();
-		return "messageSessionUpdate";
+		sessionEJB.create(getSession());
+		return "messageSessionCreee";
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -74,6 +49,29 @@ public class SessionController {
 		sessionEJB.delete(session);
 		sessions = new ListDataModel();
 		sessions.setWrappedData(sessionEJB.findAll());
+		return "listSessions";
+	}
+
+	public String doSelectUpdate() {
+		session = (Session) sessions.getRowData();
+		return "updateSession";
+	}
+
+	@SuppressWarnings("rawtypes")
+	public String doUpdate() {
+		sessionEJB.update(session);
+		sessions = new ListDataModel();
+		sessions.setWrappedData(sessionEJB.findAll());
+		return "messageSessionUpdate";
+	}
+
+	public String doAddStagiaire() {
+		sessionEJB.addStagiaire(session.getId(), stagiaire.getId());
+		return "message5";
+	}
+
+	public String doFindAll() {
+		ListSessions = sessionEJB.findAll();
 		return "listSessions";
 	}
 

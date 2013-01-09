@@ -5,11 +5,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title><ui:insert name="titre" /></title>
-	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="../bootstrap/js/bootstrap.js" rel="stylesheet" />
-	<link href="../bootstrap/js/bootstrap.min.js/jquery.js"	rel="stylesheet" />
-	<link href="../bootstrap/js/bootstrap.min.js" rel="stylesheet" />
-	<link type="text/css" rel="stylesheet" href="../css/styleRV.css" />
+	<link href="/FormationJSF/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="/FormationJSF/bootstrap/js/bootstrap.js" rel="stylesheet" />
+	<link href="/FormationJSF/bootstrap/js/bootstrap.min.js/jquery.js"	rel="stylesheet" />
+	<link href="/FormationJSF/bootstrap/js/bootstrap.min.js" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="/FormationJSF/css/styleRV.css" />
 </h:head>
 <h:body>
 	<div class="row-fluid">
@@ -222,20 +222,20 @@
 
 					<div class="tabbable">
 
-						<script src="../bootstrap/js/jquery.js"></script>
-						<script src="../bootstrap/js/bootstrap.min.js"></script>
+						<script src="/FormationJSF/bootstrap/js/jquery.js"></script>
+						<script src="/FormationJSF/bootstrap/js/bootstrap.min.js"></script>
 
 						<ul class="nav nav-tabs">
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"> Stagiaire <b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="../Stagiaire/creerUnStagiaire.jsf">Enregistrer</a></li>
+									<li><a href="../Stagiaire/createStagiaire.jsf">Créer</a></li>
 									<li class="dropdown-submenu"><a href="#">Rechercher</a>
 										<ul class="dropdown-menu">
 											<li><a href="../Stagiaire/recherche.jsf">Un
 													stagiaire</a></li>
-											<li><a href="../Stagiaire/list.jsf">Une liste </a></li>
+											<li><a href="../Stagiaire/listStagiaires.jsf">Une liste </a></li>
 										</ul></li>
 
 
@@ -260,32 +260,48 @@
 								data-toggle="dropdown" href="#"> Formateur <b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="/FormationJSF/Formateur/createFormateur.jsf">Enregistrer</a></li>
-									<li><a href="../Formateur/listFormateurs.jsf">Rechercher</a></li>
+									<li><a href="../Formateur/createFormateur.jsf">Créer</a></li>
+									<li><a href="../Formateur/listFormateurs.jsf">Lister</a></li>
 
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"> Formation<b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="/FormationJSF/Formation/createFormation.jsf">Enregistrer</a></li>
-									<li><a href="../Formation/listFormations.jsf">Rechercher</a></li>
+									<li><a href="../Formation/createFormation.jsf">Créer</a></li>
+									<li><a href="../Formation/listFormations.jsf">Lister</a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"> Session <b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="/FormationJSF/Session/create.jsf">Enregistrer</a></li>
+									<li><a href="../Session/createSession.jsf">Créer</a></li>
 
-									<li><a href="../Session/listSessions.jsf">Rechercher</a></li>
+									<li><a href="../Session/listSessions.jsf">Lister</a></li>
 									<li><a href="../Session/listSessions2.jsf">Supprimer/Modifier</a></li>
+
+								</ul></li>
+								<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> User <b class="caret"></b>
+							</a>
+								<ul class="dropdown-menu">
+									<li><a href="../User/createUser.jsf">Créer</a></li>
+									<li><a href="../User/listUsers.jsf">Lister</a></li>
+
+								</ul></li>
+								<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> Administrateur <b class="caret"></b>
+							</a>
+								<ul class="dropdown-menu">
+									<li><a href="../Administrateur/createAdministrateur.jsf">Créer</a></li>
+									<li><a href="../Administrateur/listAdministrateurs.jsf">Lister</a></li>
 
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"> Evaluation <b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="/FormationJSF/Session/create.jsf">Moyenne
+									<li><a href="../Session/createSession.jsf">Moyenne
 											session</a></li>
 
 									<li><a href="../Session/listSessions.jsf">Moyenne par
@@ -295,9 +311,9 @@
 								</ul></li>
 						</ul>
 					</div>
-
+</div>
 					<div class="row" style="margin-left:0px">
-
+<div class="span8">
 						<article> <ui:insert name="body" /></article>
 
 					</div>

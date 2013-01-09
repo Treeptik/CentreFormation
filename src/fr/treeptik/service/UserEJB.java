@@ -1,7 +1,8 @@
 package fr.treeptik.service;
 
+import java.util.List;
+
 import javax.ejb.EJB;
-import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import fr.treeptik.dao.UserDAO;
@@ -12,7 +13,27 @@ public class UserEJB {
 	@EJB
 	private UserDAO userDAO;
 
+	public void create(User user) {
+		userDAO.create(user);
+	}
+
+	public List<User> findAll() {
+		return userDAO.findAll();
+	}
+
+	public void delete(User user) {
+		userDAO.delete(user);
+	}
+
+	public void update(User user) {
+		userDAO.update(user);
+	}
+	
 	public User findUserByEmail(String email) {
 		return userDAO.findUserByEmail(email);
+	}
+	
+	public String generatePassword() {
+		return userDAO.generatePassword();
 	}
 }

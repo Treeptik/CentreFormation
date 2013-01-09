@@ -19,67 +19,64 @@ import fr.treeptik.service.StagiaireEJB;
 @ManagedBean
 @RequestScoped
 public class AdministrateurTreeptikController {
+	
 
 	@EJB
 	private AdministrateurTreeptikEJB administrateurTreeptikEJB;
 	@EJB
 	private StagiaireEJB stagiaireEJB;
 	@EJB
-	private FormateurEJB formateurEJB;
-
+	private FormateurEJB formateurEJB ;
+	
+	
 	private AdministrateurTreeptik administrateurTreeptik = new AdministrateurTreeptik();
 	private Stagiaire stagiaire = new Stagiaire();
 	private Formateur formateur = new Formateur();
-	private List<AdministrateurTreeptik> listAdministrateurTreeptik = new ArrayList<AdministrateurTreeptik>();
-
+	private List<AdministrateurTreeptik> listAdministrateurTreeptiks = new ArrayList<AdministrateurTreeptik>();
 	@SuppressWarnings("rawtypes")
 	private DataModel administrateurTreeptiks;
 
-	public String doSelectUpdate() {
-		administrateurTreeptik = (AdministrateurTreeptik) administrateurTreeptiks
-				.getRowData();
-		return "updateAdministrateur";
-	}
-
-	public String doUpdate() {
-		administrateurTreeptikEJB.update(administrateurTreeptik);
-		getAdministrateurTreeptiks();
-		return "messageAdministrateurUpdate";
-	}
-
-	public String doCreate() {
+	public String doCreate(){
 		administrateurTreeptikEJB.create(administrateurTreeptik);
-		// stagiaire.setadministrateurTreeptik(administrateurTreeptik);
-		// stagiaireEJB.createUnStagiaire(stagiaire);
-		// formateur.setAdministrateurTreeptik(administrateurTreeptik);
-		// formateurEJB.createUnFormateur(formateur);
-		listAdministrateurTreeptik = administrateurTreeptikEJB.findAll();
-		return "messageAdministrateurCree";
+//		stagiaire.setadministrateurTreeptik(administrateurTreeptik);
+//		stagiaireEJB.createUnStagiaire(stagiaire);
+//		formateur.setAdministrateurTreeptik(administrateurTreeptik);
+//		formateurEJB.createUnFormateur(formateur);
+		listAdministrateurTreeptiks = administrateurTreeptikEJB.findAll();
+		return"messageAdministrateurCree";
 	}
-
+	
 	@SuppressWarnings("rawtypes")
 	public String doDelete() {
-		AdministrateurTreeptik administrateurTreeptik = (AdministrateurTreeptik) administrateurTreeptiks
-				.getRowData();
+		AdministrateurTreeptik administrateurTreeptik = (AdministrateurTreeptik) administrateurTreeptiks.getRowData();
 		administrateurTreeptikEJB.delete(administrateurTreeptik);
 		administrateurTreeptiks = new ListDataModel();
-		administrateurTreeptiks.setWrappedData(administrateurTreeptikEJB
-				.findAll());
+		administrateurTreeptiks.setWrappedData(administrateurTreeptikEJB.findAll());
 		return "listAdministrateurs";
 	}
-
+	
+	public String doSelectUpdate() {
+		administrateurTreeptik = (AdministrateurTreeptik) administrateurTreeptiks.getRowData();
+		return "updateAdministrateur";
+	}
+	
 	@SuppressWarnings("rawtypes")
-	public String doFindAll() {
+	public String doUpdate() {
+		administrateurTreeptikEJB.update(administrateurTreeptik);
 		administrateurTreeptiks = new ListDataModel();
-		administrateurTreeptiks.setWrappedData(administrateurTreeptikEJB
-				.findAll());
-		return "listAdministrateur";
+		administrateurTreeptiks.setWrappedData(administrateurTreeptikEJB.findAll());
+		return "messageAdministrateurUpdate";
 	}
-
-	public String doNew() {
-		return "createAdministrateur";
+	
+	public String doFindAll(){
+		listAdministrateurTreeptiks = administrateurTreeptikEJB.findAll();
+		return"listAdministrateurs";
 	}
-
+	
+	public String doNew(){
+		return"createAdministrateur";
+	}
+	
 	public AdministrateurTreeptikEJB getAdministrateurTreeptikEJB() {
 		return administrateurTreeptikEJB;
 	}
@@ -130,13 +127,13 @@ public class AdministrateurTreeptikController {
 		this.formateur = formateur;
 	}
 
-	public List<AdministrateurTreeptik> getListAdministrateurTreeptik() {
-		return listAdministrateurTreeptik;
+	public List<AdministrateurTreeptik> getListAdministrateurTreeptiks() {
+		return listAdministrateurTreeptiks;
 	}
 
-	public void setListAdministrateurTreeptik(
-			List<AdministrateurTreeptik> listAdministrateurTreeptik) {
-		this.listAdministrateurTreeptik = listAdministrateurTreeptik;
+	public void setListAdministrateurTreeptiks(
+			List<AdministrateurTreeptik> listAdministrateurTreeptiks) {
+		this.listAdministrateurTreeptiks = listAdministrateurTreeptiks;
 	}
 
 	@SuppressWarnings("rawtypes")

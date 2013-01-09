@@ -6,8 +6,8 @@
 <h:head>
 	<title><ui:insert name="titre" /></title>
 
-	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="../bootstrap/js/bootstrap.js" rel="stylesheet" />
+	<link href="/FormationJSF/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="/FormationJSF//bootstrap/js/bootstrap.js" rel="stylesheet" />
 
 	<style>
 [class*="span12"] {
@@ -55,12 +55,16 @@ img {
 			<a><img src="/FormationJSF/Image/Treeptik.Eval.jpg" width="1200"
 					height="100" class="img-rounded" /></a>
 		</div>
+		<h:form>
+		Utilisateur: #{userController.user.username} Rôle: #{userController.user.role} 
+		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
+		</h:form>
 		<div Styleclass="span7">
 			<h:form styleClass="well">
-				<button class="btn btn-large btn-block" type="button"
-					onclick="window.location.href='/FormationJSF/Annexes/acceuilGestion.jsf'; return false;">Administrateur</button>
-				<button class="btn btn-large btn-block btn-primary" type="button"
-					onclick="window.location.href='/FormationJSF/template3/templateEvaluation.jsf'; return false;">Stagiaire</button>
+				<h:button class="btn btn-large btn-block" type="button"
+					onclick="window.location.href='/FormationJSF/pages/protected/admin/Annexes/acceuilGestion.jsf'; return false;" rendered="#{userController.userAdmin}" value="Administrateur"/>
+				<h:button class="btn btn-large btn-block btn-primary" type="button"
+					onclick="window.location.href='acceuilStagiaire.jsf'; return false;" value="Stagiaire"/>
 			</h:form>
 			<img
 				src="https://lh3.googleusercontent.com/-TakV6goOrNY/UKUCVfMMo4I/AAAAAAAAAHI/mByIYxh41Cw/w497-h373/Fotolia_34042847_XS.jpg"

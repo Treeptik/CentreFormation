@@ -5,15 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template5.xhtml">
-	<ui:define name="titre">Formation Mis à Jour</ui:define>
+	<ui:define name="titre">Utilisateur créé</ui:define>
 	<ui:define name="body">
-		<h:form styleClass="well">
-			<legend>Les données de la Formation ont été modifiées avec succès</legend>
-				<a href="../Annexes/acceuilGestion.jsf"> Retour au menu</a>
-				<h:outputText value=" / "/>
-				<a href="../Formation/listFormations.jsf">
+			<h:form styleClass="well">
+				<legend>Le(la) utilisateur a été créé(e) avec succès</legend>
+					<a href="../Annexes/acceuilGestion.jsf"> Retour au menu</a>
+					<h:outputText value=" / "/>
+					<a href="http://localhost:8080/FormationJSF/User/listUsers.jsf">
 					 Retour à la liste</a>
-		</h:form>
+			</h:form>
 	</ui:define>
 </ui:composition>
 </html>

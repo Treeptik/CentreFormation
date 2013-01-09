@@ -4,18 +4,21 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    Page de Connexion
+	<link href="/FormationJSF/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="/FormationJSF//bootstrap/js/bootstrap.js" rel="stylesheet" />
 </h:head>
 <h:body>
-    <p>Connexion pour accèder aux pages sécurisées:</p>
+<a><img src="/FormationJSF/Image/Treeptik.Eval.jpg" width="1200"
+					height="100" class="img-rounded" /></a>
+    <p>Connexion pour accèder au site d'évaluation des formations treeptik :</p>
     <form method="post" action="j_security_check">
-<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
+
         <h:panelGrid columns="2">
-            <h:outputLabel for="j_username" value="Email" />
-            <input type="text" id="j_username" name="j_username" />
-            <h:outputLabel for="j_password" value="Password" />
+         <p>   <label for="j_username">Email :</label>
+            <input type="text" id="j_username" name="j_username" /></p>
+        <p>    <label for="j_password">Password :</label>
             <input type="password" id="j_password" name="j_password" />
-            <input type="submit" name="submit" value="Login" />
+            <input type="submit" name="submit" value="Login" /></p>
         </h:panelGrid>
         <br />
     </form>

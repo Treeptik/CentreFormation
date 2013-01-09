@@ -6,14 +6,17 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
 	version="2.1">
 
- <navigation-rule>
-  <navigation-case>
-   <from-outcome>logout</from-outcome>
-   <to-view-id>/pages/public/login.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
- </navigation-rule>
-
-
+ 	<navigation-rule>
+  		<navigation-case>
+   			<from-outcome>logout</from-outcome>
+   			<to-view-id>/pages/public/login.xhtml</to-view-id>
+   			<redirect/>
+  		</navigation-case>
+  		<navigation-case>
+   			<from-outcome>acceuil</from-outcome>
+   			<to-view-id>/pages/protected/user/Evaluation/acceuil.jsf</to-view-id>
+   			<redirect/>
+  		</navigation-case>
+ 	</navigation-rule>
 
 </faces-config>

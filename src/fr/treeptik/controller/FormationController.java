@@ -21,30 +21,13 @@ public class FormationController {
 	private Formation formation = new Formation();
 	private List<Formation> listFormations = new ArrayList<Formation>();
 	private List<SelectItem> selectFormation;
+	@SuppressWarnings("rawtypes")
+	private DataModel formations;
 
 	public String doCreate() {
 		formationEJB.create(formation);
 		listFormations = formationEJB.findAll();
 		return "messageFormationCreee";
-	}
-
-	public String doFindAll() {
-		listFormations = formationEJB.findAll();
-		return "listFormations";
-	}
-
-	@SuppressWarnings("rawtypes")
-	private DataModel formations;
-
-	public String doSelectUpdate() {
-		formation = (Formation) formations.getRowData();
-		return "updateFormation";
-	}
-
-	public String doUpdate() {
-		formationEJB.update(formation);
-		getFormations();
-		return "messageFormationUpdate";
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -55,6 +38,25 @@ public class FormationController {
 		formations.setWrappedData(formationEJB.findAll());
 		return "listFormations";
 	}
+
+	public String doSelectUpdate() {
+		formation = (Formation) formations.getRowData();
+		return "updateFormation";
+	}
+
+	@SuppressWarnings("rawtypes")
+	public String doUpdate() {
+		formationEJB.update(formation);
+		formations = new ListDataModel();
+		formations.setWrappedData(formationEJB.findAll());
+		return "messageFormationUpdate";
+	}
+	
+	public String doFindAll() {
+		listFormations = formationEJB.findAll();
+		return "listFormations";
+	}
+
 
 	public String doNew() {
 		return "createFormation";
@@ -92,6 +94,7 @@ public class FormationController {
 			selectFormation.add(new SelectItem(formation.getId(), formation
 					.getNom()));
 		}
+
 		return selectFormation;
 	}
 

@@ -26,21 +26,17 @@ public class FormateurController {
 	private Formateur formateur = new Formateur();
 	private List<Formateur> listFormateurs = new ArrayList<Formateur>();
 	private List<SelectItem> selectFormateur;
-
 	@SuppressWarnings("rawtypes")
 	private DataModel formateurs;
 
-	public String doSelectUpdate() {
-		formateur = (Formateur) formateurs.getRowData();
-		return "updateFormateur";
+	public String doCreate() {
+		formateurEJB.create(formateur);
+		// formation.setFormateurs(getListFormateurs().add(formateur));
+		// formationEJB.createUneFormation(formation);
+		// listFormateurs = formateurEJB.findAllFormateurs();
+		return "messageFormateurCree";
 	}
-
-	public String doUpdate() {
-		formateurEJB.update(formateur);
-		getFormateurs();
-		return "messageFormateurUpdate";
-	}
-
+		
 	@SuppressWarnings("rawtypes")
 	public String doDelete() {
 		Formateur formateur = (Formateur) formateurs.getRowData();
@@ -50,12 +46,17 @@ public class FormateurController {
 		return "listFormateurs";
 	}
 
-	public String doCreate() {
-		formateurEJB.create(formateur);
-		// formation.setFormateurs(getListFormateurs().add(formateur));
-		// formationEJB.createUneFormation(formation);
-		// listFormateurs = formateurEJB.findAllFormateurs();
-		return "messageFormateurCree";
+	public String doSelectUpdate() {
+		formateur = (Formateur) formateurs.getRowData();
+		return "updateFormateur";
+	}
+
+	@SuppressWarnings("rawtypes")
+	public String doUpdate() {
+		formateurEJB.update(formateur);
+		formateurs = new ListDataModel();
+		formateurs.setWrappedData(formateurEJB.findAll());
+		return "messageFormateurUpdate";
 	}
 
 	public String doFindAll() {
@@ -110,10 +111,12 @@ public class FormateurController {
 
 	@SuppressWarnings("rawtypes")
 	public DataModel getFormateurs() {
+
 		if (formateurs == null) {
 			formateurs = new ListDataModel();
 			formateurs.setWrappedData(formateurEJB.findAll());
 		}
+
 		return formateurs;
 	}
 

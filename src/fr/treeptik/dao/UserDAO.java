@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.ejb.Stateless;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import fr.treeptik.model.User;
 
 @Stateless
@@ -20,4 +22,10 @@ public class UserDAO extends GenericDAO<User> {
 
 		return super.findOneResult(User.FIND_BY_EMAIL, parameters);
 	}
-}
+
+	public String generatePassword() {
+		String generatedPassword = RandomStringUtils.randomAlphanumeric(10);
+		return generatedPassword;
+	}
+}	
+	

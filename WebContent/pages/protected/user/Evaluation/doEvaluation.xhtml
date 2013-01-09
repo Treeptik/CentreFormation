@@ -27,7 +27,7 @@
 											<p>
 												<Font color="Blue">
 													<center>
-														<B>Merci de repondre à toutes les questions. Ce
+														<B>Merci de répondre à toutes les questions. Ce
 															questionnaire a pour objectif de toujours améliorer la
 															qualité de nos prestations, merci de votre collaboration.
 														</B>
@@ -303,7 +303,7 @@
 								</h5>
 
 								<td><h:inputTextarea
-										value="#{evaluationController.evaluation.sujetApprofondir}"
+										value="#{evaluationController.evaluation.sujetSupprimer}"
 										cols="30" rows="2" /></td>
 							</tr>
 							<tr>
@@ -315,7 +315,7 @@
 
 
 								<td><h:inputTextarea
-										value="#{evaluationController.evaluation.sujetSupprimer}"
+										value="#{evaluationController.evaluation.sujetApprofondir}"
 										cols="30" rows="2" required="true"
 										requiredMessage="le champ materiel est obligatoire" /></td>
 
@@ -375,7 +375,7 @@
 						<h:commandButton StyleClass="btn btn-primary" type="reset"
 							value="Annuler" />
 						<h:commandButton
-							onclick="window.location.href='/FormationJSF/Evaluation/acceuil.xhtml'; return false;"
+							onclick="window.location.href='acceuil.jsf'; return false;"
 							value="Retour" StyleClass="btn btn-primary" />
 
 					</div>

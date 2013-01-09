@@ -6,6 +6,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 import fr.treeptik.model.Evaluation;
@@ -13,7 +15,6 @@ import fr.treeptik.model.Session;
 import fr.treeptik.model.Stagiaire;
 import fr.treeptik.service.EvaluationEJB;
 import fr.treeptik.service.SessionEJB;
-
 
 @ManagedBean
 @SessionScoped
@@ -26,7 +27,7 @@ public class EvaluationController {
 	private SessionEJB sessionEJB;
 
 	private Evaluation evaluation = new Evaluation();
-	
+
 	private List<Evaluation> listEvaluations = new ArrayList<Evaluation>();
 	private List<SelectItem> selectSession = new ArrayList<SelectItem>();
 
@@ -34,12 +35,44 @@ public class EvaluationController {
 	private Session session = new Session();
 
 	private String idStagiaire;
+	
+	@SuppressWarnings("rawtypes")
+	private DataModel evaluations;
+	
+	@EJB
+	private SendTextMessage gestionmail;
 
 	public String doCreate() {
 		System.out.println("Controller stagiaire : " + stagiaire);
 		evaluation.setStagiaire(stagiaire);
+		evaluation.setSession(session);
 		evaluationEJB.create(evaluation);
-		return "message7";
+		gestionmail.mailRecapEvaluation(evaluation);
+		return "messageEvaluationCreee";
+	}
+
+	@SuppressWarnings("rawtypes")
+	public String doDelete() {
+		Evaluation evaluation = (Evaluation) evaluations
+				.getRowData();
+		evaluationEJB.delete(evaluation);
+		evaluations = new ListDataModel();
+		evaluations.setWrappedData(evaluationEJB
+				.findAll());
+		return "listEvaluations";
+	}
+
+	public String doSelectUpdate() {
+		evaluation = (Evaluation) evaluations.getRowData();
+		return "updateEvaluation";
+	}
+
+	@SuppressWarnings("rawtypes")
+	public String doUpdate() {
+		evaluationEJB.update(evaluation);
+		evaluations = new ListDataModel();
+		evaluations.setWrappedData(evaluationEJB.findAll());
+		return "messageEvaluationUpdate";
 	}
 
 	public String doNew() {
@@ -105,6 +138,24 @@ public class EvaluationController {
 
 	public void setSelectSession(List<SelectItem> selectSession) {
 		this.selectSession = selectSession;
+	}
+
+	public List<Evaluation> getListEvaluations() {
+		return listEvaluations;
+	}
+
+	public void setListEvaluations(List<Evaluation> listEvaluations) {
+		this.listEvaluations = listEvaluations;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public DataModel getEvaluations() {
+		return evaluations;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setEvaluations(DataModel evaluations) {
+		this.evaluations = evaluations;
 	}
 
 }
