@@ -18,7 +18,7 @@ import fr.treeptik.service.UserEJB;
 @ManagedBean
 public class UserController {
 
-	private User user = new User();
+	private User user;
 	private List<User> listUsers = new ArrayList<User>();
 	private DataModel users;
 	@EJB
@@ -59,12 +59,18 @@ public class UserController {
 		users.setWrappedData(userEJB.findAll());
 		return "messageUserUpdate";
 	}
+public String qui(){
+	System.out.println(getRequest().getUserPrincipal().toString());
+return getRequest().getUserPrincipal().toString();
+}
 
-
+	
 	public boolean isUserAdmin() {
+
 		return getRequest().isUserInRole("ADMIN");
 	}
-
+	
+	
 	public String logOut() {
 		getRequest().getSession().invalidate();
 		return "logout";

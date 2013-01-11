@@ -22,11 +22,15 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
+		@NamedQuery(name="Stagiaire.findStagiaireByEmail", query="select u from User u where u.email = :email"),
 		@NamedQuery(name = "findAllStagiaires", query = "select s from Stagiaire s "),
 		@NamedQuery(name = "findStagiairesInSession", query = " select s from Session session join session.stagiaires s where session.id=?1 ")})
 public class Stagiaire extends User implements Serializable {
 
+	public static final String FIND_BY_EMAIL = "Stagiaire.findStagiaireByEmail";
 	private static final long serialVersionUID = 1L;
+	
+	
 //	private String nom;
 	private String prenom;
 	@Temporal(TemporalType.DATE)

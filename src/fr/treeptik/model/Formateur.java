@@ -27,7 +27,7 @@ public class Formateur implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private long id;
+	private int id;
 	@Column(nullable = false)
 	private String nom;
 	private String prenom;
@@ -49,11 +49,11 @@ public class Formateur implements Serializable{
 		this.prenom = prenom;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

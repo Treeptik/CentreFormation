@@ -28,9 +28,7 @@ public class SendTextMessage {
 		return "Mme";
 		else return " ";
 	}
-	
-	
-	
+
 	public void mailCreationUser(Stagiaire stagiaire) {
 		try {
 			Message message = new MimeMessage(session);

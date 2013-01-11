@@ -17,7 +17,7 @@ public class Evaluation implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private int id;
 	@Column(length = 20)
 	private int acceuil;
 	private int salle;
@@ -77,11 +77,11 @@ public class Evaluation implements Serializable {
 		this.commentaire = commentaire;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

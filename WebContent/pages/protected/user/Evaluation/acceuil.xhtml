@@ -56,11 +56,14 @@ img {
 					height="100" class="img-rounded" /></a>
 		</div>
 		<h:form>
-		<h:outputText>Utilisateur: #{userController.user.username} Rôle: #{userController.user.role}</h:outputText> 
+
 		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
+		#{stagiaireController.stagiaire.id} #{userController.user}
+		<p>#{administrateurController.administrateur.nom}</p>
 		</h:form>
 		<div Styleclass="span7">
 			<h:form styleClass="well">
+			<h:commandButton action="#{stagiaireController.qui()}" value="Qui" />
 				<h:button class="btn btn-large btn-block" type="button"
 					onclick="window.location.href='/FormationJSF/pages/protected/admin/Annexes/acceuilGestion.jsf'; return false;" rendered="#{userController.userAdmin}" value="Administrateur"/>
 				<h:button class="btn btn-large btn-block btn-primary" type="button"

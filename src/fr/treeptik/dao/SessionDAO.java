@@ -32,7 +32,7 @@ public class SessionDAO extends GenericDAO<Session> {
 		return session;
 	}
 
-	public Session findWithStagiaire(long sessionId) {
+	public Session findWithStagiaire(int sessionId) {
 		Query query = em
 				.createQuery("Select sess From Session sess left join fetch sess.stagiaires s where sess.id=:id");
 		query.setParameter("id", sessionId);

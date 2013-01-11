@@ -6,9 +6,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.Session;
@@ -16,6 +18,7 @@ import fr.treeptik.model.Stagiaire;
 import fr.treeptik.service.EvaluationEJB;
 import fr.treeptik.service.SessionEJB;
 import fr.treeptik.service.StagiaireEJB;
+import fr.treeptik.service.UserEJB;
 
 @ManagedBean
 @SessionScoped
@@ -28,11 +31,14 @@ public class EvaluationController {
 	private SessionEJB sessionEJB;
 	@EJB
 	private StagiaireEJB stagiaireEJB;
+	@EJB
+	private UserEJB userEJB;
+	
 	private List<Evaluation> listEvaluations = new ArrayList<Evaluation>();
 	private List<SelectItem> selectSession;
 	private List<SelectItem> selectStagiaire;
 
-	private Stagiaire stagiaire = new Stagiaire();
+	private Stagiaire stagiaire;
 	private Session session = new Session();
 
 	// private String idStagiaire;
@@ -78,9 +84,14 @@ public class EvaluationController {
 	 * @return "selectStagiaire"
 	 */
 	public String chooseSession() {
+
 		session = sessionEJB.findById(session.getId());
 		evaluation.setSession(session);
-		return "selectStagiaire";
+		stagiaire = stagiaireEJB.findStagiaireByEmail(getRequest()
+				.getUserPrincipal().toString());
+		evaluation.setStagiaire(stagiaire);
+		
+		return "doEvaluation";
 	}
 
 	public String chooseStagiaire() {
@@ -211,5 +222,9 @@ public class EvaluationController {
 	// public void setIdStagiaire(String idStagiaire) {
 	// this.idStagiaire = idStagiaire;
 	// }
+	private HttpServletRequest getRequest() {
+		return (HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest();
+	}
 
 }

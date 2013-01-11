@@ -6,9 +6,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.Formation;
@@ -22,9 +24,10 @@ public class StagiaireController {
 
 	@EJB
 	private StagiaireEJB stagiaireEJB;
-
 	@EJB
 	private FormationEJB formationEJB;
+	@EJB
+	private SendTextMessage gestionmail;
 
 	private Formation formation = new Formation();
 	private Evaluation evaluation = new Evaluation();
@@ -37,6 +40,7 @@ public class StagiaireController {
 
 	public String doCreate() {
 		stagiaireEJB.create(stagiaire);
+		gestionmail.mailCreationUser(stagiaire);
 		listStagiaires = stagiaireEJB.findAll();
 		getStagiaires();
 		return "messageStagiaireCree";
@@ -54,6 +58,14 @@ public class StagiaireController {
 	public String doSelectUpdate() {
 		stagiaire = (Stagiaire) stagiaires.getRowData();
 		return "updateStagiaire";
+	}
+
+	public void qui() {
+		System.out.println(getRequest().getUserPrincipal().toString());
+		System.out.println("ça marche?");
+		
+		
+		System.out.println(stagiaire.getNom());
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -163,6 +175,11 @@ public class StagiaireController {
 	@SuppressWarnings("rawtypes")
 	public void setStagiaires(DataModel stagiaires) {
 		this.stagiaires = stagiaires;
+	}
+
+	private HttpServletRequest getRequest() {
+		return (HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest();
 	}
 
 }

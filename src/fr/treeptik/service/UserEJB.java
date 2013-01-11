@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import fr.treeptik.dao.UserDAO;
+import fr.treeptik.model.Stagiaire;
 import fr.treeptik.model.User;
 
 @Stateless
@@ -27,6 +28,10 @@ public class UserEJB {
 
 	public void update(User user) {
 		userDAO.update(user);
+	}
+	
+	public User findById(int id) {
+		return userDAO.findById(id);
 	}
 	
 	public User findUserByEmail(String email) {

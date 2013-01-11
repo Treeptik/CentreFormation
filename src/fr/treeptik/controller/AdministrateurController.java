@@ -6,8 +6,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.treeptik.model.Administrateur;
 import fr.treeptik.model.Formateur;
@@ -149,4 +151,10 @@ public class AdministrateurController {
 	public void setAdministrateurs(DataModel administrateurs) {
 		this.administrateurs = administrateurs;
 	}
+	
+	private HttpServletRequest getRequest() {
+		return (HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest();
+	}
+	
 }

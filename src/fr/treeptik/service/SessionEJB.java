@@ -39,15 +39,15 @@ public class SessionEJB {
 		sessionDAO.refresh(session);
 	}
 
-	public Session findById(long id) {
+	public Session findById(int id) {
 		return sessionDAO.findById(id);
 	}
 
-	public Session findWithStagiaire(long sessionId) {
+	public Session findWithStagiaire(int sessionId) {
 		return sessionDAO.findWithStagiaire(sessionId);
 	}
 
-	public void addStagiaire(long sessionId, long stagiaireId) {
+	public void addStagiaire(int sessionId, int stagiaireId) {
 		Session session = sessionDAO.findWithStagiaire(sessionId);
 		Stagiaire stagiaire = stagiaireDAO.findById(stagiaireId);
 		session.getStagiaires().add(stagiaire);
