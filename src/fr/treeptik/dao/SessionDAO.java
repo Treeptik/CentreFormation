@@ -18,11 +18,11 @@ public class SessionDAO extends GenericDAO<Session> {
 
 	public Session createUneSession(Session session) {
 		ArrayList<Formation> tmpSession = new ArrayList<Formation>();
-		for (Formation formation : session.getFormations()) {
+		for (Formation formation : session.getListFormations()) {
 			tmpSession.add(em.find(Formation.class, formation.getId()));
 		}
 		ArrayList<Formateur> tmpFormateur = new ArrayList<Formateur>();
-		for (Formateur formateur : session.getFormateurs()) {
+		for (Formateur formateur : session.getListFormateurs()) {
 			tmpFormateur.add(em.find(Formateur.class, formateur.getId()));
 		}
 		session.setFormations(tmpSession);

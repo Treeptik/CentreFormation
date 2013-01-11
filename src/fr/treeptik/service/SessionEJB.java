@@ -15,7 +15,6 @@ public class SessionEJB {
 
 	@EJB
 	private SessionDAO sessionDAO;
-
 	@EJB
 	private StagiaireDAO stagiaireDAO;
 
@@ -50,7 +49,7 @@ public class SessionEJB {
 	public void addStagiaire(int sessionId, int stagiaireId) {
 		Session session = sessionDAO.findWithStagiaire(sessionId);
 		Stagiaire stagiaire = stagiaireDAO.findById(stagiaireId);
-		session.getStagiaires().add(stagiaire);
+		session.getListStagiaires().add(stagiaire);
 	}
 
 }

@@ -14,21 +14,15 @@
 				value="#{evaluationController.evaluations}" var="eval">
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ID" />
+						<h:outputText value="Session" />
 					</f:facet>
-					<h:outputText value="#{eval.id}" />
+					<h:outputText value="#{eval.id.session.nom}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Stagiaire" />
 					</f:facet>
-					<h:outputText value="#{eval.stagiaire.nom}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Session" />
-					</f:facet>
-					<h:outputText value="#{eval.session.nom}" />
+					<h:outputText value="#{eval.id.stagiaire.nom}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">

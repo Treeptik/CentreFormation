@@ -9,6 +9,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
+
 import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.Stagiaire;
 import fr.treeptik.model.User;
@@ -60,19 +62,19 @@ public class SendTextMessage {
 			message.setFrom(new InternetAddress("h.fontbonne@treeptik.fr"));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse("rvfontbonne@hotmail.com"));
-			message.setSubject(evaluation.getStagiaire().getNom()
+			message.setSubject(evaluation.getId().getStagiaire().getNom()
 					+ " "
-					+ evaluation.getStagiaire().getPrenom()
+					+ evaluation.getId().getStagiaire().getPrenom()
 					+ " a effectué l'évaluation de la session "
-					+ evaluation.getSession().getNom()
+					+ evaluation.getId().getSession().getNom()
 					+ ".");
 			
 			message.setText("Bonjour,"  
-					+evaluation.getStagiaire().getNom()
+					+evaluation.getId().getStagiaire().getNom()
 					+ " "  
-					+ evaluation.getStagiaire().getPrenom()
+					+ evaluation.getId().getStagiaire().getPrenom()
 					+ " a effectué l'évaluation de la session "
-					+ evaluation.getSession().getNom()
+					+ evaluation.getId().getSession().getNom()
 					+ "."
 					+ "\n\nVoici le récapitulatif de son évaluation:"
 					+ "\n\nComment avez-vous trouvé..."

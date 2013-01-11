@@ -34,8 +34,8 @@ public class Formateur implements Serializable{
 //	@Column
 //	private String specialite;
 
-	@ManyToMany(mappedBy = "formateurs")
-	private List<Session> sessions;
+	@ManyToMany(mappedBy = "listFormateurs")
+	private List<Session> listSessions;
 
 	@ManyToOne()
 	private Administrateur administrateur;

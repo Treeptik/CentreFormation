@@ -3,21 +3,17 @@ package fr.treeptik.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Evaluation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	@EmbeddedId
+	private CompoKeysEval id;
+
 	@Column(length = 20)
 	private int acceuil;
 	private int salle;
@@ -39,13 +35,13 @@ public class Evaluation implements Serializable {
 	@Column(length = 200)
 	private String projet;
 	private String commentaire;
-	
+/*	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Stagiaire stagiaire;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Session session;
-
+*/
 	public Evaluation() {
 	}
 
@@ -75,14 +71,6 @@ public class Evaluation implements Serializable {
 		this.autreStage = autreStage;
 		this.projet = projet;
 		this.commentaire = commentaire;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getAcceuil() {
@@ -236,7 +224,7 @@ public class Evaluation implements Serializable {
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
-
+/*
 	public Stagiaire getStagiaire() {
 		return stagiaire;
 	}
@@ -256,5 +244,26 @@ public class Evaluation implements Serializable {
 	public void setSession(Session session) {
 		this.session = session;
 	}
+*/
 
+	/**
+	 * @return the id
+	 */
+	public CompoKeysEval getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(CompoKeysEval id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

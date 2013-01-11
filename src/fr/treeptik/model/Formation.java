@@ -24,8 +24,8 @@ public class Formation implements Serializable {
 	@Column(length = 50)
 	private String nom;
 	
-	@ManyToMany(mappedBy = "formations")
-	private List<Session> sessions;
+	@ManyToMany(mappedBy = "listFormations")
+	private List<Session> listSessions;
 
 
 	public Formation(String nom) {
@@ -56,12 +56,12 @@ public class Formation implements Serializable {
 		return serialVersionUID;
 	}
 
-	public List<Session> getSessions() {
-		return sessions;
+	public List<Session> getListSessions() {
+		return listSessions;
 	}
 
-	public void setSessions(List<Session> sessions) {
-		this.sessions = sessions;
+	public void setListSessions(List<Session> listSessions) {
+		this.listSessions = listSessions;
 	}
 
 }

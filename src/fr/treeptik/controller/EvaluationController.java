@@ -12,6 +12,7 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
+import fr.treeptik.model.CompoKeysEval;
 import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.Session;
 import fr.treeptik.model.Stagiaire;
@@ -38,6 +39,7 @@ public class EvaluationController {
 	private List<SelectItem> selectSession;
 	private List<SelectItem> selectStagiaire;
 
+	private CompoKeysEval compoKeyEval = new CompoKeysEval();
 	private Stagiaire stagiaire;
 	private Session session = new Session();
 
@@ -50,9 +52,15 @@ public class EvaluationController {
 	private SendTextMessage gestionmail;
 
 	public String doCreate() {
+		try{
 		evaluationEJB.create(evaluation);
 		gestionmail.mailRecapEvaluation(evaluation);
 		return "messageEvaluationEffectue";
+		}
+		catch (Exception e){
+		return "messageEvaluationDejaEffectue";
+		}
+
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -86,17 +94,15 @@ public class EvaluationController {
 	public String chooseSession() {
 
 		session = sessionEJB.findById(session.getId());
-		evaluation.setSession(session);
+		compoKeyEval.setSession(session);
+		
+
 		stagiaire = stagiaireEJB.findStagiaireByEmail(getRequest()
 				.getUserPrincipal().toString());
-		evaluation.setStagiaire(stagiaire);
+		compoKeyEval.setStagiaire(stagiaire);
+//		evaluation.setStagiaire(stagiaire);
+		evaluation.setId(compoKeyEval);
 		
-		return "doEvaluation";
-	}
-
-	public String chooseStagiaire() {
-		stagiaire = stagiaireEJB.findById(stagiaire.getId());
-		evaluation.setStagiaire(stagiaire);
 		return "doEvaluation";
 	}
 

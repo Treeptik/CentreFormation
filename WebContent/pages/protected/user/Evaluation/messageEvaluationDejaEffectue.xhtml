@@ -8,9 +8,11 @@
 	<ui:define name="titre">Evaluation effectuée</ui:define>
 	<ui:define name="body">
 			<h:form styleClass="well">
-				<legend>Vous : #{evaluationController.evaluation.id.stagiaire.nom}  
-				#{evaluationController.evaluation.id.stagiaire.prenom} avait effectuée
-				l'évaluation de #{evaluationController.evaluation.id.session.nom}</legend>
+				<legend><p>!! Erreur !!</p>
+				<p>A Priori #{evaluationController.evaluation.id.stagiaire.nom}  
+				#{evaluationController.evaluation.id.stagiaire.prenom}</p>
+				 a <u>DEJA</u> effectuée
+				l'évaluation de <u>#{evaluationController.evaluation.id.session.nom}</u></legend>
 					<a href="acceuil.jsf"> Retour au menu</a>
 
 			</h:form>

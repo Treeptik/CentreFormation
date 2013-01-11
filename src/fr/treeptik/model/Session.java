@@ -28,13 +28,13 @@ public class Session implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dateFinStage;
 	@ManyToMany
-	private List<Formateur> formateurs;
+	private List<Formateur> listFormateurs;
 	@ManyToMany
-	private List<Formation> formations;
+	private List<Formation> listFormations;
 	@ManyToMany
-	private List<Stagiaire> stagiaires;
-	@OneToMany(mappedBy = "session", cascade = CascadeType.PERSIST)
-	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
+	private List<Stagiaire> listStagiaires;
+//	@OneToMany(mappedBy = "session", cascade = CascadeType.PERSIST)
+//	private List<Evaluation> listEvaluations = new ArrayList<Evaluation>();
 	
 	public Session() {
 	}
@@ -61,20 +61,20 @@ public class Session implements Serializable {
 		this.dateFinStage = dateFinStage;
 	}
 
-	public List<Formateur> getFormateurs() {
-		return formateurs;
+	public List<Formateur> getListFormateurs() {
+		return listFormateurs;
 	}
 
-	public void setFormateurs(List<Formateur> formateurs) {
-		this.formateurs = formateurs;
+	public void setFormateurs(List<Formateur> listFormateurs) {
+		this.listFormateurs = listFormateurs;
 	}
 
-	public List<Formation> getFormations() {
-		return formations;
+	public List<Formation> getListFormations() {
+		return listFormations;
 	}
 
-	public void setFormations(List<Formation> formations) {
-		this.formations = formations;
+	public void setFormations(List<Formation> listFormations) {
+		this.listFormations = listFormations;
 	}
 
 	public int getId() {
@@ -85,12 +85,12 @@ public class Session implements Serializable {
 		this.id = id;
 	}
 
-	public List<Stagiaire> getStagiaires() {
-		return stagiaires;
+	public List<Stagiaire> getListStagiaires() {
+		return listStagiaires;
 	}
 
-	public void setStagiaires(List<Stagiaire> stagiaires) {
-		this.stagiaires = stagiaires;
+	public void setListStagiaires(List<Stagiaire> listStagiaires) {
+		this.listStagiaires = listStagiaires;
 	}
 
 	public String getNom() {
@@ -100,13 +100,112 @@ public class Session implements Serializable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-	public List<Evaluation> getEvaluations() {
-		return evaluations;
+/*
+	public List<Evaluation> getListEvaluations() {
+		return listEvaluations;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setEvaluations(List<Evaluation> listEvaluations) {
+		this.listEvaluations = listEvaluations;
+	}
+*/
+
+	/**
+	 * @param listFormateurs the listFormateurs to set
+	 */
+	public void setListFormateurs(List<Formateur> listFormateurs) {
+		this.listFormateurs = listFormateurs;
 	}
 
+	/**
+	 * @param listFormations the listFormations to set
+	 */
+	public void setListFormations(List<Formation> listFormations) {
+		this.listFormations = listFormations;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((dateDebutStage == null) ? 0 : dateDebutStage.hashCode());
+		result = prime * result
+				+ ((dateFinStage == null) ? 0 : dateFinStage.hashCode());
+		result = prime * result + id;
+		result = prime * result
+				+ ((listFormateurs == null) ? 0 : listFormateurs.hashCode());
+		result = prime * result
+				+ ((listFormations == null) ? 0 : listFormations.hashCode());
+		result = prime * result
+				+ ((listStagiaires == null) ? 0 : listStagiaires.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Session)) {
+			return false;
+		}
+		Session other = (Session) obj;
+		if (dateDebutStage == null) {
+			if (other.dateDebutStage != null) {
+				return false;
+			}
+		} else if (!dateDebutStage.equals(other.dateDebutStage)) {
+			return false;
+		}
+		if (dateFinStage == null) {
+			if (other.dateFinStage != null) {
+				return false;
+			}
+		} else if (!dateFinStage.equals(other.dateFinStage)) {
+			return false;
+		}
+		if (id != other.id) {
+			return false;
+		}
+		if (listFormateurs == null) {
+			if (other.listFormateurs != null) {
+				return false;
+			}
+		} else if (!listFormateurs.equals(other.listFormateurs)) {
+			return false;
+		}
+		if (listFormations == null) {
+			if (other.listFormations != null) {
+				return false;
+			}
+		} else if (!listFormations.equals(other.listFormations)) {
+			return false;
+		}
+		if (listStagiaires == null) {
+			if (other.listStagiaires != null) {
+				return false;
+			}
+		} else if (!listStagiaires.equals(other.listStagiaires)) {
+			return false;
+		}
+		if (nom == null) {
+			if (other.nom != null) {
+				return false;
+			}
+		} else if (!nom.equals(other.nom)) {
+			return false;
+		}
+		return true;
+	}
 }

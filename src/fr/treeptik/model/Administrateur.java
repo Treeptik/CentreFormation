@@ -18,79 +18,28 @@ import javax.persistence.OneToMany;
 @NamedQueries({ @NamedQuery(name = "findAllAdministrateurs", query = "select a from Administrateur a") })
 public class Administrateur extends User {
 
-/*
-	@Column(length = 50)
-	private String nom;
-	private String email;
-	private String password;
-	private String role ="ADMIN";*/
-	
 	@OneToMany(mappedBy = "administrateur", cascade = CascadeType.PERSIST)
-	private List<Stagiaire> stagiaires = new ArrayList<Stagiaire>();
-	
+	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
 	@OneToMany(mappedBy = "administrateur", cascade = CascadeType.PERSIST)
-	private List<Formateur> formateurs = new ArrayList<Formateur>();
+	private List<Formateur> listFormateurs = new ArrayList<Formateur>();
 
 	public Administrateur() {
 		super();
 	}
 
-/*
-	public int getId() {
-		return id;
+	public List<Stagiaire> getListStagiaires() {
+		return listStagiaires;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setListStagiaires(List<Stagiaire> listStagiaires) {
+		this.listStagiaires = listStagiaires;
 	}
 
-	public String getNom() {
-		return nom;
+	public List<Formateur> getListFormateurs() {
+		return listFormateurs;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setListFormateurs(List<Formateur> listFormateurs) {
+		this.listFormateurs = listFormateurs;
 	}
-*/
-	public List<Stagiaire> getStagiaires() {
-		return stagiaires;
-	}
-
-	public void setStagiaires(List<Stagiaire> stagiaires) {
-		this.stagiaires = stagiaires;
-	}
-
-	public List<Formateur> getFormateurs() {
-		return formateurs;
-	}
-
-	public void setFormateurs(List<Formateur> formateurs) {
-		this.formateurs = formateurs;
-	}
-/*
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-*/
-
 }
