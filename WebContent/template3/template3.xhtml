@@ -22,6 +22,10 @@
 			</div>
 			<div class="row">
 				<div class="span3">
+							<h:form>
+		<h:outputText>Utilisateur: #{userController.user.username} Rôle: #{userController.user.role}</h:outputText> 
+		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
+		</h:form>
 					<table class="table table-hover">
 						<tbody>
 							<tr>
@@ -301,8 +305,7 @@
 								data-toggle="dropdown" href="#"> Evaluation <b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="../Session/createSession.jsf">Moyenne
-											session</a></li>
+									<li><a href="../Annexes/listEvaluations.jsf">Liste</a></li>
 
 									<li><a href="../Session/listSessions.jsf">Moyenne par
 											prof</a></li>

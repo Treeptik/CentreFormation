@@ -56,7 +56,7 @@ img {
 					height="100" class="img-rounded" /></a>
 		</div>
 		<h:form>
-		Utilisateur: #{userController.user.username} Rôle: #{userController.user.role} 
+		<h:outputText>Utilisateur: #{userController.user.username} Rôle: #{userController.user.role}</h:outputText> 
 		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
 		</h:form>
 		<div Styleclass="span7">

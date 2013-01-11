@@ -13,17 +13,33 @@
 					<p>
 						<h:outputText value="Nom : " />
 						<h:inputText 
-						value="#{administrateurTreeptikController.administrateurTreeptik.nom}" required="true"
+						value="#{administrateurController.administrateur.nom}" required="true"
 									validatorMessage=" nom invalide ">
 							<f:validateLength minimum="2" maximum="30" />
 						</h:inputText>
-						<h:messages />		
 					</p>
+					<p>
+						<h:outputText value="E-mail : "/>
+						<h:inputText id="Email"
+							value="#{administrateurController.administrateur.email}" required="true"
+							validatorMessage="Format de e-mail invalide">
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</h:inputText>
+						</p>
+						<p>
+							<h:outputText value="Mot de passe : "/>
+							<h:inputText value="#{administrateurController.administrateur.password}"
+								required="true" validatorMessage="mot de passe trop court">
+								<f:validateLength minimum="5" maximum="20" />
+							</h:inputText>
+						</p>
+						<h:messages />		
 					<div class="table">
 						<tr>
 							<td> 
 								<h:commandButton 
-								action="#{administrateurTreeptikController.doCreate()}" 
+								action="#{administrateurController.doCreate()}" 
 								value="Créer" styleClass="btn btn-primary"/> </td>
 							<td><h:button type="reset" class="btn btn-primary"
 								value="Annuler"></h:button></td>

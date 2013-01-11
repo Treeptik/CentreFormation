@@ -5,24 +5,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQuery;
 
 @Entity
-
 @NamedQuery(name="User.findUserByEmail", query="select u from User u where u.email = :email")
 public class User {
 
- public static final String FIND_BY_EMAIL = "User.findUserByEmail";
+public static final String FIND_BY_EMAIL = "User.findUserByEmail";
 
  @Id
  @GeneratedValue(strategy=GenerationType.AUTO)
  private int id;
-
  @Column(unique = true)
+ private String nom;
  private String email;
  private String password;
- private String username;
  private String role;
+ 
+ public User() {
+	}
 
  public int getId() {
   return id;
@@ -48,12 +51,12 @@ public class User {
   this.password = password;
  }
 
- public String getUsername() {
-  return username;
+ public String getNom() {
+  return nom;
  }
 
- public void setUsername(String username) {
-  this.username = username;
+ public void setNom(String nom) {
+  this.nom = nom;
  }
 
  public String getRole() {

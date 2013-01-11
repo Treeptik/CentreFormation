@@ -3,6 +3,7 @@ package fr.treeptik.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,34 +15,32 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "findAllAdministrateurs", query = "select a from AdministrateurTreeptik a") })
-public class AdministrateurTreeptik {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+@NamedQueries({ @NamedQuery(name = "findAllAdministrateurs", query = "select a from Administrateur a") })
+public class Administrateur extends User {
+
+/*
 	@Column(length = 50)
 	private String nom;
+	private String email;
+	private String password;
+	private String role ="ADMIN";*/
 	
-	@OneToMany(mappedBy = "administrateurTreeptik", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "administrateur", cascade = CascadeType.PERSIST)
 	private List<Stagiaire> stagiaires = new ArrayList<Stagiaire>();
 	
-	@OneToMany(mappedBy = "administrateurTreeptik", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "administrateur", cascade = CascadeType.PERSIST)
 	private List<Formateur> formateurs = new ArrayList<Formateur>();
 
-	public AdministrateurTreeptik() {
+	public Administrateur() {
 		super();
 	}
 
-	public AdministrateurTreeptik(String nom) {
-		super();
-		this.nom = nom;
-	}
-
-	public long getId() {
+/*
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -52,7 +51,7 @@ public class AdministrateurTreeptik {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
+*/
 	public List<Stagiaire> getStagiaires() {
 		return stagiaires;
 	}
@@ -68,6 +67,30 @@ public class AdministrateurTreeptik {
 	public void setFormateurs(List<Formateur> formateurs) {
 		this.formateurs = formateurs;
 	}
+/*
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+*/
 
 }

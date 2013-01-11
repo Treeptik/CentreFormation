@@ -19,8 +19,8 @@
 				<div class="control-group">
 					<div class="controls">
 						<div class="table">
-
-
+<h:inputHidden value="#{evaluationController.evaluation.session.id}" />
+<h:inputHidden value="#{evaluationController.evaluation.stagiaire.id}" />
 							<table class="table table-hover" border="0" bgcolor="#FDD131">
 								<tr>
 									<td><BASEFONT>
@@ -316,8 +316,7 @@
 
 								<td><h:inputTextarea
 										value="#{evaluationController.evaluation.sujetApprofondir}"
-										cols="30" rows="2" required="true"
-										requiredMessage="le champ materiel est obligatoire" /></td>
+										cols="30" rows="2"/></td>
 
 							</tr>
 
@@ -373,7 +372,7 @@
 							action="#{evaluationController.doCreate()}"
 							value="Valider" StyleClass="btn btn-primary" />
 						<h:commandButton StyleClass="btn btn-primary" type="reset"
-							value="Annuler" />
+							value="Annuler" immediate="true" />
 						<h:commandButton
 							onclick="window.location.href='acceuil.jsf'; return false;"
 							value="Retour" StyleClass="btn btn-primary" />

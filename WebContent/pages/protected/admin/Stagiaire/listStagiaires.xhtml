@@ -5,9 +5,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
-	<ui:define name="titre">List des tous les stagiares</ui:define>
+	<ui:define name="titre">List des Stagiaires</ui:define>
 	<ui:define name="body">
-		<h2>Liste de tous les stagiaires</h2>
+		<h2>Liste des Stagiaires</h2>
 
 		<h:form>
 			<h:dataTable class="table table-bordered table-striped" 
@@ -37,8 +37,6 @@
 					</f:facet>
 					<h:outputText value="#{st.dateNaissance}" />
 				</h:column>
-	
-	
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Adresse" />
@@ -67,7 +65,7 @@
 					<f:facet name="header">
 						<h:outputText value="E-mail" />
 					</f:facet>
-					<h:outputText value="#{st.mail}" />
+					<h:outputText value="#{st.email}" />
 				</h:column>
 	
 	
@@ -77,7 +75,6 @@
 					</f:facet>
 					<h:outputText value="#{st.sexe}" />
 				</h:column>
-	
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Diplome" />
@@ -89,6 +86,12 @@
 						<h:outputText value="Domaine" />
 					</f:facet>
 					<h:outputText value="#{st.domaine}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Domaine" />
+					</f:facet>
+					<h:outputText value="#{st.password}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">

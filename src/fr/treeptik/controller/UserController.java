@@ -33,7 +33,6 @@ public class UserController {
 	public String doCreate() {
 		user.setPassword(userEJB.generatePassword());
 		userEJB.create(user);
-		gestionmail.mailCreationUser(user);
 		listUsers = userEJB.findAll();
 		getUsers();
 		return "messageUserCree";

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,17 +22,12 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "findALLStagiaires", query = "select s from Stagiaire s "),
+		@NamedQuery(name = "findAllStagiaires", query = "select s from Stagiaire s "),
 		@NamedQuery(name = "findStagiairesInSession", query = " select s from Session session join session.stagiaires s where session.id=?1 ")})
-public class Stagiaire implements Serializable {
+public class Stagiaire extends User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
-	@Column(nullable = false, length = 20)
-	private String nom;
+//	private String nom;
 	private String prenom;
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
@@ -40,28 +36,28 @@ public class Stagiaire implements Serializable {
 	private String codePostal;
 	private String ville;
 	private String tel;
-	private String mail;
+//	private String email;
 	private String sexe;
 	private String diplome;
 	private String domaine;
-	
+//	private String password;
+//	private String role= "USER";
 	
 	@OneToMany(mappedBy = "stagiaire", cascade = CascadeType.PERSIST)
 	private List<Evaluation> evaluations = new ArrayList<Evaluation>();
 
 	@ManyToOne()
-	private AdministrateurTreeptik administrateurTreeptik;
+	private Administrateur administrateur;
 	
 	@ManyToMany(mappedBy = "stagiaires")
 	private List<Session> sessions;
 
-
 	public Stagiaire() {
 		super();
 	}
-
+	/*
 	public Stagiaire(String nom, String prenom, Date dateNaissance,
-			String adresse, String codePostal, String ville, String tel, String mail,
+			String adresse, String codePostal, String ville, String tel, String email,
 			String sexe, String diplome, String domaine) {
 		super();
 		this.nom = nom;
@@ -71,7 +67,7 @@ public class Stagiaire implements Serializable {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.tel = tel;
-		this.mail = mail;
+		this.email = email;
 		this.sexe = sexe;
 		this.diplome = diplome;
 		this.domaine = domaine;
@@ -79,11 +75,11 @@ public class Stagiaire implements Serializable {
 
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -94,7 +90,7 @@ public class Stagiaire implements Serializable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
+*/
 	public String getPrenom() {
 		return prenom;
 	}
@@ -134,15 +130,15 @@ public class Stagiaire implements Serializable {
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
-
-	public String getMail() {
-		return mail;
+/*
+	public String getEmail() {
+		return email;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
+*/
 	public String getSexe() {
 		return sexe;
 	}
@@ -179,13 +175,13 @@ public class Stagiaire implements Serializable {
 		this.evaluations = evaluations;
 	}
 	
-	public AdministrateurTreeptik getadministrateurTreeptik() {
-		return administrateurTreeptik;
+	public Administrateur getadministrateur() {
+		return administrateur;
 	}
 
-	public void setadministrateurTreeptik(
-			AdministrateurTreeptik administrateurTreeptik) {
-		this.administrateurTreeptik = administrateurTreeptik;
+	public void setadministrateur(
+			Administrateur administrateur) {
+		this.administrateur = administrateur;
 	}
 
 	public String getTel() {
@@ -196,13 +192,37 @@ public class Stagiaire implements Serializable {
 		this.tel = tel;
 	}
 
-	public AdministrateurTreeptik getAdministrateurTreeptik() {
-		return administrateurTreeptik;
+	public Administrateur getAdministrateur() {
+		return administrateur;
 	}
 
-	public void setAdministrateurTreeptik(
-			AdministrateurTreeptik administrateurTreeptik) {
-		this.administrateurTreeptik = administrateurTreeptik;
+	public void setAdministrateur(
+			Administrateur administrateur) {
+		this.administrateur = administrateur;
+	}
+/*
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+*/
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
 	}
 
 }

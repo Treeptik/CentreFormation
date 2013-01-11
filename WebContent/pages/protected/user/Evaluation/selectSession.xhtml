@@ -9,7 +9,7 @@
 	<ui:define name="body">
 		<div Styleclass="span7">
 			<h:form styleClass="well">
-				<h3>Veuillez chercher votre Session et validez:</h3>
+				<h3>Veuillez choisir votre Session</h3>
 				<center>
 					<div class="table">
 						<tr>
@@ -18,8 +18,8 @@
 							</h:selectOneMenu>
 						</tr>
 						<div>
-							<h:commandButton action="selectStagiaire" value="Valider" />
-							<input type="reset" Name="annuler" value="Annuler" />
+							<h:commandButton action="#{evaluationController.chooseSession()}" value="Valider" />
+							<input type="reset" name="annuler" value="Annuler" />
 						</div>
 					</div>
 				</center>

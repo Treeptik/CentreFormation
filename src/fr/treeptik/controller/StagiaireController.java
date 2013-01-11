@@ -32,7 +32,6 @@ public class StagiaireController {
 
 	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
 	private List<SelectItem> selectFormation;
-	private List<SelectItem> selectNom = new ArrayList<SelectItem>();
 	@SuppressWarnings("rawtypes")
 	private DataModel stagiaires;
 
@@ -143,21 +142,6 @@ public class StagiaireController {
 	// public void setSelectFormation(List<SelectItem> selectFormation) {
 	// this.selectFormation = selectFormation;
 	// }
-
-	public List<SelectItem> getSelectNom() {
-		selectNom = new ArrayList<SelectItem>();
-		List<Stagiaire> allNames = stagiaireEJB.findAll();
-		for (Stagiaire stagiaire : allNames) {
-			selectNom
-					.add(new SelectItem(stagiaire.getId(), stagiaire.getNom()));
-		}
-
-		return selectNom;
-	}
-
-	public void setSelectNom(List<SelectItem> selectNom) {
-		this.selectNom = selectNom;
-	}
 
 	public Evaluation getEvaluation() {
 		return evaluation;

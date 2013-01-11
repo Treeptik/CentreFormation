@@ -10,4 +10,8 @@ public class EvaluationDAO extends GenericDAO<Evaluation> {
 	public EvaluationDAO() {
 		super(Evaluation.class);
 	}
+	
+	public void create(Evaluation evaluation) {
+		em.persist(evaluation);
+	}
 }

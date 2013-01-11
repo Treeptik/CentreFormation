@@ -8,9 +8,9 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.persistence.Column;
 
 import fr.treeptik.model.Evaluation;
+import fr.treeptik.model.Stagiaire;
 import fr.treeptik.model.User;
 
 @Stateless
@@ -19,23 +19,34 @@ public class SendTextMessage {
 	@Resource(mappedName = "java:jboss/mail/gmail")
 	Session session;
 	static String CREATIONUSER = "Confirmation d'inscription pour l'évaluation de la formation";
+	
 
-	public void mailCreationUser(User user) {
+	private String MrMme(Stagiaire stagiaire){
+		if(stagiaire.getSexe().equals("Homme"))
+		return "Mr.";
+		if(stagiaire.getSexe().equals("Femme"))
+		return "Mme";
+		else return " ";
+	}
+	
+	
+	
+	public void mailCreationUser(Stagiaire stagiaire) {
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("h.fontbonne@treeptik.fr"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(user.getEmail()));
+					InternetAddress.parse(stagiaire.getEmail()));
 			message.setSubject(CREATIONUSER);
-			message.setText("Bonjour,Mr.(Mme)"
-					+ user.getUsername()
+			message.setText("Bonjour "+MrMme(stagiaire)+" "
+					+ stagiaire.getNom()
 					+ ","
 					+ "\n\nVotre inscription pour évaluer la formation a été effectuée."
 					+ "\nPour vous connectez, voici vos identifiants:"
 					+ "\n email :"
-					+ user.getEmail()
+					+ stagiaire.getEmail()
 					+ "\n    mot de passe :"
-					+ user.getPassword()
+					+ stagiaire.getPassword()
 					+ "\n\n"
 					+ "Veuillez garder cet email, vos identifiants doivent être conservés."
 					+ "\n\nCordialement," + "\nL'équipe Treeptik.");
@@ -54,18 +65,19 @@ public class SendTextMessage {
 			message.setSubject(evaluation.getStagiaire().getNom()
 					+ " "
 					+ evaluation.getStagiaire().getPrenom()
-					+ "a effectué l'évaluation de la session"
+					+ " a effectué l'évaluation de la session "
 					+ evaluation.getSession().getNom()
 					+ ".");
 			
-			message.setText("Bonjour,"+evaluation.getStagiaire().getNom()
-					+ " "
+			message.setText("Bonjour,"  
+					+evaluation.getStagiaire().getNom()
+					+ " "  
 					+ evaluation.getStagiaire().getPrenom()
-					+ "a effectué l'évaluation de la session"
+					+ " a effectué l'évaluation de la session "
 					+ evaluation.getSession().getNom()
 					+ "."
-					+ "\n\nVoici le récapitulatif de son evaluation:"
-					+ "_n\nComment avez-vous trouvé..."
+					+ "\n\nVoici le récapitulatif de son évaluation:"
+					+ "\n\nComment avez-vous trouvé..."
 					+"\n 1 - L'acceuil : "+evaluation.getAcceuil()
 					+"\n 2 - La salle de formation : "+evaluation.getSalle()
 					+"\n3 - Le matériel mis à disposition : "+evaluation.getMateriel()
@@ -85,7 +97,7 @@ public class SendTextMessage {
 					+"\n\t\t**Sujets à approfondir ou à ajouter :"
 					+"\n\t\t\t"+evaluation.getSujetApprofondir()
 					+"\n15 - Quelle note attribuez-vous au formateur : "+evaluation.getEvaluationGlobale()
-					+"\n16 - Etes-vous intéressé (e) par d’autres stages de formation :"+evaluation.getAutreStage()
+					+"\n16 - Etes-vous intéressé(e) par d’autres stages de formation :"+evaluation.getAutreStage()
 					+"\n\t\tSi oui, merci de préciser lesquels :"
 					+"\n\t\t\t"+evaluation.getProjet()
 					+ "\n\nCordialement," + "\nL'équipe Treeptik.");
@@ -94,4 +106,5 @@ public class SendTextMessage {
 			throw new RuntimeException(e);
 		}
 	}
+
 }

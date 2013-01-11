@@ -5,6 +5,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import fr.treeptik.dao.StagiaireDAO;
 import fr.treeptik.model.Stagiaire;
 
@@ -15,6 +17,8 @@ public class StagiaireEJB {
 	private StagiaireDAO stagiaireDAO;
 
 	public void create(Stagiaire stagiaire) {
+		stagiaire.setPassword(stagiaireDAO.generatePassword());
+		stagiaire.setRole("USER");
 		stagiaireDAO.create(stagiaire);
 	}
 
@@ -29,7 +33,7 @@ public class StagiaireEJB {
 	public void update(Stagiaire stagiaire) {
 		stagiaireDAO.update(stagiaire);
 	}
-
+	
 	public Stagiaire findById(long id) {
 		return stagiaireDAO.findById(id);
 	}
@@ -37,5 +41,8 @@ public class StagiaireEJB {
 	public List<Stagiaire> findStagiairesInSession(long session_id) {
 		return stagiaireDAO.findStagiairesInSession(session_id);
 	}
-
+	
+	public String generatePassword() {
+		return stagiaireDAO.generatePassword();
+	}
 }

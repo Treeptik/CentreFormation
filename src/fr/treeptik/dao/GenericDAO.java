@@ -28,6 +28,9 @@ public abstract class GenericDAO<T> {
 		T entityToBeRemoved = em.merge(entity);
 		em.remove(entityToBeRemoved);
 	}
+	public void refresh(T entity){
+		em.refresh(entity);
+	}
 
 	public T update(T entity) {
 		return em.merge(entity);

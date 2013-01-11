@@ -282,20 +282,9 @@ img {
 				</div>
                   <div class="span1"></div>
 				<div class="span8">
-
-					<nav>
-					<ul class="nav nav-pills">
-						<li class="active"><a
-							href="selectSession.jsf">Evaluer
-								la formation</a></li>
-						<li><a
-							href="">Envoyer
-								un message</a></li>
-
-
-					</ul>
-					</nav>
-
+					<h:form>
+					<h:commandButton value="Evaluer la formation" action="#{evaluationController.doNew()}" />
+					</h:form>
 					<div class="row">
 
 						

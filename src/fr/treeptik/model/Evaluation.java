@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,14 +40,13 @@ public class Evaluation implements Serializable {
 	private String projet;
 	private String commentaire;
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Stagiaire stagiaire;
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Session session;
 
 	public Evaluation() {
-		super();
 	}
 
 	public Evaluation(int acceuil, int salle, int materiel, int satisfait,

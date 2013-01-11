@@ -38,11 +38,9 @@ public class Formateur implements Serializable{
 	private List<Session> sessions;
 
 	@ManyToOne()
-	private AdministrateurTreeptik administrateurTreeptik;
+	private Administrateur administrateur;
 
 	public Formateur() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Formateur(String nom, String prenom) {
@@ -74,13 +72,13 @@ public class Formateur implements Serializable{
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public AdministrateurTreeptik getAdministrateurTreeptik() {
-		return administrateurTreeptik;
+	public Administrateur getAdministrateur() {
+		return administrateur;
 	}
 
-	public void setAdministrateurTreeptik(
-			AdministrateurTreeptik administrateurTreeptik) {
-		this.administrateurTreeptik = administrateurTreeptik;
+	public void setAdministrateur(
+			Administrateur administrateur) {
+		this.administrateur = administrateur;
 	}
 
 

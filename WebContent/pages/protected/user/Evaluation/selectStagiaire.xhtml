@@ -17,15 +17,15 @@
 	<h3>Cherchez votre nom et validez:</h3>
 	<center>
 			<div class="table"><tr>
-
+		
 				<h:selectOneMenu
 						value="#{evaluationController.stagiaire.id}">
-						<f:selectItems value="#{stagiaireController.selectNom}"></f:selectItems>
+						<f:selectItems value="#{evaluationController.selectStagiaire}"></f:selectItems>
 					</h:selectOneMenu>
 			</tr>
 			<div>
 				<h:commandButton
-						action="#{evaluationController.doNew()}" value="Valider" />
+						action="#{evaluationController.chooseStagiaire()}" value="Valider" />
 				<input type="reset" Name="annuler" value="Annuler" />
 			</div>
 		</div>

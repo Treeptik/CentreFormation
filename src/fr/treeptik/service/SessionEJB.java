@@ -34,6 +34,14 @@ public class SessionEJB {
 	public void update(Session session) {
 		sessionDAO.update(session);
 	}
+	
+	public void refresh(Session session){
+		sessionDAO.refresh(session);
+	}
+
+	public Session findById(long id) {
+		return sessionDAO.findById(id);
+	}
 
 	public Session findWithStagiaire(long sessionId) {
 		return sessionDAO.findWithStagiaire(sessionId);

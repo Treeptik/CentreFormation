@@ -11,20 +11,32 @@
 			<h2>Liste des Administrateurs Treeptik</h2>	
 			<h:form>
 				<h:dataTable class="table table-bordered table-striped" 
-				value="#{administrateurTreeptikController.administrateurTreeptiks}" var="at">
+				value="#{administrateurController.administrateurs}" var="ad">
 	  				<h:column>
 	    				<f:facet name="header">
 	  						<h:outputText value="Nom"/>
 	  					</f:facet>
-	  					<h:outputText value="#{at.nom}"/>
+	  					<h:outputText value="#{ad.nom}"/>
+					</h:column>
+					<h:column>
+	    				<f:facet name="header">
+	  						<h:outputText value="e-mail"/>
+	  					</f:facet>
+	  					<h:outputText value="#{ad.email}"/>
+					</h:column>
+					<h:column>
+	    				<f:facet name="header">
+	  						<h:outputText value="Mot de passe"/>
+	  					</f:facet>
+	  					<h:outputText value="#{ad.password}"/>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Opérations" />
 						</f:facet>
-						<h:commandLink action="#{administrateurTreeptikController.doSelectUpdate()}" value="Modifier" />
+						<h:commandLink action="#{administrateurController.doSelectUpdate()}" value="Modifier" />
 						<h:outputText value=" / "/>
-						<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{administrateurTreeptikController.doDelete()}" value="Supprimer"/>
+						<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{administrateurController.doDelete()}" value="Supprimer"/>
 					</h:column>
 				</h:dataTable>
 			</h:form>

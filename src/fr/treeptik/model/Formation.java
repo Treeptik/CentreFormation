@@ -34,7 +34,6 @@ public class Formation implements Serializable {
 	}
 
 	public Formation() {
-		super();
 	}
 
 	public long getId() {
