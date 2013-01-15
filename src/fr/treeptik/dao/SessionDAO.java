@@ -1,9 +1,11 @@
 package fr.treeptik.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import fr.treeptik.model.Formateur;
 import fr.treeptik.model.Formation;
@@ -25,8 +27,8 @@ public class SessionDAO extends GenericDAO<Session> {
 		for (Formateur formateur : session.getListFormateurs()) {
 			tmpFormateur.add(em.find(Formateur.class, formateur.getId()));
 		}
-		session.setFormations(tmpSession);
-		session.setFormateurs(tmpFormateur);
+		session.setListFormations(tmpSession);
+		session.setListFormateurs(tmpFormateur);
 
 		em.persist(session);
 		return session;
@@ -40,5 +42,13 @@ public class SessionDAO extends GenericDAO<Session> {
 		return (Session) query.getSingleResult();
 
 	}
+	public List<Formateur> findFormateursOfSession(int sessionId) {
+		TypedQuery<Formateur> query = em.createNamedQuery("findFormateursOfSession", Formateur.class);
+		query.setParameter("id", sessionId);
+		List<Formateur> listFormateurs = query.getResultList();
+		return listFormateurs;
+
+	}
+	
 
 }

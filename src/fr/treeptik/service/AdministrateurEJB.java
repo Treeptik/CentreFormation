@@ -28,6 +28,7 @@ public class AdministrateurEJB {
 	}
 	
 	public void update(Administrateur administrateur) {
+		administrateur.setRole("ADMIN");
 		administrateurDAO.update(administrateur);
 	}
 }

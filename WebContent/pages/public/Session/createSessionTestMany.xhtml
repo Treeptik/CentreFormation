@@ -3,21 +3,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
-	<ui:define name="titre">Mettre à Jour une Session</ui:define>
+	<ui:define name="titre">Créer une Session</ui:define>
 	<ui:define name="body">
-		<div class="span8" id="titre">Mettre à Jour une Session :</div>
+		<div class="span8" id="titre">Créer une Session :</div>
 		<div class="span8" id="article">
 			<h:form class="form-horizontal">
 				<h:messages />
-				<div class="control-group">
-	    			<label class="control-label" for="id">ID :</label>
-	    			<div class="controls">
-						<h:inputText value="#{sessionController.session.id}"
-							id="id" name="id"/>
-	    			</div>
-	    		</div>						
 				<div class="control-group">
 	    			<label class="control-label" for="nom">Nom :</label>
     				<div class="controls">
@@ -41,11 +33,13 @@
 				<div class="control-group">
 	    			<label class="control-label" for="formateur">Formateur :</label>
 					<div class="controls">
-						<h:selectOneMenu value="#{sessionController.formateur.id}"
+						<h:selectManyListbox value="#{sessionController.session.listFormateurs}"
 							id="formateur" name="formateur"
+							
 							required="true" requiredMessage="choisissez un formateur">
-						<f:selectItems value="#{formateurController.selectFormateur}"></f:selectItems>
-						</h:selectOneMenu>
+						<f:selectItems value="#{formateurController.listFormateurs}"/>
+						<f:converter binding="#{formateurController.getConverter()}"/>
+						</h:selectManyListbox>
 	    			</div>
 	    		</div>		
 				<div class="control-group">
@@ -67,11 +61,11 @@
 							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"  />
 						</h:inputText>
 					</div>
-				</div>
+				</div>	
 				<div class="control-group">
 					<div class="controls">
-						<h:commandButton action="#{sessionController.doUpdate()}"
-							value="Modifier" styleClass="btn btn-success" />
+						<h:commandButton action="#{sessionController.doCreate()}" value="Valider"
+							styleClass="btn btn-success" />
 						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
 						<h:button class="btn btn-inverse"
 							onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"

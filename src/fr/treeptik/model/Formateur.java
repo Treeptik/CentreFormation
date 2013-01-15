@@ -33,21 +33,18 @@ public class Formateur implements Serializable{
 	private String prenom;
 //	@Column
 //	private String specialite;
-
-	@ManyToMany(mappedBy = "listFormateurs")
-	private List<Session> listSessions;
-
 	@ManyToOne()
 	private Administrateur administrateur;
+	@ManyToMany(mappedBy = "listFormateurs")
+	private List<Session> listSessions;
+	@ManyToMany(mappedBy = "listFormateurs")
+	private List<Formation> listFormations;
+
+	
 
 	public Formateur() {
 	}
 
-	public Formateur(String nom, String prenom) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-	}
 
 	public int getId() {
 		return id;
@@ -81,5 +78,89 @@ public class Formateur implements Serializable{
 		this.administrateur = administrateur;
 	}
 
+	public List<Session> getListSessions() {
+		return listSessions;
+	}
 
+	public void setListSessions(List<Session> listSessions) {
+		this.listSessions = listSessions;
+	}
+
+	public List<Formation> getListFormations() {
+		return listFormations;
+	}
+
+	public void setListFormations(List<Formation> listFormations) {
+		this.listFormations = listFormations;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((administrateur == null) ? 0 : administrateur.hashCode());
+		result = prime * result + id;
+		result = prime * result
+				+ ((listFormations == null) ? 0 : listFormations.hashCode());
+		result = prime * result
+				+ ((listSessions == null) ? 0 : listSessions.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Formateur)) {
+			return false;
+		}
+		Formateur other = (Formateur) obj;
+		if (administrateur == null) {
+			if (other.administrateur != null) {
+				return false;
+			}
+		} else if (!administrateur.equals(other.administrateur)) {
+			return false;
+		}
+		if (id != other.id) {
+			return false;
+		}
+		if (listFormations == null) {
+			if (other.listFormations != null) {
+				return false;
+			}
+		} else if (!listFormations.equals(other.listFormations)) {
+			return false;
+		}
+		if (listSessions == null) {
+			if (other.listSessions != null) {
+				return false;
+			}
+		} else if (!listSessions.equals(other.listSessions)) {
+			return false;
+		}
+		if (nom == null) {
+			if (other.nom != null) {
+				return false;
+			}
+		} else if (!nom.equals(other.nom)) {
+			return false;
+		}
+		if (prenom == null) {
+			if (other.prenom != null) {
+				return false;
+			}
+		} else if (!prenom.equals(other.prenom)) {
+			return false;
+		}
+		return true;
+	}
+	
 }

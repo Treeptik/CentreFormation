@@ -6,6 +6,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -28,6 +31,7 @@ public class FormateurController {
 	private List<SelectItem> selectFormateur;
 	@SuppressWarnings("rawtypes")
 	private DataModel formateurs;
+	
 
 	public String doCreate() {
 		formateurEJB.create(formateur);
@@ -124,5 +128,10 @@ public class FormateurController {
 	public void setFormateurs(DataModel formateurs) {
 		this.formateurs = formateurs;
 	}
-
+/*
+	public void getConverter(){
+		formateurEJB.getConverter();
+	}
+*/	
+	
 }

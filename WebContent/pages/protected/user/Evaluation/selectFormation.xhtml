@@ -14,18 +14,18 @@
 		<div Styleclass="span7">
 
 			<h:form styleClass="well">
-	<h3>Cherchez votre nom et validez:</h3>
+	<h3>Selectionnez votre formation:</h3>
 	<center>
 			<div class="table"><tr>
 		
 				<h:selectOneMenu
-						value="#{evaluationController.stagiaire.id}">
-						<f:selectItems value="#{evaluationController.selectStagiaire}"></f:selectItems>
+						value="#{evaluationController.formation.id}">
+						<f:selectItems value="#{evaluationController.selectFormation}"></f:selectItems>
 					</h:selectOneMenu>
 			</tr>
 			<div>
 				<h:commandButton
-						action="#{evaluationController.chooseStagiaire()}" value="Valider" />
+						action="#{evaluationController.chooseFormation()}" value="Valider" />
 				<input type="reset" Name="annuler" value="Annuler" />
 			</div>
 		</div>

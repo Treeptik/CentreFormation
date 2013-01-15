@@ -7,40 +7,49 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
 	<ui:define name="titre">Mettre à Jour un Formateur</ui:define>
 	<ui:define name="body">
-			<h:form styleClass="well">
-				<fieldset>
-                	<legend>Mettre à Jour un Formateur</legend>
-					<p>
-					<h:outputText value="ID : " />
-					<h:inputText 
-					value="#{formateurController.formateur.id}" required="true"
-						validatorMessage="L'ID est un nombre positif">
-					    	<f:validateLongRange minimum="1" maximum="10000000000"/>
-					</h:inputText>
-					<h:messages />		
-					</p>
-					<p>
-					<h:outputText value="Prénom : "/>
-					<h:inputText value="#{formateurController.formateur.prenom}"
-								required="true" validatorMessage=" nom invalide ">
-								<f:validateLength minimum="2" maximum="20" />
-							</h:inputText>
-					</p>
-					<div class="table">
-						<tr>
-							<td><h:commandButton
-									action="#{formateurController.doUpdate()}"
-									value="Valider" styleClass="btn btn-primary" /></td>
-							<td><h:button type="reset" class="btn btn-primary"
-									value="Annuler"></h:button></td>
-							<td><h:button class="btn btn-primary"
-									onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
-									value="Retour"></h:button></td>
-						</tr>
+		<div class="span8" id="titre">Mettre à Jour un Formateur :</div>
+		<div class="span8" id="article">
+			<h:form class="form-horizontal">
+				<h:messages />
+				<div class="control-group">
+	    			<label class="control-label" for="id">ID :</label>
+	    			<div class="controls">
+						<h:inputText value="#{formateurController.formateur.id}"
+							id="id" name="id"/>
+	    			</div>
+	    		</div>						
+				<div class="control-group">
+	    			<label class="control-label" for="nom">Nom :</label>
+    				<div class="controls">
+						<h:inputText value="#{formateurController.formateur.nom}"
+							 id="nom" name="nom"
+							required="true" validatorMessage=" nom invalide ">
+							<f:validateLength minimum="2" maximum="20" />
+						</h:inputText>
+    				</div>
+	    		</div>
+	    		<div class="control-group">
+	    			<label class="control-label" for="prenom">Prénom :</label>
+	    			<div class="controls">
+						<h:inputText value="#{formateurController.formateur.prenom}" 
+							id="prenom" name="prenom"  
+							required="true" validatorMessage=" prénom invalide ">
+							<f:validateLength minimum="2" maximum="20" />
+						</h:inputText>
+	   				</div>
+	    		</div>		
+				<div class="control-group">
+					<div class="controls">
+						<h:commandButton action="#{formateurController.doUpdate()}"
+							value="Modifier" styleClass="btn btn-success" />
+						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+						<h:button class="btn btn-inverse"
+							onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
+							value="Retour"/>
 					</div>
-					<h:messages />
-				</fieldset>
+				</div>
 			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

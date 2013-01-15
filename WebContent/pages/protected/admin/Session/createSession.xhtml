@@ -4,66 +4,84 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
-	<ui:define name="titre">Créer une session</ui:define>
+	<ui:define name="titre">Créer une Session</ui:define>
 	<ui:define name="body">
-		<h:form styleClass="well">
-			<fieldset>
-                    <legend>Créer une session</legend>
+		<div class="span8" id="titre">Créer une Session :</div>
+		<div class="span8" id="article">
+			<h:form class="form-horizontal">
+				<h:messages />
+				<div class="control-group">
+	    			<label class="control-label" for="nom">Nom :</label>
+    				<div class="controls">
+						<h:inputText value="#{sessionController.session.nom}"
+							id="nom" name="nom"
+							required="true" validatorMessage=" nom invalide ">
+							<f:validateLength minimum="2" maximum="40" />
+						</h:inputText>
+    				</div>
+	    		</div>
+	    		<div class="control-group">
+	    			<label class="control-label" for="formation">Formation :</label>
+    				<div class="controls">
+						<h:selectOneMenu value="#{sessionController.formation.id}"
+							id="formation" name="formation"
+							required="true" requiredMessage="choisissez une formation">
+						<f:selectItems value="#{formationController.selectFormation}"/>
+						</h:selectOneMenu>
+	    			</div>
+	    		</div>		
+				<div class="control-group">
+	    			<label class="control-label" for="formateur">Formateur :</label>
+					<div class="controls">
+						<h:selectOneMenu value="#{sessionController.formateur.id}"
+							id="formateur" name="formateur"
+							required="true" requiredMessage="choisissez un formateur">
+						<f:selectItems value="#{formateurController.selectFormateur}"></f:selectItems>
+						</h:selectOneMenu> 
+	    			</div>
+	    		</div>		
+	    		<div class="control-group">
+	    			<label class="control-label" for="stagiaire">Stagiaire :</label>
+					<div class="controls">
+						<h:selectOneMenu value="#{sessionController.stagiaire.id}"
+							id="stagiaire" name="stagiaire"
+							required="true" requiredMessage="choisissez un stagiaire">
+						<f:selectItems value="#{stagiaireController.selectStagiaire}"></f:selectItems>
+						</h:selectOneMenu>
+	    			</div>
+	    		</div>		   
+				<div class="control-group">
+	    			<label class="control-label" for="dateDebut">Date de début :</label>
+					<div class="controls">
+						<h:inputText value="#{sessionController.session.dateDebutStage}"
+							id="dateDebut" name="dateDebut" required="true"
+							validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+						</h:inputText>
+	    			</div>
+	    		</div>		
+				<div class="control-group">
+	    			<label class="control-label" for="dateFin">Date de fin :</label>
+					<div class="controls">
+						<h:inputText value="#{sessionController.session.dateFinStage}"
+								id="dateFin" name="dateFin" required="true"
+								validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"  />
+						</h:inputText>
+					</div>
+				</div>	
 				<div class="control-group">
 					<div class="controls">
-						<p>
-							<h:outputText value="Nom : "/>
-							<h:inputText
-						value="#{sessionController.session.nom}"  required="true"
-										validatorMessage=" nom invalide">
-											<f:validateLength minimum="2" maximum="50" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Formation : "/>
-							<h:selectOneMenu value="#{sessionController.formation.id}" 
-								required="true" requiredMessage="choisissez une formation">
-							<f:selectItems value="#{formationController.selectFormation}"></f:selectItems>
-							</h:selectOneMenu>
-						</p>
-						<p>
-							<h:outputText value="Formateur : "/>
-							<h:selectOneMenu value="#{sessionController.formateur.id}" 
-								required="true" requiredMessage="choisissez un formateur">
-							<f:selectItems value="#{formateurController.selectFormateur}"></f:selectItems>
-							</h:selectOneMenu>
-						</p>
-						<p>
-							<h:outputText value="Date début : "/>
-							<h:inputText value="#{sessionController.session.dateDebutStage}" required="true"
-									validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
-							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Date fin : "/>
-							<h:inputText value="#{sessionController.session.dateFinStage}" required="true"
-									validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
-							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"  />
-							</h:inputText>
-						</p>
+						<h:commandButton action="#{sessionController.doCreate()}" value="Valider"
+							styleClass="btn btn-success" />
+						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+						<h:button class="btn btn-inverse"
+							onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
+							value="Retour"/>
 					</div>
 				</div>
-			 	<div class="table">
-							<tr>
-								<td><h:commandButton
-										action="#{sessionController.doCreate()}"
-										value="Valider" styleClass="btn btn-primary" /></td>
-								<td><h:button type="reset" class="btn btn-primary"
-										value="Annuler"></h:button></td>
-								<td><h:button class="btn btn-primary"
-										onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
-										value="Retour"></h:button></td>
-							</tr>
-				</div>
-				<h:messages />
-				</fieldset>
 			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

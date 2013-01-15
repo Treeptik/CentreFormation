@@ -17,7 +17,7 @@
 							<h:outputText value="ID : " />
 							<h:inputText 
 								value="#{userController.user.id}" required="true"
-								validatorMessage="L'ID est un nombre positif">
+								validatorMessage="L'ID est un nombre positif" readonly="true">
 					    	<f:validateLongRange minimum="1" maximum="10000000000"/>
 						</h:inputText>
 							<h:messages />		

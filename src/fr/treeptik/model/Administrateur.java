@@ -1,5 +1,6 @@
 package fr.treeptik.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "findAllAdministrateurs", query = "select a from Administrateur a") })
-public class Administrateur extends User {
+public class Administrateur extends User implements Serializable {
 
 	@OneToMany(mappedBy = "administrateur", cascade = CascadeType.PERSIST)
 	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
@@ -41,5 +42,45 @@ public class Administrateur extends User {
 
 	public void setListFormateurs(List<Formateur> listFormateurs) {
 		this.listFormateurs = listFormateurs;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((listFormateurs == null) ? 0 : listFormateurs.hashCode());
+		result = prime * result
+				+ ((listStagiaires == null) ? 0 : listStagiaires.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Administrateur)) {
+			return false;
+		}
+		Administrateur other = (Administrateur) obj;
+		if (listFormateurs == null) {
+			if (other.listFormateurs != null) {
+				return false;
+			}
+		} else if (!listFormateurs.equals(other.listFormateurs)) {
+			return false;
+		}
+		if (listStagiaires == null) {
+			if (other.listStagiaires != null) {
+				return false;
+			}
+		} else if (!listStagiaires.equals(other.listStagiaires)) {
+			return false;
+		}
+		return true;
 	}
 }

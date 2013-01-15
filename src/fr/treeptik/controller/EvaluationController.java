@@ -14,18 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.treeptik.model.CompoKeysEval;
 import fr.treeptik.model.Evaluation;
+import fr.treeptik.model.Formateur;
+import fr.treeptik.model.Formation;
 import fr.treeptik.model.Session;
 import fr.treeptik.model.Stagiaire;
 import fr.treeptik.service.EvaluationEJB;
+import fr.treeptik.service.FormateurEJB;
+import fr.treeptik.service.FormationEJB;
 import fr.treeptik.service.SessionEJB;
 import fr.treeptik.service.StagiaireEJB;
-import fr.treeptik.service.UserEJB;
 
 @ManagedBean
 @SessionScoped
 public class EvaluationController {
 
 	private Evaluation evaluation = new Evaluation();	
+
 	@EJB
 	private EvaluationEJB evaluationEJB;
 	@EJB
@@ -33,15 +37,19 @@ public class EvaluationController {
 	@EJB
 	private StagiaireEJB stagiaireEJB;
 	@EJB
-	private UserEJB userEJB;
+	private FormationEJB formationEJB;
+	@EJB
+	private FormateurEJB formateurEJB;
 	
 	private List<Evaluation> listEvaluations = new ArrayList<Evaluation>();
 	private List<SelectItem> selectSession;
-	private List<SelectItem> selectStagiaire;
-
+	private List<SelectItem> selectFormation;
+	private List<SelectItem> selectFormateur;
 	private CompoKeysEval compoKeyEval = new CompoKeysEval();
 	private Stagiaire stagiaire;
 	private Session session = new Session();
+	private Formateur formateur = new Formateur();
+	private Formation formation = new Formation();
 
 	// private String idStagiaire;
 
@@ -51,7 +59,7 @@ public class EvaluationController {
 	@EJB
 	private SendTextMessage gestionmail;
 
-	public String doCreate() {
+	public String doFillEval() {
 		try{
 		evaluationEJB.create(evaluation);
 		gestionmail.mailRecapEvaluation(evaluation);
@@ -60,7 +68,6 @@ public class EvaluationController {
 		catch (Exception e){
 		return "messageEvaluationDejaEffectue";
 		}
-
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -84,33 +91,134 @@ public class EvaluationController {
 		evaluations.setWrappedData(evaluationEJB.findAll());
 		return "messageEvaluationUpdate";
 	}
-
-	/**
-	 * dans le processus de l'évaluation on choisit sa session puis son nom donc
-	 * chooseSession() renvoie à la page du choix de son nom "selectStagiaire"
-	 * 
-	 * @return "selectStagiaire"
-	 */
-	public String chooseSession() {
-
-		session = sessionEJB.findById(session.getId());
-		compoKeyEval.setSession(session);
-		
-
-		stagiaire = stagiaireEJB.findStagiaireByEmail(getRequest()
-				.getUserPrincipal().toString());
-		compoKeyEval.setStagiaire(stagiaire);
-//		evaluation.setStagiaire(stagiaire);
-		evaluation.setId(compoKeyEval);
-		
-		return "doEvaluation";
-	}
-
+	
 	public String doNew() {
 		evaluation = new Evaluation();
 		return "selectSession";
 	}
+	
+/**
+ * Méthode pour choisir sa session
+ * définit l'utilisateur authentifiée en tant que 
+ * stagiaire effectuant l'évaluation
+ * renvoie à la page doEvaluation
+ */
+	public String chooseSession() {
+		System.out.println("sessioin Id avant :"+session.getId());
+		session = sessionEJB.findById(session.getId());
+		System.out.println("après"+session.getId());
+		compoKeyEval.setSession(session);
+		System.out.println("stagaire avant"+stagiaire);
+		stagiaire = stagiaireEJB.findStagiaireByEmail(getRequest()
+				.getUserPrincipal().toString());
+		System.out.println("stagaire après : "+stagiaire.getId());
+		compoKeyEval.setStagiaire(stagiaire);
+		return "selectFormation";
+	}
+	
+	public String chooseFormation() {
+		formation = formationEJB.findById(formation.getId());
+		compoKeyEval.setFormation(formation);
+		evaluation.setId(compoKeyEval);
+		return "selectFormateur";
+	}
+	
+	public String chooseFormateur() {
+		formateur = formateurEJB.findById(formateur.getId());
+		compoKeyEval.setFormateur(formateur);
+		evaluation.setId(compoKeyEval);
+		return "doEvaluation";
+	}
+//**********Méthodes pour remplir les Items des SelectOneMenu************//
+	public List<SelectItem> getSelectSession() {
+		if (selectSession == null) {
+			selectSession = new ArrayList<SelectItem>();
+			List<Session> allSessions = sessionEJB.findAll();
+			for (Session session : allSessions) {
+				selectSession.add(new SelectItem(session.getId(), session
+						.getNom()));
+			}
+		}
+		return selectSession;
+	}
 
+	public void setSelectSession(List<SelectItem> selectSession) {
+		this.selectSession = selectSession;
+	}
+
+	public List<SelectItem> getSelectFormation() {
+		if (selectFormation == null) {
+			selectFormation = new ArrayList<SelectItem>();
+			List<Formation> allFormations = formationEJB.findAll();
+			for (Formation formation : allFormations) {
+				selectFormation.add(new SelectItem(formation.getId(), formation
+						.getNom()));
+			}
+		}
+		return selectFormation;
+	}
+	
+	public void setSelectFormation(List<SelectItem> selectFormation) {
+		this.selectFormation = selectFormation;
+	}
+
+	public List<SelectItem> getSelectFormateur() {
+		if (selectFormateur == null) {
+			selectFormateur = new ArrayList<SelectItem>();
+			List<Formateur> allFormateurs = formateurEJB.findAll();
+			for (Formateur formateur : allFormateurs) {
+				selectFormateur.add(new SelectItem(formateur.getId(), formateur
+						.getNom()));
+			}
+		}
+		return selectFormateur;
+	}
+	
+	public void setSelectFormateur(List<SelectItem> selectFormateur) {
+		this.selectFormateur = selectFormateur;
+	}
+	
+//***************ENTITE**************	
+	public Evaluation getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
+	}
+	
+	public Stagiaire getStagiaire() {
+		return stagiaire;
+	}
+
+	public void setStagiaire(Stagiaire stagiaire) {
+		this.stagiaire = stagiaire;
+	}
+
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+	public Formateur getFormateur() {
+		return formateur;
+	}
+
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
+	}
+
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
+
+//***************EJB**********************
 	public EvaluationEJB getEvaluationEJB() {
 		return evaluationEJB;
 	}
@@ -135,14 +243,23 @@ public class EvaluationController {
 		this.stagiaireEJB = stagiaireEJB;
 	}
 
-	public Evaluation getEvaluation() {
-		return evaluation;
+	public FormationEJB getFormationEJB() {
+		return formationEJB;
 	}
 
-	public void setEvaluation(Evaluation evaluation) {
-		this.evaluation = evaluation;
+	public void setFormationEJB(FormationEJB formationEJB) {
+		this.formationEJB = formationEJB;
 	}
 
+	public FormateurEJB getFormateurEJB() {
+		return formateurEJB;
+	}
+
+	public void setFormateurEJB(FormateurEJB formateurEJB) {
+		this.formateurEJB = formateurEJB;
+	}
+	
+//*************LIST ET DATAMODEL***********
 	public List<Evaluation> getListEvaluation() {
 		return listEvaluations;
 	}
@@ -151,54 +268,7 @@ public class EvaluationController {
 		this.listEvaluations = listEvaluations;
 	}
 
-	public Stagiaire getStagiaire() {
-		return stagiaire;
-	}
-
-	public void setStagiaire(Stagiaire stagiaire) {
-		this.stagiaire = stagiaire;
-	}
-
-	public Session getSession() {
-		return session;
-	}
-
-	public void setSession(Session session) {
-		this.session = session;
-	}
-
-	public List<SelectItem> getSelectSession() {
-		if (selectSession == null) {
-			selectSession = new ArrayList<SelectItem>();
-			List<Session> allSessions = sessionEJB.findAll();
-			for (Session session : allSessions) {
-				selectSession.add(new SelectItem(session.getId(), session
-						.getNom()));
-			}
-		}
-		return selectSession;
-	}
-
-	public void setSelectSession(List<SelectItem> selectSession) {
-		this.selectSession = selectSession;
-	}
-
-	public List<SelectItem> getSelectStagiaire() {
-		if (selectStagiaire == null) {
-			selectStagiaire = new ArrayList<SelectItem>();
-			List<Stagiaire> allNames = stagiaireEJB.findAll();
-			for (Stagiaire stagiaire : allNames) {
-				selectStagiaire.add(new SelectItem(stagiaire.getId(), stagiaire
-						.getNom()));
-			}
-		}
-		return selectStagiaire;
-	}
-
-	public void setSelectStagiaire(List<SelectItem> selectStagiaire) {
-		this.selectStagiaire = selectStagiaire;
-	}
-
+	
 	public List<Evaluation> getListEvaluations() {
 		return listEvaluations;
 	}
@@ -221,13 +291,7 @@ public class EvaluationController {
 		this.evaluations = evaluations;
 	}
 
-	// public String getIdStagiaire() {
-	// return idStagiaire;
-	// }
-	//
-	// public void setIdStagiaire(String idStagiaire) {
-	// this.idStagiaire = idStagiaire;
-	// }
+///************UTILE AVEC JPA???????*********///
 	private HttpServletRequest getRequest() {
 		return (HttpServletRequest) FacesContext.getCurrentInstance()
 				.getExternalContext().getRequest();

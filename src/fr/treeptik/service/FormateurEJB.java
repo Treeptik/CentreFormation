@@ -28,4 +28,13 @@ public class FormateurEJB {
 	public void update(Formateur formateur) {
 		formateurDAO.update(formateur);
 	}
+	
+	public Formateur findById(int id) {
+		return formateurDAO.findById(id);
+	}
+/*	
+	public void getConverter() {
+		formateurDAO.getConverter();
+	}
+*/	
 }

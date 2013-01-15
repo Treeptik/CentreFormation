@@ -94,7 +94,6 @@ public class FormationController {
 			selectFormation.add(new SelectItem(formation.getId(), formation
 					.getNom()));
 		}
-
 		return selectFormation;
 	}
 

@@ -5,16 +5,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template5.xhtml">
-	<ui:define name="titre">Evaluation effectuée</ui:define>
+	<ui:define name="titre">Session créée</ui:define>
 	<ui:define name="body">
 			<h:form styleClass="well">
-				<legend>
-					<p><u>!! Erreur !!</u>/</p>
-					<p>A Priori #{evaluationController.evaluation.id.stagiaire.nom}  
-				#{evaluationController.evaluation.id.stagiaire.prenom}</p>
-				 a <u>DEJA</u> effectuée
-				l'évaluation de <u>#{evaluationController.evaluation.id.session.nom}</u></legend>
-					<a href="acceuil.jsf"> Retour au menu</a>
+				<legend>La Session a été créée avec succès</legend>
+					<a href="../Annexes/acceuilGestion.jsf"> Retour au menu</a>
+					<h:outputText value=" / "/>
+					<a href="../Session/listSessions.jsf">
+					 Retour à la liste</a>
 			</h:form>
 	</ui:define>
 </ui:composition>

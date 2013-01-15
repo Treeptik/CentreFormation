@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>List des tous les Sessions</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+</h:head>
+<h:body>
+	<h2>Liste de tous les Sessions</h2>
+
+
+
+<h:form id="form">  
+    <h:outputScript name="jsf.js" library="javax.faces" target="head"/>              
+    <p:growl id="growl" showDetail="true"/>  
+  
+    <p:dataTable id="sessionsTable" var="sess" value="#{sessionController.sessions}">  
+  
+        <p:ajax event="rowToggle" listener="#{sessionController.onRowToggle}" update=":form:growl" />  
+  
+        <f:facet name="header">  
+            Expand rows to see detailed information  
+        </f:facet>  
+  
+        <p:column style="width:4%">  
+            <p:rowToggler />  
+        </p:column>  
+  
+        <p:column >  
+            <f:facet name="header">  
+                    Session
+            </f:facet>  
+            <h:outputText value="#{sess.nom}" /> 
+        </p:column>  
+  
+        <p:column >  
+            <f:facet name="header">  
+                    Id  
+            </f:facet>  
+					<h:outputText value="#{sess.id}" /> 
+        </p:column>  
+  
+        <p:rowExpansion>  
+            <h:panelGrid id="display" columns="2" cellpadding="4"   
+                            styleClass=" ui-widget-content grid">  
+  <p:dataTable id="sessionsTable" var="ft" value="#{sessionController.formateursOfsession}">
+                <f:facet name="header">  
+
+                </f:facet>  
+  <p:column >  
+            <f:facet name="header">  
+                    Nom Formateur
+            </f:facet>  
+                    <h:outputText value="#{ft.id}" /> 
+        </p:column>  
+  
+        <p:column >  
+            <f:facet name="header">  
+                    Prénom Formateur
+            </f:facet>  
+					<h:outputText value="#{ft.prenom}" /> 
+        </p:column> 
+                </p:dataTable>  
+            </h:panelGrid>  
+  
+        </p:rowExpansion>  
+    </p:dataTable>  
+</h:form>  
+
+</h:body>
+</html>

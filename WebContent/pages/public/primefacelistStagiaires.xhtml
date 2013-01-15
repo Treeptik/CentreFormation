@@ -14,14 +14,15 @@
 
 
 		<h:form id="form">  
+ <h:outputScript name="jsf.js" library="javax.faces" target="head"/>
                   
     <h:panelGrid id="grid" columns="3" style="margin-bottom:10px">  
         <h:outputLabel for="template" value="Template:" style="font-weight:bold"/>  
         <p:inputText id="template" value="#{stagiaireController.columnTemplate}" size="50"/>  
-        <p:commandButton id="btn" update="listStagiaires" actionListener="#{stagiaireController.updateColumns}" value="Update" process="@parent"/>  
+        <p:commandButton id="btn" update="listStagiaires" actionListener="#{stagiaireController.updateColumns()}" value="Update" process="@parent"/>  
     </h:panelGrid>  
   
-    <p:dataTable id="listStagiaires" var="st" value="#{stagiaireController.listStagiaires}" filteredValue="#{stagiaireController.filteredStagiaires}">                      
+    <p:dataTable id="listStagiaires" var="st" value="#{stagiaireController.plist}" filteredValue="#{stagiaireController.filteredStagiaires}">                      
         <p:columns value="#{stagiaireController.columns}" var="column" columnIndexVar="colIndex"   
                     sortBy="#{st[column.property]}" filterBy="#{st[column.property]}">  
             <f:facet name="header">  

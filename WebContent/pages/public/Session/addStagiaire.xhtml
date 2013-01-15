@@ -3,19 +3,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+	
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
-	<ui:define name="titre">Mettre à Jour une Session</ui:define>
+	<ui:define name="titre">Ajouter un Stagaire à la Session</ui:define>
 	<ui:define name="body">
-		<div class="span8" id="titre">Mettre à Jour une Session :</div>
+		<div class="span8" id="titre">Ajouter un Stagiaire à la Session</div>
 		<div class="span8" id="article">
 			<h:form class="form-horizontal">
+			<h:commandButton action="#{sessionController.qui()}"
+							value="qui" styleClass="btn btn-success" />
 				<h:messages />
 				<div class="control-group">
 	    			<label class="control-label" for="id">ID :</label>
 	    			<div class="controls">
 						<h:inputText value="#{sessionController.session.id}"
-							id="id" name="id"/>
+							id="id" name="id" />
 	    			</div>
 	    		</div>						
 				<div class="control-group">
@@ -47,6 +49,16 @@
 						<f:selectItems value="#{formateurController.selectFormateur}"></f:selectItems>
 						</h:selectOneMenu>
 	    			</div>
+	    		</div>
+	    		<div class="control-group">
+	    			<label class="control-label" for="stagiaire">Stagiaire :</label>
+					<div class="controls">
+						<h:selectOneMenu value="#{sessionController.stagiaire.id}"
+							id="stagiaire" name="stagiaire"
+							required="true" requiredMessage="choisissez un stagiaire">
+						<f:selectItems value="#{sessionController.selectStagiaire}"></f:selectItems>
+						</h:selectOneMenu>
+	    			</div>
 	    		</div>		
 				<div class="control-group">
 	    			<label class="control-label" for="dateDebut">Date de début :</label>
@@ -70,8 +82,8 @@
 				</div>
 				<div class="control-group">
 					<div class="controls">
-						<h:commandButton action="#{sessionController.doUpdate()}"
-							value="Modifier" styleClass="btn btn-success" />
+						<h:commandButton action="#{sessionController.doAddStagiaire()}"
+							value="Ajouter" styleClass="btn btn-success" />
 						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
 						<h:button class="btn btn-inverse"
 							onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"

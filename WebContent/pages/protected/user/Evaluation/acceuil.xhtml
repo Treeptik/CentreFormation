@@ -58,12 +58,11 @@ img {
 		<h:form>
 
 		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
-		#{stagiaireController.stagiaire.id} #{userController.user}
+		#{stagiaireController.stagiaire.nom} #{userController.user}
 		<p>#{administrateurController.administrateur.nom}</p>
 		</h:form>
 		<div Styleclass="span7">
 			<h:form styleClass="well">
-			<h:commandButton action="#{stagiaireController.qui()}" value="Qui" />
 				<h:button class="btn btn-large btn-block" type="button"
 					onclick="window.location.href='/FormationJSF/pages/protected/admin/Annexes/acceuilGestion.jsf'; return false;" rendered="#{userController.userAdmin}" value="Administrateur"/>
 				<h:button class="btn btn-large btn-block btn-primary" type="button"

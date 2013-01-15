@@ -30,6 +30,7 @@ public class StagiaireEJB {
 	}
 
 	public void update(Stagiaire stagiaire) {
+		stagiaire.setRole("USER");
 		stagiaireDAO.update(stagiaire);
 	}
 	

@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import fr.treeptik.dao.SessionDAO;
 import fr.treeptik.dao.StagiaireDAO;
+import fr.treeptik.model.Formateur;
 import fr.treeptik.model.Session;
 import fr.treeptik.model.Stagiaire;
 
@@ -44,6 +45,10 @@ public class SessionEJB {
 
 	public Session findWithStagiaire(int sessionId) {
 		return sessionDAO.findWithStagiaire(sessionId);
+	}
+	
+	public List<Formateur> findFormateursOfSession(int sessionId) {
+		return sessionDAO.findFormateursOfSession(sessionId);
 	}
 
 	public void addStagiaire(int sessionId, int stagiaireId) {

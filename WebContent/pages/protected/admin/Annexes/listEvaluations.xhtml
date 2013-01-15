@@ -20,6 +20,18 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="Formation" />
+					</f:facet>
+					<h:outputText value="#{eval.id.formation.nom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Formateur" />
+					</f:facet>
+					<h:outputText value="#{eval.id.formateur.nom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="Stagiaire" />
 					</f:facet>
 					<h:outputText value="#{eval.id.stagiaire.nom}" />
@@ -44,9 +56,9 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Qualité" />
+						<h:outputText value="Qualité Formation" />
 					</f:facet>
-					<h:outputText value="#{eval.satisfait}" />
+					<h:outputText value="#{eval.qualFormation}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
@@ -113,7 +125,7 @@
 					<f:facet name="header">
 						<h:outputText value="Note Formateur" />
 					</f:facet>
-					<h:outputText value="#{eval.evaluationGlobale}" />
+					<h:outputText value="#{eval.noteFormateur}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">

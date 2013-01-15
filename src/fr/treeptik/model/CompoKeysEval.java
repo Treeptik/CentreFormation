@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
+@SuppressWarnings("serial")
 @Embeddable
 public class CompoKeysEval implements Serializable {
 
@@ -12,6 +13,10 @@ public class CompoKeysEval implements Serializable {
 	private Stagiaire stagiaire;
 	@ManyToOne
 	private Session session;
+	@ManyToOne
+	private Formation formation;
+	@ManyToOne
+	private Formateur formateur;
 	
 	public CompoKeysEval() {
 	}
@@ -32,22 +37,36 @@ public class CompoKeysEval implements Serializable {
 		this.session = session;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
+
+	public Formateur getFormateur() {
+		return formateur;
+	}
+
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((formateur == null) ? 0 : formateur.hashCode());
+		result = prime * result
+				+ ((formation == null) ? 0 : formation.hashCode());
 		result = prime * result + ((session == null) ? 0 : session.hashCode());
 		result = prime * result
 				+ ((stagiaire == null) ? 0 : stagiaire.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -60,6 +79,20 @@ public class CompoKeysEval implements Serializable {
 			return false;
 		}
 		CompoKeysEval other = (CompoKeysEval) obj;
+		if (formateur == null) {
+			if (other.formateur != null) {
+				return false;
+			}
+		} else if (!formateur.equals(other.formateur)) {
+			return false;
+		}
+		if (formation == null) {
+			if (other.formation != null) {
+				return false;
+			}
+		} else if (!formation.equals(other.formation)) {
+			return false;
+		}
 		if (session == null) {
 			if (other.session != null) {
 				return false;
@@ -76,6 +109,5 @@ public class CompoKeysEval implements Serializable {
 		}
 		return true;
 	}
-	
-	
+
 }

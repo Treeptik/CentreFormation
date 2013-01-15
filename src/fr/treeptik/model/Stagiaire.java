@@ -1,31 +1,23 @@
 package fr.treeptik.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
 		@NamedQuery(name="Stagiaire.findStagiaireByEmail", query="select u from User u where u.email = :email"),
-		@NamedQuery(name = "findAllStagiaires", query = "select s from Stagiaire s ")
-	//	,@NamedQuery(name = "findStagiairesInSession", query = " select s from Session session join session.listStagiaires s where session.id=?1 ")
-		})
+		@NamedQuery(name = "findAllStagiaires", query = "select s from Stagiaire s ")})
 public class Stagiaire extends User implements Serializable {
 
 	public static final String FIND_BY_EMAIL = "Stagiaire.findStagiaireByEmail";
@@ -42,13 +34,9 @@ public class Stagiaire extends User implements Serializable {
 	private String sexe;
 	private String diplome;
 	private String domaine;
-//	@OneToMany(mappedBy = "stagiaire", cascade = CascadeType.PERSIST)
-//	private List<Evaluation> listEvaluations = new ArrayList<Evaluation>();
-
 	@ManyToOne()
 	private Administrateur administrateur;
-	
-	@ManyToMany(mappedBy = "listStagiaires")
+	@ManyToMany(mappedBy = "listStagiaires", cascade=CascadeType.ALL)
 	private List<Session> listSessions;
 
 	public Stagiaire() {
@@ -127,18 +115,6 @@ public class Stagiaire extends User implements Serializable {
 		this.domaine = domaine;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-/*
-	public List<Evaluation> getListEvaluations() {
-		return listEvaluations;
-	}
-
-	public void setListEvaluations(List<Evaluation> listEvaluations) {
-		this.listEvaluations = listEvaluations;
-	}
-*/	
 	public Administrateur getAdministrateur() {
 		return administrateur;
 	}
@@ -157,9 +133,6 @@ public class Stagiaire extends User implements Serializable {
 		this.listSessions = listSessions;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -182,9 +155,6 @@ public class Stagiaire extends User implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -276,4 +246,5 @@ public class Stagiaire extends User implements Serializable {
 		}
 		return true;
 	}
+
 }

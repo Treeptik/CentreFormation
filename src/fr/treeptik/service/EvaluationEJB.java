@@ -8,6 +8,9 @@ import javax.ejb.Stateless;
 import fr.treeptik.dao.EvaluationDAO;
 import fr.treeptik.dao.StagiaireDAO;
 import fr.treeptik.model.Evaluation;
+import fr.treeptik.model.Formation;
+import fr.treeptik.model.Session;
+import fr.treeptik.model.Stagiaire;
 
 @Stateless
 public class EvaluationEJB {
@@ -32,4 +35,10 @@ public class EvaluationEJB {
 	public void update(Evaluation evaluation) {
 		evaluationDAO.update(evaluation);
 	}
+	/*
+	public Evaluation findById(Stagiaire stagiaire, Session session,
+								Formation formation) {
+		return formateurDAO.findById(Stagiaire;
+	}
+	*/
 }

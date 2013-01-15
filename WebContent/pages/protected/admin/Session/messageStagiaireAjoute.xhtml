@@ -9,12 +9,13 @@
 	<ui:define name="body">
 			<h:form styleClass="well">
 				<legend>
-					<p><u>!! Erreur !!</u>/</p>
-					<p>A Priori #{evaluationController.evaluation.id.stagiaire.nom}  
-				#{evaluationController.evaluation.id.stagiaire.prenom}</p>
-				 a <u>DEJA</u> effectuée
-				l'évaluation de <u>#{evaluationController.evaluation.id.session.nom}</u></legend>
-					<a href="acceuil.jsf"> Retour au menu</a>
+					<p><u>!! Succès !!</u>/</p>
+					<p>Le stagiaire #{sessionController.stagiaire.nom}  
+				#{sessionController.stagiaire.prenom}</p>
+				 a été ajouté à la Session #{sessionController.session.nom}</legend>
+					<a href="../Annexes/acceuilGestion.jsf"> Retour au menu</a>
+					<h:outputText value=" / "/>
+					<a href="addStagiaire.jsf">Ajouter un nouveau Stagiaire</a>
 			</h:form>
 	</ui:define>
 </ui:composition>

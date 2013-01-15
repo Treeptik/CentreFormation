@@ -5,128 +5,152 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
-
-	<ui:define name="titre">Evaluation Treeptik</ui:define>
+	<ui:define name="titre">Créer un Stagiaire</ui:define>
 	<ui:define name="body">
-		<h:form styleClass="well">
-			<fieldset>
-            	<legend>Créer un stagiaire</legend>
+		<div class="span8" id="titre">Créer une Stagiaire :</div>
+		<div class="span8" id="article">
+			<h:form class="form-horizontal">
+				<h:messages />
+				<div class="control-group">
+	    			<label class="control-label" for="nom">Nom :</label>
+    				<div class="controls">
+						<h:inputText value="#{stagiaireController.stagiaire.nom}"
+							id="nom" name="nom"
+							required="true" validatorMessage="Nom invalide ">
+							<f:validateLength minimum="2" maximum="30" />
+						</h:inputText>
+    				</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="prenom">Prenom :</label>
+    				<div class="controls">
+						<h:inputText value="#{stagiaireController.stagiaire.prenom}"
+							id="prenom" name="prenom"
+							required="true" validatorMessage="Prénom invalide ">
+							<f:validateLength minimum="2" maximum="30" />
+						</h:inputText>
+    				</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="sexe">Sexe :</label>
+    				<div class="controls">
+						<h:selectOneRadio
+							value="#{stagiaireController.stagiaire.sexe}" 
+							id="sexe" name="sexe" required="true"
+							requiredMessage="le champ sexe est obligatoire">
+							<f:selectItem itemValue="Femme" itemLabel="Femme" />
+							<f:selectItem itemValue="Homme" itemLabel="Homme" />
+						</h:selectOneRadio>
+					</div>
+				</div>
+				<div class="control-group">
+	    			<label class="control-label" for="DateNaissance">Date de naissance :</label>
+    				<div class="controls">
+						<h:inputText label="Date" value="#{stagiaireController.stagiaire.dateNaissance}"
+							id="DateNaissance" name="DateNaissance" required="true" 
+							validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText>
+    				</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="adresse">Adresse (Rue, bd...) :</label>
+    				<div class="controls">
+						<h:inputText value="#{stagiaireController.stagiaire.adresse}"
+							id="adresse" name="adresse"
+							required="true" validatorMessage="Adresse invalide">
+							<f:validateLength minimum="2" maximum="20" />
+						</h:inputText>
+   					</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="codePostal">Code postal :</label>
+    				<div class="controls">
+						<h:inputText value="#{stagiaireController.stagiaire.codePostal}"
+							id="codePostal" name="codePostal"
+							required="true" validatorMessage="Code postal invalide">
+							<f:validateLength minimum="5" maximum="5" />
+						</h:inputText>
+   					</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="ville">Ville :</label>
+    				<div class="controls">
+						<h:inputText value="#{stagiaireController.stagiaire.ville}"
+							id="ville" name="ville"
+							required="true" validatorMessage="Ville invalide">
+							<f:validateLength minimum="2" maximum="20" />
+						</h:inputText>
+   					</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="telephone">Téléphone :</label>
+    				<div class="controls">
+						<h:inputText value="#{stagiaireController.stagiaire.tel}"
+							id="telephone" name="telephone"
+							required="true" validatorMessage="Téléphone invalide">
+							<f:validateRegex pattern="(^[0-9]{10}$)" />
+						</h:inputText>
+   					</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="ville">E-mail :</label>
+    				<div class="controls">
+						<h:inputText value="#{stagiaireController.stagiaire.email}" 
+							id="email" name="email" required="true"
+							validatorMessage="Le format de l'e-mail est invalide">
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</h:inputText>
+   					</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="diplome">Diplôme :</label>
+    				<div class="controls">
+						<h:selectOneMenu value="#{stagiaireController.stagiaire.diplome}"
+							id="diplome" name="diplome"
+							required="true" requiredMessage="Choisissez un diplôme">
+							<f:selectItem itemLabel="diplôme" />
+							<f:selectItem itemValue="docteur" itemLabel="docteur" />
+							<f:selectItem itemValue="Ingenieur" itemLabel="Ingenieur" />
+							<f:selectItem itemValue="Master" itemLabel="Master" />
+						</h:selectOneMenu>
+   					</div>
+	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="domaine">Domaine :</label>
+    				<div class="controls">
+						<h:selectOneMenu value="#{stagiaireController.stagiaire.domaine}"
+							id="domaine" name="domaine"
+							required="true" requiredMessage="Choisissez un domaine">
+							<f:selectItem itemLabel="domaine" />
+							<f:selectItem itemValue="Informatique" itemLabel="Informatique" />
+							<f:selectItem itemValue="Mathematique" itemLabel="Mathématiques" />
+							<f:selectItem itemValue="Physique" itemLabel="Physique" />
+							<f:selectItem itemValue="Biologie" itemLabel="Biologie" />
+							<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
+							<f:selectItem itemValue="Mecanique" itemLabel="Mécanique" />
+							<f:selectItem itemValue="Electrique" itemLabel="Electrique" />
+							<f:selectItem itemValue="Electronique" itemLabel="Electronique" />
+							<f:selectItem itemValue="Management" itemLabel="Management" />
+							<f:selectItem itemValue="Finance" itemLabel="Finances" />
+							<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
+							<f:selectItem itemValue="Autre" itemLabel="Autres" />
+						</h:selectOneMenu>
+   					</div>
+	    		</div>	
 				<div class="control-group">
 					<div class="controls">
-						<p>
-							<h:outputText value="Nom : "/>
-							<h:inputText value="#{stagiaireController.stagiaire.nom}" required="true"
-										validatorMessage=" nom invalide">
-								<f:validateLength minimum="2" maximum="20" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Prénom : "/>
-							<h:inputText value="#{stagiaireController.stagiaire.prenom}"
-									required="true" validatorMessage=" prenom invalide">
-								<f:validateLength minimum="2" maximum="20" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Date de naissance : "/>
-							<h:inputText label="Date" value="#{stagiaireController.stagiaire.dateNaissance}"
-									required="true" 
-									validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Adresse (Rue, bd...) : "/>
-							<h:inputText value="#{stagiaireController.stagiaire.adresse}"
-									required="true" validatorMessage="adresse invalide">
-								<f:validateLength minimum="2" maximum="20" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Code postal : "/>
-							<h:inputText value="#{stagiaireController.stagiaire.codePostal}"
-									required="true" validatorMessage="code postal invalide">
-								<f:validateLength minimum="5" maximum="5" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Ville : "/>
-							<h:inputText value="#{stagiaireController.stagiaire.ville}"
-								required="true" validatorMessage="ville invalide">
-								<f:validateLength minimum="2" maximum="20" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Numéro de téléphone : "/>
-							<h:inputText value="#{stagiaireController.stagiaire.tel}"
-								required="true" validatorMessage="telephone invalide">
-								<f:validateRegex pattern="(^[0-9]{10}$)" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="E-mail : "/>
-							<h:inputText id="Email"
-								value="#{stagiaireController.stagiaire.email}" required="true"
-								validatorMessage="Invalid email format">
-								<f:validateRegex
-									pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-							</h:inputText>
-						</p>
-						<p>
-							<h:outputText value="Diplôme : "/>
-							<h:selectOneMenu value="#{stagiaireController.stagiaire.diplome}"
-								required="true" requiredMessage="choisissez un diplome">
-								<f:selectItem itemLabel="diplome" />
-								<f:selectItem itemValue="docteur" itemLabel="docteur" />
-								<f:selectItem itemValue="Ingenieur" itemLabel="Ingenieur" />
-								<f:selectItem itemValue="Master" itemLabel="Master" />
-							</h:selectOneMenu>
-						</p>
-						<p>
-							<h:outputText value="Domaine: "/>
-							<h:selectOneMenu value="#{stagiaireController.stagiaire.domaine}"
-								required="true" requiredMessage="choisissez un domaine">
-								<f:selectItem itemLabel="domaine" />
-								<f:selectItem itemValue="Informatique" itemLabel="Informatique" />
-								<f:selectItem itemValue="Mathematique" itemLabel="Mathématiques" />
-								<f:selectItem itemValue="Physique" itemLabel="Physique" />
-								<f:selectItem itemValue="Biologie" itemLabel="Biologie" />
-								<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
-								<f:selectItem itemValue="Mecanique" itemLabel="Mécanique" />
-								<f:selectItem itemValue="Electrique" itemLabel="Electrique" />
-								<f:selectItem itemValue="Electronique" itemLabel="Electronique" />
-								<f:selectItem itemValue="Management" itemLabel="Management" />
-								<f:selectItem itemValue="Finance" itemLabel="Finances" />
-								<f:selectItem itemValue="Chimie" itemLabel="Chimie" />
-								<f:selectItem itemValue="Autre" itemLabel="Autres" />
-							</h:selectOneMenu>
-						</p>
-						<p>
-							<h:outputText value="Sexe : "/>
-							<h:selectOneRadio
-								value="#{stagiaireController.stagiaire.sexe}" required="true"
-								requiredMessage="le champ sexe est obligatoire">
-								<f:selectItem itemValue="Femme" itemLabel="Femme" />
-								<f:selectItem itemValue="Homme" itemLabel="Homme" />
-							</h:selectOneRadio>
-						</p>
+						<h:commandButton action="#{stagiaireController.doCreate()}" value="Valider"
+							styleClass="btn btn-success" />
+						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+						<h:button class="btn btn-inverse"
+							onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
+							value="Retour"/>
 					</div>
-				</div>             
-                <div class="table">
-					<tr>
-						<td><h:commandButton
-								action="#{stagiaireController.doCreate()}"
-								value="Valider" styleClass="btn btn-primary" /></td>
-						<td><h:button type="reset" class="btn btn-primary"
-								value="Annuler"></h:button></td>
-						<td><h:button class="btn btn-primary"
-								onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
-								value="Retour"></h:button></td>
-					</tr>
 				</div>
-				<h:messages />
-				</fieldset>
 			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
