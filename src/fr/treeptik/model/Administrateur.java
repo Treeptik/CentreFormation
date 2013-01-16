@@ -1,6 +1,5 @@
 package fr.treeptik.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "findAllAdministrateurs", query = "select a from Administrateur a") })
-public class Administrateur extends User implements Serializable {
+public class Administrateur extends User {
 
 	@OneToMany(mappedBy = "administrateur", cascade = CascadeType.PERSIST)
 	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();

@@ -12,15 +12,19 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
-import fr.treeptik.model.CompoKeysEval;
 import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.Formateur;
 import fr.treeptik.model.Formation;
+import fr.treeptik.model.Note;
+import fr.treeptik.model.PKEvaluationQuestion;
+import fr.treeptik.model.PKStagiaireSession;
+import fr.treeptik.model.Question;
 import fr.treeptik.model.Session;
 import fr.treeptik.model.Stagiaire;
 import fr.treeptik.service.EvaluationEJB;
 import fr.treeptik.service.FormateurEJB;
 import fr.treeptik.service.FormationEJB;
+import fr.treeptik.service.NoteEJB;
 import fr.treeptik.service.SessionEJB;
 import fr.treeptik.service.StagiaireEJB;
 
@@ -28,37 +32,47 @@ import fr.treeptik.service.StagiaireEJB;
 @SessionScoped
 public class EvaluationController {
 
-	private Evaluation evaluation = new Evaluation();	
+	private Evaluation evaluation = new Evaluation();
+	private Question question = new Question();
+	private Note note = new Note();
+	private Session session = new Session();
+	private Formateur formateur = new Formateur();
+	private Formation formation = new Formation();
+	private Stagiaire stagiaire;
+	private PKStagiaireSession stagiaireSessionId = new PKStagiaireSession();
+	private PKEvaluationQuestion pkevaluationQuestion = new PKEvaluationQuestion();
 
+	
 	@EJB
 	private EvaluationEJB evaluationEJB;
 	@EJB
 	private SessionEJB sessionEJB;
+	@EJB
+	private NoteEJB noteEJB;
 	@EJB
 	private StagiaireEJB stagiaireEJB;
 	@EJB
 	private FormationEJB formationEJB;
 	@EJB
 	private FormateurEJB formateurEJB;
+	@EJB
+	private SendTextMessage gestionmail;
 	
 	private List<Evaluation> listEvaluations = new ArrayList<Evaluation>();
 	private List<SelectItem> selectSession;
 	private List<SelectItem> selectFormation;
 	private List<SelectItem> selectFormateur;
-	private CompoKeysEval compoKeyEval = new CompoKeysEval();
-	private Stagiaire stagiaire;
-	private Session session = new Session();
-	private Formateur formateur = new Formateur();
-	private Formation formation = new Formation();
-
-	// private String idStagiaire;
-
 	@SuppressWarnings("rawtypes")
 	private DataModel evaluations;
 
-	@EJB
-	private SendTextMessage gestionmail;
-
+	
+	public void doAddFirstQuestion() {
+		pkevaluationQuestion.setEvaluation(evaluation);
+		pkevaluationQuestion.setQuestion(question);
+		note.setId(pkevaluationQuestion);
+		noteEJB.create(note);
+	}
+	
 	public String doFillEval() {
 		try{
 		evaluationEJB.create(evaluation);
@@ -69,7 +83,22 @@ public class EvaluationController {
 		return "messageEvaluationDejaEffectue";
 		}
 	}
-
+	
+	
+	
+	
+	/*
+	public String doFillEval() {
+		try{
+		evaluationEJB.create(evaluation);
+		gestionmail.mailRecapEvaluation(evaluation);
+		return "messageEvaluationEffectue";
+		}
+		catch (Exception e){
+		return "messageEvaluationDejaEffectue";
+		}
+	}
+*/
 	@SuppressWarnings("rawtypes")
 	public String doDelete() {
 		Evaluation evaluation = (Evaluation) evaluations.getRowData();
@@ -97,6 +126,8 @@ public class EvaluationController {
 		return "selectSession";
 	}
 	
+
+	
 /**
  * Méthode pour choisir sa session
  * définit l'utilisateur authentifiée en tant que 
@@ -107,26 +138,24 @@ public class EvaluationController {
 		System.out.println("sessioin Id avant :"+session.getId());
 		session = sessionEJB.findById(session.getId());
 		System.out.println("après"+session.getId());
-		compoKeyEval.setSession(session);
+		stagiaireSessionId.setSession(session);
 		System.out.println("stagaire avant"+stagiaire);
 		stagiaire = stagiaireEJB.findStagiaireByEmail(getRequest()
 				.getUserPrincipal().toString());
 		System.out.println("stagaire après : "+stagiaire.getId());
-		compoKeyEval.setStagiaire(stagiaire);
+		stagiaireSessionId.setStagiaire(stagiaire);
 		return "selectFormation";
 	}
 	
 	public String chooseFormation() {
 		formation = formationEJB.findById(formation.getId());
-		compoKeyEval.setFormation(formation);
-		evaluation.setId(compoKeyEval);
+		evaluation.setFormation(formation);
 		return "selectFormateur";
 	}
 	
 	public String chooseFormateur() {
 		formateur = formateurEJB.findById(formateur.getId());
-		compoKeyEval.setFormateur(formateur);
-		evaluation.setId(compoKeyEval);
+		evaluation.setFormateur(formateur);
 		return "doEvaluation";
 	}
 //**********Méthodes pour remplir les Items des SelectOneMenu************//

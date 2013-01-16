@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      
+	<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+		<ui:define name="titre">Liste des questions</ui:define>
+	
+		<ui:define name="body">
+		<h2>Liste des Questions</h2>
+		
+			<h:form>	
+				<h:dataTable class="table table-bordered table-striped" 
+						value="#{questionController.questions}" var="q">
+			  		<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="ID"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.id}"/>
+					</h:column>
+			  		<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="libellé"/>
+			 			</f:facet>
+			  			<h:outputText value="#{q.libelle}"/>
+					</h:column>
+			  		<h:column>
+			    		<f:facet name="header">
+							<h:outputText value="Avec commentaire"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.avecCommentaire}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Opérations" />
+						</f:facet>
+						<h:commandLink action="#{questionController.doSelectUpdate()}" value="Modifier" />
+						<h:outputText value=" / "/>
+						<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
+							action="#{questionController.doDelete()}" value="Supprimer"/>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+	 			<a href="../Annexes/acceuilGestion.jsf">retour</a>
+		</ui:define>
+	</ui:composition>
+</html>

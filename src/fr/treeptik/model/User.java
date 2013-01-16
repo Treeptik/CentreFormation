@@ -1,7 +1,5 @@
 package fr.treeptik.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +11,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQuery(name="User.findUserByEmail", query="select u from User u where u.email = :email")
-public class User implements Serializable {
+public class User {
 
 public static final String FIND_BY_EMAIL = "User.findUserByEmail";
 

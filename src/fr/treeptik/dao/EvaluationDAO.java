@@ -2,7 +2,7 @@ package fr.treeptik.dao;
 
 import javax.ejb.Stateless;
 
-import fr.treeptik.model.CompoKeysEval;
+import fr.treeptik.model.PKStagiaireSession;
 import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.Formation;
 import fr.treeptik.model.Session;
@@ -21,7 +21,7 @@ public class EvaluationDAO extends GenericDAO<Evaluation> {
 	/*
 	public Evaluation findById(Stagiaire stagiaire, Session session,
 	Formation formation){
-		return em.find(CompoKeysEval);
+		return em.find(PKStagiaireSession);
 	}
 	*/
 }

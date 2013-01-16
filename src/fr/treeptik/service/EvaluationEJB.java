@@ -19,7 +19,7 @@ public class EvaluationEJB {
 	private EvaluationDAO evaluationDAO = new EvaluationDAO();
 	@EJB
     private StagiaireDAO stagiaireDAO = new StagiaireDAO();
-	
+
 	public void create(Evaluation evaluation){
 		evaluationDAO.create(evaluation);
 	}

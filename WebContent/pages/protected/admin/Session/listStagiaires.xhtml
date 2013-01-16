@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+	<ui:define name="titre">List des Stagiaires</ui:define>
+	<ui:define name="body">
+		<div class="span8" id="titre">Mettre à Jour une Session :</div>
+		<div class="span8" id="article">
+			<h:form class="form-horizontal">
+				<h:messages />
+				<div class="control-group">
+	    			<label class="control-label" for="id">ID :</label>
+	    			<div class="controls">
+						<h:inputText value="#{sessionController.session.id}"
+							id="id" name="id"/>
+	    			</div>
+	    		</div>						
+				<div class="control-group">
+	    			<label class="control-label" for="nom">Nom :</label>
+    				<div class="controls">
+						<h:inputText value="#{sessionController.session.nom}"
+							id="nom" name="nom"
+							required="true" validatorMessage=" nom invalide ">
+							<f:validateLength minimum="2" maximum="40" />
+						</h:inputText>
+    				</div>
+	    		</div>
+	    		<div class="control-group">
+	    			<label class="control-label" for="formation">Formation :</label>
+    				<div class="controls">
+						<h:selectOneMenu value="#{sessionController.formation.id}"
+							id="formation" name="formation"
+							required="true" requiredMessage="choisissez une formation">
+						<f:selectItems value="#{formationController.selectFormation}"/>
+						</h:selectOneMenu>
+	    			</div>
+	    		</div>		
+				<div class="control-group">
+	    			<label class="control-label" for="formateur">Formateur :</label>
+					<div class="controls">
+						<h:selectOneMenu value="#{sessionController.formateur.id}"
+							id="formateur" name="formateur"
+							required="true" requiredMessage="choisissez un formateur">
+						<f:selectItems value="#{formateurController.selectFormateur}"></f:selectItems>
+						</h:selectOneMenu>
+	    			</div>
+	    		</div>		
+				<div class="control-group">
+	    			<label class="control-label" for="dateDebut">Date de début :</label>
+					<div class="controls">
+						<h:inputText value="#{sessionController.session.dateDebutStage}"
+							id="dateDebut" name="dateDebut" required="true"
+							validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+						</h:inputText>
+	    			</div>
+	    		</div>		
+				<div class="control-group">
+	    			<label class="control-label" for="dateFin">Date de fin :</label>
+					<div class="controls">
+						<h:inputText value="#{sessionController.session.dateFinStage}"
+								id="dateFin" name="dateFin" required="true"
+								validatorMessage="la date doit avoir le format (dd/MM/yyyy)">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"  />
+						</h:inputText>
+					</div>
+				</div>
+
+			<h:dataTable class="table table-bordered table-striped" 
+				value="#{stagiaireController.stagiaires}" var="st">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{st.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nom" />
+					</f:facet>
+					<h:outputText value="#{st.nom}" />
+				</h:column>
+	
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Prenom" />
+					</f:facet>
+					<h:outputText value="#{st.prenom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Diplome" />
+					</f:facet>
+					<h:outputText value="#{st.diplome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Domaine" />
+					</f:facet>
+					<h:outputText value="#{st.domaine}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Mot de passe" />
+					</f:facet>
+					<h:outputText value="#{st.password}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opérations" />
+					</f:facet>
+					<h:commandLink action="#{stagiaireController.doAddStagiaire()}"
+						value="Ajouter stagiaire à Session" />
+					<h:outputText value=" / "/>
+					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
+						action="#{stagiaireController.doDelete()}" value="Supprimer" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+			<a href="../Annexes/acceuilGestion.jsf">retour</a>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

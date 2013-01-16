@@ -26,7 +26,6 @@ public class Formateur implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id")
 	private int id;
 	@Column(nullable = false)
 	private String nom;

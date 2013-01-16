@@ -40,11 +40,12 @@ public class SessionController {
 	private Formateur formateur = new Formateur();
 	private Stagiaire stagiaire = new Stagiaire();
 	private List<Session> listSessions = new ArrayList<Session>();
-
+	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
 	private List<SelectItem> selectStagiaire;
 	@SuppressWarnings("rawtypes")
 	private DataModel sessions;
-
+	private DataModel stagiaires;
+	
 	// private List<SelectItem> selectSession;
 
 	public String doCreate() {
@@ -66,6 +67,20 @@ public class SessionController {
 	}
 
 	@SuppressWarnings("rawtypes")
+	public DataModel getStagiaires() {
+		if (stagiaires == null) {
+			stagiaires = new ListDataModel();
+			stagiaires.setWrappedData(stagiaireEJB.findAll());
+		}
+		return stagiaires;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setStagiaires(DataModel stagiaires) {
+		this.stagiaires = stagiaires;
+	}
+	
+	@SuppressWarnings("rawtypes")
 	public String doDelete() {
 		Session session = (Session) sessions.getRowData();
 		sessionEJB.delete(session);
@@ -81,7 +96,7 @@ public class SessionController {
 
 	public String doSelectAddStagiaire() {
 		session = (Session) sessions.getRowData();
-		return "addStagiaire";
+		return "listStagiaires";
 	}
 
 	public List<SelectItem> getSelectStagiaire() {
@@ -123,7 +138,15 @@ public class SessionController {
 		sessions.setWrappedData(sessionEJB.findAll());
 		return "messageSessionUpdate";
 	}
-
+	public String doAddStagiaire() {
+		stagiaire = (Stagiaire) stagiaires.getRowData();
+		System.out.println("stagiaire"+stagiaire);
+		
+		List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();	
+		listStagiaires.add(stagiaire);
+		session.setListStagiaires(listStagiaires);
+		return "listSessions";
+	}
 	/*
 	 * public void qui(){ stagiaire = stagiaireEJB.findById(stagiaire.getId());
 	 * System.out.println("Stagiaire:"+stagiaire.getNom());
@@ -131,7 +154,7 @@ public class SessionController {
 	 * System.out.println("ID : "+session.getId());
 	 * System.out.println("ID : "+session.getNom()); }
 	 */
-
+/*
 	public String doAddStagiaire() {
 		System.out.println("Test1");
 		System.out.println(formation);
@@ -151,19 +174,19 @@ public class SessionController {
 		System.out.println(stagiaire);
 		List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
 		/*
-		 * if (session.getListStagiaires()== null){
-		 * 
-		 * listStagiaires.add(stagiaire);
-		 * session.setListStagiaires(listStagiaires); } else { listStagiaires =
-		 * session.getListStagiaires();
-		 */
+		 if (session.getListStagiaires()== null){
+		 
+		 listStagiaires.add(stagiaire);
+		 session.setListStagiaires(listStagiaires); } else { listStagiaires =
+		 session.getListStagiaires();
+		 
 		listStagiaires.add(stagiaire);
 		session.setListStagiaires(listStagiaires);
 		// }
 		sessionEJB.update(session);
 		return "messageStagiaireAjoute";
 	}
-
+*/
 	public String doFindAll() {
 		listSessions = sessionEJB.findAll();
 		return "listSessions";

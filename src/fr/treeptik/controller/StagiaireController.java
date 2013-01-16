@@ -17,14 +17,18 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.Formation;
+import fr.treeptik.model.Session;
 import fr.treeptik.model.Stagiaire;
 import fr.treeptik.service.FormationEJB;
+import fr.treeptik.service.SessionEJB;
 import fr.treeptik.service.StagiaireEJB;
 
 @ManagedBean
 @SessionScoped
 public class StagiaireController {
 
+	@EJB
+	private SessionEJB sessionEJB;
 	@EJB
 	private StagiaireEJB stagiaireEJB;
 	@EJB
@@ -35,7 +39,7 @@ public class StagiaireController {
 	private Formation formation = new Formation();
 	private Evaluation evaluation = new Evaluation();
 	private Stagiaire stagiaire = new Stagiaire();
-
+	private Session session = new Session();
 	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
 //	private List<SelectItem> selectFormation;
 	private List<SelectItem> selectStagiaire;
@@ -61,25 +65,41 @@ public class StagiaireController {
 
 	public String doSelectUpdate() {
 		stagiaire = (Stagiaire) stagiaires.getRowData();
+		System.out.println("stagiaire"+stagiaire);
+		System.out.println("stagiairenom"+stagiaire.getNom());
 		return "updateStagiaire";
 	}
 
 	@SuppressWarnings("rawtypes")
 	public String doUpdate() {
-		
 		stagiaireEJB.update(stagiaire);
 		stagiaires = new ListDataModel();
 		stagiaires.setWrappedData(stagiaireEJB.findAll());
 		return "messageStagiaireUpdate";
 	}
+	
+	public String doAddStagiaire() {
+		System.out.println("session"+session);	
+		stagiaire = (Stagiaire) stagiaires.getRowData();
+		System.out.println("stagiaire"+stagiaire.getNom());
+		sessionEJB.refresh(session);
+		System.out.println("sessionNom"+session.getNom());		
+		List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();	
+		listStagiaires.add(stagiaire);
+		session.setListStagiaires(listStagiaires);
+		sessionEJB.update(session);
+		return "listSessions";
+	}
 
+
+	/*
 	public String doAddStagiaire() {
 		// stagiaire.setFormation(new Formation());
 		// stagiaire.getFormation().setId(formation.getId());
 		// stagiaireEJB.create(stagiaire);
 		return "message1";
 	}
-
+*/
 	public String doFindAll() {
 		listStagiaires = stagiaireEJB.findAll();
 		return "listStagiaires";
@@ -102,7 +122,21 @@ public class StagiaireController {
 	public String doRecherche() {
 		return "recherche";
 	}
+	public SessionEJB getSessionEJB() {
+		return sessionEJB;
+	}
 
+	public void setSessionEJB(SessionEJB sessionEJB) {
+		this.sessionEJB = sessionEJB;
+	}
+
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
 	public StagiaireEJB getStagiareEJB() {
 		return stagiaireEJB;
 	}

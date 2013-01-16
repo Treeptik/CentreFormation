@@ -7,18 +7,14 @@ import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Embeddable
-public class CompoKeysEval implements Serializable {
+public class PKStagiaireSession implements Serializable {
 
 	@ManyToOne
 	private Stagiaire stagiaire;
 	@ManyToOne
 	private Session session;
-	@ManyToOne
-	private Formation formation;
-	@ManyToOne
-	private Formateur formateur;
 	
-	public CompoKeysEval() {
+	public PKStagiaireSession() {
 	}
 
 	public Stagiaire getStagiaire() {
@@ -37,30 +33,10 @@ public class CompoKeysEval implements Serializable {
 		this.session = session;
 	}
 
-	public Formation getFormation() {
-		return formation;
-	}
-
-	public void setFormation(Formation formation) {
-		this.formation = formation;
-	}
-
-	public Formateur getFormateur() {
-		return formateur;
-	}
-
-	public void setFormateur(Formateur formateur) {
-		this.formateur = formateur;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((formateur == null) ? 0 : formateur.hashCode());
-		result = prime * result
-				+ ((formation == null) ? 0 : formation.hashCode());
 		result = prime * result + ((session == null) ? 0 : session.hashCode());
 		result = prime * result
 				+ ((stagiaire == null) ? 0 : stagiaire.hashCode());
@@ -75,24 +51,10 @@ public class CompoKeysEval implements Serializable {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof CompoKeysEval)) {
+		if (!(obj instanceof PKStagiaireSession)) {
 			return false;
 		}
-		CompoKeysEval other = (CompoKeysEval) obj;
-		if (formateur == null) {
-			if (other.formateur != null) {
-				return false;
-			}
-		} else if (!formateur.equals(other.formateur)) {
-			return false;
-		}
-		if (formation == null) {
-			if (other.formation != null) {
-				return false;
-			}
-		} else if (!formation.equals(other.formation)) {
-			return false;
-		}
+		PKStagiaireSession other = (PKStagiaireSession) obj;
 		if (session == null) {
 			if (other.session != null) {
 				return false;

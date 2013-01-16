@@ -36,7 +36,7 @@ public class Stagiaire extends User implements Serializable {
 	private String domaine;
 	@ManyToOne()
 	private Administrateur administrateur;
-	@ManyToMany(mappedBy = "listStagiaires", cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy = "listStagiaires")
 	private List<Session> listSessions;
 
 	public Stagiaire() {

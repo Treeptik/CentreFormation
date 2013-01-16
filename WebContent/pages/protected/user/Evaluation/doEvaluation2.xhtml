@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="http://localhost:8080/FormationJSF/template3/templateEvaluation.xhtml">
+
+	<ui:define name="titre">Evaluation Treeptik</ui:define>
+	<ui:define name="body">
+		<div Styleclass="span7">
+			<h:form class="well">
+				<div class="control-group">
+					<div class="controls">
+						<div class="table">
+				<h:dataTable class="table table-bordered table-striped" 
+						value="#{noteController.questions}" var="q">
+			  		<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value=""/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.id}"/>
+					</h:column>
+	
+									<h4>Comment avez-vous trouvé...</h4>
+									<h5 Align="left">
+										<i>1 #{questionController.listQuestions.get(0).libelle}</i>
+									</h5>
+									<td><h:selectOneRadio
+										value="#{evaluationController.evaluation.listQuestions.get(0).note}"
+										required="true"
+										requiredMessage="la question 1 est obligatoire">
+										<f:selectItem itemValue="4" itemLabel="TS" />
+										<f:selectItem itemValue="3" itemLabel="S" />
+										<f:selectItem itemValue="2" itemLabel="M" />
+										<f:selectItem itemValue="1" itemLabel="I" />
+									</h:selectOneRadio></td></tr>
+
+						</div>
+						<h:commandButton
+							action="#{evaluationController.doFillEval()}"
+							value="Valider" StyleClass="btn btn-primary" />
+						<h:commandButton StyleClass="btn btn-primary" type="reset"
+							value="Annuler" immediate="true" />
+						<h:commandButton
+							onclick="window.location.href='acceuil.jsf'; return false;"
+							value="Retour" StyleClass="btn btn-primary" />
+					</div>
+				</div>
+				<h:messages />
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
