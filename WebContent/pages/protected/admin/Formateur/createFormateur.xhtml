@@ -31,6 +31,16 @@
 						</h:inputText>
 	    			</div>
 	    		</div>		
+	    		<div class="control-group">
+	    			<label class="control-label" for="specialite">Spécialité :</label>
+    				<div class="controls">
+						<h:inputText value="#{formateurController.formateur.specialite}"
+							id="specialite" name="specialite"  
+							validatorMessage=" spécialité invalide ">
+							<f:validateLength minimum="2" maximum="100" />
+						</h:inputText>
+	    			</div>
+	    		</div>			    		
 				<div class="control-group">
 					<div class="controls">
 						<h:commandButton action="#{formateurController.doCreate()}" value="Valider"

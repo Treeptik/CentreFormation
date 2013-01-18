@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+	<ui:define name="titre">Ajouter une Question à l'évaluation</ui:define>
+	<ui:define name="body">
+		<div class="span8" id="titre">Ajouter une Question à l'évaluation</div>
+		<div class="span8" id="article">
+			<h:form class="form-horizontal">
+				<h:messages />
+				<div class="control-group">
+	    			<label class="control-label" for="id">ID :</label>
+	    			<div class="controls">
+						<h:inputText value="#{evaluationController.evaluation.id}"
+							id="id" name="id"/>
+	    			</div>
+	    		</div>						
+				<div class="control-group">
+	    			<label class="control-label" for="nom">Nom :</label>
+    				<div class="controls">
+						<h:inputText value="#{evaluationController.evaluation.nom}"
+							id="nom" name="nom"
+							required="true" validatorMessage=" nom invalide ">
+							<f:validateLength minimum="2" maximum="40" />
+						</h:inputText>
+    				</div>
+	    		</div>
+	    		<div class="control-group">
+	    			<label class="control-label" for="question">Question à ajouter :</label>
+					<div class="controls">
+						<h:selectOneMenu value="#{evaluationController.question.id}"
+							id="question" name="question"
+							required="true" requiredMessage="choisissez une Question">
+						<f:selectItems value="#{questionController.selectQuestion}"/>
+						</h:selectOneMenu>
+	    			</div>
+	    		</div>		
+				<div class="control-group">
+					<div class="controls">
+						<h:commandButton action="#{evaluationController.doAddQuestionToEval()}"
+							value="Ajouter" styleClass="btn btn-success" />
+						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+						<h:button class="btn btn-inverse"
+							onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
+							value="Retour"/>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

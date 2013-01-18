@@ -1,0 +1,47 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+	<ui:define name="titre">Liste des Formations</ui:define>
+	<ui:define name="body">
+		<h2>Ajouter une formation à la Session #{sessionController.session.nom} :</h2>
+		<h:form>
+		<h:inputHidden value="#{sessionController.session.id}" />
+			<h:dataTable class="table table-bordered table-striped" value="#{sessionController.lDMFormations}" var="ft">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{ft.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nom" />
+					</f:facet>
+					<h:outputText value="#{ft.nom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descriptif" />
+					</f:facet>
+					<h:outputText value="#{ft.descriptif}" />
+				</h:column>				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opérations" />
+					</f:facet>
+					<h:commandLink 	action="#{sessionController.doAddFormationToSession()}"
+						value="Lier" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+		<h:outputText value=" / "/>		
+		<a href="../Session/listSessions.jsf">retour à la liste des sessions</a>
+	</ui:define>
+</ui:composition>
+</html>

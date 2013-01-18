@@ -71,5 +71,4 @@ public class PKStagiaireSession implements Serializable {
 		}
 		return true;
 	}
-
 }

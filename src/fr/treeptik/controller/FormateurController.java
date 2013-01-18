@@ -20,18 +20,23 @@ import fr.treeptik.service.FormateurEJB;
 @RequestScoped
 public class FormateurController {
 
+	// *********ENTITE******************************************************
+	// private Formation formation = new Formation();
+	private Formateur formateur = new Formateur();
+
+	// *********EJB*********************************************************
 	@EJB
 	private FormateurEJB formateurEJB;
 	// @EJB
 	// private FormationEJB formationEJB;
-	//
-	// private Formation formation = new Formation();
-	private Formateur formateur = new Formateur();
+
+	// **********LISTES*****************************************************
 	private List<Formateur> listFormateurs = new ArrayList<Formateur>();
 	private List<SelectItem> selectFormateur;
+
+	// **********DATAMODEL**************************************************
 	@SuppressWarnings("rawtypes")
 	private DataModel formateurs;
-	
 
 	public String doCreate() {
 		formateurEJB.create(formateur);
@@ -40,7 +45,7 @@ public class FormateurController {
 		// listFormateurs = formateurEJB.findAllFormateurs();
 		return "messageFormateurCree";
 	}
-		
+
 	@SuppressWarnings("rawtypes")
 	public String doDelete() {
 		Formateur formateur = (Formateur) formateurs.getRowData();
@@ -128,10 +133,8 @@ public class FormateurController {
 	public void setFormateurs(DataModel formateurs) {
 		this.formateurs = formateurs;
 	}
-/*
-	public void getConverter(){
-		formateurEJB.getConverter();
-	}
-*/	
-	
+	/*
+	 * public void getConverter(){ formateurEJB.getConverter(); }
+	 */
+
 }

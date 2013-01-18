@@ -31,4 +31,8 @@ public class AdministrateurEJB {
 		administrateur.setRole("ADMIN");
 		administrateurDAO.update(administrateur);
 	}
+
+	public Administrateur findById(int id) {
+		return administrateurDAO.findById(id);
+	}
 }

@@ -21,8 +21,12 @@ import fr.treeptik.service.StagiaireEJB;
 @ManagedBean
 @RequestScoped
 public class AdministrateurController {
+	// *********ENTITE******************************************************
+	private Administrateur administrateur = new Administrateur();
+	private Stagiaire stagiaire = new Stagiaire();
+	private Formateur formateur = new Formateur();
 	
-
+	// *********EJB*********************************************************
 	@EJB
 	private AdministrateurEJB administrateurEJB;
 	@EJB
@@ -30,20 +34,15 @@ public class AdministrateurController {
 	@EJB
 	private FormateurEJB formateurEJB ;
 	
-	
-	private Administrateur administrateur = new Administrateur();
-	private Stagiaire stagiaire = new Stagiaire();
-	private Formateur formateur = new Formateur();
+	// **********LISTES*****************************************************
 	private List<Administrateur> listAdministrateurs = new ArrayList<Administrateur>();
+	
+	// **********DATAMODEL**************************************************
 	@SuppressWarnings("rawtypes")
 	private DataModel administrateurs;
 
 	public String doCreate(){
 		administrateurEJB.create(administrateur);
-//		stagiaire.setadministrateurTreeptik(administrateur);
-//		stagiaireEJB.createUnStagiaire(stagiaire);
-//		formateur.setAdministrateurTreeptik(administrateur);
-//		formateurEJB.createUnFormateur(formateur);
 		listAdministrateurs = administrateurEJB.findAll();
 		return"messageAdministrateurCree";
 	}

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+	<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+		<ui:define name="titre">Liste des Evaluations</ui:define>
+
+		<ui:define name="body">
+			<h2>Liste des Evaluations </h2>	
+			<h:form>
+				<h:dataTable class="table table-bordered table-striped" 
+				value="#{evaluationController.lDMEvaluations}" var="ev">
+	  				<h:column>
+	    				<f:facet name="header">
+	  						<h:outputText value="Nom"/>
+	  					</f:facet>
+	  					<h:outputText value="#{ev.nom}"/>
+					</h:column>
+					<h:column>
+	    				<f:facet name="header">
+	  						<h:outputText value="Descriptif"/>
+	  					</f:facet>
+	  					<h:outputText value="#{ev.descriptif}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Opérations" />
+						</f:facet>
+						<h:commandLink action="#{evaluationController.doSelectUpdate()}" value="Modifier" />
+						<h:outputText value=" / "/>
+						<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{evaluationController.doDelete()}" value="Supprimer"/>
+						<h:outputText value=" / "/>
+						<h:commandLink action="#{evaluationController.doSelectAddQuestion()}"
+						value="Add Question" />
+						<h:outputText value=" / "/>
+						<h:commandLink action="#{evaluationController.doListQuestionOfEval()}"
+						value="Liste Questions" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+				<a href="../Annexes/acceuilGestion.jsf">retour</a>
+		</ui:define>
+	</ui:composition>
+</html>

@@ -10,7 +10,7 @@
 	<ui:define name="body">
 		<h2>Liste des Formations</h2>
 		<h:form>
-			<h:dataTable class="table table-bordered table-striped" value="#{formationController.formations}" var="ft">
+			<h:dataTable class="table table-bordered table-striped" value="#{formationController.lDMFormations}" var="ft">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="ID" />
@@ -25,6 +25,12 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="Descriptif" />
+					</f:facet>
+					<h:outputText value="#{ft.descriptif}" />
+				</h:column>				
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
 					<h:commandLink action="#{formationController.doSelectUpdate()}"
@@ -32,6 +38,12 @@
 					<h:outputText value=" / "/>
 					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{formationController.doDelete()}"
 						value="Supprimer" />
+					<h:outputText value=" / "/>
+					<h:commandLink action="#{formationController.doSelectAddFormateur()}"
+						value="Add Formateur" />
+					<h:outputText value=" / "/>
+					<h:commandLink action="#{formationController.doListFormateursOfFormation()}"
+						value="Liste Formateurs" />
 				</h:column>
 			</h:dataTable>
 		</h:form>

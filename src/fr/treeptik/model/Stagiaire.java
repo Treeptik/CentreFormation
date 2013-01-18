@@ -2,12 +2,9 @@ package fr.treeptik.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -36,8 +33,6 @@ public class Stagiaire extends User implements Serializable {
 	private String domaine;
 	@ManyToOne()
 	private Administrateur administrateur;
-	@ManyToMany(mappedBy = "listStagiaires")
-	private List<Session> listSessions;
 
 	public Stagiaire() {
 		super();
@@ -124,15 +119,6 @@ public class Stagiaire extends User implements Serializable {
 		this.administrateur = administrateur;
 	}
 
-
-	public List<Session> getListSessions() {
-		return listSessions;
-	}
-
-	public void setListSessions(List<Session> listSessions) {
-		this.listSessions = listSessions;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -146,8 +132,6 @@ public class Stagiaire extends User implements Serializable {
 				+ ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
 		result = prime * result + ((diplome == null) ? 0 : diplome.hashCode());
 		result = prime * result + ((domaine == null) ? 0 : domaine.hashCode());
-		result = prime * result
-				+ ((listSessions == null) ? 0 : listSessions.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		result = prime * result + ((sexe == null) ? 0 : sexe.hashCode());
 		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
@@ -209,13 +193,6 @@ public class Stagiaire extends User implements Serializable {
 		} else if (!domaine.equals(other.domaine)) {
 			return false;
 		}
-		if (listSessions == null) {
-			if (other.listSessions != null) {
-				return false;
-			}
-		} else if (!listSessions.equals(other.listSessions)) {
-			return false;
-		}
 		if (prenom == null) {
 			if (other.prenom != null) {
 				return false;
@@ -246,5 +223,4 @@ public class Stagiaire extends User implements Serializable {
 		}
 		return true;
 	}
-
 }

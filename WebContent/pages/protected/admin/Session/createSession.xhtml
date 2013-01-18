@@ -19,37 +19,7 @@
 							<f:validateLength minimum="2" maximum="40" />
 						</h:inputText>
     				</div>
-	    		</div>
-	    		<div class="control-group">
-	    			<label class="control-label" for="formation">Formation :</label>
-    				<div class="controls">
-						<h:selectOneMenu value="#{sessionController.formation.id}"
-							id="formation" name="formation"
-							required="true" requiredMessage="choisissez une formation">
-						<f:selectItems value="#{formationController.selectFormation}"/>
-						</h:selectOneMenu>
-	    			</div>
-	    		</div>		
-				<div class="control-group">
-	    			<label class="control-label" for="formateur">Formateur :</label>
-					<div class="controls">
-						<h:selectOneMenu value="#{sessionController.formateur.id}"
-							id="formateur" name="formateur"
-							required="true" requiredMessage="choisissez un formateur">
-						<f:selectItems value="#{formateurController.selectFormateur}"></f:selectItems>
-						</h:selectOneMenu> 
-	    			</div>
-	    		</div>		
-	    		<div class="control-group">
-	    			<label class="control-label" for="stagiaire">Stagiaire :</label>
-					<div class="controls">
-						<h:selectOneMenu value="#{sessionController.stagiaire.id}"
-							id="stagiaire" name="stagiaire"
-							required="true" requiredMessage="choisissez un stagiaire">
-						<f:selectItems value="#{stagiaireController.selectStagiaire}"></f:selectItems>
-						</h:selectOneMenu>
-	    			</div>
-	    		</div>		   
+	    		</div>						   
 				<div class="control-group">
 	    			<label class="control-label" for="dateDebut">Date de début :</label>
 					<div class="controls">
@@ -69,7 +39,17 @@
 							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"  />
 						</h:inputText>
 					</div>
-				</div>	
+				</div>
+				<div class="control-group">
+	    			<label class="control-label" for="descriptif">Descriptif :</label>
+    				<div class="controls">
+						<h:inputText value="#{sessionController.session.descriptif}"
+							id="descriptif" name="descriptif"
+							validatorMessage=" descriptif invalide ">
+							<f:validateLength minimum="2" maximum="200" />
+						</h:inputText>
+    				</div>
+	    		</div>		
 				<div class="control-group">
 					<div class="controls">
 						<h:commandButton action="#{sessionController.doCreate()}" value="Valider"

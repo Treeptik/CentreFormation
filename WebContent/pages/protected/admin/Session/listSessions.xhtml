@@ -10,7 +10,7 @@
 		<h2>Liste des sessions</h2>
 		<h:form>
 			<h:dataTable class="table table-bordered table-striped" 
-				value="#{sessionController.sessions}" var="sess">
+				value="#{sessionController.lDMSessions}" var="sess">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="ID" />
@@ -46,15 +46,28 @@
 					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
-					<h:commandLink action="#{sessionController.doSelectUpdate()}"
+					<p><h:commandLink action="#{sessionController.doSelectUpdate()}"
 						value="Modifier" />
 					<h:outputText value=" / "/>
 					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
 						action="#{sessionController.doDelete()}" value="Supprimer" />
 					<h:outputText value=" / "/>
+					<h:commandLink action="#{sessionController.doListStagiaireOfSession()}"
+						value="Liste Stagiaires" />
+					<h:outputText value=" / "/>
 					<h:commandLink action="#{sessionController.doSelectAddStagiaire()}"
-						value="Add Stagiaire" />
-						
+						value="Add Stagiaire" /></p>
+					<p><h:commandLink action="#{sessionController.doSelectAddFormation()}"
+						value="Add Formation" />
+					<h:outputText value=" / "/>
+					<h:commandLink action="#{sessionController.doListFormationOfSession()}"
+						value="Liste Formations" />
+					<h:outputText value=" / "/>
+					<h:commandLink action="#{sessionController.doSelectlinkToEval()}"
+						value="Lier Eval" />
+					<h:outputText value=" / "/>
+					<h:commandLink action="#{sessionController.doListEvaluationsOfSession()}"
+						value="Liste Evals" /></p>
 				</h:column>
 			</h:dataTable>
 		</h:form>

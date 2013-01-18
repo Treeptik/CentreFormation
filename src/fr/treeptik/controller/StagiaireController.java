@@ -27,6 +27,13 @@ import fr.treeptik.service.StagiaireEJB;
 @SessionScoped
 public class StagiaireController {
 
+	// *********ENTITE******************************************************
+	private Formation formation = new Formation();
+	private Evaluation evaluation = new Evaluation();
+	private Stagiaire stagiaire = new Stagiaire();
+	private Session session = new Session();
+	
+	// *********EJB*********************************************************
 	@EJB
 	private SessionEJB sessionEJB;
 	@EJB
@@ -36,13 +43,13 @@ public class StagiaireController {
 	@EJB
 	private SendTextMessage gestionmail;
 
-	private Formation formation = new Formation();
-	private Evaluation evaluation = new Evaluation();
-	private Stagiaire stagiaire = new Stagiaire();
-	private Session session = new Session();
+
+	// **********LISTES*****************************************************
 	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
 //	private List<SelectItem> selectFormation;
 	private List<SelectItem> selectStagiaire;
+	
+	// **********DATAMODEL**************************************************
 	@SuppressWarnings("rawtypes")
 	private DataModel stagiaires;
 
@@ -76,19 +83,6 @@ public class StagiaireController {
 		stagiaires = new ListDataModel();
 		stagiaires.setWrappedData(stagiaireEJB.findAll());
 		return "messageStagiaireUpdate";
-	}
-	
-	public String doAddStagiaire() {
-		System.out.println("session"+session);	
-		stagiaire = (Stagiaire) stagiaires.getRowData();
-		System.out.println("stagiaire"+stagiaire.getNom());
-		sessionEJB.refresh(session);
-		System.out.println("sessionNom"+session.getNom());		
-		List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();	
-		listStagiaires.add(stagiaire);
-		session.setListStagiaires(listStagiaires);
-		sessionEJB.update(session);
-		return "listSessions";
 	}
 
 

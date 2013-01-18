@@ -1,9 +1,6 @@
 package fr.treeptik.dao;
 
 import javax.ejb.Stateless;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 
 import fr.treeptik.model.Formateur;
 

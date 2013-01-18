@@ -2,19 +2,20 @@ package fr.treeptik.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Embeddable
-public class PKEvaluationQuestion implements Serializable {
+public class PKQuestionnaire implements Serializable {
 
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.ALL})
 	private Evaluation evaluation;
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.ALL})
 	private Question question;
 	
-	public PKEvaluationQuestion() {
+	public PKQuestionnaire() {
 	}
 
 	public Evaluation getEvaluation() {
@@ -52,10 +53,10 @@ public class PKEvaluationQuestion implements Serializable {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof PKEvaluationQuestion)) {
+		if (!(obj instanceof PKQuestionnaire)) {
 			return false;
 		}
-		PKEvaluationQuestion other = (PKEvaluationQuestion) obj;
+		PKQuestionnaire other = (PKQuestionnaire) obj;
 		if (evaluation == null) {
 			if (other.evaluation != null) {
 				return false;

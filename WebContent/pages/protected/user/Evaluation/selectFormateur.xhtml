@@ -13,8 +13,10 @@
 				<center>
 					<div class="table">
 						<tr>
+							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+							<h:inputHidden value="#{evaluationController.session.id}"/>
 							<h:selectOneMenu value="#{evaluationController.formateur.id}">
-								<f:selectItems value="#{evaluationController.selectFormateur}"></f:selectItems>
+								<f:selectItems value="#{evaluationController.selectFormateursOfFormation}"></f:selectItems>
 							</h:selectOneMenu>
 						</tr>
 						<div>

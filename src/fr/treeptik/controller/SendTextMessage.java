@@ -61,24 +61,24 @@ public class SendTextMessage {
 			message.setFrom(new InternetAddress("h.fontbonne@treeptik.fr"));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse("rvfontbonne@hotmail.com"));
-			message.setSubject(evaluation.getStagiaireSessionId().getId()
-					.getStagiaire().getNom()
+/*			message.setSubject(evaluation.getStagiaireSession().getId().getNom()
 					+ " "
-					+ evaluation.getStagiaireSessionId().getId()
-					.getStagiaire().getPrenom()
+					+ evaluation.getStagiaireSession().getStagiaire().getPrenom()
 					+ " a effectué l'évaluation de la session "
-					+ evaluation.getStagiaireSessionId().getId().getSession().getNom() + ".");
+					+ evaluation.getStagiaireSession().getSession().getNom() + ".");
 
 			message.setText("Bonjour,"
-					+ evaluation.getStagiaireSessionId().getId().getStagiaire().getNom() + " "
-					+ evaluation.getStagiaireSessionId().getId().getStagiaire().getPrenom()
+					+ evaluation.getStagiaireSession().getStagiaire().getNom() + " "
+					+ evaluation.getStagiaireSession().getStagiaire().getPrenom()
 					+ " a effectué l'évaluation :" + "\n-de la Formation : "
-					+ evaluation.getFormation().getNom() + "."
+					+ evaluation.getStagiaireSession().getSession().getNom() + "."
 					+ "\n-de la Session : "
-					+ evaluation.getStagiaireSessionId().getId().getSession().getNom() + "."
-					+ "\n-Animé par : " + evaluation.getFormateur().getNom()
-					+ " " + evaluation.getFormateur().getPrenom() + "."
-					+ "\n**************");
+					+ evaluation.getStagiaireSession().getSession().getNom() + "."
+//					+ "\n-Animé par : " + evaluation.getStagiaireSession().getSession().getListFormations()
+//					+ " " + evaluation + "."
+//					+ "\n**************"
+//					
+					);*/
 			/*
 			 * + "\n\nVoici le récapitulatif de son évaluation:" +
 			 * "\n\nComment avez-vous trouvé..."

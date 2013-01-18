@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import fr.treeptik.model.Stagiaire;
-import fr.treeptik.model.User;
 
 @Stateless
 

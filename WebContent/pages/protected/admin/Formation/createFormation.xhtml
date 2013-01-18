@@ -22,6 +22,16 @@
     				</div>
 	    		</div>
 				<div class="control-group">
+	    			<label class="control-label" for="descriptif">Descriptif :</label>
+    				<div class="controls">
+    					<h:inputText type="text" id="descriptif" name="descriptif"  
+    						value="#{formationController.formation.descriptif}"
+							validatorMessage=" descriptif invalide ">
+							<f:validateLength minimum="2" maximum="100" />
+						</h:inputText>
+    				</div>
+	    		</div>			    		
+				<div class="control-group">
 					<div class="controls">
 						<h:commandButton action="#{formationController.doCreate()}" value="Valider"
 							styleClass="btn btn-success" />

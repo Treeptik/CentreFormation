@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 import fr.treeptik.model.Question;
 import fr.treeptik.service.QuestionEJB;
@@ -16,38 +17,48 @@ import fr.treeptik.service.QuestionEJB;
 @RequestScoped
 public class QuestionController {
 	
+	// *********ENTITE******************************************************
+	private Question question = new Question();
+	
+	// *********EJB*********************************************************
 	@EJB
 	private QuestionEJB questionEJB;
-	private Question question = new Question();
-	private List<Question> listQuestions = new ArrayList<Question>();
-	@SuppressWarnings("rawtypes")
-	private DataModel questions;
+
+	// **********LISTES*****************************************************
+	private List<Question> listQuestions;
+	private List<SelectItem> selectQuestion;
 	
+	// **********DATAMODEL**************************************************
+	@SuppressWarnings("rawtypes")
+	private DataModel lDMQuestions;
+	
+	@SuppressWarnings("rawtypes")
 	public String doCreate() {
 		questionEJB.create(question);
-		listQuestions = questionEJB.findAll();
+		lDMQuestions = new ListDataModel();
+		lDMQuestions.setWrappedData(questionEJB.findAll());
 		return "messageQuestionCreee";
 	}
 
 	@SuppressWarnings("rawtypes")
 	public String doDelete() {
-		Question question = (Question) questions.getRowData();
+		Question question = (Question) lDMQuestions.getRowData();
 		questionEJB.delete(question);
-		questions = new ListDataModel();
-		questions.setWrappedData(questionEJB.findAll());
+		lDMQuestions = new ListDataModel();
+		lDMQuestions.setWrappedData(questionEJB.findAll());
 		return "listQuestions";
 	}
 
 	public String doSelectUpdate() {
-		question = (Question) questions.getRowData();
+		question = (Question) lDMQuestions.getRowData();
 		return "updateQuestion";
 	}
 
 	@SuppressWarnings("rawtypes")
 	public String doUpdate() {
 		questionEJB.update(question);
-		questions = new ListDataModel();
-		questions.setWrappedData(questionEJB.findAll());
+		lDMQuestions = new ListDataModel();
+		lDMQuestions.setWrappedData(questionEJB.findAll());
 		return "messageQuestionUpdate";
 	}
 	
@@ -84,18 +95,33 @@ public class QuestionController {
 	public void setListQuestions(List<Question> listQuestions) {
 		this.listQuestions = listQuestions;
 	}
-
-	@SuppressWarnings("rawtypes")
-	public DataModel getQuestions() {
-		if (questions == null) {
-			questions = new ListDataModel();
-			questions.setWrappedData(questionEJB.findAll());
+	
+	public List<SelectItem> getSelectQuestion() {
+		
+		listQuestions = questionEJB.findAll();
+		selectQuestion = new ArrayList<SelectItem>();
+		for (Question question : listQuestions) {
+			selectQuestion.add(new SelectItem(question.getId(), question
+					.getLibelle()));
 		}
-		return questions;
+		return selectQuestion;
+	}
+
+	public void setSelectQuestion(List<SelectItem> selectQuestion) {
+		this.selectQuestion = selectQuestion;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void setQuestions(DataModel questions) {
-		this.questions = questions;
+	public DataModel getlDMQuestions() {
+		if (lDMQuestions == null) {
+			lDMQuestions = new ListDataModel();
+			lDMQuestions.setWrappedData(questionEJB.findAll());
+		}
+		return lDMQuestions;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setlDMQuestions(DataModel lDMQuestions) {
+		this.lDMQuestions = lDMQuestions;
 	}
 }

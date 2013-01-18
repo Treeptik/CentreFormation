@@ -8,35 +8,52 @@
 
 	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
-		<div Styleclass="span7">
+		<div class="span7">
 			<h:form class="well">
 				<div class="control-group">
 					<div class="controls">
-						<div class="table">
-				<h:dataTable class="table table-bordered table-striped" 
-						value="#{noteController.questions}" var="q">
-			  		<h:column>
-			    		<f:facet name="header">
-			  				<h:outputText value=""/>
-			  			</f:facet>
-			  			<h:outputText value="#{q.id}"/>
-					</h:column>
-	
-									<h4>Comment avez-vous trouvé...</h4>
-									<h5 Align="left">
-										<i>1 #{questionController.listQuestions.get(0).libelle}</i>
-									</h5>
-									<td><h:selectOneRadio
-										value="#{evaluationController.evaluation.listQuestions.get(0).note}"
-										required="true"
-										requiredMessage="la question 1 est obligatoire">
-										<f:selectItem itemValue="4" itemLabel="TS" />
-										<f:selectItem itemValue="3" itemLabel="S" />
-										<f:selectItem itemValue="2" itemLabel="M" />
-										<f:selectItem itemValue="1" itemLabel="I" />
-									</h:selectOneRadio></td></tr>
-
-						</div>
+						<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+						<h:inputHidden value="#{evaluationController.session.id}"/>
+						<h:messages />	
+						<h:dataTable class="table table-bordered table-striped" 
+								value="#{evaluationController.listResultatsOfSession}" var="r">
+					  		<h:column rendered="false">
+					    		<f:facet name="header">
+					  				<h:outputText value="ID"/>
+					  			</f:facet>
+					  			<h:outputText value="#{r.id.questionnaire.id.question.id}"/>
+							</h:column>
+					  		<h:column>
+					    		<f:facet name="header">
+					  				<h:outputText value="libellé"/>
+					 			</f:facet>
+					  			<h:outputText value="#{r.id.questionnaire.id.question.libelle}"/>
+							</h:column>
+					  		<h:column>
+					    		<f:facet name="header">
+									<h:outputText value="Avec commentaire"/>
+					  			</f:facet>
+					  			<h:outputText value="#{r.id.questionnaire.id.question.avecCommentaire}"/>
+							</h:column>
+							<h:column>
+					    		<f:facet name="header">
+									<h:outputText value="Note"/>
+					  			</f:facet>
+					  			<h:selectOneRadio
+									value="#{r.note}"
+									required="true"
+									requiredMessage="Tout les champs sont obligatoires">
+									<f:selectItem itemValue="4" itemLabel="TS" />
+									<f:selectItem itemValue="3" itemLabel="S" />
+									<f:selectItem itemValue="2" itemLabel="M" />
+									<f:selectItem itemValue="1" itemLabel="I" />
+								</h:selectOneRadio>
+							</h:column>	
+						</h:dataTable>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">	
 						<h:commandButton
 							action="#{evaluationController.doFillEval()}"
 							value="Valider" StyleClass="btn btn-primary" />
@@ -47,7 +64,6 @@
 							value="Retour" StyleClass="btn btn-primary" />
 					</div>
 				</div>
-				<h:messages />
 			</h:form>
 		</div>
 	</ui:define>

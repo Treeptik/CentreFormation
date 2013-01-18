@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="http://localhost:8080/FormationJSF/template3/template5.xhtml">
+	<ui:define name="titre">Evaluation créée</ui:define>
+	<ui:define name="body">
+			<h:form styleClass="well">
+				<legend>L'Evaluation a été créée avec succès</legend>
+					<a href="../Annexes/acceuilGestion.jsf"> Retour au menu</a>
+					<h:outputText value=" / "/>
+					<a href="../Evaluation/listEvaluations.jsf">
+					 Retour à la liste</a>
+					<h:outputText value=" / "/>
+					<a href="../Evaluation/createEvaluation.jsf">
+					 Créer une autre évaluation</a>
+			</h:form>
+	</ui:define>
+</ui:composition>
+</html>

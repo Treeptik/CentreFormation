@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      
+	<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+		<ui:define name="titre">Liste des formateurs</ui:define>
+		<ui:define name="body">
+		<h2>Ajouter un formateur à la Formation #{formationController.formation.nom} :</h2>
+			<h:form>	
+				<h:inputHidden value="#{formationController.formation.id}" />			
+				<h:dataTable class="table table-bordered table-striped" 
+						value="#{formationController.lDMFormateurs}" var="ft">
+			  		<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="ID"/>
+			  			</f:facet>
+			  			<h:outputText value="#{ft.id}"/>
+					</h:column>
+			  		<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="Nom"/>
+			 			</f:facet>
+			  			<h:outputText value="#{ft.nom}"/>
+					</h:column>
+			  		<h:column>
+			    		<f:facet name="header">
+							<h:outputText value="Prenom"/>
+			  			</f:facet>
+			  			<h:outputText value="#{ft.prenom}"/>
+					</h:column>
+					<h:column>
+					    <f:facet name="header">
+					 		<h:outputText value="Spécialité"/>
+					  	</f:facet>
+					  		<h:outputText value="#{ft.specialite}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Opérations" />
+						</f:facet>
+							<h:commandLink onclick="if (! confirm('Ajouter #{formationController.formateur.nom} #{formationController.formateur.prenom} à la formation #{formationController.formation.nom}?') ) { return false;}; return true; "
+							  action="#{formationController.doAddFormateurToFormation()}"
+						value="Ajouter le formateur" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+ 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+ 			<h:outputText value=" / "/>		
+ 			<a href="../Formation/listFormations.jsf">retour à la liste des formations</a>
+		</ui:define>
+	</ui:composition>
+</html>

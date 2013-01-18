@@ -2,26 +2,23 @@ package fr.treeptik.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+//@NamedQuery(name="findFormationsOfSession",
+//query="select ft from Formation ft join " +
+//" ft.listSessions sess where sess.id= :id")
+@SuppressWarnings("serial")
 @Entity
-@NamedQuery(name="findFormateursOfSession", query="select ft from Formateur ft join " +
-		" ft.listSessions sess where sess.id= :id")
 public class Session implements Serializable {
 
-	public static final String FIND_FORMATEURS_OF_SESSION = "Session.findFormateursOfSession";
-	private static final long serialVersionUID = 1L;
+	// public static final String FIND_FORMATIONS_OF_SESSION =
+	// "Session.findFormationsOfSession";
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -30,12 +27,7 @@ public class Session implements Serializable {
 	private Date dateDebutStage;
 	@Temporal(TemporalType.DATE)
 	private Date dateFinStage;
-	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Formateur> listFormateurs;
-	@ManyToMany
-	private List<Formation> listFormations;
-	@ManyToMany
-	private List<Stagiaire> listStagiaires;
+	private String Descriptif;
 
 	public Session() {
 	}
@@ -51,7 +43,6 @@ public class Session implements Serializable {
 	public String getNom() {
 		return nom;
 	}
-
 
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -73,28 +64,12 @@ public class Session implements Serializable {
 		this.dateFinStage = dateFinStage;
 	}
 
-	public List<Formateur> getListFormateurs() {
-		return listFormateurs;
+	public String getDescriptif() {
+		return Descriptif;
 	}
 
-	public void setListFormateurs(List<Formateur> listFormateurs) {
-		this.listFormateurs = listFormateurs;
-	}
-
-	public List<Formation> getListFormations() {
-		return listFormations;
-	}
-
-	public void setListFormations(List<Formation> listFormations) {
-		this.listFormations = listFormations;
-	}
-
-	public List<Stagiaire> getListStagiaires() {
-		return listStagiaires;
-	}
-
-	public void setListStagiaires(List<Stagiaire> listStagiaires) {
-		this.listStagiaires = listStagiaires;
+	public void setDescriptif(String descriptif) {
+		Descriptif = descriptif;
 	}
 
 	@Override
@@ -102,16 +77,12 @@ public class Session implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
+				+ ((Descriptif == null) ? 0 : Descriptif.hashCode());
+		result = prime * result
 				+ ((dateDebutStage == null) ? 0 : dateDebutStage.hashCode());
 		result = prime * result
 				+ ((dateFinStage == null) ? 0 : dateFinStage.hashCode());
 		result = prime * result + id;
-		result = prime * result
-				+ ((listFormateurs == null) ? 0 : listFormateurs.hashCode());
-		result = prime * result
-				+ ((listFormations == null) ? 0 : listFormations.hashCode());
-		result = prime * result
-				+ ((listStagiaires == null) ? 0 : listStagiaires.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		return result;
 	}
@@ -128,6 +99,13 @@ public class Session implements Serializable {
 			return false;
 		}
 		Session other = (Session) obj;
+		if (Descriptif == null) {
+			if (other.Descriptif != null) {
+				return false;
+			}
+		} else if (!Descriptif.equals(other.Descriptif)) {
+			return false;
+		}
 		if (dateDebutStage == null) {
 			if (other.dateDebutStage != null) {
 				return false;
@@ -145,27 +123,6 @@ public class Session implements Serializable {
 		if (id != other.id) {
 			return false;
 		}
-		if (listFormateurs == null) {
-			if (other.listFormateurs != null) {
-				return false;
-			}
-		} else if (!listFormateurs.equals(other.listFormateurs)) {
-			return false;
-		}
-		if (listFormations == null) {
-			if (other.listFormations != null) {
-				return false;
-			}
-		} else if (!listFormations.equals(other.listFormations)) {
-			return false;
-		}
-		if (listStagiaires == null) {
-			if (other.listStagiaires != null) {
-				return false;
-			}
-		} else if (!listStagiaires.equals(other.listStagiaires)) {
-			return false;
-		}
 		if (nom == null) {
 			if (other.nom != null) {
 				return false;
@@ -175,5 +132,4 @@ public class Session implements Serializable {
 		}
 		return true;
 	}
-
 }

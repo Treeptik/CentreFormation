@@ -17,10 +17,11 @@
 	<h3>Selectionnez votre formation:</h3>
 	<center>
 			<div class="table"><tr>
-		
+				<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+				<h:inputHidden value="#{evaluationController.session.id}"/>
 				<h:selectOneMenu
 						value="#{evaluationController.formation.id}">
-						<f:selectItems value="#{evaluationController.selectFormation}"></f:selectItems>
+						<f:selectItems value="#{evaluationController.selectFormationsOfSession}"></f:selectItems>
 					</h:selectOneMenu>
 			</tr>
 			<div>

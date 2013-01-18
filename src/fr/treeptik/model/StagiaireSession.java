@@ -4,13 +4,21 @@ import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @SuppressWarnings("serial")
 @Entity
+@NamedQueries({
+		@NamedQuery(name = "findAllSessionsOfStagiaire", query = "select stss.id.session from StagiaireSession stss where stss.id.stagiaire= :stagiaire "),
+		@NamedQuery(name = "findAllStagiairesOfSession", query = "select stss.id.stagiaire from StagiaireSession stss where stss.id.session= :session "),
+		@NamedQuery(name = "findByStagiairesAndSession", query = "select stss from StagiaireSession stss where stss.id.session= :session and stss.id.stagiaire= :stagiaire")
+		
+})
 public class StagiaireSession implements Serializable {
 
 	@EmbeddedId
-	private PKStagiaireSession id;
+	PKStagiaireSession id;
 
 	public StagiaireSession() {
 	}
@@ -52,4 +60,5 @@ public class StagiaireSession implements Serializable {
 		}
 		return true;
 	}
+
 }

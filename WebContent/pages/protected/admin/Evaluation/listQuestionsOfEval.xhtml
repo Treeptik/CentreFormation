@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      
+	<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+		<ui:define name="titre">Liste des questions </ui:define>
+	
+		<ui:define name="body">
+		<h2>Liste des Questions de #{evaluationController.evaluation.nom}</h2>
+		
+			<h:form>	
+				<h:dataTable class="table table-bordered table-striped" 
+						value="#{evaluationController.lDMQuestionsOfEval}" var="q">
+			  		<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="ID"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.id}"/>
+					</h:column>
+			  		<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="libellé"/>
+			 			</f:facet>
+			  			<h:outputText value="#{q.libelle}"/>
+					</h:column>
+			  		<h:column>
+			    		<f:facet name="header">
+							<h:outputText value="Avec commentaire"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.avecCommentaire}"/>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+	 			<a href="../Evaluation/listEvaluations.jsf">retour</a>
+		</ui:define>
+	</ui:composition>
+</html>

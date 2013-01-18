@@ -9,12 +9,14 @@
 	<ui:define name="body">
 		<div Styleclass="span7">
 			<h:form styleClass="well">
+			
 				<h3>Veuillez choisir votre Session</h3>
 				<center>
 					<div class="table">
 						<tr>
+							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
 							<h:selectOneMenu value="#{evaluationController.session.id}">
-								<f:selectItems value="#{evaluationController.selectSession}"></f:selectItems>
+								<f:selectItems value="#{evaluationController.selectSessionsOfStagiaire}"></f:selectItems>
 							</h:selectOneMenu>
 						</tr>
 						<div>

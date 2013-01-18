@@ -58,15 +58,15 @@ img {
 		<h:form>
 
 		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
-		#{stagiaireController.stagiaire.nom} #{userController.user}
-		<p>#{administrateurController.administrateur.nom}</p>
+		#{evaluationController.stagiaire.id} #{userController.user.id}
+		<p>#{administrateurController.administrateur.id}</p>
 		</h:form>
 		<div Styleclass="span7">
 			<h:form styleClass="well">
 				<h:button class="btn btn-large btn-block" type="button"
 					onclick="window.location.href='/FormationJSF/pages/protected/admin/Annexes/acceuilGestion.jsf'; return false;" rendered="#{userController.userAdmin}" value="Administrateur"/>
-				<h:button class="btn btn-large btn-block btn-primary" type="button"
-					onclick="window.location.href='acceuilStagiaire.jsf'; return false;" value="Stagiaire"/>
+				<h:commandButton class="btn btn-large btn-block btn-primary"
+					action="#{evaluationController.identifier()}" value="Stagiaire"/>
 			</h:form>
 			<img
 				src="https://lh3.googleusercontent.com/-TakV6goOrNY/UKUCVfMMo4I/AAAAAAAAAHI/mByIYxh41Cw/w497-h373/Fotolia_34042847_XS.jpg"

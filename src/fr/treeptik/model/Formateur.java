@@ -1,8 +1,6 @@
 package fr.treeptik.model;
 
-
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -10,19 +8,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-
 @SuppressWarnings("serial")
 @Entity
-@NamedQueries({
-	@NamedQuery(name="findALLFormateurs", query = " select f from Formateur f ")
-})
+@NamedQueries({ @NamedQuery(name = "findALLFormateurs", query = " select f from Formateur f ") })
 @Access(AccessType.FIELD)
-public class Formateur implements Serializable{
+public class Formateur implements Serializable {
 
 	@Id
 	@GeneratedValue
@@ -30,20 +24,12 @@ public class Formateur implements Serializable{
 	@Column(nullable = false)
 	private String nom;
 	private String prenom;
-//	@Column
-//	private String specialite;
+	private String specialite;
 	@ManyToOne()
 	private Administrateur administrateur;
-	@ManyToMany(mappedBy = "listFormateurs")
-	private List<Session> listSessions;
-	@ManyToMany(mappedBy = "listFormateurs")
-	private List<Formation> listFormations;
-
-	
 
 	public Formateur() {
 	}
-
 
 	public int getId() {
 		return id;
@@ -68,29 +54,21 @@ public class Formateur implements Serializable{
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
+	public String getSpecialite() {
+		return specialite;
+	}
+
+	public void setSpecialite(String specialite) {
+		this.specialite = specialite;
+	}
+
 	public Administrateur getAdministrateur() {
 		return administrateur;
 	}
 
-	public void setAdministrateur(
-			Administrateur administrateur) {
+	public void setAdministrateur(Administrateur administrateur) {
 		this.administrateur = administrateur;
-	}
-
-	public List<Session> getListSessions() {
-		return listSessions;
-	}
-
-	public void setListSessions(List<Session> listSessions) {
-		this.listSessions = listSessions;
-	}
-
-	public List<Formation> getListFormations() {
-		return listFormations;
-	}
-
-	public void setListFormations(List<Formation> listFormations) {
-		this.listFormations = listFormations;
 	}
 
 	@Override
@@ -100,12 +78,10 @@ public class Formateur implements Serializable{
 		result = prime * result
 				+ ((administrateur == null) ? 0 : administrateur.hashCode());
 		result = prime * result + id;
-		result = prime * result
-				+ ((listFormations == null) ? 0 : listFormations.hashCode());
-		result = prime * result
-				+ ((listSessions == null) ? 0 : listSessions.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
+		result = prime * result
+				+ ((specialite == null) ? 0 : specialite.hashCode());
 		return result;
 	}
 
@@ -131,20 +107,6 @@ public class Formateur implements Serializable{
 		if (id != other.id) {
 			return false;
 		}
-		if (listFormations == null) {
-			if (other.listFormations != null) {
-				return false;
-			}
-		} else if (!listFormations.equals(other.listFormations)) {
-			return false;
-		}
-		if (listSessions == null) {
-			if (other.listSessions != null) {
-				return false;
-			}
-		} else if (!listSessions.equals(other.listSessions)) {
-			return false;
-		}
 		if (nom == null) {
 			if (other.nom != null) {
 				return false;
@@ -159,7 +121,13 @@ public class Formateur implements Serializable{
 		} else if (!prenom.equals(other.prenom)) {
 			return false;
 		}
+		if (specialite == null) {
+			if (other.specialite != null) {
+				return false;
+			}
+		} else if (!specialite.equals(other.specialite)) {
+			return false;
+		}
 		return true;
 	}
-	
 }

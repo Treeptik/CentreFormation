@@ -17,15 +17,26 @@ import fr.treeptik.service.UserEJB;
 @SessionScoped
 @ManagedBean
 public class UserController {
-
+	
+	
+		
+		
+	// *********ENTITE******************************************************
 	private User user;
-	private List<User> listUsers = new ArrayList<User>();
-	private DataModel users;
+
+	// *********EJB*********************************************************
 	@EJB
 	private UserEJB userEJB;
-
 	@EJB
 	private SendTextMessage gestionmail;
+
+	// **********LISTES*****************************************************
+	private List<User> listUsers = new ArrayList<User>();
+	
+	// **********DATAMODEL**************************************************
+	@SuppressWarnings("rawtypes")
+	private DataModel users;
+	
 	
 	public String generatePassword() {
 		return userEJB.generatePassword();

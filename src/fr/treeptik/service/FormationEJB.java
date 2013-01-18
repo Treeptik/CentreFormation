@@ -6,7 +6,6 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import fr.treeptik.dao.FormationDAO;
-import fr.treeptik.model.Formateur;
 import fr.treeptik.model.Formation;
 
 @Stateless
