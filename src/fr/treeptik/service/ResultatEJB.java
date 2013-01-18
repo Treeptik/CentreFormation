@@ -11,6 +11,7 @@ import fr.treeptik.model.PKResultat;
 import fr.treeptik.model.Question;
 import fr.treeptik.model.Resultat;
 import fr.treeptik.model.Session;
+import fr.treeptik.model.Stagiaire;
 
 @Stateless
 public class ResultatEJB {
@@ -37,15 +38,19 @@ public class ResultatEJB {
 	public Resultat findById(PKResultat id) {
 		return resultatDAO.findById(id);
 	}
-	
+
 	public List<Resultat> findAllResultatsOfEval(Evaluation evaluation) {
 		return resultatDAO.findAllResultatsOfEval(evaluation);
 	}
-	
+
 	public List<Resultat> findAllResultatsOfSession(Session session) {
 		return resultatDAO.findAllResultatsOfSession(session);
 	}
-	
+
+	public List<Resultat> findAllResultatsOfStagiaire(Stagiaire stagiaire) {
+		return resultatDAO.findAllResultatsOfStagiaire(stagiaire);
+	}
+
 	public List<Question> findAllQuestionsOfSession(Session session) {
 		return resultatDAO.findAllQuestionsOfSession(session);
 	}

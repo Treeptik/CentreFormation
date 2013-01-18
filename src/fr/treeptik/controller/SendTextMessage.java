@@ -1,5 +1,7 @@
 package fr.treeptik.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.mail.Message;
@@ -9,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import fr.treeptik.model.Evaluation;
+import fr.treeptik.model.Resultat;
 import fr.treeptik.model.Stagiaire;
 
 @Stateless
@@ -55,73 +57,57 @@ public class SendTextMessage {
 		}
 	}
 
-	public void mailRecapEvaluation(Evaluation evaluation) {
+	public String boucleRecapResultat(List<Resultat> listResultat) {
+		StringBuilder recapBuilder = new StringBuilder();
+		String recap;
+		for (Resultat resultat : listResultat) {
+			recapBuilder.append(resultat.getId().getQuestionnaire().getId()
+					.getQuestion().getLibelle()
+					+ " : " + resultat.getNote() + "/4\n\n");
+		}
+		recap = recapBuilder.toString();
+		
+		return recap;
+	}
+
+	public void mailRecapEvaluation(List<Resultat> listResultat) {
 		try {
+			Resultat resultat = new Resultat();
+			resultat = listResultat.get(0);
+
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("h.fontbonne@treeptik.fr"));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse("rvfontbonne@hotmail.com"));
-/*			message.setSubject(evaluation.getStagiaireSession().getId().getNom()
+			message.setSubject(resultat.getId().getStagiaireSession().getId()
+					.getStagiaire().getNom()
 					+ " "
-					+ evaluation.getStagiaireSession().getStagiaire().getPrenom()
+					+ resultat.getId().getStagiaireSession().getId()
+							.getStagiaire().getPrenom()
 					+ " a effectué l'évaluation de la session "
-					+ evaluation.getStagiaireSession().getSession().getNom() + ".");
+					+ resultat.getId().getStagiaireSession().getId()
+							.getSession().getNom() + ".");
 
 			message.setText("Bonjour,"
-					+ evaluation.getStagiaireSession().getStagiaire().getNom() + " "
-					+ evaluation.getStagiaireSession().getStagiaire().getPrenom()
-					+ " a effectué l'évaluation :" + "\n-de la Formation : "
-					+ evaluation.getStagiaireSession().getSession().getNom() + "."
-					+ "\n-de la Session : "
-					+ evaluation.getStagiaireSession().getSession().getNom() + "."
-//					+ "\n-Animé par : " + evaluation.getStagiaireSession().getSession().getListFormations()
-//					+ " " + evaluation + "."
-//					+ "\n**************"
-//					
-					);*/
-			/*
-			 * + "\n\nVoici le récapitulatif de son évaluation:" +
-			 * "\n\nComment avez-vous trouvé..."
-			 * +"\n 1 - L'acceuil : "+evaluation.getAcceuil()+"/20"
-			 * +"\n 2 - La salle de formation : "+evaluation.getSalle()+"/20"
-			 * +"\n3 - Le matériel mis à disposition : "
-			 * +evaluation.getMateriel()+"/20"
-			 * +"\n4 - La qualité de la formation : "
-			 * +evaluation.getQualFormation()+"/20"
-			 * +"\n5 - Le rythme du cours : "+evaluation.getRythme()
-			 * +"\n6 - Les compétences techniques des formateurs : "
-			 * +evaluation.getTechnique()+"/20"
-			 * +"\n7 - Les compétences pédagogiques des formateurs : "
-			 * +evaluation.getPedagogie()+"/20"
-			 * +"\n8 - La capacité d’écoute des formateurs : "
-			 * +evaluation.getCapacite()+"/20"
-			 * +"\n9 - Etaient ils assez disponibles : "
-			 * +evaluation.getDisponibilite()+"/20"
-			 * +"\n10 - Le programme était il adapté à votre niveau : "
-			 * +evaluation.getProgramme()+"/20"
-			 * +"\n11 - Le contenu des modules a t'il répondu à vos objectifs : "
-			 * +evaluation.getContenu()+"/20"
-			 * +"\n12 - La durée de la formation a t'elle été suffisante : "
-			 * +evaluation.getDuree()
-			 * +"\n13 - Votre objectif a t'il été atteint : "
-			 * +evaluation.getObjectif() +
-			 * "\n14 - Quels sont, selon vous, les aménagements à apporter au programme :"
-			 * +"\n\t\t*Sujets à supprimer ou à modifier: "
-			 * +"\n\t\t\t"+evaluation.getSujetSupprimer()
-			 * +"\n\t\t**Sujets à approfondir ou à ajouter :"
-			 * +"\n\t\t\t"+evaluation.getSujetApprofondir()
-			 * +"\n15 - Quelle note attribuez-vous au formateur : "
-			 * +evaluation.getNoteFormateur()+"/20"
-			 * +"\n16 - Etes-vous intéressé(e) par d’autres stages de formation :"
-			 * +evaluation.getAutreStage()
-			 * +"\n\t\tSi oui, merci de préciser lesquels :"
-			 * +"\n\t\t\t"+evaluation.getProjet() + "\n\nCordialement," +
-			 * "\nL'équipe Treeptik.");
-			 */
+					+ resultat.getId().getStagiaireSession().getId()
+							.getStagiaire().getNom()
+					+ " "
+					+ resultat.getId().getStagiaireSession().getId()
+							.getStagiaire().getPrenom()
+					+ " a effectué l'évaluation :"
+					+ " "
+					+ resultat.getId().getQuestionnaire().getId()
+							.getEvaluation().getNom() + ".\n"
+					+ "\n**************"
+
+					+ "\n\nVoici le récapitulatif de son évaluation:\n\n"
+					+ boucleRecapResultat(listResultat) +
+
+					"\n\nCordialement," + "\nL'équipe Treeptik.");
+
 			Transport.send(message);
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
 	}
-
 }

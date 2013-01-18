@@ -7,20 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import com.sun.istack.internal.Nullable;
-
 @SuppressWarnings("serial")
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "findAllResultatsOfEval", query= "select r from Resultat r where r.id.questionnaire.id.evaluation= :evaluation ")
 	,@NamedQuery(name = "findAllResultatsOfSession", query = "select r from Resultat r where r.id.stagiaireSession.id.session = :session")
+	,@NamedQuery(name = "findAllResultatsOfStagiaire", query = "select r from Resultat r where r.id.stagiaireSession.id.stagiaire = :stagiaire")
 	,@NamedQuery(name = "findAllQuestionsOfSession", query = "select r.id.questionnaire.id.question from Resultat r where r.id.stagiaireSession.id.session = :session")	
 })
 public class Resultat implements Serializable {
 
 	@EmbeddedId
 	private PKResultat id;
-	
 	private int note;
 	
 	public Resultat() {

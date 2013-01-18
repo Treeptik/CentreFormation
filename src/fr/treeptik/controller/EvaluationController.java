@@ -47,16 +47,18 @@ public class EvaluationController {
 
 	// *********ENTITE******************************************************
 	private Evaluation evaluation = new Evaluation();
+	private Stagiaire stagiaire;
 	private Question question = new Question();
 	private Resultat resultat = new Resultat();
 	private Session session = new Session();
 	private Formateur formateur = new Formateur();
 	private Formation formation = new Formation();
 	private Questionnaire questionnaire = new Questionnaire();
+	
 	private QuestionnaireSession questionnaireSession = new QuestionnaireSession();
-	private Stagiaire stagiaire;
 	private StagiaireSession stagiaireSession = new StagiaireSession();
 	private FormationSession formationSession = new FormationSession();
+	
 	private PKQuestionnaire pkQuestionnaire = new PKQuestionnaire();
 	private PKStagiaireSession pKStagiaireSession = new PKStagiaireSession();
 	private PKFormationSession pKFormationSession = new PKFormationSession();
@@ -88,7 +90,6 @@ public class EvaluationController {
 	private FormateurFormationEJB formateurFormationEJB;
 	@EJB
 	private QuestionnaireSessionEJB questionnaireSessionEJB;
-
 	@EJB
 	private SendTextMessage gestionmail;
 
@@ -132,12 +133,6 @@ public class EvaluationController {
 
 	}
 
-	/*
-	 * public String doFillEval() { try { evaluationEJB.create(evaluation);
-	 * gestionmail.mailRecapEvaluation(evaluation); return
-	 * "messageEvaluationEffectue"; } catch (Exception e) { return
-	 * "messageEvaluationDejaEffectuee"; } }
-	 */
 	public String doNew() {
 		evaluation = new Evaluation();
 		getSelectSessionsOfStagiaire();
@@ -153,16 +148,15 @@ public class EvaluationController {
 	public String chooseSession() {
 		List<Resultat> listTempRes = new ArrayList<Resultat>();
 		listTempRes = createResultat();
-
 		for (Resultat resultat : listTempRes) {
 			Resultat resultattemp = new Resultat();
 			resultattemp = resultat;
 			resultattemp.setNote(0);
 			resultatEJB.create(resultattemp);
 		}
+					
 		getSelectFormationsOfSession();
 		getListResultatsOfSession();
-		getlDMResultatsOfSession();
 		return "selectFormation";
 	}
 
@@ -250,26 +244,21 @@ public class EvaluationController {
 	}
 
 	public String doFillEval() {
-
-		do {
-			Resultat tempres = new Resultat();
-			tempres = resultat;
-			System.out.println("tempres"+tempres.toString());
-			List<Resultat> templistresultat = new ArrayList<Resultat>();
-			templistresultat.add(tempres);
-			System.out.println("listsize :"+templistresultat.size());
-		} while (resultat != null);
-/*		
-		try {
-			evaluationEJB.create(evaluation);
-			gestionmail.mailRecapEvaluation(evaluation);
-			return "messageEvaluationEffectue";
-		} catch (Exception e) {
-			return "messageEvaluationDejaEffectue";
-		}
-*/	
-		return "messageEvaluationDejaEffectue";
-	}
+		
+		try { 
+  
+		List<Resultat> listTempResultat = new ArrayList<Resultat>();
+		listTempResultat = listResultatsOfSession;
+		for (Resultat resultat : listTempResultat) {
+			Resultat resultattemp = new Resultat();
+			resultattemp = resultat;
+			resultatEJB.update(resultattemp);
+		}		
+		 gestionmail.mailRecapEvaluation(listResultatsOfSession);
+		return
+				 "messageEvaluationEffectue"; }
+		catch (Exception e) { return
+				 "messageEvaluationDejaEffectuee"; } }
 
 	@SuppressWarnings("rawtypes")
 	public String doCreate() {
@@ -669,6 +658,7 @@ public class EvaluationController {
 		return lDMEvaluations;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setlDMEvaluations(DataModel lDMEvaluations) {
 		this.lDMEvaluations = lDMEvaluations;
 	}
@@ -678,5 +668,4 @@ public class EvaluationController {
 		return (HttpServletRequest) FacesContext.getCurrentInstance()
 				.getExternalContext().getRequest();
 	}
-
 }

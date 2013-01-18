@@ -12,8 +12,8 @@
 			<h:form class="well">
 				<div class="control-group">
 					<div class="controls">
-						<h:inputHidden value="#{evaluationController.stagiaire.id}" />
-						<h:inputHidden value="#{evaluationController.session.id}"/>
+							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+							<h:inputHidden value="#{evaluationController.session.id}"/>
 						<h:messages />	
 						<h:dataTable class="table table-bordered table-striped" 
 								value="#{evaluationController.listResultatsOfSession}" var="r">
@@ -21,7 +21,7 @@
 					    		<f:facet name="header">
 					  				<h:outputText value="ID"/>
 					  			</f:facet>
-					  			<h:outputText value="#{r.id.questionnaire.id.question.id}"/>
+					  			<h:outputText value="#{r.id}"/>
 							</h:column>
 					  		<h:column>
 					    		<f:facet name="header">

@@ -10,6 +10,7 @@ import fr.treeptik.model.PKResultat;
 import fr.treeptik.model.Question;
 import fr.treeptik.model.Resultat;
 import fr.treeptik.model.Session;
+import fr.treeptik.model.Stagiaire;
 
 @Stateless
 public class ResultatDAO extends GenericDAO<Resultat> {
@@ -41,6 +42,14 @@ public class ResultatDAO extends GenericDAO<Resultat> {
 
 		List<Resultat> listResultatsOfSession = query.getResultList();
 		return listResultatsOfSession;
+	}
+	
+	public List<Resultat> findAllResultatsOfStagiaire(Stagiaire stagiaire) {
+		Query query = em.createNamedQuery("findAllResultatsOfStagiaire");
+		query.setParameter("stagiaire", stagiaire);
+
+		List<Resultat> listResultatsOfStagiaire = query.getResultList();
+		return listResultatsOfStagiaire;
 	}
 	
 	public List<Question> findAllQuestionsOfSession(Session session) {
