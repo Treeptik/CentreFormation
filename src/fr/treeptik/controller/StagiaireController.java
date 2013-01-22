@@ -46,32 +46,30 @@ public class StagiaireController {
 
 	// **********LISTES*****************************************************
 	private List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
-//	private List<SelectItem> selectFormation;
 	private List<SelectItem> selectStagiaire;
 	
 	// **********DATAMODEL**************************************************
 	@SuppressWarnings("rawtypes")
-	private DataModel stagiaires;
+	private DataModel lDMStagiaires;
 
 	public String doCreate() {
 		stagiaireEJB.create(stagiaire);
 		gestionmail.mailCreationUser(stagiaire);
-		listStagiaires = stagiaireEJB.findAll();
-		getStagiaires();
+		getlDMStagiaires();
 		return "messageStagiaireCree";
 	}
 
 	@SuppressWarnings("rawtypes")
 	public String doDelete() {
-		Stagiaire stagiaire = (Stagiaire) stagiaires.getRowData();
+		Stagiaire stagiaire = (Stagiaire) lDMStagiaires.getRowData();
 		stagiaireEJB.delete(stagiaire);
-		stagiaires = new ListDataModel();
-		stagiaires.setWrappedData(stagiaireEJB.findAll());
+		lDMStagiaires = new ListDataModel();
+		lDMStagiaires.setWrappedData(stagiaireEJB.findAll());
 		return "listStagiaires";
 	}
 
 	public String doSelectUpdate() {
-		stagiaire = (Stagiaire) stagiaires.getRowData();
+		stagiaire = (Stagiaire) lDMStagiaires.getRowData();
 		System.out.println("stagiaire"+stagiaire);
 		System.out.println("stagiairenom"+stagiaire.getNom());
 		return "updateStagiaire";
@@ -80,73 +78,44 @@ public class StagiaireController {
 	@SuppressWarnings("rawtypes")
 	public String doUpdate() {
 		stagiaireEJB.update(stagiaire);
-		stagiaires = new ListDataModel();
-		stagiaires.setWrappedData(stagiaireEJB.findAll());
+		lDMStagiaires = new ListDataModel();
+		lDMStagiaires.setWrappedData(stagiaireEJB.findAll());
 		return "messageStagiaireUpdate";
 	}
 
-
-	/*
-	public String doAddStagiaire() {
-		// stagiaire.setFormation(new Formation());
-		// stagiaire.getFormation().setId(formation.getId());
-		// stagiaireEJB.create(stagiaire);
-		return "message1";
-	}
-*/
 	public String doFindAll() {
 		listStagiaires = stagiaireEJB.findAll();
 		return "listStagiaires";
 	}
 
-	public String findStagiaireInSession() {
-		return "listDeStagiaireParSessionID";
+	public List<SelectItem> getSelectStagiaire() {
+		
+		listStagiaires = stagiaireEJB.findAll();
+		selectStagiaire = new ArrayList<SelectItem>();
+		for (Stagiaire stagiaire : listStagiaires) {
+			selectStagiaire.add(new SelectItem(stagiaire.getId(), stagiaire
+					.getNom() + " " + stagiaire.getPrenom()));
+		}
+		return selectStagiaire;
 	}
 
-	public String doFindById() {
-		stagiaire = stagiaireEJB.findById(stagiaire.getId());
-		return "stagiaireDonnées";
+	public void setSelectStagiaire(List<SelectItem> selectStagiaire) {
+		this.selectStagiaire = selectStagiaire;
+	}
+	@SuppressWarnings("rawtypes")
+	public DataModel getlDMStagiaires() {
+		if (lDMStagiaires == null) {
+			lDMStagiaires = new ListDataModel();
+			lDMStagiaires.setWrappedData(stagiaireEJB.findAll());
+		}
+		return lDMStagiaires;
 	}
 
-	public String doFindByIdToUpdate() {
-		stagiaire = stagiaireEJB.findById(stagiaire.getId());
-		return "updateDonnéesStagiaire";
+	@SuppressWarnings("rawtypes")
+	public void setlDMStagiaires(DataModel lDMStagiaires) {
+		this.lDMStagiaires = lDMStagiaires;
 	}
-
-	public String doRecherche() {
-		return "recherche";
-	}
-	public SessionEJB getSessionEJB() {
-		return sessionEJB;
-	}
-
-	public void setSessionEJB(SessionEJB sessionEJB) {
-		this.sessionEJB = sessionEJB;
-	}
-
-	public Session getSession() {
-		return session;
-	}
-
-	public void setSession(Session session) {
-		this.session = session;
-	}
-	public StagiaireEJB getStagiareEJB() {
-		return stagiaireEJB;
-	}
-
-	public void setStagiareEJB(StagiaireEJB stagiareEJB) {
-		this.stagiaireEJB = stagiareEJB;
-	}
-
-	public Stagiaire getStagiaire() {
-		return stagiaire;
-	}
-
-	public void setStagiaire(Stagiaire stagiaire) {
-		this.stagiaire = stagiaire;
-	}
-
+	
 	public List<Stagiaire> getListStagiaires() {
 		return listStagiaires;
 	}
@@ -162,7 +131,14 @@ public class StagiaireController {
 	public void setStagiaireEJB(StagiaireEJB stagiaireEJB) {
 		this.stagiaireEJB = stagiaireEJB;
 	}
+	
+	public SessionEJB getSessionEJB() {
+		return sessionEJB;
+	}
 
+	public void setSessionEJB(SessionEJB sessionEJB) {
+		this.sessionEJB = sessionEJB;
+	}
 	public FormationEJB getFormationEJB() {
 		return formationEJB;
 	}
@@ -170,28 +146,21 @@ public class StagiaireController {
 	public void setFormationEJB(FormationEJB formationEJB) {
 		this.formationEJB = formationEJB;
 	}
-/*
-	public List<SelectItem> getSelectFormation() {
-		return selectFormation;
+	
+	public Stagiaire getStagiaire() {
+		return stagiaire;
 	}
 
-	public void setSelectFormation(List<SelectItem> selectFormation) {
-		this.selectFormation = selectFormation;
-	}
-*/
-	public List<SelectItem> getSelectStagiaire() {
-		
-		listStagiaires = stagiaireEJB.findAll();
-		selectStagiaire = new ArrayList<SelectItem>();
-		for (Stagiaire stagiaire : listStagiaires) {
-			selectStagiaire.add(new SelectItem(stagiaire.getId(), stagiaire
-					.getNom() + " " + stagiaire.getPrenom()));
-		}
-		return selectStagiaire;
+	public void setStagiaire(Stagiaire stagiaire) {
+		this.stagiaire = stagiaire;
 	}
 
-	public void setSelectStagiaire(List<SelectItem> selectStagiaire) {
-		this.selectStagiaire = selectStagiaire;
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
 	}
 
 	public Formation getFormation() {
@@ -202,22 +171,6 @@ public class StagiaireController {
 		this.formation = formation;
 	}
 
-	// public List<SelectItem> getSelectFormation() {
-	// selectFormation = new ArrayList<SelectItem>();
-	// List<Formation> allFormations = formationEJB.findAllFormations();
-	// for (Formation formation : allFormations) {
-	//
-	// selectFormation.add(new SelectItem(formation.getId(),
-	// formation.getNom()));
-	// }
-	//
-	// return selectFormation;
-	// }
-
-	// public void setSelectFormation(List<SelectItem> selectFormation) {
-	// this.selectFormation = selectFormation;
-	// }
-
 	public Evaluation getEvaluation() {
 		return evaluation;
 	}
@@ -225,21 +178,8 @@ public class StagiaireController {
 	public void setEvaluation(Evaluation evaluation) {
 		this.evaluation = evaluation;
 	}
-
-	@SuppressWarnings("rawtypes")
-	public DataModel getStagiaires() {
-		if (stagiaires == null) {
-			stagiaires = new ListDataModel();
-			stagiaires.setWrappedData(stagiaireEJB.findAll());
-		}
-		return stagiaires;
-	}
-
-	@SuppressWarnings("rawtypes")
-	public void setStagiaires(DataModel stagiaires) {
-		this.stagiaires = stagiaires;
-	}
-
+	
+	@SuppressWarnings("unused")
 	private HttpServletRequest getRequest() {
 		return (HttpServletRequest) FacesContext.getCurrentInstance()
 				.getExternalContext().getRequest();

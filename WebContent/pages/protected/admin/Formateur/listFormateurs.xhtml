@@ -12,8 +12,8 @@
 		
 			<h:form>	
 				<h:dataTable class="table table-bordered table-striped" 
-						value="#{formateurController.formateurs}" var="ft">
-			  		<h:column>
+						value="#{formateurController.lDMFormateurs}" var="ft">
+			  		<h:column rendered="false">
 			    		<f:facet name="header">
 			  				<h:outputText value="ID"/>
 			  			</f:facet>

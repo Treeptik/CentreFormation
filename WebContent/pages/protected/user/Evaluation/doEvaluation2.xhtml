@@ -12,8 +12,8 @@
 			<h:form class="well">
 				<div class="control-group">
 					<div class="controls">
-							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
-							<h:inputHidden value="#{evaluationController.session.id}"/>
+							<h:inputText value="#{evaluationController.stagiaire.id}" />
+							<h:inputText value="#{evaluationController.session.id}"/>							
 						<h:messages />	
 						<h:dataTable class="table table-bordered table-striped" 
 								value="#{evaluationController.listResultatsOfSession}" var="r">

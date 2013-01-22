@@ -11,13 +11,7 @@
 		<div class="span8" id="article">
 			<h:form class="form-horizontal">
 				<h:messages />
-				<div class="control-group">
-	    			<label class="control-label" for="id">ID :</label>
-	    			<div class="controls">
-						<h:inputText value="#{formateurController.formateur.id}"
-							id="id" name="id"/>
-	    			</div>
-	    		</div>						
+						<h:inputHidden value="#{formateurController.formateur.id}" id="id" name="id"/>						
 				<div class="control-group">
 	    			<label class="control-label" for="nom">Nom :</label>
     				<div class="controls">

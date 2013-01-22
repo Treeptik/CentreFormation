@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
@@ -31,8 +30,8 @@ public class Stagiaire extends User implements Serializable {
 	private String sexe;
 	private String diplome;
 	private String domaine;
-	@ManyToOne()
-	private Administrateur administrateur;
+	@Temporal(TemporalType.DATE)
+	private Date dateInscription;
 
 	public Stagiaire() {
 		super();
@@ -110,24 +109,23 @@ public class Stagiaire extends User implements Serializable {
 		this.domaine = domaine;
 	}
 
-	public Administrateur getAdministrateur() {
-		return administrateur;
+	public Date getDateInscription() {
+		return dateInscription;
 	}
 
-	public void setAdministrateur(
-			Administrateur administrateur) {
-		this.administrateur = administrateur;
+	public void setDateInscription(Date dateInscription) {
+		this.dateInscription = dateInscription;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result
-				+ ((administrateur == null) ? 0 : administrateur.hashCode());
 		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
 		result = prime * result
 				+ ((codePostal == null) ? 0 : codePostal.hashCode());
+		result = prime * result
+				+ ((dateInscription == null) ? 0 : dateInscription.hashCode());
 		result = prime * result
 				+ ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
 		result = prime * result + ((diplome == null) ? 0 : diplome.hashCode());
@@ -151,13 +149,6 @@ public class Stagiaire extends User implements Serializable {
 			return false;
 		}
 		Stagiaire other = (Stagiaire) obj;
-		if (administrateur == null) {
-			if (other.administrateur != null) {
-				return false;
-			}
-		} else if (!administrateur.equals(other.administrateur)) {
-			return false;
-		}
 		if (adresse == null) {
 			if (other.adresse != null) {
 				return false;
@@ -170,6 +161,13 @@ public class Stagiaire extends User implements Serializable {
 				return false;
 			}
 		} else if (!codePostal.equals(other.codePostal)) {
+			return false;
+		}
+		if (dateInscription == null) {
+			if (other.dateInscription != null) {
+				return false;
+			}
+		} else if (!dateInscription.equals(other.dateInscription)) {
 			return false;
 		}
 		if (dateNaissance == null) {

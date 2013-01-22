@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -25,8 +24,7 @@ public class Formateur implements Serializable {
 	private String nom;
 	private String prenom;
 	private String specialite;
-	@ManyToOne()
-	private Administrateur administrateur;
+
 
 	public Formateur() {
 	}
@@ -62,21 +60,11 @@ public class Formateur implements Serializable {
 	public void setSpecialite(String specialite) {
 		this.specialite = specialite;
 	}
-
-	public Administrateur getAdministrateur() {
-		return administrateur;
-	}
-
-	public void setAdministrateur(Administrateur administrateur) {
-		this.administrateur = administrateur;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((administrateur == null) ? 0 : administrateur.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
@@ -97,13 +85,6 @@ public class Formateur implements Serializable {
 			return false;
 		}
 		Formateur other = (Formateur) obj;
-		if (administrateur == null) {
-			if (other.administrateur != null) {
-				return false;
-			}
-		} else if (!administrateur.equals(other.administrateur)) {
-			return false;
-		}
 		if (id != other.id) {
 			return false;
 		}
@@ -129,5 +110,10 @@ public class Formateur implements Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return " "+nom+" "+prenom+" ";
 	}
 }

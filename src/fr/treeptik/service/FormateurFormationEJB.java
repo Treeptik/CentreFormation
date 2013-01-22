@@ -41,6 +41,14 @@ public class FormateurFormationEJB {
 		formateurFormationDAO.addFormateurToFormation(formateurFormation);
 	}
 	
+	public void removeFormateurFromFormation(Formateur formateur,Formation formation) {
+		formateurFormationDAO.removeFormateurFromFormation(formateur, formation);
+	}
+	
+	public FormateurFormation findByFormateurAndFormation(Formateur formateur,Formation formation) {
+		return formateurFormationDAO.findByFormateurAndFormation(formateur, formation);
+	}
+	
 	public List<Formateur> findAllFormateursOfFormation(Formation formation) {
 		return formateurFormationDAO.findAllFormateursOfFormation(formation);
 	}

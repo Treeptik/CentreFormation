@@ -12,214 +12,27 @@
 	<link type="text/css" rel="stylesheet" href="/FormationJSF/css/styleRV.css" />
 </h:head>
 <h:body>
-	<div class="row-fluid">
-		<div class="span12">
-			<div class="container">
+	<div class="container">
+
+
 				<div class="page-header">
-					<a><img src="/FormationJSF/Image/Treeptik.Eval.jpg"
-						width="1200" height="100" class="img-rounded" /></a>
-				</div>
+					<a><img src="/FormationJSF/Image/logoTREEPTIK.jpg" class="img-rounded" /></a>
+
 			</div>
 			<div class="row">
+			<h:form>
 				<div class="span3">
-							<h:form>
-		<h:outputText>Utilisateur: #{userController.user.username} Rôle: #{userController.user.role}</h:outputText> 
+				
+		<h:outputText>Utilisateur: #{userController.user.nom} Rôle: #{userController.user.role}</h:outputText> 
 		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
-		</h:form>
-					<table class="table table-hover">
-						<tbody>
-							<tr>
-								<img
-									src="/FormationJSF/Image/image1.jpg"
-									width="220" height="100" class="img-rounded" alt="Photographie" />
-							</tr>
-							<span class="badge badge-inverse">
-								<h3>formations Java</h3>
-							</span>
 
-							<tr>
-								<td bgcolor="#495CFF"></td>
-								<td bgcolor="white"><b>Intitulé</b></td>
-								<td bgcolor="#495CFF"><b>Durée</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>DJEE </b></td>
-								<td bgcolor="#FDD131"><b>Développement d'application
-										JEE6 avec JSF / EJB / JPA </b></td>
-								<td bgcolor="#495CFF"><b>5 jours </b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>DSPR </b></td>
-								<td bgcolor="white"><b>Développement d'application
-										Spring MVC / Spring / JPA </b></td>
-								<td bgcolor="#495CFF"><b>5 jours </b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b> DJPA </b></td>
-								<td bgcolor="#FDD131"><b>Gestion de la persistence avec
-										JPA </b></td>
-								<td bgcolor="#495CFF"><b>3 jours </b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>DSTR </b></td>
+					
 
-								<td bgcolor="white"><b>Développement d'application Web
-										avec Struts 2 </b></td>
-								<td bgcolor="#495CFF"><b>3 jours </b></td>
-							</tr>
-
-
-							<tr>
-								<td bgcolor="#495CFF"><b>DSMV </b></td>
-								<td bgcolor="#FDD131"><b>Développement d'application
-										Web avec Spring MVC </b></td>
-								<td bgcolor="#495CFF"><b>3 jours </b></td>
-							</tr>
-
-							<tr>
-								<td bgcolor="#495CFF"><b>DAJPA</b></td>
-								<td bgcolor="white"><b>Développement JPA avancé</b></td>
-								<td bgcolor="#495CFF"><b>3 jours</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b> AJBO </b></td>
-								<td bgcolor="#FDD131"><b>Administration de serveur
-										d'application JBoss </b></td>
-								<td bgcolor="#495CFF"><b>4 jours </b></td>
-							</tr>
-						</tbody>
-					</table>
-
-
-
-					<table class=" table table-hover">
-						<tbody>
-							<tr>
-								<img
-									src="/FormationJSF/Image/image2.jpg"
-									class="img-rounded" width="220" height="150" alt="Photographie" />
-							</tr>
-							<!-- <tr><legend>Liste des formations .Net</legend></tr> -->
-							<span class="badge badge-inverse"><h3>formations .Net</h3></span>
-							<tr>
-								<td bgcolor="#495CFF"></td>
-								<td bgcolor="white"><b>Intitulé</b></td>
-								<td bgcolor="#495CFF"><b>Durée</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>NDNE</b></td>
-								<td bgcolor="#FDD131"><b>Développement d'application en
-										C#</b></td>
-								<td bgcolor="#495CFF"><b>5 jours</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>NDMV </b></td>
-								<td bgcolor="white"><b>Développement d'application Web
-										MVC en .NET </b></td>
-								<td bgcolor="#495CFF"><b>5 jours </b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>NDEN </b></td>
-								<td bgcolor="#FDD131"><b>Entity framework et ADO.NET </b></td>
-								<td bgcolor="#495CFF"><b>3 jours </b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>NDSH </b></td>
-
-								<td bgcolor="white"><b>Développement SharePoint Server
-								</b></td>
-								<td bgcolor="#495CFF"><b>5 jours </b></td>
-							</tr>
-
-
-							<tr>
-								<td bgcolor="#495CFF"><b>NASH </b></td>
-								<td bgcolor="#FDD131"><b>Administration SharePoint </b></td>
-								<td bgcolor="#495CFF"><b>5 jours </b></td>
-							</tr>
-
-						</tbody>
-					</table>
-
-
-
-
-
-
-
-					<table class=" table table-hover">
-						<tbody>
-							<tr>
-								<img
-									src="/FormationJSF/Image/image3.jpg"
-									class="img-rounded" width="220" height="150" alt="Photographie" />
-							</tr>
-							<!-- <tr><legend>Liste des formations .Net</legend></tr> -->
-							<span class="badge badge-inverse"><h3>formations PHP</h3></span>
-							<tr>
-								<td bgcolor="#495CFF"></td>
-								<td bgcolor="white"><b>Intitulé</b></td>
-								<td bgcolor="#495CFF"><b>Durée</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>PDEV</b></td>
-								<td bgcolor="#FDD131"><b>Développement de sites
-										dynamiques avec PHP</b></td>
-								<td bgcolor="#495CFF"><b>4 jours</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>POBJ </b></td>
-								<td bgcolor="white"><b>Développement objet avec PHP 5 </b></td>
-								<td bgcolor="#495CFF"><b>5 jours </b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>PZEN</b></td>
-								<td bgcolor="#FDD131"><b>Développement d'application
-										avec Zend Framework</b></td>
-								<td bgcolor="#495CFF"><b>3 jours</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>PZEN</b></td>
-								<td bgcolor="white"><b>Développement d'application avec
-										Symfony</b></td>
-								<td bgcolor="#495CFF"><b>3 jours </b></td>
-							</tr>
-						</tbody>
-					</table>
-
-					<table class=" table table-hover">
-						<tbody>
-							<tr>
-								<img
-									src="/FormationJSF/Image/image1.jpg"
-									class="img-rounded" width="220" height="150" alt="Photographie" />
-							</tr>
-
-							<span class="badge badge-inverse"><h3>formations
-									Mobile</h3></span>
-							<tr>
-								<td bgcolor="#495CFF"></td>
-								<td bgcolor="white"><b>Intitulé</b></td>
-								<td bgcolor="#495CFF"><b>Durée</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>MAND</b></td>
-								<td bgcolor="#FDD131"><b>Développement d'application
-										android</b></td>
-								<td bgcolor="#495CFF"><b>4 jours</b></td>
-							</tr>
-							<tr>
-								<td bgcolor="#495CFF"><b>MIOS </b></td>
-								<td bgcolor="white"><b>Développement d'application IOS
-								</b></td>
-								<td bgcolor="#495CFF"><b>5 jours </b></td>
-							</tr>
-						</tbody>
-					</table>
+		
 
 				</div>
 				<div class="span1"></div>
-
+	
 				<div class="span8">
 
 					
@@ -272,14 +85,14 @@
 								data-toggle="dropdown" href="#"> Formation<b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="../Formation/createFormation.jsf">Créer</a></li>
+									<li><h:commandLink action="#{formationController.doNew()}" value="Créer"/></li>
 									<li><a href="../Formation/listFormations.jsf">Liste / Gestion</a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"> Session <b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="../Session/createSession.jsf">Créer</a></li>
+									<li><h:commandLink action="#{sessionController.doNew()}" value="Créer"/></li>
 
 									<li><a href="../Session/listSessions.jsf">Liste / Gestion</a></li>
 								</ul></li>
@@ -303,7 +116,7 @@
 								data-toggle="dropdown" href="#"> Evaluation <b class="caret"></b>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="../Evaluation/createEvaluation.jsf">Créer</a></li>
+									<li><h:commandLink action="#{evaluationController.doNew()}" value="Créer"/></li>
 
 									<li><a href="../Evaluation/listEvaluations.jsf">Liste / Gestion</a></li>
 									<li><a href="../Session/listSessions2.jsf">autre</a></li>
@@ -311,7 +124,8 @@
 								</ul></li>
 						</ul>
 					</div>
-</div>
+				</div>
+		</h:form>
 					<div class="row" style="margin-left:0px">
 <div class="span8" id="article">
 						<ui:insert name="body" />
@@ -323,66 +137,32 @@
 
 
 			</div>
-			<div class="row">
-				<div class="span3">
 
-					<table class="table">
-						<span class="badge badge-inverse">
-							<h3>Autres formations</h3>
-						</span>
-						<tr>
-							<td bgcolor="yellow"><b>CSS3</b></td>
-							<td bgcolor="white"></td>
-							<td bgcolor="#495CFF"><b>JQuery</b></td>
-						</tr>
-						<tr>
-							<td bgcolor="#495CFF"><b>HTML5</b></td>
-							<td bgcolor="white"></td>
-							<td bgcolor="yellow"><b>JavaScript</b></td>
-						</tr>
-					</table>
+				<div class="span8">
+
+			Des formations guidées par la pratique
+				Toutes nos formations sont dispensées sous forme de
+				workshop avec 90% d'ateliers pratiques. Chez nous les
+				stagiaires sont très impliqués pour être rapidement
+				opérationnels. Nous proposons un panel de formations
+				modulables adaptées à tous les besoins. 
+			
 
 				</div>
-				<div class="span1"></div>
-				<div class="span8" bgcolor="#FDD131">
-
-					<table class="table table-hover" border="0" bgcolor="#FDD131">
-						<tr>
-							<td><BASEFONT>
-									<p>
-										<Font color="Blue">
-											<center>
-												<B>Des formations guidées par la pratique
-													Toutes nos formations sont dispensées sous forme de
-													workshop avec 90% d'ateliers pratiques. Chez nous les
-													stagiaires sont très impliqués pour être rapidement
-													opérationnels. Nous proposons un panel de formations
-													modulables adaptées à tous les besoins. </B>
-											</center>
-										</Font>
-									</p> </BASEFONT></td>
-						</tr>
-
-					</table>
-
-
-				</div>
-
-
-			</div>
-
-
-
-			<div class="row">
-
+				<div class="row">
 				<div class="span12">
-					<u><li><i><a href="http://www.treeptik.fr/#!/">Treeptik.fr</a></i></li>
-						<li><i><a href="http://www.treeptik.fr/#!/page_privacy">Treeptik
-									© 2012 • information légale •</a></i></li></u>
+					<a href="http://www.treeptik.fr/#!/">Treeptik.fr</a>
+						<a href="http://www.treeptik.fr/#!/page_privacy">Treeptik
+									© 2012 • information légale •</a>
 				</div>
 			</div>
-		</div>
-	</div>
+
+
+
+
+</div>
+
+
 </h:body>
 </html>
 

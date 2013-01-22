@@ -9,15 +9,16 @@
 	<ui:define name="body">
 		<div Styleclass="span7">
 			<h:form styleClass="well">
-				<h3>Quel Formateur a animé cette Formation?</h3>
+				<h3>Quels Formateurs ont animés cette Session?</h3>
 				<center>
 					<div class="table">
 						<tr>
 							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
 							<h:inputHidden value="#{evaluationController.session.id}"/>
-							<h:selectOneMenu value="#{evaluationController.formateur.id}">
-								<f:selectItems value="#{evaluationController.selectFormateursOfFormation}"></f:selectItems>
-							</h:selectOneMenu>
+							<h:selectManyListbox  converter="#{formateurConverter}"  value="#{evaluationController.listFormateursOfEval}" >
+								<f:selectItems value="#{evaluationController.listFormateursOfSession}" var="fese"
+									itemValue="#{fese}" itemLabel="#{fese}"/>
+							</h:selectManyListbox> 
 						</tr>
 						<div>
 							<h:commandButton action="#{evaluationController.chooseFormateur()}" value="Valider" />

@@ -11,8 +11,8 @@
 
 		<h:form>
 			<h:dataTable class="table table-bordered table-striped" 
-				value="#{stagiaireController.stagiaires}" var="st">
-				<h:column>
+				value="#{stagiaireController.lDMStagiaires}" var="st">
+				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />
 					</f:facet>

@@ -9,7 +9,10 @@ import javax.persistence.NamedQuery;
 
 @SuppressWarnings("serial")
 @Entity
-@NamedQueries({ @NamedQuery(name = "findAllFormateursOfFormation", query = "select fefo.id.formateur from FormateurFormation fefo where fefo.id.formation= :formation ") })
+@NamedQueries({ 
+	@NamedQuery(name = "removeFormateurFromFormation", query = "delete from FormateurFormation fefo where fefo.id.formateur= :formateur and fefo.id.formation= :formation "),
+	@NamedQuery(name = "findByFormateurAndFormation", query = "select fefo from FormateurFormation fefo where fefo.id.formateur= :formateur and fefo.id.formation= :formation "),
+	@NamedQuery(name = "findAllFormateursOfFormation", query = "select fefo.id.formateur from FormateurFormation fefo where fefo.id.formation= :formation ") })
 public class FormateurFormation implements Serializable {
 
 	@EmbeddedId

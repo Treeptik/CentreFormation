@@ -30,7 +30,24 @@ public class FormateurFormationDAO extends GenericDAO<FormateurFormation> {
 		Query query = em.createNamedQuery("findAllFormateursOfFormation");
 		query.setParameter("formation", formation);
 
-		List<Formateur> findAllFormateursOfFormation = query.getResultList();
-		return findAllFormateursOfFormation;
+		List<Formateur> listFormateursOfFormation = query.getResultList();
+		return listFormateursOfFormation;
+	}
+	
+
+	public FormateurFormation findByFormateurAndFormation(Formateur formateur,Formation formation) {
+		Query query = em.createNamedQuery("findByFormateurAndFormation");
+		query.setParameter("formateur", formateur);
+		query.setParameter("formation", formation);
+		
+		FormateurFormation formateurFormation = (FormateurFormation) query.getSingleResult();
+		return formateurFormation;		
+	}
+	
+	public void removeFormateurFromFormation(Formateur formateur,Formation formation) {
+		Query query = em.createNamedQuery("removeFormateurFromFormation");
+		query.setParameter("formateur", formateur);
+		query.setParameter("formation", formation);
+		query.executeUpdate();
 	}
 }

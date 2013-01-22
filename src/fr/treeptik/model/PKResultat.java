@@ -10,19 +10,19 @@ import javax.persistence.ManyToOne;
 public class PKResultat implements Serializable {
 
 	@ManyToOne
-	private Questionnaire questionnaire;
+	private Question question;
 	@ManyToOne
 	private StagiaireSession stagiaireSession;
 
 	public PKResultat() {
 	}
 
-	public Questionnaire getQuestionnaire() {
-		return questionnaire;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setQuestionnaire(Questionnaire questionnaire) {
-		this.questionnaire = questionnaire;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public StagiaireSession getStagiaireSession() {
@@ -38,7 +38,7 @@ public class PKResultat implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((questionnaire == null) ? 0 : questionnaire.hashCode());
+				+ ((question == null) ? 0 : question.hashCode());
 		result = prime
 				* result
 				+ ((stagiaireSession == null) ? 0 : stagiaireSession.hashCode());
@@ -57,11 +57,11 @@ public class PKResultat implements Serializable {
 			return false;
 		}
 		PKResultat other = (PKResultat) obj;
-		if (questionnaire == null) {
-			if (other.questionnaire != null) {
+		if (question == null) {
+			if (other.question != null) {
 				return false;
 			}
-		} else if (!questionnaire.equals(other.questionnaire)) {
+		} else if (!question.equals(other.question)) {
 			return false;
 		}
 		if (stagiaireSession == null) {

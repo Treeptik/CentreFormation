@@ -9,8 +9,9 @@
 	<ui:define name="body">
 		<h2>Liste des Formations de la Session #{sessionController.session.nom}</h2>
 		<h:form>
+		<h:inputHidden value="#{sessionController.session.id}" />
 			<h:dataTable class="table table-bordered table-striped" value="#{sessionController.lDMFormationsOfSession}" var="ft">
-				<h:column>
+				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />
 					</f:facet>
@@ -32,11 +33,7 @@
 					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
-					<h:commandLink action="#{formationController.doSelectUpdate()}"
-						value="Modifier" />
-					<h:outputText value=" / "/>
-					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{formationController.doDelete()}"
-						value="Supprimer" />
+					<h:commandLink 	action="#{sessionController.doRemoveFormationFromSession()}" value="retirer de la session" />
 				</h:column>
 			</h:dataTable>
 		</h:form>

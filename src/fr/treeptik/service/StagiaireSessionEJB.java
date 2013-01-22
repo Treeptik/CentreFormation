@@ -5,8 +5,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import sun.print.resources.serviceui;
-
 import fr.treeptik.dao.StagiaireSessionDAO;
 import fr.treeptik.model.PKStagiaireSession;
 import fr.treeptik.model.Session;
@@ -46,6 +44,18 @@ public class StagiaireSessionEJB {
 	
 	public List<Session> findAllSessionsOfStagiaire(Stagiaire stagiaire) {
 		return stagiaireSessionDAO.findAllSessionsOfStagiaire(stagiaire);
+	}
+	
+	public void removeStagiaireFromSession(Stagiaire stagiaire,Session session) {
+		stagiaireSessionDAO.removeStagiaireFromSession(stagiaire, session);
+	}
+	
+	public StagiaireSession findByStagiaireAndSession(Stagiaire stagiaire,Session session) {
+		return stagiaireSessionDAO.findByStagiaireAndSession(stagiaire, session);
+	}
+	
+	public List<StagiaireSession> findAllStagiaireSessionsOfSession(Session session) {
+		return stagiaireSessionDAO.findAllStagiaireSessionsOfSession(session);
 	}
 	
 	public List<Stagiaire> findAllStagiairesOfSession(Session session) {

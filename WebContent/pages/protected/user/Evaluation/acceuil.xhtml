@@ -8,58 +8,20 @@
 
 	<link href="/FormationJSF/bootstrap/css/bootstrap.css" rel="stylesheet" />
 	<link href="/FormationJSF//bootstrap/js/bootstrap.js" rel="stylesheet" />
-
-	<style>
-[class*="span12"] {
-	background-color: orange;
-	margin-bottom: 200px border-radius:               5px 5px 5px 5px;
-	padding-top: 0px;
-	text-align: center;
-	margin: 7px 10;
-}
-
-[Styleclass*="span7"] {
-	background-color: orange;
-	margin-bottom: 0px border-radius:               5px 5px 5px 5px;
-	line-height: 80px;
-	text-align: center;
-	border-radius: 20px 20px 20px 20px;
-	padding-left: 35px;
-	padding-right: 50px;
-	padding-top: 10px;
-	padding-bottom: 0px;
-}
-
-body {
-	margin-bottom: 200px;
-	background-color: white;
-	padding-top: 0px;
-	padding-left: 60px;
-	padding-right: 100px;
-}
-
-formulaire {
-	margin-bottom: 0px;
-	background-color: #EFF0FF;
-	padding: 10px;
-}
-
-img {
-	border: 1px solid #181818;
-}
-</style>
 </h:head>
 <h:body>
 	<div class="container">
 		<div class="page-header">
-			<a><img src="/FormationJSF/Image/Treeptik.Eval.jpg" width="1200"
-					height="100" class="img-rounded" /></a>
+		<a><img src="/FormationJSF/Image/logoTREEPTIK.jpg" class="img-rounded" /></a>
+		
 		</div>
 		<h:form>
 
 		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
 		#{evaluationController.stagiaire.id} #{userController.user.id}
 		<p>#{administrateurController.administrateur.id}</p>
+		<p>#{administrateurController.administrateur.nom}</p>
+		<p>#{userController.user.id}</p>
 		</h:form>
 		<div Styleclass="span7">
 			<h:form styleClass="well">

@@ -12,7 +12,9 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 		@NamedQuery(name = "findAllSessionsOfStagiaire", query = "select stss.id.session from StagiaireSession stss where stss.id.stagiaire= :stagiaire "),
 		@NamedQuery(name = "findAllStagiairesOfSession", query = "select stss.id.stagiaire from StagiaireSession stss where stss.id.session= :session "),
-		@NamedQuery(name = "findByStagiairesAndSession", query = "select stss from StagiaireSession stss where stss.id.session= :session and stss.id.stagiaire= :stagiaire")
+		@NamedQuery(name = "findAllStagiaireSessionsOfSession", query = "select stss from StagiaireSession stss where stss.id.session= :session "),
+		@NamedQuery(name = "removeStagiaireFromSession", query = "delete from StagiaireSession stss where stss.id.session= :session and stss.id.stagiaire= :stagiaire "),
+		@NamedQuery(name = "findByStagiaireAndSession", query = "select stss from StagiaireSession stss where stss.id.session= :session and stss.id.stagiaire= :stagiaire ")
 		
 })
 public class StagiaireSession implements Serializable {

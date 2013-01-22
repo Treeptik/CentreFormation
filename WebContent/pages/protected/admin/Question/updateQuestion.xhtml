@@ -10,14 +10,8 @@
 		<div class="span8" id="titre">Mettre à Jour une Question :</div>
 		<div class="span8" id="article">
 			<h:form class="form-horizontal">
-				<h:messages />
-				<div class="control-group">
-	    			<label class="control-label" for="id">ID :</label>
-	    			<div class="controls">
-						<h:inputText value="#{questionController.question.id}"
-							id="id" name="id"/>
-	    			</div>
-	    		</div>						
+			<h:messages />
+			<h:inputHidden value="#{questionController.question.id}" id="id" name="id"/>				
 				<div class="control-group">
 	    			<label class="control-label" for="libelle">libellé :</label>
     				<div class="controls">

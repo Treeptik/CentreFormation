@@ -13,7 +13,7 @@
 			<h:form>	
 				<h:dataTable class="table table-bordered table-striped" 
 						value="#{questionController.lDMQuestions}" var="q">
-			  		<h:column>
+			  		<h:column rendered="false">
 			    		<f:facet name="header">
 			  				<h:outputText value="ID"/>
 			  			</f:facet>

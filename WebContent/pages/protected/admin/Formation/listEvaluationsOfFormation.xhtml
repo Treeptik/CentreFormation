@@ -7,9 +7,9 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
 	<ui:define name="titre">Liste des Evaluations</ui:define>
 	<ui:define name="body">
-		<h2>Liste des Evaluations de la session #{sessionController.session.nom}</h2>
+		<h2>Liste des Evaluations de la Formation #{formationController.formation.nom}</h2>
 		<h:form>
-			<h:dataTable class="table table-bordered table-striped" value="#{sessionController.lDMEvaluationsOfSession}" var="ev">
+			<h:dataTable class="table table-bordered table-striped" value="#{formationController.lDMEvaluationsOfFormation}" var="ev">
 				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />

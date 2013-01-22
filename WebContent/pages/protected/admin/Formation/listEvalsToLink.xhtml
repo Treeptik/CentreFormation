@@ -7,12 +7,12 @@
 	<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
 		<ui:define name="titre">Liste des Evaluations</ui:define>
 		<ui:define name="body">
-			<h2>Lier une evaluation à la Session #{sessionController.session.nom}</h2>	
+			<h2>Lier une évaluation à la Formation #{formationController.formation.nom}</h2>	
 			<h:form>
-			<h:inputHidden value="#{sessionController.session.id}" />
+			<h:inputHidden value="#{formationController.formation.id}" />
 				<h:dataTable class="table table-bordered table-striped" 
-				value="#{sessionController.lDMEvaluations}" var="ev">
-	  				<h:column>
+				value="#{formationController.lDMEvaluations}" var="ev">
+	  				<h:column rendered="false">
 	    				<f:facet name="header">
 	  						<h:outputText value="ID"/>
 	  					</f:facet>
@@ -35,7 +35,7 @@
 							<h:outputText value="Opérations" />
 						</f:facet>
 						<h:commandLink
-						action="#{sessionController.doLinkSessionToEval()}"
+						action="#{formationController.doLinkToFormation()}"
 						value="Lier" />
 					</h:column>
 				</h:dataTable>

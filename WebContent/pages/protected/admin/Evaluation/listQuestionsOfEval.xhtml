@@ -13,7 +13,7 @@
 			<h:form>	
 				<h:dataTable class="table table-bordered table-striped" 
 						value="#{evaluationController.lDMQuestionsOfEval}" var="q">
-			  		<h:column>
+			  		<h:column  rendered="false">
 			    		<f:facet name="header">
 			  				<h:outputText value="ID"/>
 			  			</f:facet>
@@ -31,9 +31,17 @@
 			  			</f:facet>
 			  			<h:outputText value="#{q.avecCommentaire}"/>
 					</h:column>
+						<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opérations" />
+					</f:facet>
+					<h:commandLink 	action="#{evaluationController.doRemoveQuestionFromEval()}" value="retirer de l'évaluation" />
+				</h:column>
 				</h:dataTable>
 			</h:form>
-	 			<a href="../Evaluation/listEvaluations.jsf">retour</a>
+			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+	 			<h:outputText value=" / "/>	
+	 		<a href="../Evaluation/listEvaluations.jsf">retour aux évaluations</a>
 		</ui:define>
 	</ui:composition>
 </html>

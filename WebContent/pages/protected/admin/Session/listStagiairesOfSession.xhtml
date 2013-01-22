@@ -7,12 +7,13 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
 	<ui:define name="titre">List des Stagiaires</ui:define>
 	<ui:define name="body">
+	<h:form>
 		<h2>Liste des Stagiaires de la Session #{sessionController.session.nom}</h2>
 
-		<h:form>
+		<h:inputHidden value="#{sessionController.session.id}" />
 			<h:dataTable class="table table-bordered table-striped" 
 				value="#{sessionController.lDMStagiairesOfSession}" var="st">
-				<h:column>
+				<h:column >
 					<f:facet name="header">
 						<h:outputText value="ID" />
 					</f:facet>
@@ -91,11 +92,7 @@
 					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
-					<h:commandLink action="#{stagiaireController.doSelectUpdate()}"
-						value="Modifier" />
-					<h:outputText value=" / "/>
-					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
-						action="#{stagiaireController.doDelete()}" value="Supprimer" />
+					<h:commandLink 	action="#{sessionController.doRemoveStagiaireFromSession()}" value="retirer de la session" />
 				</h:column>
 			</h:dataTable>
 		</h:form>

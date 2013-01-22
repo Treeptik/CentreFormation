@@ -14,7 +14,7 @@
 				<h:inputHidden value="#{evaluationController.evaluation.id}" />	
 				<h:dataTable class="table table-bordered table-striped" 
 						value="#{evaluationController.lDMQuestions}" var="q">
-			  		<h:column>
+			  		<h:column rendered="false">
 			    		<f:facet name="header">
 			  				<h:outputText value="ID"/>
 			  			</f:facet>

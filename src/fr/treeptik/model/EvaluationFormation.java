@@ -9,22 +9,22 @@ import javax.persistence.NamedQuery;
 
 @SuppressWarnings("serial")
 @Entity
-@NamedQueries({ @NamedQuery(name = "findAllEvalsOfSession", query = "select DISTINCT qs.id.questionnaire.id.evaluation from QuestionnaireSession qs where qs.id.session= :session "),
-	@NamedQuery(name = "findAllQuestionnairesOfSession", query = "select qs.id.questionnaire from QuestionnaireSession qs where qs.id.session= :session ")	
+@NamedQueries({
+	@NamedQuery(name = "findAllEvalsOfFormation", query = "select ef.id.evaluation from EvaluationFormation ef where ef.id.formation= :formation ")	
 })
-public class QuestionnaireSession implements Serializable {
+public class EvaluationFormation implements Serializable {
 
 	@EmbeddedId
-	private PKQuestionnaireSession id;
+	private PKEvaluationFormation id;
 
-	public QuestionnaireSession() {
+	public EvaluationFormation() {
 	}
 
-	public PKQuestionnaireSession getId() {
+	public PKEvaluationFormation getId() {
 		return id;
 	}
 
-	public void setId(PKQuestionnaireSession id) {
+	public void setId(PKEvaluationFormation id) {
 		this.id = id;
 	}
 
@@ -44,10 +44,10 @@ public class QuestionnaireSession implements Serializable {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof QuestionnaireSession)) {
+		if (!(obj instanceof EvaluationFormation)) {
 			return false;
 		}
-		QuestionnaireSession other = (QuestionnaireSession) obj;
+		EvaluationFormation other = (EvaluationFormation) obj;
 		if (id == null) {
 			if (other.id != null) {
 				return false;

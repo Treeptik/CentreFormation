@@ -16,10 +16,10 @@ import fr.treeptik.service.QuestionEJB;
 @ManagedBean
 @RequestScoped
 public class QuestionController {
-	
+
 	// *********ENTITE******************************************************
 	private Question question = new Question();
-	
+
 	// *********EJB*********************************************************
 	@EJB
 	private QuestionEJB questionEJB;
@@ -27,11 +27,11 @@ public class QuestionController {
 	// **********LISTES*****************************************************
 	private List<Question> listQuestions;
 	private List<SelectItem> selectQuestion;
-	
+
 	// **********DATAMODEL**************************************************
 	@SuppressWarnings("rawtypes")
 	private DataModel lDMQuestions;
-	
+
 	@SuppressWarnings("rawtypes")
 	public String doCreate() {
 		questionEJB.create(question);
@@ -61,43 +61,18 @@ public class QuestionController {
 		lDMQuestions.setWrappedData(questionEJB.findAll());
 		return "messageQuestionUpdate";
 	}
-	
+
 	public String doFindAll() {
 		listQuestions = questionEJB.findAll();
 		return "listQuestions";
 	}
 
-
 	public String doNew() {
 		return "createQuestion";
 	}
 
-	public QuestionEJB getQuestionEJB() {
-		return questionEJB;
-	}
-
-	public void setQuestionEJB(QuestionEJB questionEJB) {
-		this.questionEJB = questionEJB;
-	}
-
-	public Question getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
-
-	public List<Question> getListQuestions() {
-		return listQuestions;
-	}
-
-	public void setListQuestions(List<Question> listQuestions) {
-		this.listQuestions = listQuestions;
-	}
-	
 	public List<SelectItem> getSelectQuestion() {
-		
+
 		listQuestions = questionEJB.findAll();
 		selectQuestion = new ArrayList<SelectItem>();
 		for (Question question : listQuestions) {
@@ -123,5 +98,29 @@ public class QuestionController {
 	@SuppressWarnings("rawtypes")
 	public void setlDMQuestions(DataModel lDMQuestions) {
 		this.lDMQuestions = lDMQuestions;
+	}
+
+	public List<Question> getListQuestions() {
+		return listQuestions;
+	}
+
+	public void setListQuestions(List<Question> listQuestions) {
+		this.listQuestions = listQuestions;
+	}
+
+	public QuestionEJB getQuestionEJB() {
+		return questionEJB;
+	}
+
+	public void setQuestionEJB(QuestionEJB questionEJB) {
+		this.questionEJB = questionEJB;
+	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 }

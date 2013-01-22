@@ -9,9 +9,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import fr.treeptik.model.Formateur;
 import fr.treeptik.service.FormateurEJB;
@@ -21,14 +24,12 @@ import fr.treeptik.service.FormateurEJB;
 public class FormateurController {
 
 	// *********ENTITE******************************************************
-	// private Formation formation = new Formation();
+
 	private Formateur formateur = new Formateur();
 
 	// *********EJB*********************************************************
 	@EJB
 	private FormateurEJB formateurEJB;
-	// @EJB
-	// private FormationEJB formationEJB;
 
 	// **********LISTES*****************************************************
 	private List<Formateur> listFormateurs = new ArrayList<Formateur>();
@@ -36,41 +37,39 @@ public class FormateurController {
 
 	// **********DATAMODEL**************************************************
 	@SuppressWarnings("rawtypes")
-	private DataModel formateurs;
+	private DataModel lDMFormateurs;
 
 	public String doCreate() {
 		formateurEJB.create(formateur);
-		// formation.setFormateurs(getListFormateurs().add(formateur));
-		// formationEJB.createUneFormation(formation);
-		// listFormateurs = formateurEJB.findAllFormateurs();
+		getlDMFormateurs();
 		return "messageFormateurCree";
 	}
 
 	@SuppressWarnings("rawtypes")
 	public String doDelete() {
-		Formateur formateur = (Formateur) formateurs.getRowData();
+		Formateur formateur = (Formateur) lDMFormateurs.getRowData();
 		formateurEJB.delete(formateur);
-		formateurs = new ListDataModel();
-		formateurs.setWrappedData(formateurEJB.findAll());
+		lDMFormateurs = new ListDataModel();
+		lDMFormateurs.setWrappedData(formateurEJB.findAll());
 		return "listFormateurs";
 	}
 
 	public String doSelectUpdate() {
-		formateur = (Formateur) formateurs.getRowData();
+		formateur = (Formateur) lDMFormateurs.getRowData();
 		return "updateFormateur";
 	}
 
 	@SuppressWarnings("rawtypes")
 	public String doUpdate() {
 		formateurEJB.update(formateur);
-		formateurs = new ListDataModel();
-		formateurs.setWrappedData(formateurEJB.findAll());
+		lDMFormateurs = new ListDataModel();
+		lDMFormateurs.setWrappedData(formateurEJB.findAll());
 		return "messageFormateurUpdate";
 	}
 
 	public String doFindAll() {
 		listFormateurs = formateurEJB.findAll();
-		getFormateurs();
+		getlDMFormateurs();
 		return "listFormateurs";
 	}
 
@@ -78,28 +77,19 @@ public class FormateurController {
 		return "createFormateur";
 	}
 
-	public FormateurEJB getFormateurEJB() {
-		return formateurEJB;
+	@SuppressWarnings("rawtypes")
+	public DataModel getlDMFormateurs() {
+
+		if (lDMFormateurs == null) {
+			lDMFormateurs = new ListDataModel();
+			lDMFormateurs.setWrappedData(formateurEJB.findAll());
+		}
+		return lDMFormateurs;
 	}
 
-	public void setFormateurEJB(FormateurEJB formateurEJB) {
-		this.formateurEJB = formateurEJB;
-	}
-
-	public Formateur getFormateur() {
-		return formateur;
-	}
-
-	public void setFormateur(Formateur formateur) {
-		this.formateur = formateur;
-	}
-
-	public List<Formateur> getListFormateurs() {
-		return listFormateurs;
-	}
-
-	public void setListFormateurs(List<Formateur> listFormateurs) {
-		this.listFormateurs = listFormateurs;
+	@SuppressWarnings("rawtypes")
+	public void setlDMFormateurs(DataModel lDMFormateurs) {
+		this.lDMFormateurs = lDMFormateurs;
 	}
 
 	public List<SelectItem> getSelectFormateur() {
@@ -118,23 +108,27 @@ public class FormateurController {
 		this.selectFormateur = selectFormateur;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public DataModel getFormateurs() {
-
-		if (formateurs == null) {
-			formateurs = new ListDataModel();
-			formateurs.setWrappedData(formateurEJB.findAll());
-		}
-
-		return formateurs;
+	public List<Formateur> getListFormateurs() {
+		return listFormateurs;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public void setFormateurs(DataModel formateurs) {
-		this.formateurs = formateurs;
+	public void setListFormateurs(List<Formateur> listFormateurs) {
+		this.listFormateurs = listFormateurs;
 	}
-	/*
-	 * public void getConverter(){ formateurEJB.getConverter(); }
-	 */
 
+	public FormateurEJB getFormateurEJB() {
+		return formateurEJB;
+	}
+
+	public void setFormateurEJB(FormateurEJB formateurEJB) {
+		this.formateurEJB = formateurEJB;
+	}
+
+	public Formateur getFormateur() {
+		return formateur;
+	}
+
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
+	}
 }

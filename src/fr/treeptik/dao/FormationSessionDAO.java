@@ -25,12 +25,23 @@ public class FormationSessionDAO extends GenericDAO<FormationSession> {
 		em.persist(formationSession);
 	}
 
+	public FormationSession findByFormationAndSession(Formation formation,
+			Session session) {
+		Query query = em.createNamedQuery("findByFormationAndSession");
+		query.setParameter("session", session);
+		query.setParameter("formation", formation);
+
+		FormationSession formationSession = (FormationSession) query
+				.getSingleResult();
+		return formationSession;
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Formation> findAllFormationsOfSession(Session session) {
 		Query query = em.createNamedQuery("findAllFormationsOfSession");
 		query.setParameter("session", session);
 
-		List<Formation> listFormationOfSession = query.getResultList();
-		return listFormationOfSession;
+		List<Formation> listFormationsOfSession = query.getResultList();
+		return listFormationsOfSession;
 	}
 }

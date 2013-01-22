@@ -54,6 +54,8 @@ public class Formation implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((descriptif == null) ? 0 : descriptif.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		return result;
@@ -71,6 +73,13 @@ public class Formation implements Serializable {
 			return false;
 		}
 		Formation other = (Formation) obj;
+		if (descriptif == null) {
+			if (other.descriptif != null) {
+				return false;
+			}
+		} else if (!descriptif.equals(other.descriptif)) {
+			return false;
+		}
 		if (id != other.id) {
 			return false;
 		}

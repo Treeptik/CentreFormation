@@ -41,6 +41,10 @@ public class FormationSessionEJB {
 		formationSessionDAO.addFormationToSession(formationSession);
 	}
 	
+	public FormationSession findByFormationAndSession(Formation formation,Session session) {
+		return formationSessionDAO.findByFormationAndSession(formation, session);
+	}
+	
 	public List<Formation> findAllFormationsOfSession(Session session) {
 		return formationSessionDAO.findAllFormationsOfSession(session);
 	}

@@ -11,40 +11,14 @@
 		<div class="span8" id="article">
 			<h:form class="form-horizontal">
 				<h:messages />
-				<div class="control-group">
-	    			<label class="control-label" for="id">ID :</label>
-    				<div class="controls">
-    					<h:inputText value="#{administrateurController.administrateur.id}"/>
-    				</div>
-	    		</div>			
+				<h:inputHidden value="#{evaluationController.evaluation.id}"/>
 				<div class="control-group">
 	    			<label class="control-label" for="nom">Nom :</label>
     				<div class="controls">
     					<h:inputText type="text" id="nom" name="nom" 
-    						value="#{administrateurController.administrateur.nom}" required="true"
+    						value="#{evaluationController.evaluation.nom}" required="true"
 							validatorMessage=" nom invalide ">
 							<f:validateLength minimum="2" maximum="30" />
-						</h:inputText>
-    				</div>
-	    		</div>
-	    		<div class="control-group">
-	    			<label class="control-label" for="email">Email :</label>
-    				<div class="controls">
-    					<h:inputText type="text" id="email" name="email" 
-    						value="#{administrateurController.administrateur.email}" required="true"
-							validatorMessage="Format de l'e-mail invalide">
-							<f:validateRegex
-								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-						</h:inputText>
-    				</div>
-	    		</div>
-	    		<div class="control-group">
-	    			<label class="control-label" for="password">Mot de Passe :</label>
-    				<div class="controls">
-    					<h:inputText type="text" id="password" name="password" 
-   							value="#{administrateurController.administrateur.password}"
-							required="true" validatorMessage="mot de passe trop court">
-							<f:validateLength minimum="5" maximum="20" />
 						</h:inputText>
     				</div>
 	    		</div>
@@ -57,10 +31,11 @@
 							<f:validateLength minimum="2" maximum="100" />
 						</h:inputText>
     				</div>
-	    		</div>			
+	    		</div>
+			
 				<div class="control-group">
 					<div class="controls">
-						<h:commandButton action="#{administrateurController.doUpdate()}" 
+						<h:commandButton action="#{evaluationController.doUpdate()}" 
 							value="Modifier" styleClass="btn btn-success"/>
 						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
 						<h:button class="btn btn-inverse"

@@ -12,7 +12,7 @@
 		<h:form>
 		<h:inputHidden value="#{sessionController.session.id}" />
 			<h:dataTable class="table table-bordered table-striped" value="#{sessionController.lDMFormations}" var="ft">
-				<h:column>
+				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />
 					</f:facet>

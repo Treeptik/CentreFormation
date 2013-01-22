@@ -10,14 +10,8 @@
 		<div class="span8" id="titre">Mettre à Jour une Session :</div>
 		<div class="span8" id="article">
 			<h:form class="form-horizontal">
-				<h:messages />
-				<div class="control-group">
-	    			<label class="control-label" for="id">ID :</label>
-	    			<div class="controls">
-						<h:inputText value="#{sessionController.session.id}"
-							id="id" name="id"/>
-	    			</div>
-	    		</div>						
+			<h:messages />
+			<h:inputHidden value="#{sessionController.session.id}" id="id" name="id"/>				
 				<div class="control-group">
 	    			<label class="control-label" for="nom">Nom :</label>
     				<div class="controls">

@@ -34,6 +34,33 @@ public class StagiaireSessionDAO extends GenericDAO<StagiaireSession> {
 		return listSessionsOfStagiaire;		
 	}
 	
+
+	public List<StagiaireSession> findAllStagiaireSessionsOfSession(Session session) {
+		Query query = em.createNamedQuery("findAllStagiaireSessionsOfSession");
+		query.setParameter("session", session);
+
+		@SuppressWarnings("unchecked")
+		List<StagiaireSession> listStagiaireSession = query.getResultList();
+		return listStagiaireSession;		
+	}
+	
+	public void removeStagiaireFromSession(Stagiaire stagiaire,Session session) {
+		Query query = em.createNamedQuery("removeStagiaireFromSession");
+		query.setParameter("session", session);
+		query.setParameter("stagiaire", stagiaire);
+		query.executeUpdate();
+	}
+	
+	
+	public StagiaireSession findByStagiaireAndSession(Stagiaire stagiaire,Session session) {
+		Query query = em.createNamedQuery("findByStagiaireAndSession");
+		query.setParameter("session", session);
+		query.setParameter("stagiaire", stagiaire);
+		
+		StagiaireSession stagiaireSession = (StagiaireSession) query.getSingleResult();
+		return stagiaireSession;		
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Stagiaire> findAllStagiairesOfSession(Session session) {
 		Query query = em.createNamedQuery("findAllStagiairesOfSession");

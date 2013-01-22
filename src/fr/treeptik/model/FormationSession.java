@@ -9,7 +9,10 @@ import javax.persistence.NamedQuery;
 
 @SuppressWarnings("serial")
 @Entity
-@NamedQueries({ @NamedQuery(name = "findAllFormationsOfSession", query = "select foss.id.formation from FormationSession foss where foss.id.session= :session ") })
+@NamedQueries({
+	@NamedQuery(name = "findAllFormationsOfSession", query = "select foss.id.formation from FormationSession foss where foss.id.session= :session "),
+	@NamedQuery(name = "findByFormationAndSession", query = "select foss from FormationSession foss where foss.id.session= :session and foss.id.formation= :formation") 
+	})
 public class FormationSession implements Serializable {
 
 	@EmbeddedId

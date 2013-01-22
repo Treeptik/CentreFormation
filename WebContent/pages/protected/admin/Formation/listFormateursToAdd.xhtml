@@ -12,7 +12,7 @@
 				<h:inputHidden value="#{formationController.formation.id}" />			
 				<h:dataTable class="table table-bordered table-striped" 
 						value="#{formationController.lDMFormateurs}" var="ft">
-			  		<h:column>
+			  		<h:column rendered="false">
 			    		<f:facet name="header">
 			  				<h:outputText value="ID"/>
 			  			</f:facet>

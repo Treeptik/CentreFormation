@@ -11,6 +11,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import fr.treeptik.model.Formateur;
+import fr.treeptik.model.Formation;
 import fr.treeptik.model.Resultat;
 import fr.treeptik.model.Stagiaire;
 
@@ -57,20 +59,44 @@ public class SendTextMessage {
 		}
 	}
 
-	public String boucleRecapResultat(List<Resultat> listResultat) {
+	public String boucleRecapResultat(List<Resultat> listResultats) {
 		StringBuilder recapBuilder = new StringBuilder();
 		String recap;
-		for (Resultat resultat : listResultat) {
-			recapBuilder.append(resultat.getId().getQuestionnaire().getId()
-					.getQuestion().getLibelle()
+		for (Resultat resultat : listResultats) {
+			recapBuilder.append(resultat.getId().getQuestion().getLibelle()
 					+ " : " + resultat.getNote() + "/4\n\n");
 		}
 		recap = recapBuilder.toString();
-		
+
 		return recap;
 	}
 
-	public void mailRecapEvaluation(List<Resultat> listResultat) {
+	public String boucleFormateur(List<Formateur> listFormateurs) {
+		StringBuilder recapBuilder = new StringBuilder();
+		String recap;
+		for (Formateur formateur : listFormateurs) {
+			recapBuilder.append("Formateur :" + " : " + formateur.getNom()
+					+ " " + formateur.getPrenom() + ".\n\n");
+		}
+		recap = recapBuilder.toString();
+
+		return recap;
+	}
+
+	public String boucleFormation(List<Formation> listFormations) {
+		StringBuilder recapBuilder = new StringBuilder();
+		String recap;
+		for (Formation formation : listFormations) {
+			recapBuilder
+					.append("la Formation :" + formation.getNom() + ".\n\n");
+		}
+		recap = recapBuilder.toString();
+
+		return recap;
+	}
+
+	public void mailRecapEvaluation(List<Resultat> listResultat,
+			List<Formateur> listFormateurs, List<Formation> listFormations) {
 		try {
 			Resultat resultat = new Resultat();
 			resultat = listResultat.get(0);
@@ -94,12 +120,11 @@ public class SendTextMessage {
 					+ " "
 					+ resultat.getId().getStagiaireSession().getId()
 							.getStagiaire().getPrenom()
-					+ " a effectué l'évaluation :"
-					+ " "
-					+ resultat.getId().getQuestionnaire().getId()
-							.getEvaluation().getNom() + ".\n"
-					+ "\n**************"
-
+					+ " a effectué l'évaluation de la session "
+					+ resultat.getId().getStagiaireSession().getId()
+							.getSession().getNom() + ".\n" + "\n**************"
+					+ "\n Composé de :\n" + boucleFormation(listFormations)
+					// + "animé par :\n"+boucleFormateur(listFormateurs)
 					+ "\n\nVoici le récapitulatif de son évaluation:\n\n"
 					+ boucleRecapResultat(listResultat) +
 

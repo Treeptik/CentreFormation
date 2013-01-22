@@ -8,12 +8,14 @@
 		<ui:define name="titre">Liste des formateurs</ui:define>
 	
 		<ui:define name="body">
-		<h2>Liste des Formateurs</h2>
+		<h:form>
+		<h2>Liste des Formateurs de la formation #{formationController.formation.nom}</h2>
 		
-			<h:form>	
+
+				<h:inputHidden value="#{formationController.formation.id}" />	
 				<h:dataTable class="table table-bordered table-striped" 
 						value="#{formationController.lDMFormateursOfFormation}" var="ft">
-			  		<h:column>
+			  		<h:column >
 			    		<f:facet name="header">
 			  				<h:outputText value="ID"/>
 			  			</f:facet>
@@ -41,11 +43,7 @@
 						<f:facet name="header">
 							<h:outputText value="Opérations" />
 						</f:facet>
-						<h:commandLink action="#{formateurController.doSelectUpdate()}" value="Modifier" />
-						<h:outputText value=" / "/>
-						<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
-							action="#{formateurController.doDelete()}" value="Supprimer"/>
-					</h:column>
+						<h:commandLink 	action="#{formationController.doRemoveFormateurFromFormation()}" value="retirer de la formation" /></h:column>
 				</h:dataTable>
 			</h:form>
  			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>

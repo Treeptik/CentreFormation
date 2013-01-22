@@ -37,12 +37,11 @@ public class ResultatController {
 	// **********LISTES*****************************************************
 	private List<Question> listQuestions;
 	private List<Resultat> listResultats;
-	@SuppressWarnings("rawtypes")
+
 	
 	// **********DATAMODEL**************************************************
-	private DataModel lDMresultats;
 	@SuppressWarnings("rawtypes")
-	private DataModel lDMQuestionsOfEval;
+	private DataModel lDMresultats;
 
 	public String doCreate() {
 		pkEvaluationQuestion.setEvaluation(evaluation);
@@ -79,30 +78,6 @@ public class ResultatController {
 		return "createNote";
 	}
 
-	public ResultatEJB getNoteEJB() {
-		return resultatEJB;
-	}
-
-	public void setResultatEJB(ResultatEJB resultatEJB) {
-		this.resultatEJB = resultatEJB;
-	}
-
-	public Resultat getResultat() {
-		return resultat;
-	}
-
-	public void setResultat(Resultat resultat) {
-		this.resultat = resultat;
-	}
-
-	public List<Resultat> getListResultats() {
-		return listResultats;
-	}
-
-	public void setListResultats(List<Resultat> listResultats) {
-		this.listResultats = listResultats;
-	}
-
 	@SuppressWarnings("rawtypes")
 	public DataModel getlDMResultats() {
 		if (lDMresultats == null) {
@@ -116,7 +91,39 @@ public class ResultatController {
 	public void setlDMResultats(DataModel lDMResultats) {
 		this.lDMresultats = lDMResultats;
 	}
+	
+	public List<Question> getListQuestions() {
+		return listQuestions;
+	}
 
+	public void setListQuestions(List<Question> listQuestions) {
+		this.listQuestions = listQuestions;
+	}
+	
+	public List<Resultat> getListResultats() {
+		return listResultats;
+	}
+
+	public void setListResultats(List<Resultat> listResultats) {
+		this.listResultats = listResultats;
+	}
+
+	public ResultatEJB getNoteEJB() {
+		return resultatEJB;
+	}
+
+	public void setResultatEJB(ResultatEJB resultatEJB) {
+		this.resultatEJB = resultatEJB;
+	}
+	
+	public PKQuestionnaire getPkEvaluationQuestion() {
+		return pkEvaluationQuestion;
+	}
+
+	public void setPkEvaluationQuestion(
+			PKQuestionnaire pkEvaluationQuestion) {
+		this.pkEvaluationQuestion = pkEvaluationQuestion;
+	}
 	public Evaluation getEvaluation() {
 		return evaluation;
 	}
@@ -132,39 +139,12 @@ public class ResultatController {
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
-
-	public PKQuestionnaire getPkEvaluationQuestion() {
-		return pkEvaluationQuestion;
+	
+	public Resultat getResultat() {
+		return resultat;
 	}
 
-	public void setPkEvaluationQuestion(
-			PKQuestionnaire pkEvaluationQuestion) {
-		this.pkEvaluationQuestion = pkEvaluationQuestion;
+	public void setResultat(Resultat resultat) {
+		this.resultat = resultat;
 	}
-
-	public List<Question> getListQuestions() {
-		return listQuestions;
-	}
-
-	public void setListQuestions(List<Question> listQuestions) {
-		this.listQuestions = listQuestions;
-	}
-/*
-	@SuppressWarnings("rawtypes")
-	public DataModel getLDMQuestionsOfEval() {
-		if (lDMQuestionsOfEval == null) {
-			evaluation = new Evaluation();
-			evaluation = evaluationEJB.findById(evaluation.getId());
-			int evaluationId = evaluation.getId();
-			lDMQuestionsOfEval = new ListDataModel();
-			lDMQuestionsOfEval.setWrappedData(resultatEJB.findAllQuestionsOfEval(evaluationId));
-		}
-		return lDMQuestionsOfEval;
-	}
-
-	@SuppressWarnings("rawtypes")
-	public void setLDMQuestionsOfEval(DataModel lDMQuestionsOfEval) {
-		this.lDMQuestionsOfEval = lDMQuestionsOfEval;
-	}
-*/
 }
