@@ -19,7 +19,6 @@ public class Stagiaire extends User implements Serializable {
 	public static final String FIND_BY_EMAIL = "Stagiaire.findStagiaireByEmail";
 	private static final long serialVersionUID = 1L;
 	
-	private String prenom;
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	private String tel;
@@ -37,14 +36,6 @@ public class Stagiaire extends User implements Serializable {
 		super();
 	}
 
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	
 	public String getTel() {
 		return tel;
 	}
@@ -130,7 +121,6 @@ public class Stagiaire extends User implements Serializable {
 				+ ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
 		result = prime * result + ((diplome == null) ? 0 : diplome.hashCode());
 		result = prime * result + ((domaine == null) ? 0 : domaine.hashCode());
-		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		result = prime * result + ((sexe == null) ? 0 : sexe.hashCode());
 		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
 		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
@@ -189,13 +179,6 @@ public class Stagiaire extends User implements Serializable {
 				return false;
 			}
 		} else if (!domaine.equals(other.domaine)) {
-			return false;
-		}
-		if (prenom == null) {
-			if (other.prenom != null) {
-				return false;
-			}
-		} else if (!prenom.equals(other.prenom)) {
 			return false;
 		}
 		if (sexe == null) {

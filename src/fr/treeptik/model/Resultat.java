@@ -9,8 +9,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-import fr.treeptik.model.Formation;
-import fr.treeptik.model.Formateur;
+import com.sun.istack.internal.Nullable;
 
 @SuppressWarnings("serial")
 @Entity
@@ -25,7 +24,7 @@ public class Resultat implements Serializable {
 	private PKResultat id;
 	private int note;
 	private String commentaire;
-	@OneToMany
+	@OneToMany()
 	private List<Formateur> listFormateursEvalues;
 	@OneToMany
 	private List<Formation> listFormationsEvaluees;

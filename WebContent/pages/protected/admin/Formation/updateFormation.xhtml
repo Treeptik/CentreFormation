@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Mettre à Jour une Formation</ui:define>
 	<ui:define name="body">
 		<div class="span8" id="titre">Mettre à Jour un Formation :</div>
@@ -22,6 +22,13 @@
 						</h:inputText>
     				</div>
 	    		</div>
+				<div class="control-group">
+	    			<label class="control-label" for="descriptif">Descriptif :</label>
+    				<div class="controls">
+    					<h:inputText type="text" id="descriptif" name="descriptif"  
+    						value="#{formationController.formation.descriptif}"/>
+    				</div>
+	    		</div>	    		
 				<div class="control-group">
 					<div class="controls">
 						<h:commandButton action="#{formationController.doUpdate()}"

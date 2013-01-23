@@ -33,4 +33,16 @@ public class QuestionEJB {
 	public Question findById(int id) {
 		return questionDAO.findById(id);
 	}
+	
+	public Boolean checkAvecCommentaire(Question question) {
+		return questionDAO.checkAvecCommentaire(question);
+	}
+	
+	public Boolean checkQuestion4Choix(Question question) {
+		return questionDAO.checkQuestion4Choix(question);
+	}
+	
+	public Boolean checkQuestionFermee(Question question) {
+		return questionDAO.checkQuestionFermee(question);
+	}
 }

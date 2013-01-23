@@ -4,10 +4,12 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Mise à Jour d'un Administrateur</ui:define>
 	<ui:define name="body">
-		<div class="span8" id="titre">Mettre à Jour un Administrateur :</div>
+		<div class="row">		
+			<div class="span8" id="titre">Mettre à Jour un Administrateur :</div>
+		</div>
 		<div class="span8" id="article">
 			<h:form class="form-horizontal">
 				<h:messages />
@@ -18,6 +20,16 @@
     					<h:inputText type="text" id="nom" name="nom" 
     						value="#{administrateurController.administrateur.nom}" required="true"
 							validatorMessage=" nom invalide ">
+							<f:validateLength minimum="2" maximum="30" />
+						</h:inputText>
+    				</div>
+	    		</div>
+	    		<div class="control-group">
+	    			<label class="control-label" for="prenom">Prénom :</label>
+    				<div class="controls">
+						<h:inputText value="#{administrateurController.administrateur.prenom}"
+							id="prenom" name="prenom"
+							required="true" validatorMessage="Prénom invalide ">
 							<f:validateLength minimum="2" maximum="30" />
 						</h:inputText>
     				</div>

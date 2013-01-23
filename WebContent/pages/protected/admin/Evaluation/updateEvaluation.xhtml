@@ -4,7 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Mise à Jour d'un Administrateur</ui:define>
 	<ui:define name="body">
 		<div class="span8" id="titre">Mettre à Jour un Administrateur :</div>
@@ -26,10 +26,7 @@
 	    			<label class="control-label" for="descriptif">Descriptif :</label>
     				<div class="controls">
     					<h:inputText type="text" id="descriptif" name="descriptif"  
-    						value="#{evaluationController.evaluation.descriptif}"
-							validatorMessage=" descriptif invalide ">
-							<f:validateLength minimum="2" maximum="100" />
-						</h:inputText>
+    						value="#{evaluationController.evaluation.descriptif}"/>
     				</div>
 	    		</div>
 			

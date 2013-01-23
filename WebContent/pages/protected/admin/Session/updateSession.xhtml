@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Mettre à Jour une Session</ui:define>
 	<ui:define name="body">
 		<div class="span8" id="titre">Mettre à Jour une Session :</div>
@@ -21,7 +21,14 @@
 							<f:validateLength minimum="2" maximum="40" />
 						</h:inputText>
     				</div>
-	    		</div>						   
+	    		</div>
+	    		<div class="control-group">
+	    			<label class="control-label" for="descriptif">Descriptif :</label>
+    				<div class="controls">
+						<h:inputText value="#{sessionController.session.descriptif}"
+							id="descriptif" name="descriptif"/>
+    				</div>
+	    		</div>							   
 				<div class="control-group">
 	    			<label class="control-label" for="dateDebut">Date de début :</label>
 					<div class="controls">

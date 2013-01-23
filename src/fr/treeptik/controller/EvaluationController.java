@@ -119,18 +119,30 @@ public class EvaluationController {
 	@SuppressWarnings("rawtypes")
 	private DataModel lDMSessions;
 
+	public Boolean doCheckAvecCommentaire(Question question) {
+		return questionEJB.checkAvecCommentaire(question);
+	}
+	
+	public Boolean doCheckQuestion4Choix(Question question) {
+		return questionEJB.checkQuestion4Choix(question);
+	}
+	
+	public Boolean doCheckQuestionFermee(Question question) {
+		return questionEJB.checkQuestionFermee(question);
+	}
+	
 	public String doFillEval() {
 
 		try {
 			List<Formateur> tempListFormateurs = new ArrayList<Formateur>();
 			List<Formation> tempListFormations = new ArrayList<Formation>();
 
-			tempListFormations = listFormationsOfSession;
-			for (Formateur formateur : listFormateursOfEval) {
-				Formateur tempFormateur = formateurEJB.findById(formateur
+			
+			for (Formation formation : listFormationsOfSession) {
+				Formation tempFormation = formationEJB.findById(formation
 						.getId());
-				tempListFormateurs.add(tempFormateur);
-				System.out.println("formateur:" + tempFormateur.getNom());
+				tempListFormations.add(tempFormation);
+				System.out.println("formation:" + tempFormation.getNom());
 			}
 
 			List<Resultat> listTempResultat = new ArrayList<Resultat>();
@@ -138,12 +150,13 @@ public class EvaluationController {
 			for (Resultat resultat : listTempResultat) {
 				Resultat resultattemp = new Resultat();
 				resultattemp = resultat;
-				resultattemp.setListFormateursEvalues(listFormateursOfEval);
-				resultattemp.setListFormationsEvaluees(listFormationsOfSession);
+				System.out.println("question"+resultat.getId().getQuestion().getLibelle());
+//				resultattemp.setListFormateursEvalues(listFormateursOfEval);
+//				resultattemp.setListFormationsEvaluees(listFormationsOfSession);
 				resultatEJB.update(resultattemp);
 			}
-			gestionmail.mailRecapEvaluation(listResultatsOfSession,
-					tempListFormateurs, listFormationsOfSession);
+//			gestionmail.mailRecapEvaluation(listResultatsOfSession,
+//					tempListFormateurs, listFormationsOfSession);
 
 			return "messageEvaluationEffectue";
 		} catch (Exception e) {
@@ -167,6 +180,7 @@ public class EvaluationController {
 			resultattemp.setNote(0);
 			resultatEJB.create(resultattemp);
 		}
+		getListFormationsOfSession();
 		return "selectFormateur";
 	}
 
@@ -310,17 +324,11 @@ public class EvaluationController {
 			for (Formateur formateur : tempListFormateurs) {
 				Formateur tempformateur = new Formateur();
 				tempformateur = formateurEJB.findById(formateur.getId());
-				System.out.println("formateur ID :" + formateur.getId());
 				tempListFormateurs2.add(tempformateur);
 			}
 
 		}
 		listFormateursOfSession = tempListFormateurs2;
-		for (Formateur formateur : listFormateursOfSession) {
-			System.out.println("formateur ID2 : " + formateur.getId());
-
-		}
-
 		return listFormateursOfSession;
 	}
 
@@ -348,6 +356,7 @@ public class EvaluationController {
 		List<Formation> tempListFormations = new ArrayList<Formation>();
 		List<Evaluation> tempListEvaluations = new ArrayList<Evaluation>();
 		List<Question> tempListQuestions = new ArrayList<Question>();
+		List<Question> tempListQuestions2 = new ArrayList<Question>();
 		tempListFormations = formationSessionEJB
 				.findAllFormationsOfSession(session);
 
@@ -360,11 +369,11 @@ public class EvaluationController {
 				tempListQuestions = questionnaireEJB
 						.findAllQuestionsOfEval(evaluation);
 				for (Question question : tempListQuestions) {
-					listQuestionsOfSession.add(question);
+					tempListQuestions2.add(question);
 				}
 			}
 		}
-
+				listQuestionsOfSession = tempListQuestions2;
 		return listQuestionsOfSession;
 	}
 

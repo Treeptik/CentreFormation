@@ -4,11 +4,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Evaluations</ui:define>
 	<ui:define name="body">
 		<h2>Liste des Evaluations de la Formation #{formationController.formation.nom}</h2>
 		<h:form>
+		<h:inputHidden value="#{formationController.formation.id}" />	
 			<h:dataTable class="table table-bordered table-striped" value="#{formationController.lDMEvaluationsOfFormation}" var="ev">
 				<h:column rendered="false">
 					<f:facet name="header">
@@ -27,6 +28,12 @@
 						<h:outputText value="Descriptif" />
 					</f:facet>
 					<h:outputText value="#{ev.descriptif}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Opérations" />
+					</f:facet>
+					<h:commandLink 	action="#{formationController.doRemoveEvaluationFromFormation()}" value="retirer de la formation" />
 				</h:column>								
 			</h:dataTable>
 		</h:form>

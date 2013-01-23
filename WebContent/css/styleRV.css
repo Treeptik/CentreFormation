@@ -1,14 +1,74 @@
 @CHARSET "UTF-8";
 
+body{
+	background-image: url("./../Image/bg_FormationJSF.jpg")
+}
+
+messages {
+	color: "red";
+}
+
 [class*="btn"] {
 	margin-right: 10px;	
 }
 
+#article {
+	margin-left: 100px;
+
+}
+
+#logo {
+	max-width: 336px
+}
+
 #titre {
-	text-align: center;
+	margin-left: 100px;
 	text-decoration: underline;
-	color: #0088CC;
+	color: #3F4493;
 	font-size: x-large;
 	font-weight: bold;
 	vertical-align: top;
+	min-height: 40px	
+}
+
+#deconnexion {
+	margin-left: 25px;
+	margin-top: 220px;
+}
+
+#barreNavigation {
+	
+	margin-left: 0px;
+	margin-top: 210px;
+}
+
+[class="page-header"] {
+	border-style: none;
+	padding-bottom: 0px;
+	margin-top: 0px;
+}
+
+#footer {
+	text-align: center;
+}
+
+.nav .dropdown-toggle .caret {
+	color: White;
+	border-top-color: White;
+	border-bottom-color: White;
+	
+}
+
+.dropdown-menu  {
+	background-color: #267BCC;
+	color: White;
+}
+
+[class="dropdown-toggle"] {
+	color: White;
+}
+
+
+[class="nav nav-tabs"], [class="nav nav-pills"] {
+	background-color: #3F4493;
 }

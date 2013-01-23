@@ -65,9 +65,20 @@ public class FormationController {
 
 	public String doRemoveFormateurFromFormation() {
 		formateur = (Formateur) lDMFormateursOfFormation.getRowData();
-		formateurFormation = formateurFormationEJB.findByFormateurAndFormation(
-				formateur, formation);
+		pKFormateurFormation.setFormateur(formateur);
+		pKFormateurFormation.setFormation(formation);
+		formateurFormation = formateurFormationEJB.findById(pKFormateurFormation);
 		formateurFormationEJB.delete(formateurFormation);
+		return "listFormations";
+		
+	}
+	
+	public String doRemoveEvalutationFromFormation() {
+		evaluation = (Evaluation) lDMEvaluationsOfFormation.getRowData();
+		pKEvaluationFormation.setEvaluation(evaluation);
+		pKEvaluationFormation.setFormation(formation);
+		evaluationFormation = evaluationFormationEJB.findById(pKEvaluationFormation);
+		evaluationFormationEJB.delete(evaluationFormation);
 		return "listFormations";
 		
 	}
@@ -109,6 +120,16 @@ public class FormationController {
 		return "listEvalsToLink";
 	}
 
+	public String doSelectRemoveEvaluationFromFormation() {
+		formation = (Formation) lDMFormations.getRowData();
+		return "listEvaluationsOfFormation";
+	}
+	
+	public String doSelectRemoveFormateurFromFormation() {
+		formation = (Formation) lDMFormations.getRowData();
+		return "listFormateursOfFormation";
+	}
+	
 	public String doLinkToFormation() {
 		try {
 			evaluation = (Evaluation) lDMEvaluations.getRowData();

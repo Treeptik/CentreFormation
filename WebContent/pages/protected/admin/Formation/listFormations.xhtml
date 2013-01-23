@@ -5,12 +5,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Formations</ui:define>
 	<ui:define name="body">
 		<h2>Liste des Formations</h2>
 		<h:form>
-			<h:dataTable class="table table-bordered table-striped" value="#{formationController.lDMFormations}"
+			<h:dataTable class="table table-bordered table-striped table-condensed" value="#{formationController.lDMFormations}"
 			 var="ft">
 				<h:column rendered="false">
 					<f:facet name="header">
@@ -34,23 +34,40 @@
 					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
-					<h:commandLink action="#{formationController.doSelectUpdate()}"
-						value="Modifier" />
-					<h:outputText value=" / "/>
-					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{formationController.doDelete()}"
-						value="Supprimer" />
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{formationController.doSelectAddFormateur()}"
-						value="Add Formateur" />
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{formationController.doListFormateursOfFormation()}"
-						value="Liste Formateurs" />
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{formationController.doSelectLinkToFormation()}"
-						value="Lier Eval" />
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{formationController.doListEvaluationsOfFormation()}"
-						value="Liste Evals" />
+					<ul class="nav nav-pills">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Gestion<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="#{formationController.doSelectUpdate()}" value="Modifier"/></li>
+									<li><h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{formationController.doDelete()}"
+						value="Supprimer" /></li>
+								</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> Formateur<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="#{formationController.doListFormateursOfFormation()}"
+						value="Liste Formateurs" /></li>
+									<li><h:commandLink action="#{formationController.doSelectAddFormateur()}"
+						value="Add Formateur" /></li>
+									<li><h:commandLink action="#{formationController.doRemoveFormateurFromFormation()}"
+						value="Retirer Formateur" /></li>
+								</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> Evaluation<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="#{formationController.doListEvaluationsOfFormation()}"
+						value="Liste Evals" /></li>
+									<li><h:commandLink action="#{formationController.doSelectLinkToFormation()}"
+						value="Lier Eval" /></li>
+									<li><h:commandLink action="#{formationController.doSelectRemoveEvaluationFromFormation()}"
+						value="Retirer Eval" /></li>
+								</ul>
+						</li>
+					</ul>
 				</h:column>
 			</h:dataTable>
 		</h:form>

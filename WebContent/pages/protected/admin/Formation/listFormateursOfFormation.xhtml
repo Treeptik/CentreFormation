@@ -4,7 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
       
-	<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+	<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 		<ui:define name="titre">Liste des formateurs</ui:define>
 	
 		<ui:define name="body">
@@ -43,7 +43,8 @@
 						<f:facet name="header">
 							<h:outputText value="Opérations" />
 						</f:facet>
-						<h:commandLink 	action="#{formationController.doRemoveFormateurFromFormation()}" value="retirer de la formation" /></h:column>
+						<h:commandLink 	action="#{formationController.doRemoveFormateurFromFormation()}" value="retirer de la formation" />
+					</h:column>
 				</h:dataTable>
 			</h:form>
  			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>

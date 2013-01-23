@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Mettre à Jour une Question</ui:define>
 	<ui:define name="body">
 		<div class="span8" id="titre">Mettre à Jour une Question :</div>
@@ -22,7 +22,31 @@
 						</h:inputText>
     				</div>
 	    		</div>
-	    		<div class="control-group">
+				<div class="control-group">
+	    			<label class="control-label" for="question4choix">Question à 4 choix ?</label>
+    				<div class="controls">
+						<h:selectOneRadio
+							value="#{questionController.question.question4Choix}" 
+							id="question4choix" name="question4choix" required="true"
+							requiredMessage="Connaitre le nombre de choix de réponse est nécessaire">
+							<f:selectItem itemValue="y" itemLabel="Oui" />
+							<f:selectItem itemValue="n" itemLabel="Non" />
+						</h:selectOneRadio>
+					</div>
+				</div>
+				<div class="control-group">
+	    			<label class="control-label" for="questionfermee">Question à 2 choix (oui,non) ?</label>
+    				<div class="controls">
+						<h:selectOneRadio
+							value="#{questionController.question.questionFermee}" 
+							id="questionfermee" name="questionfermee" required="true"
+							requiredMessage="Connaitre le nombre de choix de réponse est nécessaire">
+							<f:selectItem itemValue="y" itemLabel="Oui" />
+							<f:selectItem itemValue="n" itemLabel="Non" />
+						</h:selectOneRadio>
+					</div>
+				</div>
+				<div class="control-group">
 	    			<label class="control-label" for="avecCommentaire">Nécessite un commentaire ?</label>
     				<div class="controls">
 						<h:selectOneRadio

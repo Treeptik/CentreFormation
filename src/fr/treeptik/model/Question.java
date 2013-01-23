@@ -18,6 +18,8 @@ public class Question implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String libelle;
+	private char question4Choix; 
+	private char questionFermee;
 	private char avecCommentaire;
 
 	public Question() {
@@ -39,6 +41,22 @@ public class Question implements Serializable {
 		this.libelle = libelle;
 	}
 
+	public char getQuestion4Choix() {
+		return question4Choix;
+	}
+
+	public void setQuestion4Choix(char question4Choix) {
+		this.question4Choix = question4Choix;
+	}
+
+	public char getQuestionFermee() {
+		return questionFermee;
+	}
+
+	public void setQuestionFermee(char questionFermee) {
+		this.questionFermee = questionFermee;
+	}
+
 	public char getAvecCommentaire() {
 		return avecCommentaire;
 	}
@@ -54,6 +72,8 @@ public class Question implements Serializable {
 		result = prime * result + avecCommentaire;
 		result = prime * result + id;
 		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
+		result = prime * result + question4Choix;
+		result = prime * result + questionFermee;
 		return result;
 	}
 
@@ -80,6 +100,12 @@ public class Question implements Serializable {
 				return false;
 			}
 		} else if (!libelle.equals(other.libelle)) {
+			return false;
+		}
+		if (question4Choix != other.question4Choix) {
+			return false;
+		}
+		if (questionFermee != other.questionFermee) {
 			return false;
 		}
 		return true;

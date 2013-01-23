@@ -179,6 +179,17 @@ public class SessionController {
 		session = (Session) lDMSessions.getRowData();
 		return "listStagiairesToAdd";
 	}
+	
+	public String doSelectRemoveStagiaire() {
+		session = (Session) lDMSessions.getRowData();
+		return "listStagiairesOfSession";
+	}
+	
+	public String doSelectRemoveFormation() {
+		session = (Session) lDMSessions.getRowData();
+		return "listFormationsOfSession";
+	}
+
 
 	public String doSelectAddFormation() {
 		session = (Session) lDMSessions.getRowData();

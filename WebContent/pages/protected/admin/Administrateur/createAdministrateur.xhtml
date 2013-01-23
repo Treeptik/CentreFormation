@@ -4,55 +4,59 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Créer un Administrateur</ui:define>
 	<ui:define name="body">
+		<div class="row">
 		<div class="span8" id="titre">Créer un Administrateur :</div>
-		<div class="span8" id="article">
-			<h:form class="form-horizontal">
-				<h:messages />
-				<div class="control-group">
-	    			<label class="control-label" for="nom">Nom :</label>
-    				<div class="controls">
-    					<h:inputText type="text" id="nom" name="nom"  
-    						value="#{administrateurController.administrateur.nom}" required="true"
-							validatorMessage=" nom invalide ">
-							<f:validateLength minimum="2" maximum="30" />
-						</h:inputText>
-    				</div>
-	    		</div>
-	    		<div class="control-group">
-	    			<label class="control-label" for="email">Email :</label>
-    				<div class="controls">
-    					<h:inputText type="text" id="email" name="email" 
-    						value="#{administrateurController.administrateur.email}" required="true"
-							validatorMessage="Format de l'e-mail invalide">
-							<f:validateRegex
-								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-						</h:inputText>
-    				</div>
-	    		</div>
-	    		<div class="control-group">
-	    			<label class="control-label" for="password">Mot de Passe :</label>
-    				<div class="controls">
-    					<h:inputText type="text" id="password" name="password" 
-   							value="#{administrateurController.administrateur.password}"
-							required="true" validatorMessage="mot de passe trop court">
-							<f:validateLength minimum="5" maximum="20" />
-						</h:inputText>
-    				</div>
-	    		</div>		
-				<div class="control-group">
-					<div class="controls">
-						<h:commandButton action="#{administrateurController.doCreate()}" 
-							value="Créer" styleClass="btn btn-success"/>
-						<h:button type="reset" class="btn btn-primary" value="Annuler"/>
-						<h:button class="btn btn-inverse"
-							onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
-							value="Retour"/>
+		</div>
+		<div class="row">
+			<div class="span8" id="article">
+				<h:form class="form-horizontal">
+					<h:messages />
+					<div class="control-group">
+		    			<label class="control-label" for="nom">Nom :</label>
+	    				<div class="controls">
+	    					<h:inputText type="text" id="nom" name="nom"  
+	    						value="#{administrateurController.administrateur.nom}" required="true"
+								validatorMessage=" nom invalide ">
+								<f:validateLength minimum="2" maximum="30" />
+							</h:inputText>
+	    				</div>
+		    		</div>
+		    		<div class="control-group">
+		    			<label class="control-label" for="email">Email :</label>
+	    				<div class="controls">
+	    					<h:inputText type="text" id="email" name="email" 
+	    						value="#{administrateurController.administrateur.email}" required="true"
+								validatorMessage="Format de l'e-mail invalide">
+								<f:validateRegex
+									pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+							</h:inputText>
+	    				</div>
+		    		</div>
+		    		<div class="control-group">
+		    			<label class="control-label" for="password">Mot de Passe :</label>
+	    				<div class="controls">
+	    					<h:inputText type="text" id="password" name="password" 
+	   							value="#{administrateurController.administrateur.password}"
+								required="true" validatorMessage="mot de passe trop court">
+								<f:validateLength minimum="5" maximum="20" />
+							</h:inputText>
+	    				</div>
+		    		</div>		
+					<div class="control-group">
+						<div class="controls">
+							<h:commandButton action="#{administrateurController.doCreate()}" 
+								value="Créer" styleClass="btn btn-success"/>
+							<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+							<h:button class="btn btn-inverse"
+								onclick="window.location.href='../Annexes/acceuilGestion.jsf'; return false;"
+								value="Retour"/>
+						</div>
 					</div>
-				</div>
-			</h:form>
+				</h:form>
+			</div>
 		</div>
 	</ui:define>
 </ui:composition>

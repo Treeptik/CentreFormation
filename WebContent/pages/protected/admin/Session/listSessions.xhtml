@@ -4,12 +4,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Sessions</ui:define>
 	<ui:define name="body">
 		<h2>Liste des sessions</h2>
 		<h:form>
-			<h:dataTable class="table table-bordered table-striped" 
+			<h:dataTable class="table table-bordered table-striped table-condensed" 
 				value="#{sessionController.lDMSessions}" var="sess">
 				<h:column rendered="false">
 					<f:facet name="header">
@@ -46,25 +46,44 @@
 					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
-					<p><h:commandLink action="#{sessionController.doSelectUpdate()}"
-						value="Modifier" />
-					<h:outputText value=" / "/>
-					<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " 
-						action="#{sessionController.doDelete()}" value="Supprimer" />
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{sessionController.doListStagiairesOfSession()}"
-						value="Liste Stagiaires" />
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{sessionController.doSelectAddStagiaire()}"
-						value="Add Stagiaire" /></p>
-					<p><h:commandLink action="#{sessionController.doSelectAddFormation()}"
-						value="Add Formation" />
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{sessionController.doListFormationsOfSession()}"
-					value="Liste Formations" /></p>
-					<h:outputText value=" / "/>
-					<h:commandLink action="#{sessionController.doListEvaluationsOfSession()}"
+					<ul class="nav nav-pills">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Gestion<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="#{sessionController.doSelectUpdate()}" value="Modifier"/></li>
+									<li><h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{sessionController.doDelete()}"
+						value="Supprimer" /></li>
+								</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> Stagiaire<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="#{sessionController.doListStagiairesOfSession()}"
+						value="Liste Stagiaires" /></li>
+									<li><h:commandLink action="#{sessionController.doSelectAddStagiaire()}"
+						value="Ajouter Stagiaire" /></li>
+									<li><h:commandLink action="#{sessionController.doSelectRemoveStagiaire()}"
+						value="Retirer Stagiaire" /></li>
+								</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> Formation<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="#{sessionController.doListFormationsOfSession()}"
+					value="Liste Formations" /></li>
+									<li><h:commandLink action="#{sessionController.doSelectAddFormation()}"
+						value="Ajouter Formation" /></li>
+									<li><h:commandLink action="#{sessionController.doSelectRemoveFormation()}"
+						value="Retirer Formation" /></li>
+								</ul>
+						<li>
+								<h:commandLink action="#{sessionController.doListEvaluationsOfSession()}"
 						value="Liste Evals" />
+						</li>
+						</li>
+					</ul>
 
 				</h:column>
 			</h:dataTable>

@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<ui:composition template="http://localhost:8080/FormationJSF/template3/template3.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Créer une Session</ui:define>
 	<ui:define name="body">
 		<div class="span8" id="titre">Créer une Session :</div>
@@ -44,10 +44,7 @@
 	    			<label class="control-label" for="descriptif">Descriptif :</label>
     				<div class="controls">
 						<h:inputText value="#{sessionController.session.descriptif}"
-							id="descriptif" name="descriptif"
-							validatorMessage=" descriptif invalide ">
-							<f:validateLength minimum="2" maximum="200" />
-						</h:inputText>
+							id="descriptif" name="descriptif"/>
     				</div>
 	    		</div>		
 				<div class="control-group">

@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template3/templateEvaluation.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
 
 	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
@@ -15,7 +15,7 @@
 							<h:inputText value="#{evaluationController.stagiaire.id}" />
 							<h:inputText value="#{evaluationController.session.id}"/>							
 						<h:messages />	
-						<h:dataTable class="table table-bordered table-striped" 
+						<h:dataTable class="table table-condensed" 
 								value="#{evaluationController.listResultatsOfSession}" var="r">
 					  		<h:column rendered="false">
 					    		<f:facet name="header">
@@ -27,19 +27,20 @@
 					    		<f:facet name="header">
 					  				<h:outputText value="libellé"/>
 					 			</f:facet>
-					  			<h:outputText value="#{r.id.questionnaire.id.question.libelle}"/>
+					  			<h:outputText value="#{r.id.question.libelle}"/>
 							</h:column>
 					  		<h:column>
 					    		<f:facet name="header">
 									<h:outputText value="Avec commentaire"/>
 					  			</f:facet>
-					  			<h:outputText value="#{r.id.questionnaire.id.question.avecCommentaire}"/>
+					  			<h:outputText value="#{r.id.question.avecCommentaire}"/>
 							</h:column>
 							<h:column>
 					    		<f:facet name="header">
 									<h:outputText value="Note"/>
 					  			</f:facet>
-					  			<h:selectOneRadio
+					  			<h:selectOneRadio rendered="#{evaluationController.doCheckQuestion4Choix(r.id.question)}"
+									disabled="#{evaluationController.doCheckQuestionFermee(r.id.question)}"
 									value="#{r.note}"
 									required="true"
 									requiredMessage="Tout les champs sont obligatoires">
@@ -48,6 +49,17 @@
 									<f:selectItem itemValue="2" itemLabel="M" />
 									<f:selectItem itemValue="1" itemLabel="I" />
 								</h:selectOneRadio>
+								<h:selectOneRadio rendered="#{evaluationController.doCheckQuestionFermee(r.id.question)}"
+									disabled="#{evaluationController.doCheckQuestion4Choix(r.id.question)}"
+									value="#{r.note}"
+									required="true"
+									requiredMessage="Tout les champs sont obligatoires">
+									<f:selectItem itemValue="10" itemLabel="oui" />
+									<f:selectItem itemValue="0" itemLabel="non" />
+								</h:selectOneRadio>
+								<h:inputTextarea rendered="#{evaluationController.doCheckAvecCommentaire(r.id.question)}"
+									value="#{r.commentaire}"
+									cols="30" rows="2" />
 							</h:column>	
 						</h:dataTable>
 					</div>

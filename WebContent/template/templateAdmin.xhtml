@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title><ui:insert name="titre" /></title>
+	<link href="/FormationJSF/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="/FormationJSF/bootstrap/js/bootstrap.js" rel="stylesheet" />
+	<link href="/FormationJSF/bootstrap/js/bootstrap.min.js/jquery.js"	rel="stylesheet" />
+	<link href="/FormationJSF/bootstrap/js/bootstrap.min.js" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="/FormationJSF/css/styleRV.css" />
+</h:head>
+<h:body>
+	<div class="page-header">
+		<div class="row-fluid" >
+			<div class="span3" id="logo">
+				<script src="/FormationJSF/bootstrap/js/jquery.js"/>
+				<script src="/FormationJSF/bootstrap/js/bootstrap.min.js"/>
+				<a>
+					<img src="/FormationJSF/Image/logo.png" class="img-rounded" />
+				</a>
+			</div>
+			<div class="span6" id ="barreNavigation">
+			<h:form>
+			<ul class="nav nav-tabs">
+				<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Stagiaire <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><a href="../Stagiaire/createStagiaire.jsf">Créer</a></li>
+						<li><a href="../Stagiaire/listStagiaires.jsf">Liste / Gestion </a></li>
+						
+					</ul>
+				</li>
+				<li class="divider-vertical"></li>
+				<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Formateur <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><a href="../Formateur/createFormateur.jsf">Créer</a></li>
+						<li><a href="../Formateur/listFormateurs.jsf">Liste / Gestion</a></li>
+	
+					</ul>
+				</li>
+				<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#"> Formation<b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><h:commandLink action="#{formationController.doNew()}" value="Créer"/></li>
+						<li><a href="../Formation/listFormations.jsf">Liste / Gestion</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Session <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><h:commandLink action="#{sessionController.doNew()}" value="Créer"/></li>
+						<li><a href="../Session/listSessions.jsf">Liste / Gestion</a></li>
+					</ul>
+				</li>
+				<li class="divider-vertical"></li>
+				<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#"> Evaluation <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><h:commandLink action="#{evaluationController.doNew()}" value="Créer"/></li>
+						<li><a href="../Evaluation/listEvaluations.jsf">Liste / Gestion</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#"> Question <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><a href="../Question/createQuestion.jsf">Créer</a></li>
+						<li><a href="../Question/listQuestions.jsf">Liste / Gestion</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Administrateur <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><a href="../Administrateur/createAdministrateur.jsf">Créer</a></li>
+						<li><a href="../Administrateur/listAdministrateurs.jsf">Liste / Gestion</a></li>
+					</ul>
+				</li>
+			</ul>
+			</h:form>
+			</div>
+			<div class="span1" id="deconnexion">
+				<h:form >
+					<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
+				</h:form>
+			</div>
+		</div>
+		
+
+	</div>
+	<ui:insert name="body" />
+	<div class="row">
+		<div class="span12" id="footer">
+			Des formations guidées par la pratique
+				Toutes nos formations sont dispensées sous forme de
+				workshop avec 90% d'ateliers pratiques. Chez nous les
+				stagiaires sont très impliqués pour être rapidement
+				opérationnels. Nous proposons un panel de formations
+				modulables adaptées à tous les besoins. 
+		<br/>
+		<a href="http://www.treeptik.fr/#!/">Treeptik.fr</a>
+		<a href="http://www.treeptik.fr/#!/page_privacy">Treeptik
+									© 2012 • information légale •</a>
+		</div>
+	</div>
+</h:body>
+</html>
+
+

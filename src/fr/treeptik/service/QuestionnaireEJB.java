@@ -10,7 +10,6 @@ import fr.treeptik.model.Evaluation;
 import fr.treeptik.model.PKQuestionnaire;
 import fr.treeptik.model.Question;
 import fr.treeptik.model.Questionnaire;
-import fr.treeptik.model.Resultat;
 
 @Stateless
 public class QuestionnaireEJB {
@@ -25,11 +24,11 @@ public class QuestionnaireEJB {
 	public List<Questionnaire> findQuestionnaireByEval(Evaluation evaluation) {
 		return questionnaireDAO.findQuestionnaireByEval(evaluation);
 	}
-	
+
 	public List<Question> findAllQuestionsOfEval(Evaluation evaluation) {
 		return questionnaireDAO.findAllQuestionsOfEval(evaluation);
 	}
-	
+
 	public void create(Questionnaire questionnaire) {
 		questionnaireDAO.create(questionnaire);
 	}
