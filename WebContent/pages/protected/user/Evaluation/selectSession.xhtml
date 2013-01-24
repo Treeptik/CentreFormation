@@ -7,10 +7,9 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
 	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
-		<div Styleclass="span7">
-			<h:form styleClass="well">
-			
-				<h3>Veuillez choisir votre Session</h3>
+		<div class="span7">
+			<h:form>
+				<div id="titre">Veuillez choisir votre Session</div>
 				<center>
 					<div class="table">
 						<tr>
@@ -20,8 +19,9 @@
 							</h:selectOneMenu>
 						</tr>
 						<div>
-							<h:commandButton action="#{evaluationController.chooseSession()}" value="Valider" />
-							<input type="reset" name="annuler" value="Annuler" />
+							<h:commandButton styleClass="btn btn-success"
+							action="#{evaluationController.chooseSession()}" value="Valider" />
+							<h:button type="reset" class="btn btn-primary" value="Annuler"/>
 						</div>
 					</div>
 				</center>

@@ -6,9 +6,10 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Créer une Session</ui:define>
 	<ui:define name="body">
-		<div class="span8" id="titre">Créer une Session :</div>
-		<div class="span8" id="article">
-			<h:form class="form-horizontal">
+		<div class="row">
+			<div class="span6 offset3" id="article">
+				<div id="titre">Créer une Session :</div>
+				<h:form class="form-horizontal">
 				<h:messages />
 				<div class="control-group">
 	    			<label class="control-label" for="nom">Nom :</label>
@@ -58,6 +59,7 @@
 					</div>
 				</div>
 			</h:form>
+		</div>
 		</div>
 	</ui:define>
 </ui:composition>

@@ -7,8 +7,9 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Mettre à Jour un Formateur</ui:define>
 	<ui:define name="body">
-		<div class="span8" id="titre">Mettre à Jour un Formateur :</div>
-		<div class="span8" id="article">
+		<div class="row">
+		<div class="span6 offset3" id="article">
+			<div id="titre">Mettre à Jour un Formateur :</div>
 			<h:form class="form-horizontal">
 				<h:messages />
 						<h:inputHidden value="#{formateurController.formateur.id}" id="id" name="id"/>						
@@ -50,6 +51,7 @@
 					</div>
 				</div>
 			</h:form>
+		</div>
 		</div>
 	</ui:define>
 </ui:composition>

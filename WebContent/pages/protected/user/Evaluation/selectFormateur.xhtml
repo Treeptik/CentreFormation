@@ -7,28 +7,30 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
 	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
-		<div Styleclass="span7">
-			<h:form styleClass="well">
-				<h3>Quels Formateurs ont animés cette Session?</h3>
-				<center>
-					<div class="table">
-						<tr>
-							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
-							<h:inputHidden value="#{evaluationController.session.id}"/>
-							<h:selectManyListbox  converter="#{formateurConverter}"  value="#{evaluationController.listFormateursOfEval}" >
-								<f:selectItems value="#{evaluationController.listFormateursOfSession}" var="fese"
-									itemValue="#{fese}" itemLabel="#{fese}"/>
-							</h:selectManyListbox> 
-						</tr>
-						<div>
-							<h:commandButton action="#{evaluationController.chooseFormateur()}" value="Valider" />
-							<input type="reset" name="annuler" value="Annuler" />
-						</div>
-					</div>
-				</center>
-				<h:messages />
-			</h:form>
+	<div class="row">
+	<h:messages />
+		<div class="span8 offset2">
+			<div id="titre">Quels Formateurs ont animés cette Session?</div>
 		</div>
+	</div>
+	<h:form>
+	<div class="row">
+		<div class="span2 offset5">			
+			<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+			<h:inputHidden value="#{evaluationController.session.id}"/>
+			<h:selectManyListbox  converter="#{formateurConverter}"  value="#{evaluationController.listFormateursOfEval}" >
+				<f:selectItems value="#{evaluationController.listFormateursOfSession}" var="fese"
+					itemValue="#{fese}" itemLabel="#{fese}"/>
+			</h:selectManyListbox>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2 offset5">	
+			<h:commandButton styleClass="btn btn-success" action="#{evaluationController.chooseFormateur()}" value="Valider" />
+			<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+		</div>
+	</div>		
+	</h:form>
 	</ui:define>
 </ui:composition>
 </html>

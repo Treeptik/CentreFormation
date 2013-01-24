@@ -63,8 +63,26 @@ public class SendTextMessage {
 		StringBuilder recapBuilder = new StringBuilder();
 		String recap;
 		for (Resultat resultat : listResultats) {
-			recapBuilder.append(resultat.getId().getQuestion().getLibelle()
-					+ " : " + resultat.getNote() + "/4\n\n");
+			if (resultat.getId().getQuestion().getQuestion4Choix() == 'y') {
+				recapBuilder.append(resultat.getId().getQuestion().getLibelle()
+						+ " : " + resultat.getNote() + "/4\n\n");
+			}
+			if (resultat.getId().getQuestion().getQuestionFermee() == 'y') {
+				if (resultat.getNote() == 10) {
+					recapBuilder.append(resultat.getId().getQuestion()
+							.getLibelle()
+							+ " : oui\n\n");
+				}
+				if (resultat.getNote() == 0) {
+					recapBuilder.append(resultat.getId().getQuestion()
+							.getLibelle()
+							+ " : non\n\n");
+				}
+				if (resultat.getCommentaire() != null) {
+					recapBuilder.append("-   commentaire : "
+							+ resultat.getCommentaire()+"\n\n");
+				}
+			}
 		}
 		recap = recapBuilder.toString();
 
@@ -124,7 +142,7 @@ public class SendTextMessage {
 					+ resultat.getId().getStagiaireSession().getId()
 							.getSession().getNom() + ".\n" + "\n**************"
 					+ "\n Composé de :\n" + boucleFormation(listFormations)
-					// + "animé par :\n"+boucleFormateur(listFormateurs)
+					+ "animé par :\n"+boucleFormateur(listFormateurs)
 					+ "\n\nVoici le récapitulatif de son évaluation:\n\n"
 					+ boucleRecapResultat(listResultat) +
 

@@ -9,13 +9,13 @@
 	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
 		<div class="span7">
-			<h:form class="well">
+			<h:form id="evaluation">
 				<div class="control-group">
 					<div class="controls">
-							<h:inputText value="#{evaluationController.stagiaire.id}" />
-							<h:inputText value="#{evaluationController.session.id}"/>							
+							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+							<h:inputHidden value="#{evaluationController.session.id}"/>							
 						<h:messages />	
-						<h:dataTable class="table table-condensed" 
+						<h:dataTable id="evaluation" class="table table-condensed" 
 								value="#{evaluationController.listResultatsOfSession}" var="r">
 					  		<h:column rendered="false">
 					    		<f:facet name="header">
@@ -25,29 +25,23 @@
 							</h:column>
 					  		<h:column>
 					    		<f:facet name="header">
-					  				<h:outputText value="libellé"/>
+					  				<h:outputText value="&nbsp;"/>
 					 			</f:facet>
-					  			<h:outputText value="#{r.id.question.libelle}"/>
-							</h:column>
-					  		<h:column>
-					    		<f:facet name="header">
-									<h:outputText value="Avec commentaire"/>
-					  			</f:facet>
-					  			<h:outputText value="#{r.id.question.avecCommentaire}"/>
+					  			<h:outputText id="alignedroite" value="#{r.id.question.libelle}"/>
 							</h:column>
 							<h:column>
 					    		<f:facet name="header">
-									<h:outputText value="Note"/>
+									<h:outputText value="&nbsp;"/>
 					  			</f:facet>
 					  			<h:selectOneRadio rendered="#{evaluationController.doCheckQuestion4Choix(r.id.question)}"
 									disabled="#{evaluationController.doCheckQuestionFermee(r.id.question)}"
 									value="#{r.note}"
 									required="true"
 									requiredMessage="Tout les champs sont obligatoires">
-									<f:selectItem itemValue="4" itemLabel="TS" />
-									<f:selectItem itemValue="3" itemLabel="S" />
-									<f:selectItem itemValue="2" itemLabel="M" />
-									<f:selectItem itemValue="1" itemLabel="I" />
+									<f:selectItem itemValue="4" itemLabel="4" />
+									<f:selectItem itemValue="3" itemLabel="3" />
+									<f:selectItem itemValue="2" itemLabel="2" />
+									<f:selectItem itemValue="1" itemLabel="1" />
 								</h:selectOneRadio>
 								<h:selectOneRadio rendered="#{evaluationController.doCheckQuestionFermee(r.id.question)}"
 									disabled="#{evaluationController.doCheckQuestion4Choix(r.id.question)}"
@@ -66,14 +60,14 @@
 				</div>
 				<div class="control-group">
 					<div class="controls">	
-						<h:commandButton
+						<h:commandButton 
 							action="#{evaluationController.doFillEval()}"
-							value="Valider" StyleClass="btn btn-primary" />
-						<h:commandButton StyleClass="btn btn-primary" type="reset"
+							value="Valider" class="btn btn-success" />
+						<h:commandButton class="btn btn-primary" type="reset"
 							value="Annuler" immediate="true" />
 						<h:commandButton
 							onclick="window.location.href='acceuil.jsf'; return false;"
-							value="Retour" StyleClass="btn btn-primary" />
+							value="Retour" class="btn btn-inverse" />
 					</div>
 				</div>
 			</h:form>

@@ -3,27 +3,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<title><ui:insert name="titre" /></title>
 
-	<link href="/FormationJSF/bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="/FormationJSF//bootstrap/js/bootstrap.js" rel="stylesheet" />
-</h:head>
-<h:body>
-	<div class="container">
-		<div class="page-header">
-		<a><img src="/FormationJSF/Image/logoTREEPTIK.jpg" class="img-rounded" /></a>
-		
-		</div>
-		<h:form>
-
-		<h:commandLink action='#{userController.logOut()}' value="déconnexion" />
-		#{evaluationController.stagiaire.id} #{userController.user.id}
-		<p>#{administrateurController.administrateur.id}</p>
-		<p>#{administrateurController.administrateur.nom}</p>
-		<p>#{userController.user.id}</p>
-		</h:form>
-		<div Styleclass="span7">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
+	<ui:define name="titre">Acceuil</ui:define>
+	<ui:define name="body">
+		<div class="span7">
 			<h:form styleClass="well">
 				<h:button class="btn btn-large btn-block" type="button"
 					onclick="window.location.href='/FormationJSF/pages/protected/admin/Annexes/acceuilGestion.jsf'; return false;" rendered="#{userController.userAdmin}" value="Administrateur"/>
@@ -34,28 +18,6 @@
 				src="https://lh3.googleusercontent.com/-TakV6goOrNY/UKUCVfMMo4I/AAAAAAAAAHI/mByIYxh41Cw/w497-h373/Fotolia_34042847_XS.jpg"
 				class="img-rounded" width="580" height="920" alt="Photographie" />
 		</div>
-		<table class="table table-hover" border="0" bgcolor="#FDD131">
-			<tr>
-				<td><basefont>
-						<p>
-							<Font color="Blue">
-								<center>
-									<B><h5>Des formations guidées par la pratique</h5> Toutes
-										nos formations sont dispensées sous forme de workshop avec 90%
-										d'ateliers pratiques. Chez nous les stagiaires sont très
-										impliqués pour être rapidement opérationnels. Nous proposons
-										un panel de formations modulables adaptées à tous les besoins.
-									</B>
-								</center>
-							</Font>
-						</p> </basefont></td>
-			</tr>
-
-		</table>
-
-		</div>
-
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
-
-

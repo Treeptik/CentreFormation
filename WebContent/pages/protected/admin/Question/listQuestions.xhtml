@@ -6,9 +6,8 @@
       
 	<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 		<ui:define name="titre">Liste des questions</ui:define>
-	
 		<ui:define name="body">
-		<h2>Liste des Questions</h2>
+		<div id="titre">Liste des Questions</div>
 		
 			<h:form>	
 				<h:dataTable class="table table-bordered table-striped" 
@@ -25,6 +24,18 @@
 			 			</f:facet>
 			  			<h:outputText value="#{q.libelle}"/>
 					</h:column>
+					<h:column>
+			    		<f:facet name="header">
+							<h:outputText value="A 4 choix"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.question4Choix}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Question fermée"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.questionFermee}"/>
+					</h:column>					
 			  		<h:column>
 			    		<f:facet name="header">
 							<h:outputText value="Avec commentaire"/>

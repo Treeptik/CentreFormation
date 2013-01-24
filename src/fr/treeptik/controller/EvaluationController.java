@@ -122,22 +122,21 @@ public class EvaluationController {
 	public Boolean doCheckAvecCommentaire(Question question) {
 		return questionEJB.checkAvecCommentaire(question);
 	}
-	
+
 	public Boolean doCheckQuestion4Choix(Question question) {
 		return questionEJB.checkQuestion4Choix(question);
 	}
-	
+
 	public Boolean doCheckQuestionFermee(Question question) {
 		return questionEJB.checkQuestionFermee(question);
 	}
-	
+
 	public String doFillEval() {
 
 		try {
 			List<Formateur> tempListFormateurs = new ArrayList<Formateur>();
 			List<Formation> tempListFormations = new ArrayList<Formation>();
 
-			
 			for (Formation formation : listFormationsOfSession) {
 				Formation tempFormation = formationEJB.findById(formation
 						.getId());
@@ -150,13 +149,14 @@ public class EvaluationController {
 			for (Resultat resultat : listTempResultat) {
 				Resultat resultattemp = new Resultat();
 				resultattemp = resultat;
-				System.out.println("question"+resultat.getId().getQuestion().getLibelle());
-//				resultattemp.setListFormateursEvalues(listFormateursOfEval);
-//				resultattemp.setListFormationsEvaluees(listFormationsOfSession);
+				System.out.println("question"
+						+ resultat.getId().getQuestion().getLibelle());
+				// resultattemp.setListFormateursEvalues(listFormateursOfEval);
+				// resultattemp.setListFormationsEvaluees(listFormationsOfSession);
 				resultatEJB.update(resultattemp);
 			}
-//			gestionmail.mailRecapEvaluation(listResultatsOfSession,
-//					tempListFormateurs, listFormationsOfSession);
+			gestionmail.mailRecapEvaluation(listResultatsOfSession,
+					listFormateursOfEval, listFormationsOfSession);
 
 			return "messageEvaluationEffectue";
 		} catch (Exception e) {
@@ -238,6 +238,7 @@ public class EvaluationController {
 	}
 
 	public String chooseFormateur() {
+		getListFormateursOfEval();
 		return "doEvaluation2";
 	}
 
@@ -258,7 +259,7 @@ public class EvaluationController {
 			return "messageQuestionDejaAjoutee";
 		}
 	}
-	
+
 	public String doSelectRemoveQuestion() {
 		evaluation = (Evaluation) lDMEvaluations.getRowData();
 		return "listQuestionsOfEval";
@@ -273,7 +274,7 @@ public class EvaluationController {
 		questionnaireEJB.delete(questionnaire);
 		return "listEvaluations";
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public DataModel getlDMResultatsOfSession() {
 		if (lDMResultatsOfSession == null) {
@@ -373,7 +374,7 @@ public class EvaluationController {
 				}
 			}
 		}
-				listQuestionsOfSession = tempListQuestions2;
+		listQuestionsOfSession = tempListQuestions2;
 		return listQuestionsOfSession;
 	}
 
@@ -668,10 +669,8 @@ public class EvaluationController {
 
 	@SuppressWarnings("rawtypes")
 	public DataModel getlDMQuestions() {
-		if (lDMQuestions == null) {
-			lDMQuestions = new ListDataModel();
-			lDMQuestions.setWrappedData(questionEJB.findAll());
-		}
+		lDMQuestions = new ListDataModel();
+		lDMQuestions.setWrappedData(questionEJB.findAll());
 		return lDMQuestions;
 	}
 

@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateSimple.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Evaluation effectuée</ui:define>
 	<ui:define name="body">
 			<h:form styleClass="well">
@@ -12,7 +12,7 @@
 					<p><u>!! Erreur !!</u>/</p>
 					<p>A Priori #{evaluationController.resultat.id.question.libelle}</p>
 				 a <u>DEJA</u> été ajoutée à
-				l'évaluation <u>#{evaluationController.resultat.id.evaluation.nom}</u></legend>
+				l'évaluation <u>#{evaluationController.evaluation.nom}</u></legend>
 					<a href="../Evaluation/listEvaluations.jsf"> Retour à la liste de sessions</a>
 			</h:form>
 	</ui:define>

@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateSimple.xhtml">
+<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
 	<ui:define name="titre">Evaluation créée</ui:define>
 	<ui:define name="body">
 			<h:form styleClass="well">
@@ -14,8 +14,7 @@
 					<a href="../Evaluation/listEvaluations.jsf">
 					 Retour à la liste</a>
 					<h:outputText value=" / "/>
-					<a href="../Evaluation/createEvaluation.jsf">
-					 Créer une autre évaluation</a>
+					<h:commandLink action="#{evaluationController.doNew()}" value="Créer une autre évaluation"/>
 			</h:form>
 	</ui:define>
 </ui:composition>

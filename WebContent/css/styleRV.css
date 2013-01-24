@@ -12,34 +12,48 @@ messages {
 	margin-right: 10px;	
 }
 
-#article {
-	margin-left: 100px;
-
+#evaluation {
+	border-style: none;
+	margin-left: 100px
 }
 
+#evaluation .table-condensed.td {
+	border-style: none;
+}
+
+.table th, .table td {
+	border-style: none
+}
+
+#alignedroite {
+	text-align: right;
+}	
+
 #logo {
-	max-width: 336px
+	max-width: 336px;
+	margin-left: -100px
 }
 
 #titre {
-	margin-left: 100px;
+
 	text-decoration: underline;
 	color: #3F4493;
 	font-size: x-large;
 	font-weight: bold;
 	vertical-align: top;
-	min-height: 40px	
+	min-height: 40px;
+	text-align: center	
 }
 
 #deconnexion {
 	margin-left: 25px;
-	margin-top: 220px;
+	margin-top: 165px;
 }
 
 #barreNavigation {
 	
 	margin-left: 0px;
-	margin-top: 210px;
+	margin-top: 160px;
 }
 
 [class="page-header"] {
@@ -60,7 +74,7 @@ messages {
 }
 
 .dropdown-menu  {
-	background-color: #267BCC;
+	background-color: #424AC9;
 	color: White;
 }
 
