@@ -12,6 +12,12 @@
 			<h:form>
 				<h:dataTable class="table table-bordered table-striped" 
 				value="#{evaluationController.lDMEvaluations}" var="ev">
+	  				<h:column rendered="false">
+	    				<f:facet name="header">
+	  						<h:outputText value="Id"/>
+	  					</f:facet>
+	  					<h:outputText value="#{ev.id}"/>
+					</h:column>
 	  				<h:column>
 	    				<f:facet name="header">
 	  						<h:outputText value="Nom"/>

@@ -32,6 +32,10 @@ public class FormateurEJB {
 	public Formateur findById(int id) {
 		return formateurDAO.findById(id);
 	}
+	
+	public Formateur findFormateurByName(String nom) {
+		return formateurDAO.findFormateurByName(nom);
+	}
 /*	
 	public void getConverter() {
 		formateurDAO.getConverter();

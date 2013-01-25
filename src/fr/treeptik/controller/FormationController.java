@@ -73,7 +73,7 @@ public class FormationController {
 		
 	}
 	
-	public String doRemoveEvalutationFromFormation() {
+	public String doRemoveEvaluationFromFormation() {
 		evaluation = (Evaluation) lDMEvaluationsOfFormation.getRowData();
 		pKEvaluationFormation.setEvaluation(evaluation);
 		pKEvaluationFormation.setFormation(formation);

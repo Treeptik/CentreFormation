@@ -8,12 +8,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @SuppressWarnings("serial")
 @Entity
-@NamedQueries({ @NamedQuery(name = "findALLFormateurs", query = " select f from Formateur f ") })
+@NamedQueries({
+		@NamedQuery(name = "findAllFormateurs", query = " select f from Formateur f "),
+		@NamedQuery(name = "findFormateurByName", query = " select f from Formateur f where f.nom = :nom") })
 @Access(AccessType.FIELD)
 public class Formateur implements Serializable {
 
@@ -24,7 +27,8 @@ public class Formateur implements Serializable {
 	private String nom;
 	private String prenom;
 	private String specialite;
-
+	@ManyToOne
+	private Evaluation evaluation;
 
 	public Formateur() {
 	}
@@ -60,11 +64,21 @@ public class Formateur implements Serializable {
 	public void setSpecialite(String specialite) {
 		this.specialite = specialite;
 	}
-	
+
+	public Evaluation getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((evaluation == null) ? 0 : evaluation.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
@@ -85,6 +99,13 @@ public class Formateur implements Serializable {
 			return false;
 		}
 		Formateur other = (Formateur) obj;
+		if (evaluation == null) {
+			if (other.evaluation != null) {
+				return false;
+			}
+		} else if (!evaluation.equals(other.evaluation)) {
+			return false;
+		}
 		if (id != other.id) {
 			return false;
 		}
@@ -114,6 +135,6 @@ public class Formateur implements Serializable {
 
 	@Override
 	public String toString() {
-		return " "+nom+" "+prenom+" ";
+		return " " + nom + " " + prenom + " ";
 	}
 }

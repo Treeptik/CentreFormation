@@ -1,67 +1,63 @@
 package fr.treeptik.controller;
 
 import javax.faces.convert.ConverterException;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public final class ConversionHelper {
+public class ConversionHelper {
 	@PersistenceContext(unitName = "formation")
 	protected EntityManager em;
-    private ConversionHelper() {
-    }
-/*
-    public static <T> T getAsObject(Class<T> returnType, String value) {
 
-        if (returnType== null) {
+	private ConversionHelper() {
+	}
+	/*
+	public static <T> T getAsObject(Class<T> returnType, String value) {
 
-            throw new NullPointerException("Trying to getAsObject with a null return type.");
-        }
+		if (returnType == null) {
 
-        if (value == null) {
+			throw new NullPointerException(
+					"Trying to getAsObject with a null return type.");
+		}
 
-            throw new NullPointerException("Trying to getAsObject with a null value.");
-        }
+		if (value == null) {
 
-        int id = (Integer) null;
+			throw new NullPointerException(
+					"Trying to getAsObject with a null value.");
+		}
 
-        try {
+		int id = (Integer) null;
 
-            id = Integer.parseInt(value);
+		try {
 
-        } catch (NumberFormatException e) {
+			id = Integer.parseInt(value);
 
-            throw new ConverterException("Trying to getAsObject with a wrong id format.");
-        }
-        /*
-        try {
+		} catch (NumberFormatException e) {
 
-            Context initialContext = new InitialContext();
-            EntityService entityService = (EntityService) initialContext.lookup("java:global/myapp/EntityService");
+			throw new ConverterException(
+					"Trying to getAsObject with a wrong id format.");
+		}
 
-            T result = (T) entityService.find(returnType, id);
+		try {
 
-            return result;
+			T result = (T) em.find(returnType, id);
 
-        } catch (NamingException e) {
+			return result;
 
-            throw new ConverterException("EntityService not found.");
-        }
-    }
+		} catch (NamingException e) {
 
-    public static String getAsString(Object value) {
-
-        if (value instanceof PersistentEntity) {
-
-            PersistentEntity result = (PersistentEntity) value;
-
-            return String.valueOf(result.getId());
-        }
-
-        return null;
-    }*/
+			throw new ConverterException("EntityService not found.");
+		}
+	}
+	
+	 * public static String getAsString(Object value) {
+	 * 
+	 * if (value instanceof PersistentEntity) {
+	 * 
+	 * PersistentEntity result = (PersistentEntity) value;
+	 * 
+	 * return String.valueOf(result.getId()); }
+	 * 
+	 * return null; }
+	 */
 }
-    
-

@@ -7,14 +7,14 @@
 <ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
 	<ui:define name="titre">Acceuil</ui:define>
 	<ui:define name="body">
-		<div class="span7">
+		<div class="span8 offset2" id="acceuil">
 			<h:form styleClass="well">
 				<h:button class="btn btn-large btn-block" type="button"
 					onclick="window.location.href='/FormationJSF/pages/protected/admin/Annexes/acceuilGestion.jsf'; return false;" rendered="#{userController.userAdmin}" value="Administrateur"/>
 				<h:commandButton class="btn btn-large btn-block btn-primary"
 					action="#{evaluationController.identifier()}" value="Stagiaire"/>
 			</h:form>
-			<img
+			<img 
 				src="https://lh3.googleusercontent.com/-TakV6goOrNY/UKUCVfMMo4I/AAAAAAAAAHI/mByIYxh41Cw/w497-h373/Fotolia_34042847_XS.jpg"
 				class="img-rounded" width="580" height="920" alt="Photographie" />
 		</div>

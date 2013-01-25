@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+a {
+	color: #3F4493
+}
+
 body{
 	background-image: url("./../Image/bg_FormationJSF.jpg")
 }
@@ -15,6 +19,11 @@ messages {
 #evaluation {
 	border-style: none;
 	margin-left: 100px
+}
+
+#acceuil {
+	float: none;
+	text-align: center;
 }
 
 #evaluation .table-condensed.td {
@@ -34,6 +43,12 @@ messages {
 	margin-left: -100px
 }
 
+#operation li.dropdown {
+	color: #3F4493;	
+	}
+
+
+
 #titre {
 
 	text-decoration: underline;
@@ -46,8 +61,14 @@ messages {
 }
 
 #deconnexion {
+	margin-left: 10px;
+	margin-top: 175px;
+}
+
+#deconnexionadmin {
 	margin-left: 25px;
 	margin-top: 165px;
+	font-size: medium
 }
 
 #barreNavigation {
@@ -63,7 +84,10 @@ messages {
 }
 
 #footer {
+	
 	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px
 }
 
 .nav .dropdown-toggle .caret {

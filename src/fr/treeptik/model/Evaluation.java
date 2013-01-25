@@ -6,9 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @SuppressWarnings("serial")
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "findByNom", query = "select ev from Evaluation ev where ev.nom= :nom ")
+})
 public class Evaluation implements Serializable {
 
 	@Id
@@ -16,7 +21,6 @@ public class Evaluation implements Serializable {
 	private int id;
 	private String nom;
 	private String descriptif;
-	private String commentaireGenerale;
 
 
 	/*
@@ -57,22 +61,10 @@ public class Evaluation implements Serializable {
 		this.descriptif = descriptif;
 	}
 
-	public String getCommentaireGenerale() {
-		return commentaireGenerale;
-	}
-
-	public void setCommentaireGenerale(String commentaireGenerale) {
-		this.commentaireGenerale = commentaireGenerale;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
-				+ ((commentaireGenerale == null) ? 0 : commentaireGenerale
-						.hashCode());
 		result = prime * result
 				+ ((descriptif == null) ? 0 : descriptif.hashCode());
 		result = prime * result + id;
@@ -92,13 +84,6 @@ public class Evaluation implements Serializable {
 			return false;
 		}
 		Evaluation other = (Evaluation) obj;
-		if (commentaireGenerale == null) {
-			if (other.commentaireGenerale != null) {
-				return false;
-			}
-		} else if (!commentaireGenerale.equals(other.commentaireGenerale)) {
-			return false;
-		}
 		if (descriptif == null) {
 			if (other.descriptif != null) {
 				return false;

@@ -33,18 +33,44 @@ public class FormateurFormationDAO extends GenericDAO<FormateurFormation> {
 		List<Formateur> listFormateursOfFormation = query.getResultList();
 		return listFormateursOfFormation;
 	}
-	
 
-	public FormateurFormation findByFormateurAndFormation(Formateur formateur,Formation formation) {
+	@SuppressWarnings("unchecked")
+	public List<FormateurFormation> findAllFormateurFormationFromFormateur(
+			Formateur formateur) {
+		Query query = em
+				.createNamedQuery("findAllFormateurFormationFromFormateur");
+		query.setParameter("formateur", formateur);
+
+		List<FormateurFormation> listFormateurFormationsOfFormateur = query
+				.getResultList();
+		return listFormateurFormationsOfFormateur;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<FormateurFormation> findAllFormateurFormationFromFormation(
+			Formation formation) {
+		Query query = em
+				.createNamedQuery("findAllFormateurFormationFromFormation");
+		query.setParameter("formation", formation);
+
+		List<FormateurFormation> listFormateurFormationsOfFormation = query
+				.getResultList();
+		return listFormateurFormationsOfFormation;
+	}
+
+	public FormateurFormation findByFormateurAndFormation(Formateur formateur,
+			Formation formation) {
 		Query query = em.createNamedQuery("findByFormateurAndFormation");
 		query.setParameter("formateur", formateur);
 		query.setParameter("formation", formation);
-		
-		FormateurFormation formateurFormation = (FormateurFormation) query.getSingleResult();
-		return formateurFormation;		
+
+		FormateurFormation formateurFormation = (FormateurFormation) query
+				.getSingleResult();
+		return formateurFormation;
 	}
-	
-	public void removeFormateurFromFormation(Formateur formateur,Formation formation) {
+
+	public void removeFormateurFromFormation(Formateur formateur,
+			Formation formation) {
 		Query query = em.createNamedQuery("removeFormateurFromFormation");
 		query.setParameter("formateur", formateur);
 		query.setParameter("formation", formation);

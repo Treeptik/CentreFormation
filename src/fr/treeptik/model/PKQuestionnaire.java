@@ -2,7 +2,6 @@ package fr.treeptik.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
@@ -10,9 +9,9 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class PKQuestionnaire implements Serializable {
 
-	@ManyToOne(cascade={CascadeType.ALL})
+	@ManyToOne
 	private Evaluation evaluation;
-	@ManyToOne(cascade={CascadeType.ALL})
+	@ManyToOne
 	private Question question;
 	
 	public PKQuestionnaire() {

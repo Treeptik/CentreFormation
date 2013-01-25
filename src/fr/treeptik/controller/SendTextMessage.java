@@ -63,18 +63,18 @@ public class SendTextMessage {
 		StringBuilder recapBuilder = new StringBuilder();
 		String recap;
 		for (Resultat resultat : listResultats) {
-			if (resultat.getId().getQuestion().getQuestion4Choix() == 'y') {
-				recapBuilder.append(resultat.getId().getQuestion().getLibelle()
+			if (resultat.getId().getQuestionnaire().getId().getQuestion().getQuestion4Choix() == 'y') {
+				recapBuilder.append(resultat.getId().getQuestionnaire().getId().getQuestion().getLibelle()
 						+ " : " + resultat.getNote() + "/4\n\n");
 			}
-			if (resultat.getId().getQuestion().getQuestionFermee() == 'y') {
+			if (resultat.getId().getQuestionnaire().getId().getQuestion().getQuestionFermee() == 'y') {
 				if (resultat.getNote() == 10) {
-					recapBuilder.append(resultat.getId().getQuestion()
+					recapBuilder.append(resultat.getId().getQuestionnaire().getId().getQuestion()
 							.getLibelle()
 							+ " : oui\n\n");
 				}
 				if (resultat.getNote() == 0) {
-					recapBuilder.append(resultat.getId().getQuestion()
+					recapBuilder.append(resultat.getId().getQuestionnaire().getId().getQuestion()
 							.getLibelle()
 							+ " : non\n\n");
 				}

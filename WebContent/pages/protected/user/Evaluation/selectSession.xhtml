@@ -15,6 +15,7 @@
 						<tr>
 							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
 							<h:selectOneMenu value="#{evaluationController.session.id}">
+								<f:selectItem itemLabel="Choisissez votre session" itemValue="Choix de session"/>
 								<f:selectItems value="#{evaluationController.selectSessionsOfStagiaire}"></f:selectItems>
 							</h:selectOneMenu>
 						</tr>

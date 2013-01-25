@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import fr.treeptik.model.Evaluation;
+import fr.treeptik.model.Formation;
 import fr.treeptik.model.PKResultat;
 import fr.treeptik.model.Question;
 import fr.treeptik.model.Resultat;
@@ -24,7 +25,7 @@ public class ResultatDAO extends GenericDAO<Resultat> {
 	}
 	
 	public List<Resultat> findAllResultatsOfEval(Evaluation evaluation) {
-		Query query = em.createNamedQuery("findAllResultatsOfEval");
+		Query query = em.createNamedQuery("findAllResultatsOfEvaluation");
 		query.setParameter("evaluation", evaluation);
 
 		List<Resultat> listResultatsOfEval = query.getResultList();
@@ -35,6 +36,15 @@ public class ResultatDAO extends GenericDAO<Resultat> {
 		em.persist(resultat);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Resultat> findAllResultatsOfFormation(Formation formation) {
+		Query query = em.createNamedQuery("findAllResultatsOfFormation");
+		query.setParameter("formation", formation);
+
+		List<Resultat> listResultatsOfFormation = query.getResultList();
+		return listResultatsOfFormation;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Resultat> findAllResultatsOfSession(Session session) {
 		Query query = em.createNamedQuery("findAllResultatsOfSession");

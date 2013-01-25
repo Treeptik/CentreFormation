@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import fr.treeptik.dao.ResultatDAO;
 import fr.treeptik.model.Evaluation;
+import fr.treeptik.model.Formation;
 import fr.treeptik.model.PKResultat;
 import fr.treeptik.model.Question;
 import fr.treeptik.model.Resultat;
@@ -41,6 +42,10 @@ public class ResultatEJB {
 
 	public List<Resultat> findAllResultatsOfEval(Evaluation evaluation) {
 		return resultatDAO.findAllResultatsOfEval(evaluation);
+	}
+	
+	public List<Resultat> findAllResultatsOfFormation(Formation formation) {
+		return resultatDAO.findAllResultatsOfFormation(formation);
 	}
 
 	public List<Resultat> findAllResultatsOfSession(Session session) {

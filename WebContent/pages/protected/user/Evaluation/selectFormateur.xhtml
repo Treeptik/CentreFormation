@@ -18,10 +18,10 @@
 		<div class="span2 offset5">			
 			<h:inputHidden value="#{evaluationController.stagiaire.id}" />
 			<h:inputHidden value="#{evaluationController.session.id}"/>
-			<h:selectManyListbox  converter="#{formateurConverter}"  value="#{evaluationController.listFormateursOfEval}" >
-				<f:selectItems value="#{evaluationController.listFormateursOfSession}" var="fese"
+			<h:selectManyCheckbox converter="#{formateurConverter}"  value="#{evaluationController.listFormateursEvalues}" >
+				<f:selectItems value="#{evaluationController.listChoixDeFormateursDeLaSession}" var="fese"
 					itemValue="#{fese}" itemLabel="#{fese}"/>
-			</h:selectManyListbox>
+			</h:selectManyCheckbox>		
 		</div>
 	</div>
 	<div class="row">

@@ -286,10 +286,10 @@ public class SessionController {
 	}
 
 	public DataModel<Evaluation> getlDMEvaluations() {
-		if (lDMEvaluations == null) {
+
 			lDMEvaluations = new ListDataModel<Evaluation>();
 			lDMEvaluations.setWrappedData(evaluationEJB.findAll());
-		}
+
 		return lDMEvaluations;
 	}
 
@@ -298,10 +298,10 @@ public class SessionController {
 	}
 
 	public DataModel<Formation> getlDMFormations() {
-		if (lDMFormations == null) {
+
 			lDMFormations = new ListDataModel<Formation>();
 			lDMFormations.setWrappedData(formationEJB.findAll());
-		}
+
 		return lDMFormations;
 	}
 
@@ -310,10 +310,10 @@ public class SessionController {
 	}
 
 	public DataModel<Stagiaire> getlDMStagiaires() {
-		if (lDMStagiaires == null) {
+
 			lDMStagiaires = new ListDataModel<Stagiaire>();
 			lDMStagiaires.setWrappedData(stagiaireEJB.findAll());
-		}
+
 		return lDMStagiaires;
 	}
 

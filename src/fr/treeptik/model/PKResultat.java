@@ -10,19 +10,21 @@ import javax.persistence.ManyToOne;
 public class PKResultat implements Serializable {
 
 	@ManyToOne
-	private Question question;
+	private Questionnaire questionnaire;
 	@ManyToOne
 	private StagiaireSession stagiaireSession;
+	@ManyToOne
+	private FormateurFormation formateurFormation;
 
 	public PKResultat() {
 	}
 
-	public Question getQuestion() {
-		return question;
+	public Questionnaire getQuestionnaire() {
+		return questionnaire;
 	}
 
-	public void setQuestion(Question question) {
-		this.question = question;
+	public void setQuestionnaire(Questionnaire questionnaire) {
+		this.questionnaire = questionnaire;
 	}
 
 	public StagiaireSession getStagiaireSession() {
@@ -33,12 +35,24 @@ public class PKResultat implements Serializable {
 		this.stagiaireSession = stagiaireSession;
 	}
 
+	public FormateurFormation getFormateurFormation() {
+		return formateurFormation;
+	}
+
+	public void setFormateurFormation(FormateurFormation formateurFormation) {
+		this.formateurFormation = formateurFormation;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime
+				* result
+				+ ((formateurFormation == null) ? 0 : formateurFormation
+						.hashCode());
 		result = prime * result
-				+ ((question == null) ? 0 : question.hashCode());
+				+ ((questionnaire == null) ? 0 : questionnaire.hashCode());
 		result = prime
 				* result
 				+ ((stagiaireSession == null) ? 0 : stagiaireSession.hashCode());
@@ -57,11 +71,18 @@ public class PKResultat implements Serializable {
 			return false;
 		}
 		PKResultat other = (PKResultat) obj;
-		if (question == null) {
-			if (other.question != null) {
+		if (formateurFormation == null) {
+			if (other.formateurFormation != null) {
 				return false;
 			}
-		} else if (!question.equals(other.question)) {
+		} else if (!formateurFormation.equals(other.formateurFormation)) {
+			return false;
+		}
+		if (questionnaire == null) {
+			if (other.questionnaire != null) {
+				return false;
+			}
+		} else if (!questionnaire.equals(other.questionnaire)) {
 			return false;
 		}
 		if (stagiaireSession == null) {

@@ -15,14 +15,17 @@
 							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
 							<h:inputHidden value="#{evaluationController.session.id}"/>							
 						<h:messages />
-						<div id="titre">#{evaluationController.formation.nom} :</div>	
+						<ui:repeat value="#{evaluationController.listEvaluationsOfSession}" var="ev">	
+						<h:outputText value="#{ev.nom}" />
+						<h:inputHidden value="#{ev.id}"/>
+						<h:inputHidden value="#{evaluationController.evaluation.id}"/>
 						<h:dataTable id="evaluation" class="table table-condensed" 
-								value="#{evaluationController.listResultatsOfFormation}" var="r">
+								value="#{evaluationController.listResultatsOfEvaluation}" var="r">
 					  		<h:column rendered="false">
 					    		<f:facet name="header">
 					  				<h:outputText value="ID"/>
 					  			</f:facet>
-					  			<h:outputText value="#{r.id}"/>
+					  			<h:outputText value="#{r.id.questionnaire.id.question.id}" />
 							</h:column>
 					  		<h:column>
 					    		<f:facet name="header">
@@ -34,9 +37,9 @@
 					    		<f:facet name="header">
 									<h:outputText value="&nbsp;"/>
 					  			</f:facet>
-					  			<h:selectOneRadio rendered="#{evaluationController.doCheckQuestion4Choix(r.id.questionnaire.id.question)}"
+					  			<h:selectOneRadio  rendered="#{evaluationController.doCheckQuestion4Choix(r.id.questionnaire.id.question)}"
 									disabled="#{evaluationController.doCheckQuestionFermee(r.id.questionnaire.id.question)}"
-									value="#{r.note}"
+									value="#{r.note}" 
 									required="true"
 									requiredMessage="Tout les champs sont obligatoires">
 									<f:selectItem itemValue="4" itemLabel="4" />
@@ -57,6 +60,7 @@
 									cols="30" rows="2" />
 							</h:column>	
 						</h:dataTable>
+						</ui:repeat>
 					</div>
 				</div>
 				<div class="control-group">
