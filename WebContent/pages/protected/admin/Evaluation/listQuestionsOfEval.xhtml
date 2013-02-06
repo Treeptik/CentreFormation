@@ -8,10 +8,10 @@
 		<ui:define name="titre">Liste des questions </ui:define>
 	
 		<ui:define name="body">
-		<h2>Liste des Questions de #{evaluationController.evaluation.nom}</h2>
-		
-			<h:form>	
-				<h:dataTable class="table table-bordered table-striped" 
+		<div id="titre">Liste des Questions de #{evaluationController.evaluation.nom}</div>
+		<div class="span10 offset1">
+			<h:form class="centre">	
+				<h:dataTable class="table table-bordered table-striped table-condensed" 
 						value="#{evaluationController.lDMQuestionsOfEval}" var="q">
 			  		<h:column  rendered="false">
 			    		<f:facet name="header">
@@ -21,9 +21,27 @@
 					</h:column>
 			  		<h:column>
 			    		<f:facet name="header">
-			  				<h:outputText value="libellé"/>
+			  				<h:outputText value="Libellé"/>
 			 			</f:facet>
 			  			<h:outputText value="#{q.libelle}"/>
+					</h:column>
+					<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="Ordre d'apparition"/>
+			 			</f:facet>
+			  			<h:outputText value="#{q.ordreApparition}"/>
+					</h:column>
+					<h:column>
+			    		<f:facet name="header">
+							<h:outputText value="A 4 choix"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.question4Choix}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Question fermée"/>
+			  			</f:facet>
+			  			<h:outputText value="#{q.questionFermee}"/>
 					</h:column>
 			  		<h:column>
 			    		<f:facet name="header">
@@ -38,10 +56,11 @@
 					<h:commandLink 	action="#{evaluationController.doRemoveQuestionFromEval()}" value="retirer de l'évaluation" />
 				</h:column>
 				</h:dataTable>
-			</h:form>
-			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+				<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
 	 			<h:outputText value=" / "/>	
-	 		<a href="../Evaluation/listEvaluations.jsf">retour aux évaluations</a>
+	 			<a href="../Evaluation/listEvaluations.jsf">retour aux évaluations</a>
+			</h:form>
+			</div>
 		</ui:define>
 	</ui:composition>
 </html>

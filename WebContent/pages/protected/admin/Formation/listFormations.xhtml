@@ -5,13 +5,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Formations</ui:define>
 	<ui:define name="body">
-		<h2>Liste des Formations</h2>
-		<h:form>
-			<h:dataTable class="table table-bordered table-striped table-condensed" value="#{formationController.lDMFormations}"
-			 var="ft">
+		<div id="titre">Liste des Formations :</div>
+		<div class="span8 offset2">
+			<h:form class="centre">
+			<h:dataTable class="table table-bordered table-striped table-condensed"
+			 value="#{formationController.lDMFormations}" var="ft">
 				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />
@@ -34,7 +35,7 @@
 					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
-					<ul class="nav nav-pills">
+					<ul class="nav nav-pills margin0">
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Gestion<b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -70,8 +71,9 @@
 					</ul>
 				</h:column>
 			</h:dataTable>
+			<a href="../Annexes/acceuilGestion.jsf">retour</a>
 		</h:form>
-		<a href="../Annexes/acceuilGestion.jsf">retour</a>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

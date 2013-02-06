@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <jboss-web>
- <!-- URL to access the web module -->
+ <!-- URL pour accèder au module web-->
  <context-root>FormationJSF</context-root>
 
- <!-- Realm that will be used -->
+ <!-- Domaine utilisé -->
  <security-domain>java:/jaas/FormationJSFDSRealm</security-domain>
 </jboss-web>

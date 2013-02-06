@@ -4,13 +4,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
       
-	<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+	<ui:composition template="/template/templateAdmin.xhtml">
 		<ui:define name="titre">Liste des questions</ui:define>
 		<ui:define name="body">
-		<div id="titre">Liste des Questions</div>
-		
-			<h:form>	
-				<h:dataTable class="table table-bordered table-striped" 
+		<div id="titre">Liste des Questions :</div>
+		<div class="span10 offset1">
+			<h:form class="centre">		
+				<h:dataTable class="table table-bordered table-striped table-condensed" 
 						value="#{questionController.lDMQuestions}" var="q">
 			  		<h:column rendered="false">
 			    		<f:facet name="header">
@@ -20,9 +20,15 @@
 					</h:column>
 			  		<h:column>
 			    		<f:facet name="header">
-			  				<h:outputText value="libellé"/>
+			  				<h:outputText value="Libellé"/>
 			 			</f:facet>
-			  			<h:outputText value="#{q.libelle}"/>
+			  			<h:outputText class="alignegauche" value="#{q.libelle}"/>
+					</h:column>
+					<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="Ordre d'apparition"/>
+			 			</f:facet>
+			  			<h:outputText value="#{q.ordreApparition}"/>
 					</h:column>
 					<h:column>
 			    		<f:facet name="header">
@@ -52,8 +58,9 @@
 							action="#{questionController.doDelete()}" value="Supprimer"/>
 					</h:column>
 				</h:dataTable>
-			</h:form>
 	 			<a href="../Annexes/acceuilGestion.jsf">retour</a>
+			</h:form>
+	 		</div>
 		</ui:define>
 	</ui:composition>
 </html>

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 
 @SuppressWarnings("serial")
 @Embeddable
@@ -12,6 +13,7 @@ public class PKQuestionnaire implements Serializable {
 	@ManyToOne
 	private Evaluation evaluation;
 	@ManyToOne
+	@OrderBy("ordreAppartion ASC")
 	private Question question;
 	
 	public PKQuestionnaire() {

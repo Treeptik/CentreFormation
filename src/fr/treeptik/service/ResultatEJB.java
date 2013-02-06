@@ -39,7 +39,15 @@ public class ResultatEJB {
 	public Resultat findById(PKResultat id) {
 		return resultatDAO.findById(id);
 	}
+	
+	public List<Resultat> findAllResultatsOfStagiaireForFormationOfSession(Stagiaire stagiaire, Session session,Formation formation) {
+		return resultatDAO.findAllResultatsOfStagiaireForFormationOfSession(stagiaire, session, formation);
+	}
 
+	public List<Resultat> findAllResultatsOfStagiaireForSession(Stagiaire stagiaire, Session session) {
+		return resultatDAO.findAllResultatsOfStagiaireForSession(stagiaire, session);
+	}
+	
 	public List<Resultat> findAllResultatsOfEval(Evaluation evaluation) {
 		return resultatDAO.findAllResultatsOfEval(evaluation);
 	}

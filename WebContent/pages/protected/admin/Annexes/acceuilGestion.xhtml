@@ -4,17 +4,147 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Acceuil</ui:define>
-	<!-- <ui:define name="info"></ui:define>  -->
 	<ui:define name="body">
 		<div class="row">
-			<div class="span6 offset3" id="article">
-				<p>PAGE D'ACCEUIL POUR LA GESTION
-				<br />
-				DES DIFFERENTS VOLETS DE L'APPLICATION</p>
+					<div class="span4" id="cadre">
+				<p id="acceuilGestion"><u><b>Au dessus</b></u> :</p>
+				<p id="acceuilGestion">Gestion des Modules de l'application.</p>
+				<p id="acceuilGestion"><u><b>En dessous</b></u> :</p>
+  				<p id="acceuilGestion">Explication du fonctionnement des modules et de l'application.</p>
+  			</div>
+			<div class="span5 offset1">
+			<div id="titreGestion">Accueil Gestion:</div>
 			</div>
-		</div>
+  			</div>
+  				<div class="row">
+  				<div class="span8 offset2">
+				<div id="monaccordeon">
+					<div class="row">
+					
+						<div class="span2 offset3">
+					    	<div class="accordion-group">
+								<button class="btn btn-jaune btn-block accordion-heading" data-toggle="collapse" 
+									data-parent="#monaccordeon" data-target="#item1">Module Stagiaire</button></div>
+							</div>
+						</div>
+					<div id="item1" class="collapse accordion-group">
+				        <div class="accordion-inner">
+				   		<ul>
+				   			<li>Un stagiaire peut être créé, modifié.</li>
+				         	<li>Son mot de passe de passe est généré automatiquement, il est envoyé à l'e-mail enregistré.</li>
+					        <li>Un Stagiaire est inscrit aux sessions via le <b>Module des sessions</b>.</li>
+				        </ul>
+				        </div>
+					</div>
+
+					<div class="row">
+						<div class="span2 offset3">				
+				<div class="accordion-group">
+				<button class="btn btn-gris btn-block accordion-heading" data-toggle="collapse" 
+						data-parent="#monaccordeon" data-target="#item2">Module Formateur</button>
+						</div>
+						</div>
+						</div>
+					<div id="item2" class="collapse accordion-group">
+				        <div class="accordion-inner">
+				   		<ul>
+				   			<li>Un Formateur peut être créé, modifié.</li>
+				         	<li><b>Un Formateur Fictif</b> (nom: Evaluation , prenom: Generale) est le seul lié à la <b>Formation "Evaluation Generale"</b> (voir explication Module Formation).</li>
+							<li>Un Formateur est lié aux formations qu'il est susceptible d'animer via le <b>Module Formation</b></li>						      
+				        </ul>
+				        </div>
+					</div>
+				<div class="row">
+						<div class="span2 offset3">	
+				<div class="accordion-group">
+					<button class="btn btn-primary btn-block accordion-heading" data-toggle="collapse"
+					 data-parent="#monaccordeon" data-target="#item3">Module Formation</button>
+					 </div>
+					 </div>
+					 </div>
+		    		<div id="item3" class="collapse accordion-group">
+		    			<div class="accordion-inner">
+		    			<ul>
+				   			<li><b><u>Gestion :</u></b> Une formation peut être créée, modifiée.</li>
+				   			<li><b><u>Formateur :</u></b> Lier les formateurs susceptibles d'animer cette formation, lister, supprimer.</li>
+				   			<li><b><u>Evals :</u></b> Ce sont les formations composant une session qui sont évaluées.</li>
+				   			<li><b>Pour l'instant le fonctionnement impose pour être optimal:</b></li>						      
+							<ul>
+					   			<li><b>DANS CETTE ORDRE :</b> A une formation classique est liée Evalution Formation, Evaluation Formateur et Commentaire Generale.</li>
+					         	<li>Une <b>formation fictive "Evaluation Generale"</b> est nécessaire au fonctionnement du système d'évaluation.</li>
+					         	<li>Cette formation est liée à <b>l'évaluation "Evaluation Generale"</b> (indépendante des formations).</li>
+					         	<li>Il faut, pour l'instant, lier cette formation en <b>PREMIER</b> à toutes sessions.</li>
+				        	</ul>
+				        </ul>
+			    		</div>
+					</div>
+				<div class="row">
+						<div class="span2 offset3">	
+				<div class="accordion-group">
+					<button class="btn btn-jaune btn-block accordion-heading" data-toggle="collapse"
+					 data-parent="#monaccordeon" data-target="#item4">Module Session</button>
+					 </div>
+					 </div>
+					 </div>
+					<div id="item4" class="collapse accordion-group">
+		        		<div class="accordion-inner">
+		        		<ul>
+			            	<li><b><u>Stagiaire :</u></b> Un Stagiaire est inscrit aux sessions via le <b>Module des sessions</b>.</li>
+			            	<li><b><u>Formation :</u></b> Une Formation est liée à une ou plusieurs sessions.</li>
+						</ul>
+						</div>
+					</div>
+		    	<div class="row">
+						<div class="span2 offset3">	
+		    	<div class="accordion-group">
+				<button class="btn btn-gris btn-block accordion-heading" data-toggle="collapse" 
+						data-parent="#monaccordeon" data-target="#item5">Module Evaluation</button></div>
+						</div>
+						</div>
+					<div id="item5" class="collapse accordion-group">
+				        <div class="accordion-inner">
+				   		<ul>
+				   			<li>Une Evaluation peut être créée, modifiée.</li>
+				         	<li><b><u>Question :</u></b> Lier les questions, lister, retirer de l'évaluation.</li>
+							<li><b>Pour l'instant le fonctionnement impose:</b></li>						      
+							<ul>
+								<li>Créer <b>Evaluation Generale</b> liée aux questions indépendantes des formations (accueil, matériel, salle).</li>
+								<li>Créer <b>Evaluation Formation</b> liée aux questions : rythme , sujet à approfondir, à supprimer etc... </li>
+								<li>Créer <b>Evaluation Formateur</b> liée aux questions : écoute, disponibilité capacité technique, pédagogique.</li>
+								<li>Créer une Evaluation <b>Commentaire Generale</b> lié uniquement à la question Commentaire Generale pour pouvoir laisser une zone de commentaire libre.</li>									
+							</ul>
+				        </ul>
+				        </div>
+					</div>
+				<div class="row">
+						<div class="span2 offset3">	
+				<div class="accordion-group">
+					<button class="btn btn-primary btn-block accordion-heading" data-toggle="collapse"
+					 data-parent="#monaccordeon" data-target="#item6">Module Question</button>
+					 </div>
+					 </div>
+					 </div>
+					<div id="item6" class="collapse accordion-group">
+		        		<div class="accordion-inner">
+		        		<ul>
+			            	<li>Une Question peut être créée, modifiée.</li>
+			            	<li>Une Question peut être liée à une évaluation via le <b>Module Evaluation</b>.</li>
+						</ul>
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>
+			    	<div class="row">
+			<div class="span8 offset2" id="acceuil">
+				<img 
+				src="/FormationJSF/Image/barrage_de_pouces.jpg"
+				class="img-rounded" width="580" height="920" alt="Photographie" />
+				</div>
+			</div>
+
 	</ui:define>
 </ui:composition>
 </html>

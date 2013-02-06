@@ -8,9 +8,9 @@
 		<ui:define name="titre">Liste des Evaluations</ui:define>
 
 		<ui:define name="body">
-			<h2>Liste des Evaluations </h2>	
-			<h:form>
-				<h:dataTable class="table table-bordered table-striped" 
+			<div id="titre">Liste des Evaluations :</div>	
+			<h:form class="centre">
+				<h:dataTable class="table table-bordered table-striped table-condensed" 
 				value="#{evaluationController.lDMEvaluations}" var="ev">
 	  				<h:column rendered="false">
 	    				<f:facet name="header">
@@ -45,8 +45,9 @@
 						value="Liste Questions" />
 					</h:column>
 				</h:dataTable>
-			</h:form>
 				<a href="../Annexes/acceuilGestion.jsf">retour</a>
+			</h:form>
+				
 		</ui:define>
 	</ui:composition>
 </html>

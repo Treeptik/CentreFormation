@@ -4,15 +4,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">List des Stagiaires</ui:define>
 	<ui:define name="body">
-		<div class="span8" id="titre">Ajouter un stagiaire à la Session #{sessionController.session.nom} :</div>
-		<div class="span8" id="article">
-			<h:form class="form-horizontal">
+		<div id="titre">Ajouter un stagiaire à la Session #{sessionController.session.nom} :</div>
+		<div class="span8 offset2">
+			<h:form class="centre">
 			<h:messages />
 			<h:inputHidden value="#{sessionController.session.id}" />
-			<h:dataTable class="table table-bordered table-striped" 
+			<h:dataTable class="table table-bordered table-striped table-condensed" 
 				value="#{sessionController.lDMStagiaires}" var="st">
 				<h:column rendered="false">
 					<f:facet name="header">
@@ -47,12 +47,6 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Mot de passe" />
-					</f:facet>
-					<h:outputText value="#{st.password}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
 					<h:commandLink onclick="if (! confirm('Ajouter #{sessionController.stagiaire.nom}  #{sessionController.stagiaire.prenom} à la session #{sessionController.session.nom}?') ) { return false;}; return true; "
@@ -60,10 +54,10 @@
 						value="Ajouter stagiaire à Session" />
 				</h:column>
 			</h:dataTable>
+ 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+ 			<h:outputText value=" / "/>		
+ 			<a href="../Session/listSessions.jsf">retour à la liste des sessions</a>
 		</h:form>
-	 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
-	 			<h:outputText value=" / "/>		
-	 			<a href="../Session/listSessions.jsf">retour à la liste des sessions</a>
 		</div>
 	</ui:define>
 </ui:composition>

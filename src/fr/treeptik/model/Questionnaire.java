@@ -6,6 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OrderBy;
 
 @SuppressWarnings("serial")
 @Entity
@@ -15,6 +16,7 @@ import javax.persistence.NamedQuery;
 public class Questionnaire implements Serializable {
 
 	@EmbeddedId
+	@OrderBy("question.ordreApparition")
 	private PKQuestionnaire id;
 
 	public Questionnaire() {

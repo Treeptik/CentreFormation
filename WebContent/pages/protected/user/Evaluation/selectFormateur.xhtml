@@ -4,32 +4,38 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
+<ui:composition template="/template/templateEvaluation.xhtml">
 	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
 	<div class="row">
 	<h:messages />
 		<div class="span8 offset2">
-			<div id="titre">Quels Formateurs ont animés cette Session?</div>
+			<div id="titre">Quels Formateurs ont animés cette session?</div>
 		</div>
 	</div>
-	<h:form>
-	<div class="row">
-		<div class="span2 offset5">			
-			<h:inputHidden value="#{evaluationController.stagiaire.id}" />
-			<h:inputHidden value="#{evaluationController.session.id}"/>
-			<h:selectManyCheckbox converter="#{formateurConverter}"  value="#{evaluationController.listFormateursEvalues}" >
-				<f:selectItems value="#{evaluationController.listChoixDeFormateursDeLaSession}" var="fese"
-					itemValue="#{fese}" itemLabel="#{fese}"/>
-			</h:selectManyCheckbox>		
+	<h:form class="centre">
+		<div class="row">
+			<div class="span8 offset2">			
+				<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+				<h:inputHidden value="#{evaluationController.session.id}"/>
+				<div class="control-group">
+		    		<label class="control-label" for="formateur">&nbsp;</label>
+    				<div class="controls margin0">
+						<h:selectManyListbox   converter="#{formateurConverter}" 
+						 value="#{evaluationController.listFormateursEvalues}" >
+						<f:selectItems value="#{evaluationController.listChoixDeFormateursDeLaSession}"
+						var="fese" itemValue="#{fese}"  itemLabel="#{fese}"/>
+						</h:selectManyListbox>		
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="span2 offset5">	
-			<h:commandButton styleClass="btn btn-success" action="#{evaluationController.chooseFormateur()}" value="Valider" />
-			<h:button type="reset" class="btn btn-primary" value="Annuler"/>
-		</div>
-	</div>		
+		<div class="row">
+			<div class="span2 offset5">	
+				<h:commandButton styleClass="btn btn-success" action="#{evaluationController.chooseFormateur()}" value="Valider" />
+				<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+			</div>
+		</div>		
 	</h:form>
 	</ui:define>
 </ui:composition>

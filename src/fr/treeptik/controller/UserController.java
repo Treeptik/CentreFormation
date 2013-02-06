@@ -70,7 +70,7 @@ public class UserController {
 
 	public String qui() {
 		System.out.println(getRequest().getUserPrincipal().toString());
-		return getRequest().getUserPrincipal().toString();
+		return getRequest().getUserPrincipal().getName();
 	}
 
 	public boolean isUserAdmin() {

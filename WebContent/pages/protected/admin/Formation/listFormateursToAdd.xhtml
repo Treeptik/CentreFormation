@@ -4,13 +4,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
       
-	<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+	<ui:composition template="/template/templateAdmin.xhtml">
 		<ui:define name="titre">Liste des formateurs</ui:define>
 		<ui:define name="body">
-		<h2>Ajouter un formateur à la Formation #{formationController.formation.nom} :</h2>
-			<h:form>	
+		<div id="titre">Ajouter un formateur à la Formation #{formationController.formation.nom} :</div>
+			<div class="span6 offset3">
+			<h:form class="centre">	
 				<h:inputHidden value="#{formationController.formation.id}" />			
-				<h:dataTable class="table table-bordered table-striped" 
+				<h:dataTable class="table table-bordered table-striped table-condensed" 
 						value="#{formationController.lDMFormateurs}" var="ft">
 			  		<h:column rendered="false">
 			    		<f:facet name="header">
@@ -45,10 +46,11 @@
 						value="Ajouter le formateur" />
 					</h:column>
 				</h:dataTable>
+				<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+ 				<h:outputText value=" / "/>		
+ 				<a href="../Formation/listFormations.jsf">retour à la liste des formations</a>
 			</h:form>
- 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
- 			<h:outputText value=" / "/>		
- 			<a href="../Formation/listFormations.jsf">retour à la liste des formations</a>
+			</div>
 		</ui:define>
 	</ui:composition>
 </html>

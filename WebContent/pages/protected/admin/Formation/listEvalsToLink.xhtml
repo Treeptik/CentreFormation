@@ -4,13 +4,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-	<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+	<ui:composition template="/template/templateAdmin.xhtml">
 		<ui:define name="titre">Liste des Evaluations</ui:define>
 		<ui:define name="body">
-			<h2>Lier une évaluation à la Formation #{formationController.formation.nom}</h2>	
-			<h:form>
-			<h:inputHidden value="#{formationController.formation.id}" />
-				<h:dataTable class="table table-bordered table-striped" 
+			<div id="titre">Lier une évaluation à la Formation #{formationController.formation.nom}</div>	
+		<div class="span8 offset2">
+		<h:form class="centre">
+			<h:inputHidden value="#{formationController.formation.id}"/>
+				<h:dataTable class="table table-bordered table-striped table-condensed" 
 				value="#{formationController.lDMEvaluations}" var="ev">
 	  				<h:column rendered="false">
 	    				<f:facet name="header">
@@ -39,8 +40,9 @@
 						value="Lier" />
 					</h:column>
 				</h:dataTable>
-			</h:form>
 				<a href="../Annexes/acceuilGestion.jsf">retour</a>
+			</h:form>
+			</div>
 		</ui:define>
 	</ui:composition>
 </html>

@@ -4,13 +4,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Formations</ui:define>
 	<ui:define name="body">
-		<h2>Liste des Formations de la Session #{sessionController.session.nom}</h2>
-		<h:form>
-		<h:inputHidden value="#{sessionController.session.id}" />
-			<h:dataTable class="table table-bordered table-striped" value="#{sessionController.lDMFormationsOfSession}" var="ft">
+		<div id="titre">Liste des Formations de la Session #{sessionController.session.nom} :</div>
+		<div class="span6 offset3">
+			<h:form class="centre">
+			<h:inputHidden value="#{sessionController.session.id}" />
+			<h:dataTable class="table table-bordered table-striped table-condensed" value="#{sessionController.lDMFormationsOfSession}" var="ft">
 				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />
@@ -36,10 +37,11 @@
 					<h:commandLink 	action="#{sessionController.doRemoveFormationFromSession()}" value="retirer de la session" />
 				</h:column>
 			</h:dataTable>
+ 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+ 			<h:outputText value=" / "/>		
+ 			<a href="../Session/listSessions.jsf">retour à la liste des Sessions</a>
 		</h:form>
-	 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
-	 			<h:outputText value=" / "/>		
-	 			<a href="../Session/listSessions.jsf">retour à la liste des sessions</a>
+	 	</div>
 	</ui:define>
 </ui:composition>
 </html>

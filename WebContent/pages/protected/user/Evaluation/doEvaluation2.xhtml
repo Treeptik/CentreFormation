@@ -4,31 +4,39 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
-
+<ui:composition template="/template/templateEvaluation.xhtml">
 	<ui:define name="titre">Evaluation Treeptik</ui:define>
 	<ui:define name="body">
-		<div class="span7">
-			<h:form id="evaluation">
-				<div class="control-group">
-					<div class="controls">
-							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
-							<h:inputHidden value="#{evaluationController.session.id}"/>							
-						<h:messages />
-						<div id="titre">#{evaluationController.formation.nom} :</div>	
-						<h:dataTable id="evaluation" class="table table-condensed" 
-								value="#{evaluationController.listResultatsOfFormation}" var="r">
+		<div class="row">
+		<div class="span6 offset3 explications">
+			<p class="margin0 important" ><h:outputLabel class="important" value="Cette évaluation compte beaucoup pour nous améliorer :" /></p>
+		<ul>	
+			<li class="margin0" ><h:outputLabel value="Vous devez répondre à toutes les questions." /></li>
+			<li class="margin0"><h:outputLabel value="Notez de 1 à 4 selon votre niveau de satisfaction." /></li>
+			<li class="margin0"><h:outputLabel value="Faites des commentaires, même si cela vous semble anodin." /></li>
+		</ul>
+		</div>	
+		</div>		
+		<h:form >
+		<div class="row">
+		<div class="span8 offset2">
+						<div id="titre">#{evaluationController.formation.nom} :</div>
+						<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+						<h:inputHidden value="#{evaluationController.session.id}"/>
+						<h:messages />	
+						<h:dataTable class="evaluation table table-condensed" columnClasses="libelle,choix"
+								value="#{evaluationController.listResultatsOfStagiaireForFormationOfSession}" var="r">
 					  		<h:column rendered="false">
 					    		<f:facet name="header">
 					  				<h:outputText value="ID"/>
 					  			</f:facet>
 					  			<h:outputText value="#{r.id}"/>
 							</h:column>
-					  		<h:column>
+					  		<h:column class="alignedroite">
 					    		<f:facet name="header">
 					  				<h:outputText value="&nbsp;"/>
 					 			</f:facet>
-					  			<h:outputText id="alignedroite" value="#{r.id.questionnaire.id.question.libelle}"/>
+					  			<h:outputText value="#{r.id.questionnaire.id.question.libelle}"/>
 							</h:column>
 							<h:column>
 					    		<f:facet name="header">
@@ -36,7 +44,7 @@
 					  			</f:facet>
 					  			<h:selectOneRadio rendered="#{evaluationController.doCheckQuestion4Choix(r.id.questionnaire.id.question)}"
 									disabled="#{evaluationController.doCheckQuestionFermee(r.id.questionnaire.id.question)}"
-									value="#{r.note}"
+									value="#{r.note}" class="sansBordure"
 									required="true"
 									requiredMessage="Tout les champs sont obligatoires">
 									<f:selectItem itemValue="4" itemLabel="4" />
@@ -46,8 +54,7 @@
 								</h:selectOneRadio>
 								<h:selectOneRadio rendered="#{evaluationController.doCheckQuestionFermee(r.id.questionnaire.id.question)}"
 									disabled="#{evaluationController.doCheckQuestion4Choix(r.id.questionnaire.id.question)}"
-									value="#{r.note}"
-									required="true"
+									value="#{r.note}" class="sansBordure" required="true"
 									requiredMessage="Tout les champs sont obligatoires">
 									<f:selectItem itemValue="10" itemLabel="oui" />
 									<f:selectItem itemValue="0" itemLabel="non" />
@@ -57,10 +64,8 @@
 									cols="30" rows="2" />
 							</h:column>	
 						</h:dataTable>
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="controls">	
+						
+					<div class="span8 centre">
 						<h:commandButton 
 							action="#{evaluationController.doFillEval()}"
 							value="Valider" class="btn btn-success" />
@@ -71,8 +76,8 @@
 							value="Retour" class="btn btn-inverse" />
 					</div>
 				</div>
+				</div>
 			</h:form>
-		</div>
 	</ui:define>
 </ui:composition>
 </html>

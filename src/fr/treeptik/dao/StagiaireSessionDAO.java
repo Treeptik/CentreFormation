@@ -51,7 +51,6 @@ public class StagiaireSessionDAO extends GenericDAO<StagiaireSession> {
 		query.executeUpdate();
 	}
 	
-	
 	public StagiaireSession findByStagiaireAndSession(Stagiaire stagiaire,Session session) {
 		Query query = em.createNamedQuery("findByStagiaireAndSession");
 		query.setParameter("session", session);

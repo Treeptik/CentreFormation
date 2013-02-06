@@ -6,7 +6,6 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import fr.treeptik.dao.UserDAO;
-import fr.treeptik.model.Stagiaire;
 import fr.treeptik.model.User;
 
 @Stateless

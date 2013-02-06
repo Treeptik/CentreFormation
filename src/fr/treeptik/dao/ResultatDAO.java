@@ -24,13 +24,7 @@ public class ResultatDAO extends GenericDAO<Resultat> {
 		return em.find(Resultat.class,id);
 	}
 	
-	public List<Resultat> findAllResultatsOfEval(Evaluation evaluation) {
-		Query query = em.createNamedQuery("findAllResultatsOfEvaluation");
-		query.setParameter("evaluation", evaluation);
 
-		List<Resultat> listResultatsOfEval = query.getResultList();
-		return listResultatsOfEval;
-	}
 	
 	public void addEvalToSession(Resultat resultat) {
 		em.persist(resultat);
@@ -46,6 +40,36 @@ public class ResultatDAO extends GenericDAO<Resultat> {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Resultat> findAllResultatsOfStagiaireForSession(Stagiaire stagiaire, Session session) {
+		Query query = em.createNamedQuery("findAllResultatsOfStagiaireForSession");
+		query.setParameter("session", session);
+		query.setParameter("stagiaire", stagiaire);
+		
+		List<Resultat> listResultatsOfStagiaireForSession = query.getResultList();
+		return listResultatsOfStagiaireForSession;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Resultat> findAllResultatsOfStagiaireForFormationOfSession(Stagiaire stagiaire, Session session,Formation formation) {
+		Query query = em.createNamedQuery("findAllResultatsOfStagiaireForFormationOfSession");
+		query.setParameter("session", session);
+		query.setParameter("stagiaire", stagiaire);
+		query.setParameter("formation", formation);
+		
+		List<Resultat> listResultatsOfStagiaireForFormationOfSession = query.getResultList();
+		return listResultatsOfStagiaireForFormationOfSession;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Resultat> findAllResultatsOfEval(Evaluation evaluation) {
+		Query query = em.createNamedQuery("findAllResultatsOfEvaluation");
+		query.setParameter("evaluation", evaluation);
+
+		List<Resultat> listResultatsOfEval = query.getResultList();
+		return listResultatsOfEval;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Resultat> findAllResultatsOfSession(Session session) {
 		Query query = em.createNamedQuery("findAllResultatsOfSession");
 		query.setParameter("session", session);
@@ -54,6 +78,7 @@ public class ResultatDAO extends GenericDAO<Resultat> {
 		return listResultatsOfSession;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Resultat> findAllResultatsOfStagiaire(Stagiaire stagiaire) {
 		Query query = em.createNamedQuery("findAllResultatsOfStagiaire");
 		query.setParameter("stagiaire", stagiaire);
@@ -62,6 +87,7 @@ public class ResultatDAO extends GenericDAO<Resultat> {
 		return listResultatsOfStagiaire;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Question> findAllQuestionsOfSession(Session session) {
 	Query query = em.createNamedQuery("findAllQuestionsOfSession");
 	query.setParameter("session", session);

@@ -7,14 +7,10 @@
 	version="2.1">
 
  	<navigation-rule>
+ 		<from-view-id>*</from-view-id>
   		<navigation-case>
    			<from-outcome>logout</from-outcome>
-   			<to-view-id>/pages/public/login.xhtml</to-view-id>
-   			<redirect/>
-  		</navigation-case>
-  		<navigation-case>
-   			<from-outcome>acceuil</from-outcome>
-   			<to-view-id>/pages/protected/user/Evaluation/acceuil.jsf</to-view-id>
+   			<to-view-id>/pages/protected/user/Evaluation/acceuil.xhtml</to-view-id>
    			<redirect/>
   		</navigation-case>
  	</navigation-rule>

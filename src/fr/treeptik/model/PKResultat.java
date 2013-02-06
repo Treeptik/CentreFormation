@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 
 @SuppressWarnings("serial")
 @Embeddable
 public class PKResultat implements Serializable {
 
 	@ManyToOne
+	@OrderBy("id.question.ordreApparition ASC")
 	private Questionnaire questionnaire;
 	@ManyToOne
 	private StagiaireSession stagiaireSession;

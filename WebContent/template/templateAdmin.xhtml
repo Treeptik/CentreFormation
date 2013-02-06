@@ -22,18 +22,23 @@
 					<img src="/FormationJSF/Image/logo.png" class="img-rounded" />
 				</a>
 			</div>
-			<div class="span8" id ="barreNavigation">
+			<div class="span9" id ="barreNavigation">
 			<h:form>
-			<ul class="nav nav-tabs">
-				<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Stagiaire <b class="caret"/></a>
+			<ul class="nav nav-tabs barreprincipale">
+				<li class="dropdown barreprincipale">
+				<a class="dropdown-toggle barreprincipale" data-toggle="dropdown" href="#">Résultats<b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><a href="../Resultat/listStagiaires.jsf">Par Stagiaire</a></li>
+						<li><a href="../Stagiaire/listStagiaires.jsf">Liste / Gestion </a></li>
+					</ul>
+				</li>
+				<li class="dropdown barreprincipale">
+				<a class="dropdown-toggle barreprincipale" data-toggle="dropdown" href="#"> Stagiaire <b class="caret"/></a>
 					<ul class="dropdown-menu">
 						<li><a href="../Stagiaire/createStagiaire.jsf">Créer</a></li>
 						<li><a href="../Stagiaire/listStagiaires.jsf">Liste / Gestion </a></li>
-						
 					</ul>
 				</li>
-				<li class="divider-vertical"></li>
 				<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Formateur <b class="caret"/></a>
 					<ul class="dropdown-menu">
@@ -82,9 +87,8 @@
 				</h:form>
 			</div>
 		</div>
-		
-
 	</div>
+
 	<ui:insert name="body" />
 	<div class="row">
 		<div class="span12" id="footer">

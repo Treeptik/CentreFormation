@@ -4,12 +4,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Evaluations</ui:define>
 	<ui:define name="body">
-		<h2>Liste des Evaluations de la session #{sessionController.session.nom}</h2>
-		<h:form>
-			<h:dataTable class="table table-bordered table-striped" value="#{sessionController.lDMEvaluationsOfSession}" var="ev">
+		<div id="titre">Liste des Evaluations de la session #{sessionController.session.nom} :</div>
+		<div class="span9 offset1">
+		<h:form class="centre">
+			<h:dataTable class="table table-bordered table-striped table-condensed"
+			 value="#{sessionController.lDMEvaluationsOfSession}" var="ev">
 				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />
@@ -29,10 +31,11 @@
 					<h:outputText value="#{ev.descriptif}" />
 				</h:column>								
 			</h:dataTable>
+ 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+ 			<h:outputText value=" / "/>		
+ 			<a href="../Formation/listFormations.jsf">retour à la liste des formations</a>
 		</h:form>
-	 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
-	 			<h:outputText value=" / "/>		
-	 			<a href="../Formation/listFormations.jsf">retour à la liste des formations</a>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

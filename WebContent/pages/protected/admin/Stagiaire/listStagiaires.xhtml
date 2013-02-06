@@ -4,13 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">List des Stagiaires</ui:define>
 	<ui:define name="body">
-		<h2>Liste des Stagiaires</h2>
-
-		<h:form>
-			<h:dataTable class="table table-bordered table-striped" 
+		<div id="titre">Liste des Stagiaires</div>
+		<div class="span12">
+			<h:form class="centre">
+			<h:dataTable class="table table-bordered table-striped table-condensed" 
 				value="#{stagiaireController.lDMStagiaires}" var="st">
 				<h:column rendered="false">
 					<f:facet name="header">
@@ -104,8 +104,9 @@
 						action="#{stagiaireController.doDelete()}" value="Supprimer" />
 				</h:column>
 			</h:dataTable>
+			<a href="../Annexes/acceuilGestion.jsf">retour</a>
 		</h:form>
-		<a href="../Annexes/acceuilGestion.jsf">retour</a>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

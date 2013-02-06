@@ -25,6 +25,7 @@ public class QuestionnaireDAO extends GenericDAO<Questionnaire> {
 		em.persist(questionnaire);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Questionnaire> findQuestionnaireByEval(Evaluation evaluation) {
 		Query query = em.createNamedQuery("findQuestionnaireByEval");
 		query.setParameter("evaluation", evaluation);

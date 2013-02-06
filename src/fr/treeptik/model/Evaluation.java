@@ -23,17 +23,6 @@ public class Evaluation implements Serializable {
 	private String descriptif;
 
 
-	/*
-	 * @Column(length = 20) private int acceuil; private int salle; private int
-	 * materiel; private int qualFormation; private int objectif; private int
-	 * programme; private int contenu; private int duree; private int rythme;
-	 * private String sujetApprofondir; private String sujetSupprimer; private
-	 * int technique; private int pedagogie; private int capacite; private int
-	 * disponibilite; private int noteFormateur; private String autreStage;
-	 * 
-	 * @Column(length = 200) private String projet; private String commentaire;
-	 */
-
 	public Evaluation() {
 	}
 

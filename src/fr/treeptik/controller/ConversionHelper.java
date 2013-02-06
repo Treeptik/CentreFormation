@@ -1,7 +1,5 @@
 package fr.treeptik.controller;
 
-import javax.faces.convert.ConverterException;
-import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 

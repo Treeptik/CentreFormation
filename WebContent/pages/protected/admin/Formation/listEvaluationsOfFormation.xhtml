@@ -4,13 +4,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Evaluations</ui:define>
 	<ui:define name="body">
-		<h2>Liste des Evaluations de la Formation #{formationController.formation.nom}</h2>
-		<h:form>
+		<div id="titre">Liste des Evaluations de la Formation #{formationController.formation.nom}</div>
+		<div class="span7 offset2">
+		<h:form class="centre">
 		<h:inputHidden value="#{formationController.formation.id}" />	
-			<h:dataTable class="table table-bordered table-striped" value="#{formationController.lDMEvaluationsOfFormation}" var="ev">
+			<h:dataTable class="table table-bordered table-striped table-condensed"
+			 value="#{formationController.lDMEvaluationsOfFormation}" var="ev">
 				<h:column rendered="false">
 					<f:facet name="header">
 						<h:outputText value="ID" />
@@ -36,10 +38,11 @@
 					<h:commandLink 	action="#{formationController.doRemoveEvaluationFromFormation()}" value="retirer de la formation" />
 				</h:column>								
 			</h:dataTable>
+			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
+	 		<h:outputText value=" / "/>		
+	 		<a href="../Formation/listFormations.jsf">retour à la liste des formations</a>
 		</h:form>
-	 			<a href="../Annexes/acceuilGestion.jsf">Acceuil</a>
-	 			<h:outputText value=" / "/>		
-	 			<a href="../Formation/listFormations.jsf">retour à la liste des formations</a>
+	 	</div>
 	</ui:define>
 </ui:composition>
 </html>

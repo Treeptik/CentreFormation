@@ -5,31 +5,37 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<link href="/FormationJSF/bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="/FormationJSF//bootstrap/js/bootstrap.js" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="/FormationJSF/css/styleRV.css" />
 </h:head>
 <h:body>
 <a><img src="/FormationJSF/Image/Treeptik.Eval.jpg" width="1200"
 					height="100" class="img-rounded" /></a>
-    <p>Connexion pour accèder au site d'évaluation des formations treeptik :</p>
+<div class="row">
+	<div class="span8 offset2" id="titreLogin">Connexion au site d'évaluation des formations:</div>
+</div>
+<div class="row">
+	<div class="span6 offset3" id="article">
         <form class="form-horizontal" method="post" action="j_security_check">
-    <div class="control-group">
-    <label class="control-label" for="j_username">Email :</label>
-    <div class="controls">
-    <input type="text" id="j_username" name="j_username" placeholder="Email"/>
-    </div>
-    </div>
-    <div class="control-group">
-    <label class="control-label" for="j_password">Mot de Passe :</label>
-    <div class="controls">
-    <input type="password" id="j_password" name="j_password" placeholder="Password"/>
-    </div>
-    </div>
-    <div class="control-group">
-<div class="controls">
- <button type="submit" name="submit" class="btn">Valider</button>
- <button type="reset" name="reset" class="btn">Reset</button>
+    		<div class="control-group">
+    			<label class="control-label" for="j_username">Email :</label>
+    			<div class="controls">
+    				<input type="text" id="j_username" name="j_username" placeholder="Email"/>
+    			</div>
+    		</div>
+    		<div class="control-group">
+    			<label class="control-label" for="j_password">Mot de Passe :</label>
+    			<div class="controls">
+    				<input type="password" id="j_password" name="j_password" placeholder="Password"/>
+    			</div>
+    		</div>
+    		<div class="control-group">
+				<div class="controls">
+ 					<button type="submit" name="submit" class="btn">Valider</button>
+ 					<button type="reset" name="reset" class="btn">Reset</button>
+				</div>
+			</div>
+    	</form>
+   	</div>
 </div>
-</div>
-    </form>
 </h:body>
 </html>

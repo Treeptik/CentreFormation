@@ -261,16 +261,12 @@ public class SessionController {
 	public DataModel<Evaluation> getlDMEvaluationsOfSession() {
 		if (lDMEvaluationsOfSession == null) {
 
-			List<Formation> tempListFormations = new ArrayList<Formation>();
-			List<Evaluation> tempListEvaluations = new ArrayList<Evaluation>();
 			List<Evaluation> tempListEvaluation2 = new ArrayList<Evaluation>();
 
-			tempListFormations = formationSessionEJB
-					.findAllFormationsOfSession(session);
-			for (Formation formation : tempListFormations) {
-				tempListEvaluations = evaluationFormationEJB
-						.findAllEvalsOfFormation(formation);
-				for (Evaluation evaluation : tempListEvaluations) {
+			for (Formation formation : formationSessionEJB
+					.findAllFormationsOfSession(session)) {
+				for (Evaluation evaluation : evaluationFormationEJB
+						.findAllEvalsOfFormation(formation)) {
 					tempListEvaluation2.add(evaluation);
 				}
 			}
@@ -334,10 +330,8 @@ public class SessionController {
 
 	public List<SelectItem> getSelectStagiaire() {
 		if (selectStagiaire == null) {
-			List<Stagiaire> listStagiaires = new ArrayList<Stagiaire>();
-			listStagiaires = stagiaireEJB.findAll();
 			selectStagiaire = new ArrayList<SelectItem>();
-			for (Stagiaire stagiaire : listStagiaires) {
+			for (Stagiaire stagiaire : stagiaireEJB.findAll()) {
 				selectStagiaire.add(new SelectItem(stagiaire.getId(), stagiaire
 						.getNom() + " " + stagiaire.getPrenom()));
 			}

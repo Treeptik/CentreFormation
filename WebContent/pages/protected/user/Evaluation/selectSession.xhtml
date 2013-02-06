@@ -4,31 +4,38 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateEvaluation.xhtml">
-	<ui:define name="titre">Evaluation Treeptik</ui:define>
+<ui:composition template="/template/templateEvaluation.xhtml">
+	<ui:define name="titre">Choix de session</ui:define>
 	<ui:define name="body">
-		<div class="span7">
-			<h:form>
-				<div id="titre">Veuillez choisir votre Session</div>
-				<center>
-					<div class="table">
-						<tr>
-							<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+		<div class="row">
+		<h:messages />
+			<div class="span8 offset2">
+				<div id="titre">Quelle session souhaitez-vous évaluer?</div>
+			</div>
+		</div>
+		<h:form class="centre">
+			<div class="row">
+				<div class="span6 offset3">
+					<h:inputHidden value="#{evaluationController.stagiaire.id}" />
+					<div class="control-group">
+			    		<label class="control-label" for="session">&nbsp;</label>
+	    				<div class="controls margin0">
 							<h:selectOneMenu value="#{evaluationController.session.id}">
 								<f:selectItem itemLabel="Choisissez votre session" itemValue="Choix de session"/>
 								<f:selectItems value="#{evaluationController.selectSessionsOfStagiaire}"></f:selectItems>
 							</h:selectOneMenu>
-						</tr>
-						<div>
-							<h:commandButton styleClass="btn btn-success"
-							action="#{evaluationController.chooseSession()}" value="Valider" />
-							<h:button type="reset" class="btn btn-primary" value="Annuler"/>
 						</div>
 					</div>
-				</center>
-				<h:messages />
-			</h:form>
-		</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span2 offset5">	
+					<h:commandButton styleClass="btn btn-success"
+					action="#{evaluationController.chooseSession()}" value="Valider" />
+					<h:button type="reset" class="btn btn-primary" value="Annuler"/>
+				</div>
+			</div>		
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

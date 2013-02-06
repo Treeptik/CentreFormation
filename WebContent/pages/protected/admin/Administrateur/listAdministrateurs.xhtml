@@ -4,14 +4,17 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Administrateurs</ui:define>
 	<ui:define name="body">
 		<div class="row">		
-			<h2>Liste des Administrateurs</h2>
+			<div id="titre">Liste des Administrateurs :</div>
 		</div>	
-			<h:form>
-				<h:dataTable class="table table-bordered table-striped" 
+			<h:form class="centre">
+			<div class="span6 offset3">
+				<h:dataTable 
+				columnClasses="nom,email,motdepasse,operation"
+				class="listAdmin centre table table-bordered table-striped table-condensed" 
 				value="#{administrateurController.administrateurs}" var="ad">
 	  				<h:column>
 	    				<f:facet name="header">
@@ -40,8 +43,9 @@
 						<h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{administrateurController.doDelete()}" value="Supprimer"/>
 					</h:column>
 				</h:dataTable>
-			</h:form>
 				<a href="../Annexes/acceuilGestion.jsf">retour</a>
+				</div>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>

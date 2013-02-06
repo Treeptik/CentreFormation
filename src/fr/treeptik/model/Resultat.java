@@ -6,6 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OrderBy;
 
 @SuppressWarnings("serial")
 @Entity
@@ -14,10 +15,13 @@ import javax.persistence.NamedQuery;
 		@NamedQuery(name = "findAllResultatsOfFormation", query = "select r from Resultat r where r.id.formateurFormation.id.formation = :formation"),
 		@NamedQuery(name = "findAllResultatsOfEvaluation", query = "select r from Resultat r where r.id.questionnaire.id.evaluation = :evaluation"),
 		@NamedQuery(name = "findAllResultatsOfStagiaire", query = "select r from Resultat r where r.id.stagiaireSession.id.stagiaire = :stagiaire"),
+		@NamedQuery(name = "findAllResultatsOfStagiaireForSession", query = "select r from Resultat r where r.id.stagiaireSession.id.stagiaire = :stagiaire and r.id.stagiaireSession.id.session = :session"),		
+		@NamedQuery(name = "findAllResultatsOfStagiaireForFormationOfSession", query = "select r from Resultat r where r.id.stagiaireSession.id.stagiaire = :stagiaire and r.id.stagiaireSession.id.session = :session and r.id.formateurFormation.id.formation = :formation"),
 		@NamedQuery(name = "findAllQuestionsOfSession", query = "select r.id.questionnaire.id.question from Resultat r where r.id.stagiaireSession.id.session = :session") })
 public class Resultat implements Serializable {
 
 	@EmbeddedId
+	@OrderBy("questionnaire.id.question.ordreApparition ASC")
 	private PKResultat id;
 	private int note;
 	private String commentaire;

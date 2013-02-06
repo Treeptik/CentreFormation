@@ -1,11 +1,36 @@
 @CHARSET "UTF-8";
 
+[value=Evaluation] {
+	color: White;
+	font-size: xx-small;
+}
+
 a {
-	color: #3F4493
+	color: #3F4493;
+}
+
+.nom {
+	width: 10%;
+}
+
+.email {
+	width: 20%;
+}
+
+.motdepasse {
+	width: 30%;
+}
+
+.operation {
+	width: 50%;
 }
 
 body{
-	background-image: url("./../Image/bg_FormationJSF.jpg")
+	background-image: url("/FormationJSF/Image/bg_FormationJSF.jpg");
+}
+
+.listAdmin {
+	max-width: 500px
 }
 
 messages {
@@ -16,9 +41,27 @@ messages {
 	margin-right: 10px;	
 }
 
-#evaluation {
+.accordion-group {
 	border-style: none;
-	margin-left: 100px
+}
+
+.accordion-inner {
+	border-style: none;
+}
+
+#cadre{
+	border-style: solid;
+	border-color: #3E4494;
+	border-width: 1px;
+	margin-left: -140px;
+	margin-top: -40px
+}
+
+#acceuilGestion {
+	color: #3E4494;
+	font-size: small;
+	text-align: center;
+	line-height: 15px;
 }
 
 #acceuil {
@@ -26,38 +69,49 @@ messages {
 	text-align: center;
 }
 
-#evaluation .table-condensed.td {
+.evaluation  {
 	border-style: none;
+	
 }
-
-.table th, .table td {
-	border-style: none
-}
-
-#alignedroite {
-	text-align: right;
-}	
 
 #logo {
 	max-width: 336px;
-	margin-left: -100px
+	margin-left: -140px
 }
 
-#operation li.dropdown {
-	color: #3F4493;	
-	}
-
-
-
-#titre {
-
+#titreLogin {
 	text-decoration: underline;
 	color: #3F4493;
 	font-size: x-large;
 	font-weight: bold;
 	vertical-align: top;
 	min-height: 40px;
-	text-align: center	
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px		
+}
+#titreGestion {
+
+	text-decoration: underline;
+	color: #3F4493;
+	font-size: xx-large;
+	font-weight: bold;
+	vertical-align: top;
+	min-height: 40px;
+	text-align: center;
+	margin-bottom: 10px	
+}
+
+#titre {
+
+	text-decoration: underline;
+	color: #3F4493;
+	font-size: xx-large;
+	font-weight: bold;
+	vertical-align: top;
+	min-height: 40px;
+	text-align: center;
+	margin-bottom: 10px	
 }
 
 #deconnexion {
@@ -67,8 +121,8 @@ messages {
 
 #deconnexionadmin {
 	margin-left: 25px;
-	margin-top: 165px;
-	font-size: medium
+	margin-top: 170px;
+	font-size: medium;
 }
 
 #barreNavigation {
@@ -77,36 +131,105 @@ messages {
 	margin-top: 160px;
 }
 
+.alignegauche {
+	text-align: left;
+}
+
+.important {
+	font-size: 20px;
+	text-decoration: underline;
+	font-weight: bolder
+}
+
+.sansBordure, td.sansBordure, table.sansBordure td {
+	border-style: none;
+}
+
+.libelle, td.libelle {
+	text-align: right;
+	border-style: none;
+	
+}	
+
+.choix, td.choix {
+	text-align: left;
+	border-style: none;
+	padding: 0px
+}
+
 [class="page-header"] {
 	border-style: none;
 	padding-bottom: 0px;
 	margin-top: 0px;
 }
 
+.centre,.centre th,.centre td, .centre thead th {
+	text-align: center;
+	vertical-align: middle;
+
+}
+
+.margin0, .nav.margin0, .controls.margin0 >tr>td>label {
+	margin-bottom: 0px;
+
+}
+.explication label {
+	font-weight: bold;
+}
+
+[class*="explication"] {
+	text-align: left;
+	border-style: outset;
+	border-color: #3E4494;
+	color: #3E4494;
+	font-style: normal;
+
+	margin-bottom: 20px;
+	padding-left: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #F0F0F0
+}
+
 #footer {
 	
 	text-align: center;
+	margin-left: 60px;
 	margin-bottom: 10px;
 	margin-top: 10px
 }
 
-.nav .dropdown-toggle .caret {
-	color: White;
-	border-top-color: White;
-	border-bottom-color: White;
-	
-}
+.btn-gris { 
+	background-color: hsl(0, 0%, 46%) !important; 
+	background-repeat: repeat-x; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0e0e0", endColorstr="#757575"); 
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#e0e0e0), to(#757575)); 
+	background-image: -moz-linear-gradient(top, #e0e0e0, #757575); 
+	background-image: -ms-linear-gradient(top, #e0e0e0, #757575); 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e0e0e0), color-stop(100%, #757575)); 
+	background-image: -webkit-linear-gradient(top, #e0e0e0, #757575); 
+	background-image: -o-linear-gradient(top, #e0e0e0, #757575); 
+	background-image: linear-gradient(#e0e0e0, #757575); 
+	border-color: #757575 #757575 hsl(0, 0%, 35.5%); 
+	color: #333 !important; 
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.69); 
+	-webkit-font-smoothing: antialiased; 
+	}
 
-.dropdown-menu  {
-	background-color: #424AC9;
-	color: White;
-}
+.btn-jaune { 
+	background-color: hsl(51, 100%, 30%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffda0a", endColorstr="#998200");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#ffda0a), to(#998200));
+	background-image: -moz-linear-gradient(top, #ffda0a, #998200);
+	background-image: -ms-linear-gradient(top, #ffda0a, #998200);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffda0a), color-stop(100%, #998200));
+	background-image: -webkit-linear-gradient(top, #ffda0a, #998200);
+	background-image: -o-linear-gradient(top, #ffda0a, #998200);
+	background-image: linear-gradient(#ffda0a, #998200);
+	border-color: #998200 #998200 hsl(51, 100%, 24.5%);
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.36);
+	-webkit-font-smoothing: antialiased; 
+	}
 
-[class="dropdown-toggle"] {
-	color: White;
-}
-
-
-[class="nav nav-tabs"], [class="nav nav-pills"] {
-	background-color: #3F4493;
-}

@@ -4,12 +4,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
       
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des formateurs</ui:define>
 	<ui:define name="body">
 		<div id="titre">Liste des Formateurs :</div>
-			<h:form>	
-				<h:dataTable class="table table-bordered table-striped" 
+			<div class="span6 offset3">
+			<h:form class="centre">
+				<h:dataTable class="table table-bordered table-striped table-condensed" 
 						value="#{formateurController.lDMFormateurs}" var="ft">
 			  		<h:column rendered="false">
 			    		<f:facet name="header">
@@ -45,8 +46,9 @@
 							action="#{formateurController.doDelete()}" value="Supprimer"/>
 					</h:column>
 				</h:dataTable>
+				<a href="../Annexes/acceuilGestion.jsf">retour</a>
 			</h:form>
-	 			<a href="../Annexes/acceuilGestion.jsf">retour</a>
+			</div>
 		</ui:define>
 	</ui:composition>
 </html>

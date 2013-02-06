@@ -18,6 +18,7 @@ public class Question implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String libelle;
+	private int ordreApparition;
 	private char question4Choix; 
 	private char questionFermee;
 	private char avecCommentaire;
@@ -39,6 +40,14 @@ public class Question implements Serializable {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public int getOrdreApparition() {
+		return ordreApparition;
+	}
+
+	public void setOrdreApparition(int ordreApparition) {
+		this.ordreApparition = ordreApparition;
 	}
 
 	public char getQuestion4Choix() {
@@ -72,6 +81,7 @@ public class Question implements Serializable {
 		result = prime * result + avecCommentaire;
 		result = prime * result + id;
 		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
+		result = prime * result + ordreApparition;
 		result = prime * result + question4Choix;
 		result = prime * result + questionFermee;
 		return result;
@@ -100,6 +110,9 @@ public class Question implements Serializable {
 				return false;
 			}
 		} else if (!libelle.equals(other.libelle)) {
+			return false;
+		}
+		if (ordreApparition != other.ordreApparition) {
 			return false;
 		}
 		if (question4Choix != other.question4Choix) {

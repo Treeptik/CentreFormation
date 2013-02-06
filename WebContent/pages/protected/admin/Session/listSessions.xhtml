@@ -4,11 +4,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+<ui:composition template="/template/templateAdmin.xhtml">
 	<ui:define name="titre">Liste des Sessions</ui:define>
 	<ui:define name="body">
-		<h2>Liste des sessions</h2>
-		<h:form>
+		<div id="titre">Liste des Sessions :</div>
+		<h:form class="centre">
+		<div class="span7 offset2">
 			<h:dataTable class="table table-bordered table-striped table-condensed" 
 				value="#{sessionController.lDMSessions}" var="sess">
 				<h:column rendered="false">
@@ -46,19 +47,19 @@
 					<f:facet name="header">
 						<h:outputText value="Opérations" />
 					</f:facet>
-					<ul class="nav nav-pills" id="operation">
+					<ul class="nav nav-pills margin0">
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Gestion<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><h:commandLink action="#{sessionController.doSelectUpdate()}" value="Modifier"/></li>
-									<li><h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{sessionController.doDelete()}"
+							<a class="dropdown-toggle " data-toggle="dropdown" href="#"> Gestion<b class="caret"></b></a>
+								<ul class="dropdown-menu ">
+									<li ><h:commandLink action="#{sessionController.doSelectUpdate()}" value="Modifier"/></li>
+									<li ><h:commandLink onclick="if (! confirm('Voulez-vous vraiment effectuer la suppression?') ) { return false;}; return true; " action="#{sessionController.doDelete()}"
 						value="Supprimer" /></li>
 								</ul>
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"> Stagiaire<b class="caret"></b></a>
-								<ul class="dropdown-menu">
+								data-toggle="dropdown" href="#"> Stagiaire<b class="caret "></b></a>
+								<ul class="dropdown-menu ">
 									<li><h:commandLink action="#{sessionController.doListStagiairesOfSession()}"
 						value="Liste Stagiaires" /></li>
 									<li><h:commandLink action="#{sessionController.doSelectAddStagiaire()}"
@@ -87,8 +88,10 @@
 
 				</h:column>
 			</h:dataTable>
+			<a href="../Annexes/acceuilGestion.jsf">retour</a>
+			</div>
 		</h:form>
-		<a href="../Annexes/acceuilGestion.jsf">retour</a>
+		
 	</ui:define>
 </ui:composition>
 </html>

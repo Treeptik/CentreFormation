@@ -59,13 +59,13 @@ public class SendTextMessage {
 		}
 	}
 
-	public String boucleRecapResultat(List<Resultat> listResultats) {
+	private String boucleRecapResultat(List<Resultat> listResultats) {
 		StringBuilder recapBuilder = new StringBuilder();
 		String recap;
 		for (Resultat resultat : listResultats) {
 			if (resultat.getId().getQuestionnaire().getId().getQuestion().getQuestion4Choix() == 'y') {
 				recapBuilder.append(resultat.getId().getQuestionnaire().getId().getQuestion().getLibelle()
-						+ " : " + resultat.getNote() + "/4\n\n");
+				 + resultat.getNote() + "/4\n\n");
 			}
 			if (resultat.getId().getQuestionnaire().getId().getQuestion().getQuestionFermee() == 'y') {
 				if (resultat.getNote() == 10) {
@@ -93,7 +93,7 @@ public class SendTextMessage {
 		StringBuilder recapBuilder = new StringBuilder();
 		String recap;
 		for (Formateur formateur : listFormateurs) {
-			recapBuilder.append("Formateur :" + " : " + formateur.getNom()
+			recapBuilder.append("Formateur :"+ formateur.getNom()
 					+ " " + formateur.getPrenom() + ".\n\n");
 		}
 		recap = recapBuilder.toString();

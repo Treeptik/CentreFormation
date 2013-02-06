@@ -4,15 +4,15 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
       
-	<ui:composition template="http://localhost:8080/FormationJSF/template/templateAdmin.xhtml">
+	<ui:composition template="/template/templateAdmin.xhtml">
 		<ui:define name="titre">Liste des questions</ui:define>
 	
 		<ui:define name="body">
-		<h2>Ajouter une Question à l'évaluation #{evaluationController.evaluation.nom} :</h2>
-		
-			<h:form>
+		<div id="titre">Ajouter une Question à l'évaluation #{evaluationController.evaluation.nom} :</div>
+			<div class="span10 offset1">
+			<h:form class="centre">
 				<h:inputHidden value="#{evaluationController.evaluation.id}" />	
-				<h:dataTable class="table table-bordered table-striped" 
+				<h:dataTable class="table table-bordered table-striped table-condensed" 
 						value="#{evaluationController.lDMQuestions}" var="q">
 			  		<h:column rendered="false">
 			    		<f:facet name="header">
@@ -25,6 +25,12 @@
 			  				<h:outputText value="libellé"/>
 			 			</f:facet>
 			  			<h:outputText value="#{q.libelle}"/>
+					</h:column>
+					<h:column>
+			    		<f:facet name="header">
+			  				<h:outputText value="Ordre d'apparition"/>
+			 			</f:facet>
+			  			<h:outputText value="#{q.ordreApparition}"/>
 					</h:column>
 					<h:column>
 			    		<f:facet name="header">
@@ -52,8 +58,11 @@
 						value="Ajouter Question" />
 					</h:column>
 				</h:dataTable>
+				<a href="../Annexes/acceuilGestion.jsf">retour</a>
+		 		<h:outputText value=" / "/>	
+		 		<a href="../Evaluation/listEvaluations.jsf">retour aux évaluations</a>
 			</h:form>
-	 			<a href="../Annexes/acceuilGestion.jsf">retour</a>
+			</div>
 		</ui:define>
 	</ui:composition>
 </html>

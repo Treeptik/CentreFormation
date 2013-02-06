@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateAdmin.xhtml">
+	<ui:define name="titre">Liste des stagiaires(Résultats)</ui:define>
+	<ui:define name="body">
+
+	<div id="titre">Liste des Stagiaires :</div>
+<h:form id="form">  
+    <h:outputScript name="jsf.js" library="javax.faces" target="head"/>              
+    <p:growl id="growl" showDetail="true"/>  
+  
+    <p:dataTable id="stagiairesTable" var="st" value="#{resultatController.lDMStagiaires}">  
+  
+        <p:ajax event="rowToggle" listener="#{resultatController.onRowToggleStagiaire}" update=":form:growl" />  
+  
+        <f:facet name="header">  
+            De quel stagiaire voulez-vous afficher les résultats?
+        </f:facet>  
+         <p:column style="width:4%">  
+            <p:rowToggler />  
+        </p:column>  
+  		<p:column rendered="false">  
+            <f:facet name="header">  
+                    ID Stagiaire
+            </f:facet>  
+            <h:outputText value="#{st.id}" /> 
+        </p:column> 
+        <p:column >  
+            <f:facet name="header">  
+                    Nom
+            </f:facet>  
+            <h:outputText value="#{st.nom}" /> 
+        </p:column>  
+  
+        <p:column >  
+            <f:facet name="header">  
+                    Prénom  
+            </f:facet>  
+					<h:outputText value="#{st.prenom}" /> 
+        </p:column>  
+          <p:rowExpansion>  
+            <h:panelGrid id="display" cellpadding="2"   
+                            styleClass=" ui-widget-content grid"> 
+  <p:dataTable id="resultatsTable" var="r" value="#{resultatController.listResultatsOfStagiaire}">
+                <f:facet name="header">  
+
+                </f:facet>  
+  <p:column  rendered="false" >  
+            <f:facet name="header">  
+                    id résultat
+            </f:facet>  
+                    <h:outputText value="#{r.id}" /> 
+        </p:column>  
+  		<p:column >  
+            <f:facet name="header">  
+                    Session
+            </f:facet>  
+					<h:outputText value="#{r.id.stagiaireSession.id.session.nom}" /> 
+        </p:column>
+        <p:column >  
+            <f:facet name="header">  
+                    Formation
+            </f:facet>  
+					<h:outputText value="#{r.id.formateurFormation.id.formation.nom}" /> 
+        </p:column>
+        <p:column >  
+            <f:facet name="header">  
+                    Formateur
+            </f:facet>  
+					<h:outputText value="#{r.id.formateurFormation.id.formateur.nom}" /> 
+        </p:column>
+        <p:column >  
+            <f:facet name="header">  
+                    Question
+            </f:facet>  
+					<h:outputText value="#{r.id.questionnaire.id.question.libelle}" /> 
+        </p:column>
+        <p:column >  
+            <f:facet name="header">  
+                    Note
+            </f:facet>  
+					<h:outputText value="#{r.note}" /> 
+        </p:column>
+        <p:column >  
+            <f:facet name="header">  
+                    Commentaire
+            </f:facet>  
+					<h:outputText value="#{r.commentaire}" /> 
+        </p:column>   
+                </p:dataTable>  
+            </h:panelGrid>  
+          </p:rowExpansion>   
+    </p:dataTable>  
+</h:form>  
+	</ui:define>
+</ui:composition>
+</html>
